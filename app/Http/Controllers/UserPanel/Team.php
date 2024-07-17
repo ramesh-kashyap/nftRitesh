@@ -77,6 +77,7 @@ class Team extends Controller
        $this->data['max_lenght'] =$max_lenght;
 
     $this->data['page'] = 'user.team.direct-team';
+    
     return $this->dashboard_layout();
 
     }
@@ -525,6 +526,13 @@ class Team extends Controller
       return $final;
 
   }
+
+
+  public function invite(){
+    return view('user.team.reffrel-link');
+  }
+
+  
 
 
 }

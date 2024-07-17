@@ -173,6 +173,8 @@ Route::get('/left-team', [App\Http\Controllers\UserPanel\Team::class, 'leftteam'
 Route::get('/right-team', [App\Http\Controllers\UserPanel\Team::class, 'rightteam'])->name('user.right-team');
 Route::get('/tree-view', [App\Http\Controllers\UserPanel\Team::class, 'genealogy'])->name('user.tree-view');
 Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::class,'userReport'])->name('UsrBinaryReport');
+
+Route::get('/referral-link', [App\Http\Controllers\UserPanel\Team::class, 'invite'])->name('user.referral-link');
 //end team
 
 //bonus
