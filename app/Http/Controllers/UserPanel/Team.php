@@ -76,7 +76,7 @@ class Team extends Controller
         $this->data['search'] =$search;
        $this->data['max_lenght'] =$max_lenght;
 
-    $this->data['page'] = 'user.team.refrel-link';
+    $this->data['page'] = 'user.team.direct-team';
     
     return $this->dashboard_layout();
 
@@ -531,14 +531,7 @@ class Team extends Controller
     return view('user.team.reffrel-link');
   }
 
-
-  public function level_count(Request $request){
-     $user= Auth::user();
-     $count= user::where($user->id, 'sponsor');
-     dd('$count');
-
-
-  }
+  
 
 
 }
