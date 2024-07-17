@@ -83,6 +83,10 @@ Route::get('/activities', [App\Http\Controllers\UserPanel\Dashboard::class, 'act
 Route::post('/submitActivity', [App\Http\Controllers\UserPanel\Dashboard::class, 'submitActivity'])->name('user.submitActivity');
 Route::post('/checkPaymentStatus', [App\Http\Controllers\UserPanel\Dashboard::class, 'checkPaymentStatus'])->name('user.checkPaymentStatus');
 Route::post('/lastWithdrawal', [App\Http\Controllers\UserPanel\Dashboard::class, 'lastWithdrawal'])->name('user.lastWithdrawal');
+// extra  defi
+Route::get('defi',[App\Http\Controllers\Extra::class, 'defi'])->name('user.defi');
+
+
 // profile
 
 
