@@ -18,15 +18,6 @@
   --button-background: linear-gradient(95.54deg, rgb(103, 148, 255) -36.56%, rgb(103, 148, 255) -36.55%, rgba(var(--theme-color)) 60.15%), linear-gradient(92deg, rgba(var(--white), 0.4) 6.08%, rgba(var(--white), 0) 133.84%);
 }
 
-body {
-  background-image: url(../images/background/background.png);
-  background-position: inherit !important;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-  height: 100%;
-  font-family: "Outfit", sans-serif;
-}
 /*=====================
     Animation CSS start
 ==========================*/
