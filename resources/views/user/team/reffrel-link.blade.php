@@ -125,7 +125,7 @@
       <div class="wallet-options">
         <ul class="wallet-list">
           <li class="wallet-items">
-            <h2 style="color:#fff">{{number_format($gen_team3Income,2)}}</h3>            
+            <h2 style="color:#fff">0</h3>            
             <h6>Total Registered Member</h6>
           </li>
           <li class="wallet-items">
