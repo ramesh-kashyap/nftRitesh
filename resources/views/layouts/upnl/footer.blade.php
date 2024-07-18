@@ -13,7 +13,7 @@
        </a>
      </li>
      <li>
-      <a href="{{route('user.statistics')  }}">
+      <a href="{{route('user.defi')}}">
         <div class="icon">
            <i class="ri-line-chart-line unactive"></i>
            <i class="ri-line-chart-fill active"></i>
