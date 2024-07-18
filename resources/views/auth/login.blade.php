@@ -66,53 +66,53 @@
 
   <!-- Sign section start -->
   <div class="custom-container">
-    <form method="POST" action="{{ route('loginp') }}">
+    <form method="POST" action="{{ route('loginp') }}" class="auth-form">
+      {{ csrf_field() }}
 
-        {{ csrf_field() }}
-        
-        <div class="form-group">
-          <label for="inputusername" class="form-label">User Name</label>
-          <div class="form-input mb-4">
-            <input type="text" class="form-control" id="inputusername" name="username" placeholder="Enter User Name" />
-            <i class="ri-user-line user"></i>
-          </div>
+      <div class="form-group">
+        <label for="inputusername" class="form-label">User Name</label>
+        <div class="form-input mb-4">
+          <input type="text" class="form-control" id="inputusername" name="username" placeholder="Enter User Name" />
+          <i class="ri-user-line user"></i>
         </div>
-      
-        <div class="form-group">
-          <label for="inputPassword" class="form-label">Password</label>
-          <div class="form-input">
-            <input type="" class="form-control" name="password" id="inputPassword" placeholder="Enter Your Password" />
-            <i class="ri-door-lock-line"></i>
-          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputPassword" class="form-label">Password</label>
+        <div class="form-input">
+          <input type="" class="form-control" name="password" id="inputPassword" placeholder="Enter Your Password" />
+          <i class="ri-door-lock-line"></i>
         </div>
-      
-        <div class="forgot">
-          <a href="forgot-password.html">Forgot password?</a>
-        </div>
-      
-        <div class="submit-btn">
-          <button type="submit" class="btn theme-btn">Sign In</button>
-        </div>
-        
-        <div class="division">
-          <span>OR</span>
-        </div>
-      
-        <div class="btn-section">
-          <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
-              src="{{ asset('') }}assets/images/icons/apple.png" alt="google" /> Continue with Apple</a>
-      
-          <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google"
-              src="{{ asset('') }}assets/images/icons/google.png" alt="google" /> Continue with Google</a>
-        </div>
-      
-        <h5 class="signup">Haven't registered?<a href="signup.html"> Sign up now</a></h5>
-      </form>
-      
+      </div>
+
+      <div class="forgot">
+        <a href="forgot-password.html">Forgot password?</a>
+      </div>
+
+      <div class="submit-btn">
+        <button type="submit" class="btn theme-btn">Sign In</button>
+            </div>
+      <div class="division">
+        <span>OR</span>
+      </div>
+
+      <div class="btn-section">
+        <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
+            src="{{asset('')}}assets/images/icons/apple.png" alt="google" /> Continue with Apple</a>
+
+        <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google"
+            src="{{asset('')}}assets/images/icons/google.png" alt="google" /> Continue with Google</a>
+      </div>
+
+      <h5 class="signup">Haven't registered?<a href="signup.html"> Sign up now</a></h5>
+    </form>
   </div>
+  <!-- Sign section end-->
 
+  <!-- bootstrap js -->
   <script src="{{asset('')}}assets/js/bootstrap.bundle.min.js"></script>
 
+  <!-- script js -->
   <script src="{{asset('')}}assets/js/script.js"></script>
 </body>
 
