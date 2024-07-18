@@ -14,7 +14,7 @@
   <meta name="description" content="nfty">
   <meta name="keywords" content="nfty">
   <meta name="author" content="nfty">
-  <base href="http://localhost:8000/">
+  <base href="{{ asset('') }}">
 
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon">
