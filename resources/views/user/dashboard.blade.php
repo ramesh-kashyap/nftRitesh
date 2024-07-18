@@ -138,61 +138,13 @@
   </header>
   <!-- header end -->
 
-  <!--category  section starts -->
-  <section class="section-t-space">
-    <div class="custom-container">
-      <div class="title">
-        <h4>Category</h4>
-      </div>
-
-      <ul class="category-slide">
-        <li>
-          <a href="art.html" class="category-boxes">
-            <img class="img-fluid cat-img" src="assets/images/svg/brush.svg" alt="art">
-            <h5>Art</h5>
-          </a>
-        </li>
-        <li>
-          <a href="nft-list.html" class="category-boxes">
-            <img class="img-fluid cat-img" src="assets/images/svg/music.svg" alt="music">
-            <h5>Music</h5>
-          </a>
-        </li>
-        <li>
-          <a href="explore.html" class="category-boxes">
-            <img class="img-fluid cat-img" src="assets/images/svg/cup.svg" alt="sport">
-            <h5>Sport</h5>
-          </a>
-        </li>
-        <li>
-          <a href="collection.html" class="category-boxes">
-            <img class="img-fluid cat-img" src="assets/images/svg/fire.svg" alt="fire">
-            <h5>Trend</h5>
-          </a>
-        </li>
-        <li>
-          <a href="index.html" class="category-boxes">
-            <img class="img-fluid cat-img" src="assets/images/svg/brush.svg" alt="art">
-            <h5>Art</h5>
-          </a>
-        </li>
-        <li>
-          <a href="index.html" class="category-boxes">
-            <img class="img-fluid cat-img" src="assets/images/svg/music.svg" alt="music">
-            <h5>Music</h5>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <!-- category section end -->
 
   <!-- Explore section start -->
   <section class="section-t-space">
     <div class="custom-container">
       <div class="title">
         <h4>Explore</h4>
-        <a href="explore.html">See All</a>
+        <a>See All</a>
       </div>
 
       <div class="swiper myswiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" style="
@@ -200,57 +152,57 @@
 ">
         <div class="ratio_square swiper-wrapper" id="swiper-wrapper-ed72c239f152fadf" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
           <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <a href="explore.html" class="nft-box text-center mb-0">
+            <a class="nft-box text-center mb-0">
               <div class="product-box-img bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend1.png);
+background-image: url(http://localhost:8000/assets/images/product/mon1.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                <img class="bg-img" src="assets/images/product/trend1.png" alt="trend1" style="display: none;">
+                <img class="bg-img" src="assets/images/product/mon1.jpg" alt="trend1" style="display: none;">
               </div>
               <h5 class="pt-2">3D Art NFT</h5>
             </a>
           </div>
           <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <a href="explore.html" class="nft-box text-center mb-0">
+            <a class="nft-box text-center mb-0">
               <div class="product-box-img bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend2.png);
+background-image: url(http://localhost:8000/assets/images/product/mon2.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                <img class="bg-img" src="assets/images/product/trend2.png" alt="trend2" style="display: none;">
+                <img class="bg-img" src="assets/images/product/mon2.jpg" alt="trend2" style="display: none;">
               </div>
               <h5 class="pt-2">Paji Gujju</h5>
             </a>
           </div>
           <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <a href="explore.html" class="nft-box text-center mb-0">
+            <a class="nft-box text-center mb-0">
               <div class="product-box-img bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend3.png);
+background-image: url(http://localhost:8000/assets/images/product/mon3.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                <img class="bg-img" src="assets/images/product/trend3.png" alt="trend3" style="display: none;">
+                <img class="bg-img" src="assets/images/product/mon3.jpg" alt="trend3" style="display: none;">
               </div>
               <h5 class="pt-2">Sleepy Buddha</h5>
             </a>
           </div>
           <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <a href="explore.html" class="nft-box text-center mb-0">
+            <a class="nft-box text-center mb-0">
               <div class="product-box-img bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend4.png);
+background-image: url(http://localhost:8000/assets/images/product/mon4.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                <img class="bg-img" src="assets/images/product/trend4.png" alt="trend4" style="display: none;">
+                <img class="bg-img" src="assets/images/product/mon4.jpg" alt="trend4" style="display: none;">
               </div>
               <h5 class="pt-2">3D Art NFT</h5>
             </a>
@@ -268,25 +220,25 @@ display: block;
 ">
       <div class="title">
         <h4>Trending Collection</h4>
-        <a href="collection.html">See All</a>
+        <a >See All</a>
       </div>
       <div class="swiper myswiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
         <div class="ratio_landscape swiper-wrapper" id="swiper-wrapper-dddfd1c6504b2426" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
           <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 84.6667px; margin-right: 12px;">
             <div class="collection-box">
-              <a href="collection.html">
+              <a >
                 <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend5.png);
+background-image: url(http://localhost:8000/assets/images/product/mon5.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                  <img class="bg-img" src="assets/images/product/trend5.png" alt="trend5" style="display: none;">
+                  <img class="bg-img" src="assets/images/product/mon4.jpg" alt="trend5" style="display: none;">
                 </div>
                 <div class="collection-details">
                   <div class="collection-profile">
-                    <img src="assets/images/icons/pro1.png" alt="pro1">
+                    <img src="assets/images/product/mon4.jpg" alt="pro1">
                   </div>
                   <div class="collection-name">
                     <h5>Art</h5>
@@ -298,19 +250,19 @@ display: block;
 
           <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 84.6667px; margin-right: 12px;">
             <div class="collection-box">
-              <a href="collection.html">
+              <a >
                 <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend6.png);
+background-image: url(http://localhost:8000/assets/images/product/mon5.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                  <img class="bg-img" src="assets/images/product/trend6.png" alt="trend6" style="display: none;">
+                  <img class="bg-img" src="assets/images/product/mon5.jpg" alt="trend6" style="display: none;">
                 </div>
                 <div class="collection-details">
                   <div class="collection-profile">
-                    <img src="assets/images/icons/pro3.png" alt="pro3">
+                    <img src="assets/images/product/mon5.jpg" alt="pro3">
                   </div>
                   <div class="collection-name">
                     <h5>Music</h5>
@@ -321,19 +273,19 @@ display: block;
           </div>
           <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 84.6667px; margin-right: 12px;">
             <div class="collection-box">
-              <a href="collection.html">
+              <a >
                 <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend7.png);
+background-image: url(http://localhost:8000/assets/images/product/mon6.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                  <img class="bg-img" src="assets/images/product/trend7.png" alt="trend7" style="display: none;">
+                  <img class="bg-img" src="assets/images/product/mon6.jpg" alt="trend7" style="display: none;">
                 </div>
                 <div class="collection-details">
                   <div class="collection-profile">
-                    <img src="assets/images/icons/pro4.png" alt="pro4">
+                    <img src="assets/images/product/mon6.jpg" alt="pro4">
                   </div>
                   <div class="collection-name">
                     <h5>Sports</h5>
@@ -344,19 +296,19 @@ display: block;
           </div>
           <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 84.6667px; margin-right: 12px;">
             <div class="collection-box">
-              <a href="collection.html">
+              <a >
                 <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/trend8.png);
+background-image: url(http://localhost:8000/assets/images/product/mon6.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-                  <img class="bg-img" src="assets/images/product/trend8.png" alt="trend8" style="display: none;">
+                  <img class="bg-img" src="assets/images/product/mon6.jpg" alt="trend8" style="display: none;">
                 </div>
                 <div class="collection-details">
                   <div class="collection-profile">
-                    <img src="assets/images/icons/pro5.png" alt="pro5">
+                    <img src="assets/images/product/mon6.jpg" alt="pro5">
                   </div>
                   <div class="collection-name">
                     <h5>Art</h5>
@@ -376,15 +328,15 @@ display: block;
     <div class="custom-container">
       <div class="title">
         <h4>Popular Seller</h4>
-        <a href="seller.html">See All</a>
+        <a>See All</a>
       </div>
 
       <div class="popular-seller">
         <div class="row g-4">
           <div class="col-6">
             <div class="seller">
-              <a href="seller.html">
-                <img class="img-fluid" src="assets/images/icons/pro4.png" alt="pro4">
+              <a>
+                <img class="img-fluid" src="assets/images/product/mon6.jpg" alt="pro4">
                 <div class="seller-detail">
                   <h5>Art collection</h5>
                   <h6>12 ETH</h6>
@@ -394,8 +346,8 @@ display: block;
           </div>
           <div class="col-6">
             <div class="seller">
-              <a href="seller.html">
-                <img class="img-fluid" src="assets/images/icons/pro5.png" alt="pro5">
+              <a>
+                <img class="img-fluid" src="assets/images/product/mon1.jpg" alt="pro5">
                 <div class="seller-detail">
                   <h5>Art collection</h5>
                   <h6>12 ETH</h6>
@@ -405,8 +357,8 @@ display: block;
           </div>
           <div class="col-6">
             <div class="seller">
-              <a href="seller.html">
-                <img class="img-fluid" src="assets/images/icons/pro6.png" alt="pro6">
+              <a>
+                <img class="img-fluid" src="assets/images/product/mon2.jpg" alt="pro6">
                 <div class="seller-detail">
                   <h5>Art collection</h5>
                   <h6>12 ETH</h6>
@@ -416,8 +368,8 @@ display: block;
           </div>
           <div class="col-6">
             <div class="seller">
-              <a href="seller.html">
-                <img class="img-fluid" src="assets/images/icons/pro7.png" alt="pro7">
+              <a>
+                <img class="img-fluid" src="assets/images/product/mon3.jpg" alt="pro7">
                 <div class="seller-detail">
                   <h5>Art collection</h5>
                   <h6>12 ETH</h6>
@@ -436,19 +388,19 @@ display: block;
     <div class="custom-container">
       <div class="title">
         <h4>Popular</h4>
-        <a href="nft-list.html">See All</a>
+        <a>See All</a>
       </div>
       <div class="row g-4 ratio_square">
         <div class="col-6">
           <div class="nft-box nft-box-bg">
-            <a href="nft-list.html" class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/1.png);
+            <a class="bg-size" style="
+background-image: url(http://localhost:8000/assets/images/product/mon7.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-              <img class="bg-img product-box-img" src="assets/images/product/1.png" alt="popular1" style="display: none;">
+              <img class="bg-img product-box-img" src="assets/images/product/mon7.jpg" alt="popular1" style="display: none;">
             </a>
             <div class="product-box-detail">
               <h5>3D collection #081</h5>
@@ -468,14 +420,14 @@ display: block;
         </div>
         <div class="col-6">
           <div class="nft-box nft-box-bg">
-            <a href="nft-list.html" class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/2.png);
+            <a class="bg-size" style="
+background-image: url(http://localhost:8000/assets/images/product/mon8.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-              <img class="bg-img product-box-img" src="assets/images/product/2.png" alt="popular2" style="display: none;">
+              <img class="bg-img product-box-img" src="assets/images/product/mon8.jpg" alt="popular2" style="display: none;">
             </a>
             <div class="product-box-detail">
               <h5>Glass World #23</h5>
@@ -495,14 +447,14 @@ display: block;
         </div>
         <div class="col-6">
           <div class="nft-box nft-box-bg">
-            <a href="nft-list.html" class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/popular3.jpg);
+            <a class="bg-size" style="
+background-image: url(http://localhost:8000/assets/images/product/mon9.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-              <img class="bg-img product-box-img" src="assets/images/product/popular3.jpg" alt="popular3" style="display: none;">
+              <img class="bg-img product-box-img" src="assets/images/product/mon9.jpg" alt="popular3" style="display: none;">
             </a>
             <div class="product-box-detail">
               <h5>Monkey Men</h5>
@@ -522,14 +474,14 @@ display: block;
         </div>
         <div class="col-6">
           <div class="nft-box nft-box-bg">
-            <a href="nft-list.html" class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/popular4.png);
+            <a class="bg-size" style="
+background-image: url(http://localhost:8000/assets/images/product/mon10.jpg);
 background-size:cover;
 background-position: center;
 background-repeat: no-repeat;
 display: block;
 ">
-              <img class="bg-img product-box-img" src="assets/images/product/popular4.png" alt="popular4" style="display: none;">
+              <img class="bg-img product-box-img" src="assets/images/product/mon10.jpg" alt="popular4" style="display: none;">
             </a>
             <div class="product-box-detail">
               <h5>Digital #547</h5>
