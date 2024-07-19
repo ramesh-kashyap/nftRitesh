@@ -65,7 +65,6 @@ Route::get('/tutorial', [App\Http\Controllers\FrontController::class, 'tutorial'
 Route::get('/team', [App\Http\Controllers\FrontController::class, 'team'])->name('team');
 Route::get('/privacy-policy', [App\Http\Controllers\FrontController::class, 'termcandition'])->name('privacy-policy');
 Route::get('/news', [App\Http\Controllers\FrontController::class, 'news'])->name('news');
-Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('lang');
 
 
 Route::get('/home', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('home');
@@ -129,6 +128,9 @@ Route::post('/update-password', [App\Http\Controllers\UserPanel\Profile::class, 
 Route::get('/BankDetail', [App\Http\Controllers\UserPanel\Profile::class, 'BankDetail'])->name('user.BankDetail');
 Route::post('/bank-update', [App\Http\Controllers\UserPanel\Profile::class, 'bank_profile_update'])->name('user.bank-update');
 Route::post('/change-trxpasswword', [App\Http\Controllers\UserPanel\Profile::class, 'change_trxpassword_post'])->name('user.change-trxpasswword');
+
+Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('user.lang');
+Route::get('/changelang', [App\Http\Controllers\FrontController::class, 'changeLang'])->name('user.language');
 // end profile
 
 
