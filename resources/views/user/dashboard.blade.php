@@ -213,115 +213,54 @@ display: block;
   </section>
   <!-- Explore section end -->
 
-  <!-- trending collation  section start -->
+  <!--category  section starts -->
   <section class="section-t-space">
-    <div class="custom-container" style="
-    height: fit-content;
-">
+    <div class="custom-container">
       <div class="title">
-        <h4>Trending Collection</h4>
-        <a >See All</a>
+        <h4>Category</h4>
       </div>
-      <div class="swiper myswiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-        <div class="ratio_landscape swiper-wrapper" id="swiper-wrapper-dddfd1c6504b2426" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-          <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <div class="collection-box">
-              <a >
-                <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon5.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-                  <img class="bg-img" src="assets/images/product/mon4.jpg" alt="trend5" style="display: none;">
-                </div>
-                <div class="collection-details">
-                  <div class="collection-profile">
-                    <img src="assets/images/product/mon4.jpg" alt="pro1">
-                  </div>
-                  <div class="collection-name">
-                    <h5>Art</h5>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
 
-          <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <div class="collection-box">
-              <a >
-                <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon5.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-                  <img class="bg-img" src="assets/images/product/mon5.jpg" alt="trend6" style="display: none;">
-                </div>
-                <div class="collection-details">
-                  <div class="collection-profile">
-                    <img src="assets/images/product/mon5.jpg" alt="pro3">
-                  </div>
-                  <div class="collection-name">
-                    <h5>Music</h5>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="swiper-slide" role="group" aria-label="3 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <div class="collection-box">
-              <a >
-                <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon6.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-                  <img class="bg-img" src="assets/images/product/mon6.jpg" alt="trend7" style="display: none;">
-                </div>
-                <div class="collection-details">
-                  <div class="collection-profile">
-                    <img src="assets/images/product/mon6.jpg" alt="pro4">
-                  </div>
-                  <div class="collection-name">
-                    <h5>Sports</h5>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="swiper-slide" role="group" aria-label="4 / 4" style="width: 84.6667px; margin-right: 12px;">
-            <div class="collection-box">
-              <a >
-                <div class="collection-image bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon6.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-                  <img class="bg-img" src="assets/images/product/mon6.jpg" alt="trend8" style="display: none;">
-                </div>
-                <div class="collection-details">
-                  <div class="collection-profile">
-                    <img src="assets/images/product/mon6.jpg" alt="pro5">
-                  </div>
-                  <div class="collection-name">
-                    <h5>Art</h5>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+      <ul class="category-slide">
+        <li>
+          <a href="art.html" class="category-boxes">
+            <img class="img-fluid cat-img" src="assets/images/svg/brush.svg" alt="art" />
+            <h5>Art</h5>
+          </a>
+        </li>
+        <li>
+          <a href="nft-list.html" class="category-boxes">
+            <img class="img-fluid cat-img" src="assets/images/svg/music.svg" alt="music" />
+            <h5>Music</h5>
+          </a>
+        </li>
+        <li>
+          <a href="explore.html" class="category-boxes">
+            <img class="img-fluid cat-img" src="assets/images/svg/cup.svg" alt="sport" />
+            <h5>Sport</h5>
+          </a>
+        </li>
+        <li>
+          <a href="collection.html" class="category-boxes">
+            <img class="img-fluid cat-img" src="assets/images/svg/fire.svg" alt="fire" />
+            <h5>Trend</h5>
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="category-boxes">
+            <img class="img-fluid cat-img" src="assets/images/svg/brush.svg" alt="art" />
+            <h5>Art</h5>
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="category-boxes">
+            <img class="img-fluid cat-img" src="assets/images/svg/music.svg" alt="music" />
+            <h5>Music</h5>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
-  <!-- trending collation section end -->
+  <!-- category section end -->
 
   <!-- popular seller section start -->
   <section class="section-t-space">
@@ -338,7 +277,7 @@ display: block;
               <a>
                 <img class="img-fluid" src="assets/images/product/mon6.jpg" alt="pro4">
                 <div class="seller-detail">
-                  <h5>Art collection</h5>
+                  <h5>Total Team</h5>
                   <h6>12 ETH</h6>
                 </div>
               </a>
@@ -349,7 +288,7 @@ display: block;
               <a>
                 <img class="img-fluid" src="assets/images/product/mon1.jpg" alt="pro5">
                 <div class="seller-detail">
-                  <h5>Art collection</h5>
+                  <h5>Total Recharge</h5>
                   <h6>12 ETH</h6>
                 </div>
               </a>
@@ -360,7 +299,7 @@ display: block;
               <a>
                 <img class="img-fluid" src="assets/images/product/mon2.jpg" alt="pro6">
                 <div class="seller-detail">
-                  <h5>Art collection</h5>
+                  <h5>Total Withdraw</h5>
                   <h6>12 ETH</h6>
                 </div>
               </a>
@@ -371,7 +310,7 @@ display: block;
               <a>
                 <img class="img-fluid" src="assets/images/product/mon3.jpg" alt="pro7">
                 <div class="seller-detail">
-                  <h5>Art collection</h5>
+                  <h5>Total Income</h5>
                   <h6>12 ETH</h6>
                 </div>
               </a>
@@ -382,119 +321,788 @@ display: block;
     </div>
   </section>
   <!--popular seller section end -->
+ 
 
-  <!-- Popular section start -->
-  <section class="section-t-space section-b-space">
+   <!-- Statistics starts -->
+   <section class="pt-0 section-lg-b-space">
     <div class="custom-container">
-      <div class="title">
-        <h4>Popular</h4>
-        <a>See All</a>
-      </div>
-      <div class="row g-4 ratio_square">
-        <div class="col-6">
-          <div class="nft-box nft-box-bg">
-            <a class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon7.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-              <img class="bg-img product-box-img" src="assets/images/product/mon7.jpg" alt="popular1" style="display: none;">
+      <ul class="nav nav-pills tab-style1 mt-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-rank-tab" data-bs-toggle="pill" data-bs-target="#pills-rank"
+            type="button" role="tab">Rankings</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-activity-tab" data-bs-toggle="pill" data-bs-target="#pills-activity"
+            type="button" role="tab">Activity</button>
+        </li>
+      </ul>
+
+      <div class="tab-content w-100" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-rank" role="tabpanel" tabindex="0">
+          <div class="submit-btn filter mt-3">
+            <a class="theme-btn filter-btn btn" data-bs-toggle="offcanvas" data-bs-target="#rank-filter">
+              <i class="ri-equalizer-line"></i>
+              <h5>Filter</h5>
             </a>
-            <div class="product-box-detail">
-              <h5>3D collection #081</h5>
-              <h6>3D Art</h6>
-              <div class="bottom-panel">
-                <div class="counter">
-                  <img src="assets/images/eth-diamond.png" alt="arrow">
-                  <h6>0.956</h6>
+          </div>
+
+          <div class="accordion theme-accordion" id="accordionExample">
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingOne">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p1">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>1</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-1.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>The Metaplace</h4>
+                          <h6 class="success-color">+23.00%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>272.93</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a class="likes" data-toggle-target="#myTogglingElement" data-toggle-class="blue">
-                  <i class="ri-heart-3-line heart" id="myTogglingElement"></i>
-                  <h6>20</h6>
-                </a>
+              </div>
+
+              <div id="p1" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+8.26%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingTwo">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p2">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>2</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-2.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>3D Art</h4>
+                          <h6 class="text-danger">-32.01%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-3.76%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingThree">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p3">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>3</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-3.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>MMA9 #0120</h4>
+                          <h6 class="text-danger">-10.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-30.16%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingFour">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p4">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>4</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-4.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Lexicoma</h4>
+                          <h6 class="success-color">+23.00%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p4" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+5.32%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingFive">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p5">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>5</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-5.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Cartoon Art</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p5" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+12.16%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingSix">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p6">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>6</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-6.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Wsezug</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p6" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+6.44%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingSeven">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p7">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>7</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-7.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Glossica</h4>
+                          <h6 class="success-color">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p7" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-5.97%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingEight">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p8">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>8</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-8.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>3D Character</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="p8" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+15.26%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-6">
-          <div class="nft-box nft-box-bg">
-            <a class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon8.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-              <img class="bg-img product-box-img" src="assets/images/product/mon8.jpg" alt="popular2" style="display: none;">
+
+        <div class="tab-pane fade" id="pills-activity" role="tabpanel" tabindex="0">
+          <div class="submit-btn filter mt-3">
+            <a class="btn theme-btn filter-btn" data-bs-toggle="offcanvas" data-bs-target="#activity-filter">
+              <i class="ri-equalizer-line"></i>
+              <h5>Filter</h5>
             </a>
-            <div class="product-box-detail">
-              <h5>Glass World #23</h5>
-              <h6>Glass World</h6>
-              <div class="bottom-panel">
-                <div class="counter">
-                  <img src="assets/images/eth-diamond.png" alt="arrow">
-                  <h6>0.956</h6>
+          </div>
+
+          <div class="accordion theme-accordion" id="accordionExample1">
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingne">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#one">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>1</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-1.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>The Metaplace</h4>
+                          <h6 class="success-color">+23.00%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>272.93</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a class="likes" data-toggle-target="#myTogglingElement" data-toggle-class="blue">
-                  <i class="ri-heart-3-line heart" id="myTogglingElement1"></i>
-                  <h6>20</h6>
-                </a>
+              </div>
+
+              <div id="one" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+8.26%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="nft-box nft-box-bg">
-            <a class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon9.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-              <img class="bg-img product-box-img" src="assets/images/product/mon9.jpg" alt="popular3" style="display: none;">
-            </a>
-            <div class="product-box-detail">
-              <h5>Monkey Men</h5>
-              <h6>3D Art</h6>
-              <div class="bottom-panel">
-                <div class="counter">
-                  <img src="assets/images/eth-diamond.png" alt="arrow">
-                  <h6>0.956</h6>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingtwo">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#two">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>2</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-2.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>3D Art</h4>
+                          <h6 class="text-danger">-32.01%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a class="likes" data-toggle-target="#myTogglingElement" data-toggle-class="blue">
-                  <i class="ri-heart-3-line heart" id="myTogglingElement2"></i>
-                  <h6>20</h6>
-                </a>
+              </div>
+              <div id="two" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-3.76%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="nft-box nft-box-bg">
-            <a class="bg-size" style="
-background-image: url(http://localhost:8000/assets/images/product/mon10.jpg);
-background-size:cover;
-background-position: center;
-background-repeat: no-repeat;
-display: block;
-">
-              <img class="bg-img product-box-img" src="assets/images/product/mon10.jpg" alt="popular4" style="display: none;">
-            </a>
-            <div class="product-box-detail">
-              <h5>Digital #547</h5>
-              <h6>3D Art</h6>
-              <div class="bottom-panel">
-                <div class="counter">
-                  <img src="assets/images/eth-diamond.png" alt="arrow">
-                  <h6>0.956</h6>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingthree">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#three">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>3</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-3.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>MMA9 #0120</h4>
+                          <h6 class="text-danger">-10.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a class="likes" data-toggle-target="#myTogglingElement" data-toggle-class="blue">
-                  <i class="ri-heart-3-line heart" id="myTogglingElement3"></i>
-                  <h6>20</h6>
-                </a>
+              </div>
+              <div id="three" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-30.16%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingfour">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#four">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>4</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-4.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Lexicoma</h4>
+                          <h6 class="success-color">+23.00%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="four" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+5.32%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingfive">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#five">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>5</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-5.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Cartoon Art</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="five" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+12.16%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingsix">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#six">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>6</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-6.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Wsezug</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="six" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+6.44%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingseven">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#seven">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>7</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-7.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Glossica</h4>
+                          <h6 class="success-color">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="seven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-5.97%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingeight">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#eight">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>8</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-8.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>3D Character</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="eight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+15.26%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -502,9 +1110,8 @@ display: block;
       </div>
     </div>
   </section>
-  <!-- Popular section end -->
-   <!-- panel-space start -->
- <section class="panel-space"></section>
- <!-- panel-space end -->
+  <!-- Statistics end -->
+
+
 
   @include('layouts.upnl.footer')
