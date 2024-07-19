@@ -1,12 +1,7 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <!-- Google Tag Manager -->
-    
-
     <meta charset="utf-8">
     <title>Password reset | {{siteName()}}</title>
 	<base href="{{asset('')}}" />

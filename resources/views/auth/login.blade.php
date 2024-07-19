@@ -104,7 +104,7 @@
             src="{{asset('')}}assets/images/icons/google.png" alt="google" /> Continue with Google</a>
       </div>
 
-      <h5 class="signup">Haven't registered?<a href="signup.html"> Sign up now</a></h5>
+      <h5 class="signup">Haven't registered?<a href="{{ route('register') }}"> Sign up now</a></h5>
     </form>
   </div>
   <!-- Sign section end-->

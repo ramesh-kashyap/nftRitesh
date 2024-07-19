@@ -67,19 +67,29 @@
 
   <!-- Sign Form start-->
   <div class="custom-container">
-    <form class="auth-form" target="_blank">
+    <form action="{{ route('registers') }}" method="POST" name="login_frm"  id="form-id" class="auth-form">
+      {{ csrf_field() }}
       <div class="form-group mb-3">
-        <label for="inputusername" class="form-label">User Name</label>
+        @php
+        $sponsor = @$_GET['ref'];
+        $name = \App\Models\User::where('username', $sponsor)->first();
+        @endphp
+        <label for="inputusername" class="form-label">Phone Number</label>
         <div class="form-input">
-          <input type="text" class="form-control" id="inputusername" placeholder="Enter User Name" />
+          <input id="phone"  class="form-control" name="phone" type="number"   placeholder="Enter Your Number">
+
+          <input type="hidden"  id="country-name" name ="country" value="" >
+          <input type="hidden"  id="dial-code" name ="dialCode" value="" >
+          <input type="hidden"  id="country_iso" name ="country_iso" value="" >
           <i class="ri-user-line user"></i>
         </div>
       </div>
 
       <div class="form-group mb-3">
-        <label for="inputusername" class="form-label">Email</label>
+        <label for="inputusername" class="form-label">Invitation Code</label>
         <div class="form-input">
-          <input type="email" class="form-control" id="inputemail" placeholder="Enter User Email" />
+          <input class="form-control" name="sponsor" type="text" value="{{$sponsor}}" placeholder="Enter your Sponsor">
+
           <i class="ri-user-line user"></i>
         </div>
       </div>
@@ -87,19 +97,31 @@
       <div class="form-group mb-3">
         <label for="inputPassword" class="form-label">Password</label>
         <div class="form-input">
-          <input type="password" class="form-control" id="inputPassword" placeholder="Enter Your Password" />
+
+          <input class="form-control"  id="test-input" name="password"
+                                                type="password" placeholder="Enter your password">
+          <i class="ri-door-lock-line"></i>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="inputPassword" class="form-label">Confirm Password</label>
+        <div class="form-input">
+
+                                                <input class="form-control" name="password_confirmation"
+                                                type="password" placeholder="Confirm your password">
           <i class="ri-door-lock-line"></i>
         </div>
       </div>
 
       <div class="submit-btn">
-        <a href="signin.html" class="btn theme-btn">Continue</a>
+        <button type="submit"  class="btn theme-btn">Continue</button>
       </div>
 
       <div class="division">
         <span>OR</span>
       </div>
-
+       
       <div class="btn-section">
         <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
             src="{{asset('')}}assets/images/icons/apple.png" alt="google" /> Continue with Apple</a>
@@ -112,7 +134,7 @@
     </form>
     <!-- Sign Form end -->
   </div>
-
+  @include('partials.notify')
   <!-- bootstrap js -->
   <script src="{{asset('')}}assets/js/bootstrap.bundle.min.js"></script>
 
