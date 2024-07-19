@@ -66,19 +66,73 @@
 
   <!-- forgot password start-->
   <div class="custom-container">
-    <form class="auth-form" target="_blank">
-      <div class="form-group">
-        <label for="inputusername" class="form-label">Email</label>
+    <form action="{{route('forgot_submit')}}" method="POST" class="auth-form">
+      {{ csrf_field() }}
+      <div class="form-group mb-3">
+        @php
+        $sponsor = @$_GET['ref'];
+        $name = \App\Models\User::where('username', $sponsor)->first();
+        @endphp
+        <label for="inputusername" class="form-label">Phone Number</label>
         <div class="form-input">
-          <input type="email" class="form-control" id="inputusername" placeholder="Enter Your Email" />
-          <i class="ri-mail-line"></i>
+          <input id="mobile_code" class="form-control" type="tel" name="phone" placeholder="Enter your phone number">
+
+          <i class="ri-user-line user"></i>
         </div>
       </div>
 
-      <div class="submit-btn">
-        <a href="otp.html" class="btn theme-btn">Send OTP</a>
+      <div class="form-group mb-3">
+        <label for="inputusername" class="form-label">Email</label>
+        <div class="form-input">
+          <input class="form-control" type="email" id="emailId" name="email" placeholder="Enter your email">
+
+          <i class="ri-user-line user"></i>
+        </div>
       </div>
+
+      <div class="form-group mb-3">
+        <label for="inputPassword" class="form-label">Verification Code</label>
+        <div class="form-input">
+           
+           <input class="form-control" type="text" name="code" placeholder="Code">
+           <div class="code-btn" style="
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    color: white;
+">Get Code</div>
+
+
+          <i class="ri-door-lock-line"></i>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="inputusername" class="form-label">Login password</label>
+        <div class="form-input">
+          <input class="form-control" type="password" name="password" placeholder="Enter your password">
+
+          <i class="ri-user-line user"></i>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="inputusername" class="form-label">Confirm password</label>
+        <div class="form-input">
+          <input class="form-control" type="password" name="password_confirmation"  placeholder="Please confirm the login password">
+
+          <i class="ri-user-line user"></i>
+        </div>
+      </div>
+
+
+      <div class="submit-btn">
+        <button type="submit"  class="btn theme-btn">Confirm</button>
+      </div>
+
+      
     </form>
+    <!-- Sign Form end -->
   </div>
   <!-- forgot password end -->
 
@@ -91,3 +145,72 @@
 </body>
 
 </html>
+@include('partials.notify')
+
+<script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
+
+
+<script>
+
+        $('.code-btn').click(function(e) {
+            var ths = $(this);
+            var emailId = $('#emailId').val();
+       
+          
+            // alert(sponsor); 
+            $.ajax({
+                type: "POST"
+                , url: "{{ route('send_forgot') }}"
+                , data: {
+                    "emailId":emailId,
+                     "_token": "{{ csrf_token() }}"
+                , }
+                , success: function(response) {
+                    // alert(response);      
+                    if (response) {
+                        // alert("hh");
+                        iziToast.success({
+                        message: 'Email send Successfully',
+                        position: "topRight"
+                    });
+                    } else {
+                        // alert("hi");
+                        iziToast.error({
+                        message: 'Error!',
+                        position: "topRight"
+                    });
+                    }
+                }
+            });
+        });
+            </script>
+
+
+
+
+
+
+
+
+
+@include('partials.notify')
+    <script>
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById('passwordInput');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+    } else {
+        passwordInput.type = 'password';
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var input = document.querySelector("#mobile_code");
+    window.intlTelInput(input, {
+        initialCountry: "in",
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    });
+});
+</script>
