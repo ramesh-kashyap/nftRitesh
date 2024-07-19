@@ -69,61 +69,43 @@
   <header class="section-t-space">
     <div class="custom-container">
       <div class="header-panel">
-        <a href="landing.html">
+        <a href="#">
           <i class="ri-arrow-left-s-line"></i>
         </a>
-        <h3 class="middle-title">Input Style</h3>
+        <h3 class="middle-title">Languages</h3>
       </div>
     </div>
   </header>
   <!-- header end -->
 
-  <!-- form-input start -->
-  <section class="section-t-space section-lg-b-space">
+  <!-- language-section start -->
+  <section class="section-t-space section-b-space">
     <div class="custom-container">
-      <form class="auth-form create-form" target="_blank">
-        <div class="form-group mb-3">
-          <label for="inputusername" class="form-label">User Name</label>
-          <div class="form-input">
-            <input type="text" class="form-control" id="inputusername" placeholder="Enter User Name" />
-            <i class="ri-user-line user"></i>
-          </div>
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="inputusername" class="form-label">Email</label>
-          <div class="form-input">
-            <input type="email" class="form-control" id="inputemail" placeholder="Enter User Email" />
-            <i class="ri-user-line user"></i>
-          </div>
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="inputPassword" class="form-label">Password</label>
-          <div class="form-input">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Enter Your Password" />
-            <i class="ri-door-lock-line"></i>
-          </div>
-        </div>
-
-        <div class="upload-label">
-          <label for="inputPassword" class="form-label">Upload-Image</label>
-          <div class="upload-image mt-0">
-            <input type="file" class="form-control" />
-            <div class="upload-icon">
-              <i class="ri-image-fill"></i>
-              <h6>Upload</h6>
+      <ul class="language">
+        @foreach ($language as $bhasa)
+        <li>
+          <div class="d-flex align-items-center">
+            <div class="form-check">
+            <label class="form-check-label" for="fixed{{ $bhasa->code }}">{{ $bhasa->name }}</label>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="fixed{{ $bhasa->code }}" 
+            {{ session('lang') == $bhasa->code ? 'checked' : '' }}/>
             </div>
           </div>
-        </div>
+        </li>
+        @endforeach
+        <li>
+          <div class="d-flex align-items-center">
+            <div class="form-check">
+              <label class="form-check-label" for="fixed2">English (UK)</label>
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="fixed2" />
+            </div>
+          </div>
+        </li>
 
-        <div class="submit-btn mb-0">
-          <a href="#" class="btn theme-btn">Submit</a>
-        </div>
-      </form>
+      </ul>
     </div>
   </section>
-  <!-- form-input end -->
+  <!-- language-section end -->
 
   <!-- panel-space start -->
   <section class="panel-space"></section>
