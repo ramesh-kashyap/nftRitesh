@@ -10,7 +10,7 @@
     </style>
 
 
-<head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -82,7 +82,7 @@
   <section class="section-t-space section-lg-b-space">
     <div class="custom-container">
       <form method="post" action="{{ route('user.changeEmailAction') }}" class="auth-form create-form" target="_blank">
-      {{ csrf_field() }}
+      {{ csrf_field()}}
         <div class="form-group mb-3">
           <label for="inputusername" class="form-label">User Name</label>
           <div class="form-input">
@@ -100,9 +100,11 @@
         </div>
 
         <div class="form-group mb-3">
-          <label for="inputPassword" class="form-label">Password</label>
+          <label for="inputPassword" class="form-label">Varification Code</label>
           <div class="form-input">
             <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
+            <div class="code-btn first-code-send">Get Code</div>
+            <div class="count-down" style="display: none;"></div>
             <i class="ri-door-lock-line"></i>
           </div>
         </div>
@@ -110,25 +112,22 @@
         <div class="form-group mb-3">
           <label for="inputPassword" class="form-label">New Mail</label>
           <div class="form-input">
-            <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
+            <input type="password" class="form-control"  type="email" name="newEmail" value="" id="emailId"  placeholder="Enter your email"/>
+            <i class="ri-door-lock-line"></i>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="inputPassword" class="form-label">Varification Code</label>
+          <div class="form-input">
+            <input type="password" class="form-control" name="second_code" type="text" placeholder="Enter verification code"/>
+            <div class="code-btn sencond-code-send">Get Code</div>
+            <div class="count-down" style="display: none;"></div>
             <i class="ri-door-lock-line"></i>
           </div>
         </div>
 
-
-        <div class="upload-label">
-          <label for="inputPassword" class="form-label">Upload-Image</label>
-          <div class="upload-image mt-0">
-            <input type="file" class="form-control" />
-            <div class="upload-icon">
-              <i class="ri-image-fill"></i>
-              <h6>Upload</h6>
-            </div>
-          </div>
-        </div>
-
         <div class="submit-btn mb-0">
-          <a href="#" class="btn theme-btn">Submit</a>
+          <button type="submit" class="btn theme-btn">Submit</button>
         </div>
       </form>
     </div>
@@ -138,4 +137,81 @@
   <!-- panel-space start -->
   <section class="panel-space"></section>
   <!-- panel-space end -->
+  <script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
+
+
+<script>
+
+        $('.first-code-send').click(function(e) {
+            var ths = $(this);
+ 
+          
+            // alert(sponsor); 
+            $.ajax({
+                type: "POST"
+                , url: "{{ route('user.send_code') }}"
+                , data: {
+                    "emailId": ""
+                    , "_token": "{{ csrf_token() }}"
+                , }
+                , success: function(response) {
+                    // alert(response);      
+                    if (response) {
+                        // alert("hh");
+                        iziToast.success({
+                        message: 'Email send Successfully',
+                        position: "topRight"
+                    });
+                    } else {
+                        // alert("hi");
+                        iziToast.error({
+                        message: 'Error!',
+                        position: "topRight"
+                    });
+                    }
+                }
+            });
+        });
+
+        $('.sencond-code-send').click(function(e) {
+            var ths = $(this);
+            var emailId = $('#emailId').val();
+       
+            if (!emailId) 
+            {
+                iziToast.error({
+                        message: 'Invalid Email!',
+                        position: "topRight"
+                    });
+                    return false;
+            }
+            // alert(sponsor); 
+            $.ajax({
+                type: "POST"
+                , url: "{{ route('user.send_code') }}"
+                , data: {
+                    "emailId": emailId
+                    , "_token": "{{ csrf_token() }}"
+                , }
+                , success: function(response) {
+                    // alert(response);      
+                    if (response) {
+                        // alert("hh");
+                        iziToast.success({
+                        message: 'Email send Successfully',
+                        position: "topRight"
+                    });
+                    } else {
+                        // alert("hi");
+                        iziToast.error({
+                        message: 'Error!',
+                        position: "topRight"
+                    });
+                    }
+                }
+            });
+        });
+
+            </script>
+            
   @include('layouts.upnl.footer')
