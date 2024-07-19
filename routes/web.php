@@ -42,7 +42,7 @@ Route::get('/manage-trade', [App\Http\Controllers\Cron::class, 'manage_trade'])-
 Route::post('/sendforgot', [App\Http\Controllers\Login::class, 'sendforgot'])->name('send_forgot');
 
 Route::get('login', [App\Http\Controllers\Login::class, 'loginPage'])->name('login');
-Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp');
+Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp'); 
 
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
@@ -54,7 +54,7 @@ Route::get('resetPassword', [App\Http\Controllers\Login::class, 'resetPassword']
 
 Route::post('/getUserName', [App\Http\Controllers\Register::class, 'getUserNameAjax'])->name('getUserName');
 Route::post('/registers', [App\Http\Controllers\Register::class, 'register'])->name('registers');
-Route::get('/register_sucess', [App\Http\Controllers\Register::class, 'index'])->name('register_sucess');
+Route::get('/register', [App\Http\Controllers\Register::class, 'index'])->name('register');
 
 Route::get('/Index', [App\Http\Controllers\FrontController::class, 'index'])->name('Index');
 Route::get('/about-us', [App\Http\Controllers\FrontController::class, 'about'])->name('about-us');
