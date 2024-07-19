@@ -81,6 +81,40 @@ class Dashboard extends Controller
 
     }
 
+    
+    public function stats()
+    {
+
+      $this->data['page'] = 'user.statistics';
+      return $this->dashboard_layout();
+
+
+    }
+
+    public function createNft()
+    {
+
+      $this->data['page'] = 'user.create-nft';
+      return $this->dashboard_layout();
+
+    }
+
+    public function search()
+    {
+
+      $this->data['page'] = 'user.search';
+      return $this->dashboard_layout();
+
+    }
+
+    public function profile()
+    {
+
+      $this->data['page'] = 'user.profile';
+      return $this->dashboard_layout();
+
+    }
+
 
     public function stop_trade(){
         $user=Auth::user();

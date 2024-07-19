@@ -8,14 +8,25 @@ use App\Models\Language;
 class FrontController extends Controller
 {
 
+    public function changeLang(){
+        return view('user.profile.changelang');
+    }
 
-   public function changeLanguage($lang = null)
+    public function changeLanguage($lang = null)
     {
         $language = Language::where('code', $lang)->first();
-        if (!$language) $lang = 'en';
+        if (!$language) {
+            $lang = 'en';
+        }
         session()->put('lang', $lang);
-        return redirect()->route('user.profile');
+        
+        // Retrieve all languages
+        $languages = Language::all();
+        
+        // Pass the selected language and all languages to the view
+        return view('user.profile.changelang', compact('lang', $languages));
     }
+    
 
 
     public function index()

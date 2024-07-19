@@ -28,7 +28,7 @@ class Register extends Controller
 
     public function index()
     {
-        return view('auth.verify');
+        return view('auth.register');
     }
 
 
@@ -57,7 +57,7 @@ class Register extends Controller
                 'sponsor' => 'required|exists:users,username',              
             ]);
 
-            
+
             if($validation->fails()) {
 
                 Log::info($validation->getMessageBag()->first());
@@ -67,13 +67,7 @@ class Register extends Controller
             //check if email exist
           
           
-            if (isset($request->captcha)) {
-                if (!captchaVerify($request->captcha, $request->captcha_secret)) {
-                    $notify[] = ['error', "Invalid Captcha"];
-                    return back()->withNotify($notify)->withInput();
-                }
-            }
-
+           
             
             $user = User::where('username',$request->sponsor)->first();
             if(!$user)
@@ -87,16 +81,14 @@ class Register extends Controller
             
            $tpassword =substr(time(),-2).substr(rand(),-2).substr(mt_rand(),-1);
             $post_array  = $request->all();
-                //  
+                // 
           
             $data['phone'] = $post_array['phone'];
             $data['username'] = $username;
             $data['password'] =   Hash::make($post_array['password']);
             $data['tpassword'] =   Hash::make($tpassword);
             $data['PSR'] =  $post_array['password'];
-            $data['country'] =  $post_array['country'];
-            $data['dialCode'] =  $post_array['dialCode'];
-            $data['country_iso'] =  $post_array['country_iso'];
+           
             $data['TPSR'] =  $tpassword;
             $data['sponsor'] = $user->id;
             $data['package'] = 0;
@@ -115,13 +107,16 @@ class Register extends Controller
           
          
 
-            return redirect()->route('home');
+            return redirect()->route('user.dashboard');
             //  return redirect()->route('register_sucess')->with('messages', $user);
 
         }
         catch(\Exception $e){
             Log::info('error here');
+
             Log::info($e->getMessage());
+            dd($e->getMessage());
+
             print_r($e->getMessage());
             die("hi");
             return back()->withErrors('error', $e->getMessage())->withInput();

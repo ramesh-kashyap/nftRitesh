@@ -42,7 +42,7 @@ Route::get('/manage-trade', [App\Http\Controllers\Cron::class, 'manage_trade'])-
 Route::post('/sendforgot', [App\Http\Controllers\Login::class, 'sendforgot'])->name('send_forgot');
 
 Route::get('login', [App\Http\Controllers\Login::class, 'loginPage'])->name('login');
-Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp');
+Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp'); 
 
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
@@ -54,7 +54,7 @@ Route::get('resetPassword', [App\Http\Controllers\Login::class, 'resetPassword']
 
 Route::post('/getUserName', [App\Http\Controllers\Register::class, 'getUserNameAjax'])->name('getUserName');
 Route::post('/registers', [App\Http\Controllers\Register::class, 'register'])->name('registers');
-Route::get('/register_sucess', [App\Http\Controllers\Register::class, 'index'])->name('register_sucess');
+Route::get('/register', [App\Http\Controllers\Register::class, 'index'])->name('register');
 
 Route::get('/Index', [App\Http\Controllers\FrontController::class, 'index'])->name('Index');
 Route::get('/about-us', [App\Http\Controllers\FrontController::class, 'about'])->name('about-us');
@@ -65,7 +65,6 @@ Route::get('/tutorial', [App\Http\Controllers\FrontController::class, 'tutorial'
 Route::get('/team', [App\Http\Controllers\FrontController::class, 'team'])->name('team');
 Route::get('/privacy-policy', [App\Http\Controllers\FrontController::class, 'termcandition'])->name('privacy-policy');
 Route::get('/news', [App\Http\Controllers\FrontController::class, 'news'])->name('news');
-Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('lang');
 
 
 Route::get('/home', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('home');
@@ -74,7 +73,15 @@ Route::prefix('user')->group(function ()
 Route::middleware('auth')->group(function ()
 {
 Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('user.dashboard');
+Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
+Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
+Route::get('/search', [App\Http\Controllers\UserPanel\Dashboard::class, 'search'])->name('user.search');
+Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+
+
+
 Route::get('/tradeOn', [App\Http\Controllers\UserPanel\Dashboard::class, 'tradeOn'])->name('user.tradeOn');
+
 Route::get('/close-trade', [App\Http\Controllers\UserPanel\Dashboard::class, 'stop_trade'])->name('user.close-trade');
 
 Route::get('/lang', [App\Http\Controllers\UserPanel\Dashboard::class, 'lang'])->name('user.lang');
@@ -83,13 +90,17 @@ Route::get('/activities', [App\Http\Controllers\UserPanel\Dashboard::class, 'act
 Route::post('/submitActivity', [App\Http\Controllers\UserPanel\Dashboard::class, 'submitActivity'])->name('user.submitActivity');
 Route::post('/checkPaymentStatus', [App\Http\Controllers\UserPanel\Dashboard::class, 'checkPaymentStatus'])->name('user.checkPaymentStatus');
 Route::post('/lastWithdrawal', [App\Http\Controllers\UserPanel\Dashboard::class, 'lastWithdrawal'])->name('user.lastWithdrawal');
+// extra  defi
+Route::get('defi',[App\Http\Controllers\Extra::class, 'defi'])->name('user.defi');
+
+
 // profile
 
 
 Route::get('/article', [App\Http\Controllers\UserPanel\Profile::class, 'terms'])->name('user.terms');
 
 
-Route::get('/profile', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
+Route::get('/profile1', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
 Route::get('/showinfo', [App\Http\Controllers\UserPanel\Profile::class, 'showinfo'])->name('user.showinfo');
 Route::post('/info', [App\Http\Controllers\UserPanel\Profile::class, 'infochange'])->name('user.infochange');
 
@@ -117,6 +128,9 @@ Route::post('/update-password', [App\Http\Controllers\UserPanel\Profile::class, 
 Route::get('/BankDetail', [App\Http\Controllers\UserPanel\Profile::class, 'BankDetail'])->name('user.BankDetail');
 Route::post('/bank-update', [App\Http\Controllers\UserPanel\Profile::class, 'bank_profile_update'])->name('user.bank-update');
 Route::post('/change-trxpasswword', [App\Http\Controllers\UserPanel\Profile::class, 'change_trxpassword_post'])->name('user.change-trxpasswword');
+
+Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('user.lang');
+Route::get('/changelang', [App\Http\Controllers\FrontController::class, 'changeLang'])->name('user.language');
 // end profile
 
 
@@ -169,6 +183,8 @@ Route::get('/left-team', [App\Http\Controllers\UserPanel\Team::class, 'leftteam'
 Route::get('/right-team', [App\Http\Controllers\UserPanel\Team::class, 'rightteam'])->name('user.right-team');
 Route::get('/tree-view', [App\Http\Controllers\UserPanel\Team::class, 'genealogy'])->name('user.tree-view');
 Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::class,'userReport'])->name('UsrBinaryReport');
+
+Route::get('/reffrel-link', [App\Http\Controllers\UserPanel\Team::class, 'invite'])->name('user.reffrel-link');
 //end team
 
 //bonus
