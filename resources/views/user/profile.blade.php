@@ -237,7 +237,7 @@
                 </a>
               </li>
               <li>
-              <a href="{{route('lang')}}">
+              <a href="{{route('user.language')}}">
                 <div class="notification-details">
                   <div class="notification-image">
                     <svg>
