@@ -81,11 +81,12 @@
   <!-- form-input start -->
   <section class="section-t-space section-lg-b-space">
     <div class="custom-container">
-      <form class="auth-form create-form" target="_blank">
+      <form method="post" action="{{ route('user.changeEmailAction') }}" class="auth-form create-form" target="_blank">
+      {{ csrf_field() }}
         <div class="form-group mb-3">
           <label for="inputusername" class="form-label">User Name</label>
           <div class="form-input">
-            <input type="text" class="form-control" id="inputusername" placeholder="Enter User Name" />
+            <input type="text" class="form-control" id="inputusername"type="text" readonly="" value="{{Auth::user()->username}}" />
             <i class="ri-user-line user"></i>
           </div>
         </div>
@@ -93,7 +94,7 @@
         <div class="form-group mb-3">
           <label for="inputusername" class="form-label">Email</label>
           <div class="form-input">
-            <input type="email" class="form-control" id="inputemail" placeholder="Enter User Email" />
+            <input type="email" class="form-control" id="inputemail" type="email" readonly value="{{Auth::user()->email}}"  placeholder="Enter your email"/>
             <i class="ri-user-line user"></i>
           </div>
         </div>
@@ -101,10 +102,19 @@
         <div class="form-group mb-3">
           <label for="inputPassword" class="form-label">Password</label>
           <div class="form-input">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Enter Your Password" />
+            <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
             <i class="ri-door-lock-line"></i>
           </div>
         </div>
+
+        <div class="form-group mb-3">
+          <label for="inputPassword" class="form-label">New Mail</label>
+          <div class="form-input">
+            <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
+            <i class="ri-door-lock-line"></i>
+          </div>
+        </div>
+
 
         <div class="upload-label">
           <label for="inputPassword" class="form-label">Upload-Image</label>
