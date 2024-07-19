@@ -95,7 +95,7 @@
     <div class="custom-container">
       <div class="creator-details">
         <div class="creator-info">
-          <img class="img-fluid img" src="assets/images/product/1.png" alt="1" />
+          <img class="img-fluid img" src="assets/images/product/mon2.jpg" alt="1" />
           <h3>Strategory Account</h3>
         </div>
 
@@ -177,6 +177,7 @@
           <div class="general-tab">
             <ul class="notification-listing">
               <li>
+                <a href="{{route('user.ChangeMail')}}">
                 <div class="notification-details">
                   <div class="notification-image">
                     <svg>
@@ -185,7 +186,7 @@
                   </div>
                   <div class="notification-content">
                     <div>
-                      <h4>Security Updates!</h4>
+                      <h4>Change Email</h4>
                       <!-- <h6>20 Dec, 2022</h6> -->
                     </div>
                     <div class="timeing">
@@ -193,8 +194,10 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </li>
               <li>
+              <a href="{{route('user.ChangePass')}}">
                 <div class="notification-details">
                   <div class="notification-image">
                     <svg>
@@ -203,7 +206,7 @@
                   </div>
                   <div class="notification-content">
                     <div>
-                      <h4>Multiple Wallet Features!</h4>
+                      <h4>Login Password</h4>
                       <!-- <h6>20 Dec, 2022</h6> -->
                     </div>
                     <div class="timeing">
@@ -211,8 +214,10 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </li>
               <li>
+              <a href="{{route('user.change-trx-password')}}">
                 <div class="notification-details">
                   <div class="notification-image">
                     <svg>
@@ -221,7 +226,7 @@
                   </div>
                   <div class="notification-content">
                     <div>
-                      <h4>NFT Has Updates</h4>
+                      <h4>Transaction Password</h4>
                       <!-- <h6>20 Dec, 2022</h6> -->
                     </div>
                     <div class="timeing">
@@ -229,8 +234,10 @@
                     </div>
                   </div>
                 </div>
+                </a>
               </li>
               <li>
+              <a href="{{route('lang')}}">
                 <div class="notification-details">
                   <div class="notification-image">
                     <svg>
@@ -239,7 +246,7 @@
                   </div>
                   <div class="notification-content">
                     <div>
-                      <h4>NFT Has Updates</h4>
+                      <h4>Change Language</h4>
                       <!-- <h6>20 Dec, 2022</h6> -->
                     </div>
                     <div class="timeing">
@@ -247,6 +254,27 @@
                     </div>
                   </div>
                 </div>
+                </a>
+              </li>
+              <li>
+                <a href="{{route('logout')}}">
+                <div class="notification-details">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/security.svg#security"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Logout</h4>
+                      <!-- <h6>20 Dec, 2022</h6> -->
+                    </div>
+                    <div class="timeing">
+                    <i class="ri-arrow-right-s-line" style="color:#fff"> </i>
+                    </div>
+                  </div>
+                </div>
+                </a>
               </li>
               <li>
                 <div class="notification-details" style="display:none">

@@ -1,50 +1,55 @@
-<html lang="en" dir="ltr"><head><style>
-	a:hover {
-    text-decoration: none;
-    list-style: none;
-}
-</style>
-			
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="nfty">
-  <meta name="keywords" content="nfty">
-  <meta name="author" content="nfty">
-  <base href="http://localhost:8000/">
 
-  <link rel="manifest" href="./manifest.json">
-  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon">
+<html lang="en" dir="ltr">
+
+<head>
+    <style>
+        a:hover {
+            text-decoration: none;
+            list-style: none;
+        }
+    </style>
+
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="nfty" />
+  <meta name="keywords" content="nfty" />
+  <meta name="author" content="nfty" />
+  <base href="{{ asset('') }}">
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
   <title>nfty App</title>
-  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="assets/images/logo/logo.png">
-  <meta name="theme-color" content="#205dee">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="nfty">
-  <meta name="msapplication-TileImage" content="assets/images/logo/logo.png">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="assets/images/logo/logo.png" />
+  <meta name="theme-color" content="#205dee" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="nfty" />
+  <meta name="msapplication-TileImage" content="assets/images/logo/logo.png" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!--Google font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <!-- bootstrap css -->
-  <link rel="stylesheet" id="rtl-link" type="text/css" href="assets/css/vendors/bootstrap.css">
-  <!-- swiper css -->
-  <link rel="stylesheet" href="assets/css/vendors/swiper-bundle.min.css">
-
+  <link rel="stylesheet" id="rtl-link" type="text/css" href="assets/css/vendors/bootstrap.css" />
   <!-- remixicon css -->
-  <link rel="stylesheet" type="text/css" href="assets/css/vendors/remixicon.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/vendors/remixicon.css" />
 
   <!-- Theme css -->
-  <link rel="stylesheet" id="change-link" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" id="change-link" type="text/css" href="assets/css/style.css" />
 </head>
-
 
 <body>
 
@@ -156,10 +161,10 @@
   </section>
   <!-- category section end -->
   <ul class="nav nav-pills tab-style1 mt-3" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
+  <!-- <li class="nav-item" role="presentation">
     <button class="nav-link active" id="pills-rank-tab" data-bs-toggle="pill" data-bs-target="#pills-rank"
       type="button" role="tab">Deposit in Fiat Currency</button>
-  </li>
+  </li> -->
  
 </ul>
   <!-- wallet start -->
@@ -249,62 +254,6 @@
   <section class="panel-space"></section>
   <!-- panel-space end -->
 
-  <!-- bottom navbar start -->
-  <div class="navbar-menu">
-    <ul>
-      <li>
-        <a href="landing.html">
-          <div class="icon">
-            <i class="ri-home-5-line unactive"></i>
-            <i class="ri-home-5-fill active"></i>
-          </div>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="statistics.html">
-          <div class="icon">
-            <i class="ri-line-chart-line unactive"></i>
-            <i class="ri-line-chart-fill active"></i>
-          </div>
-          <span>Statistics</span>
-        </a>
-      </li>
-      <li>
-        <a href="create-nft.html" class="plus">
-          <i class="ri-add-line plus-icon"></i>
-        </a>
-      </li>
-      <li>
-        <a href="search.html">
-          <div class="icon">
-            <i class="ri-search-line unactive"></i>
-            <i class="ri-search-fill active"></i>
-          </div>
-          <span>Search</span>
-        </a>
-      </li>
-      <li>
-        <a href="profile.html">
-          <div class="icon">
-            <i class="ri-user-3-line unactive"></i>
-            <i class="ri-user-3-fill active"></i>
-          </div>
-          <span>Profile</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <!-- bottom navbar end -->
+  @include('layouts.upnl.footer')
 
-  <!-- bootstrap js -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-
-  <!-- toast js  -->
-  <script src="assets/js/toast.js"></script>
-
-  <!-- script js -->
-  <script src="assets/js/script.js"></script>
-</body>
-
-</html>
+  

@@ -77,7 +77,8 @@ Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'inde
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
 Route::get('/search', [App\Http\Controllers\UserPanel\Dashboard::class, 'search'])->name('user.search');
-Route::get('/profile1', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+
 
 
 Route::get('/tradeOn', [App\Http\Controllers\UserPanel\Dashboard::class, 'tradeOn'])->name('user.tradeOn');
@@ -100,7 +101,7 @@ Route::get('defi',[App\Http\Controllers\Extra::class, 'defi'])->name('user.defi'
 Route::get('/article', [App\Http\Controllers\UserPanel\Profile::class, 'terms'])->name('user.terms');
 
 
-Route::get('/profile', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
+Route::get('/profile1', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
 Route::get('/showinfo', [App\Http\Controllers\UserPanel\Profile::class, 'showinfo'])->name('user.showinfo');
 Route::post('/info', [App\Http\Controllers\UserPanel\Profile::class, 'infochange'])->name('user.infochange');
 
