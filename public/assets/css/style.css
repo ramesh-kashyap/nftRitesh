@@ -1622,7 +1622,7 @@ header .head-content::after {
 
 header .art-header-panel {
   position: relative;
-  background-image: url("../images/background/art-bg.png");
+  background-image: url("/assets/images/product/mon1.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

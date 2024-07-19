@@ -1,6 +1,14 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
+<head>
+    <style>
+        a:hover {
+            text-decoration: none;
+            list-style: none;
+        }
+    </style>
+
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -87,12 +95,11 @@
     <div class="custom-container">
       <div class="creator-details">
         <div class="creator-info">
-          <img class="img-fluid img" src="assets/images/product/1.png" alt="1" />
-          <h3>Nekochimin</h3>
+          <img class="img-fluid img" src="assets/images/product/mon2.jpg" alt="1" />
+          <h3>Strategory Account</h3>
         </div>
 
-        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-          some form, by injected humour, or randomised words which don't look even slightly believable</p>
+        <p>1648.98</p>
 
         <div class="nft-accordion">
           <div class="social mb-0">
@@ -135,22 +142,30 @@
   <section class="section-t-space">
     <div class="custom-container">
       <div class="details mt-0">
-        <ul>
+        <ul>          
           <li>
+          <a href="{{route('user.defi')}}">
             <h4>1</h4>
-            <h6>Favorites</h6>
+            <h6>Reserve</h6>
+            </a>
+          </li>         
+          <li>
+          <a href="{{route('user.reffrel-link')}}">
+            <h4>1</h4>
+            <h6>Reffrel Team</h6>
+            </a>
           </li>
           <li>
+          <a href="{{route('user.wallets')}}">
             <h4>1</h4>
-            <h6>Owners</h6>
+            <h6>My Wallet</h6>
+            </a>
           </li>
           <li>
-            <h4>1</h4>
-            <h6>Editions</h6>
-          </li>
-          <li>
+          <a href="{{route('user.defi')}}">
             <h4>25</h4>
-            <h6>Visitors</h6>
+            <h6>Wallet</h6>
+            </a>
           </li>
         </ul>
       </div>
@@ -158,550 +173,130 @@
   </section>
   <!-- details block end -->
 
-  <!-- profile section start -->
-  <section class="section-lg-t-space section-b-space">
-    <div class="custom-container">
-      <div class="category-detail-tab">
-        <ul class="nav nav-tabs tab-style2" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="collect-tab" data-bs-toggle="tab" data-bs-target="#collect"
-              type="button" role="tab">Collected</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="created-tab" data-bs-toggle="tab" data-bs-target="#created" type="button"
-              role="tab">Created</button>
-          </li>
-
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="favorite-tab" data-bs-toggle="tab" data-bs-target="#favorite" type="button"
-              role="tab">Favorite</button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="Offer-tab" data-bs-toggle="tab" data-bs-target="#offer" type="button"
-              role="tab">Offer Mode</button>
-          </li>
-        </ul>
-
-        <div class="tab-content tab w-100" id="pills-tabContent">
-          <div class="tab-pane fade show active" id="collect" role="tabpanel" tabindex="0">
-            <section class="section-t-space section-b-space ratio_square">
-              <div class="row g-4">
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/1.png" alt="popular1" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Collection #081</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" tabindex="0">
+          <div class="general-tab">
+            <ul class="notification-listing">
+              <li>
+                <a href="{{route('user.ChangeMail')}}">
+                <div class="notification-details">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/security.svg#security"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Change Email</h4>
+                      <!-- <h6>20 Dec, 2022</h6> -->
+                    </div>
+                    <div class="timeing">
+                    <i class="ri-arrow-right-s-line" style="color:#fff"> </i>
                     </div>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/2.png" alt="popular2" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Glass World #23</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
+                </a>
+              </li>
+              <li>
+              <a href="{{route('user.ChangePass')}}">
+                <div class="notification-details">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/wallet.svg#wallet"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Login Password</h4>
+                      <!-- <h6>20 Dec, 2022</h6> -->
+                    </div>
+                    <div class="timeing">
+                    <i class="ri-arrow-right-s-line" style="color:#fff"> </i>
                     </div>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular3.jpg" alt="popular3" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
+                </a>
+              </li>
+              <li>
+              <a href="{{route('user.change-trx-password')}}">
+                <div class="notification-details">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/security.svg#security"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Transaction Password</h4>
+                      <!-- <h6>20 Dec, 2022</h6> -->
+                    </div>
+                    <div class="timeing">
+                    <i class="ri-arrow-right-s-line" style="color:#fff"> </i>
                     </div>
                   </div>
                 </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular5.png" alt="popular5" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Hard Face #2547</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
+                </a>
+              </li>
+              <li>
+              <a href="{{route('lang')}}">
+                <div class="notification-details">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/security.svg#security"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Change Language</h4>
+                      <!-- <h6>20 Dec, 2022</h6> -->
+                    </div>
+                    <div class="timeing">
+                    <i class="ri-arrow-right-s-line" style="color:#fff"> </i>
                     </div>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular6.png" alt="popular6" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Durbin #54747</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
+                </a>
+              </li>
+              <li>
+                <a href="{{route('logout')}}">
+                <div class="notification-details">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/security.svg#security"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Logout</h4>
+                      <!-- <h6>20 Dec, 2022</h6> -->
+                    </div>
+                    <div class="timeing">
+                    <i class="ri-arrow-right-s-line" style="color:#fff"> </i>
                     </div>
                   </div>
                 </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular8.png" alt="popular8" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
+                </a>
+              </li>
+              <li>
+                <div class="notification-details" style="display:none">
+                  <div class="notification-image">
+                    <svg>
+                      <use xlink:href="assets/images/svg/icons/wallet.svg#wallet"></use>
+                    </svg>
+                  </div>
+                  <div class="notification-content">
+                    <div>
+                      <h4>Security Updates!</h4>
+                      <h6>20 Dec, 2022</h6>
+                    </div>
+                    <div class="timeing">
+                      <h6>20 : 10 PM</h6>
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
-          </div>
-          <div class="tab-pane fade" id="created" role="tabpanel">
-            <section class="section-t-space section-lg-b-space ratio_square">
-              <div class="row g-4">
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/1.png" alt="popular1" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Collection #081</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/2.png" alt="popular2" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Glass World #23</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular3.jpg" alt="popular3" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular5.png" alt="popular5" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Hard Face #2547</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular6.png" alt="popular6" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Durbin #54747</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular8.png" alt="popular8" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div class="tab-pane fade" id="favorite" role="tabpanel">
-            <section class="section-t-space section-b-space ratio_square">
-              <div class="row g-4">
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/1.png" alt="popular1" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Collection #081</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/2.png" alt="popular2" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Glass World #23</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular3.jpg" alt="popular3" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular5.png" alt="popular5" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Hard Face #2547</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular6.png" alt="popular6" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Durbin #54747</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular8.png" alt="popular8" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div class="tab-pane fade" id="offer" role="tabpanel">
-            <section class="section-t-space section-b-space ratio_square">
-              <div class="row g-4">
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/1.png" alt="popular1" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Collection #081</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/2.png" alt="popular2" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Glass World #23</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular3.jpg" alt="popular3" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular5.png" alt="popular5" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Hard Face #2547</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular6.png" alt="popular6" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Durbin #54747</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="nft-box">
-                    <a href="nft-list.html">
-                      <img class="bg-img product-box-img" src="assets/images/product/popular8.png" alt="popular8" />
-                    </a>
-                    <div class="product-box-detail">
-                      <h5>Monkey Men</h5>
-                      <div class="bottom-panel">
-                        <div class="counter">
-                          <img src="assets/images/eth-diamond.png" alt="arrow" />
-                          <h6>0.956</h6>
-                        </div>
-                        <a href="wishlist.html" class="likes">
-                          <i class="ri-heart-3-line"></i>
-                          <h6>20</h6>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- profile section start -->
 
   <!-- offcanvas start -->
   <div class="offcanvas theme-offcanvas share-offcanvas offcanvas-bottom px-4 pb-4 h-auto" tabindex="-1"
