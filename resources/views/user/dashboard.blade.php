@@ -1,23 +1,16 @@
-<html lang="en" dir="ltr"><head><style>
-	a:hover {
-    text-decoration: none;
-    list-style: none;
-}
-</style>
-			
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="nfty">
-  <meta name="keywords" content="nfty">
-  <meta name="author" content="nfty">
-  <base href="{{ asset('') }}">
-
-  <link rel="manifest" href="./manifest.json">
-  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="nfty" />
+  <meta name="keywords" content="nfty" />
+  <meta name="author" content="nfty" />
+  <base href="{{asset('')}}">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
   <title>nfty App</title>
   <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/images/logo/logo.png">
