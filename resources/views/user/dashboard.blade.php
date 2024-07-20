@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +9,7 @@
   <meta name="keywords" content="nfty" />
   <meta name="author" content="nfty" />
   <base href="{{asset('')}}">
-
-  <link rel="manifest" href="./manifest.json" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
   <title>nfty App</title>
   <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
