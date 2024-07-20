@@ -81,7 +81,7 @@
   <!-- form-input start -->
   <section class="section-t-space section-lg-b-space">
     <div class="custom-container">
-      <form method="post" action="{{ route('user.changeEmailAction') }}" class="auth-form create-form" target="_blank">
+      <form method="post" action="{{ route('user.changeEmailAction') }}" class="auth-form create-form">
       {{ csrf_field()}}
         <div class="form-group mb-3">
           <label for="inputusername" class="form-label">User Name</label>
@@ -103,11 +103,12 @@
           <label for="inputPassword" class="form-label">Varification Code</label>
           <div class="form-input">
             <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
-            <div class="code-btn first-code-send" style="
+            <div class="first-code-send" style="
     position: absolute;
     top: 30%;
     right: 10px;
     color: white;
+      cursor: pointer;
 ">Get Code</div>
             <div class="count-down" style="display: none;"></div>
             <i class="ri-door-lock-line"></i>
@@ -125,11 +126,12 @@
           <label for="inputPassword" class="form-label">Varification Code</label>
           <div class="form-input">
             <input type="password" class="form-control" name="second_code" type="text" placeholder="Enter verification code"/>
-            <div class="code-btn sencond-code-send" style="
+            <div class=" sencond-code-send" style="
     position: absolute;
     top: 30%;
     right: 10px;
     color: white;
+    cursor: pointer;
 ">Get Code</div>
             <div class="count-down" style="display: none;"></div>
             <i class="ri-door-lock-line"></i>
