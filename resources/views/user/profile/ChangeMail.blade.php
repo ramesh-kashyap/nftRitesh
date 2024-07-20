@@ -103,7 +103,12 @@
           <label for="inputPassword" class="form-label">Varification Code</label>
           <div class="form-input">
             <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
-            <div class="code-btn first-code-send">Get Code</div>
+            <div class="code-btn first-code-send" style="
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    color: white;
+">Get Code</div>
             <div class="count-down" style="display: none;"></div>
             <i class="ri-door-lock-line"></i>
           </div>
@@ -120,7 +125,12 @@
           <label for="inputPassword" class="form-label">Varification Code</label>
           <div class="form-input">
             <input type="password" class="form-control" name="second_code" type="text" placeholder="Enter verification code"/>
-            <div class="code-btn sencond-code-send">Get Code</div>
+            <div class="code-btn sencond-code-send" style="
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    color: white;
+">Get Code</div>
             <div class="count-down" style="display: none;"></div>
             <i class="ri-door-lock-line"></i>
           </div>
