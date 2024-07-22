@@ -229,10 +229,13 @@
 function copyInvitation() {
     // Get the text from the <h6> element
     var walletAddress = document.getElementById("walletAddress").innerText;
+    
+    // Create a temporary textarea element
     var tempInput = document.createElement("textarea");
     tempInput.value = walletAddress;
     document.body.appendChild(tempInput);
     
+    // Select the text in the textarea
     tempInput.select();
     tempInput.setSelectionRange(0, 99999); // For mobile devices
     

@@ -184,7 +184,7 @@ Route::get('/right-team', [App\Http\Controllers\UserPanel\Team::class, 'righttea
 Route::get('/tree-view', [App\Http\Controllers\UserPanel\Team::class, 'genealogy'])->name('user.tree-view');
 Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::class,'userReport'])->name('UsrBinaryReport');
 
-Route::get('/reffrel-link', [App\Http\Controllers\UserPanel\Team::class, 'invite'])->name('user.reffrel-link');
+
 //end team
 
 //bonus

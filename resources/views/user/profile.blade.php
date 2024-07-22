@@ -150,7 +150,7 @@
             </a>
           </li>         
           <li>
-          <a href="{{route('user.reffrel-link')}}">
+          <a href="{{route('user.referral-team')}}">
             <h4>1</h4>
             <h6>Reffrel Team</h6>
             </a>
