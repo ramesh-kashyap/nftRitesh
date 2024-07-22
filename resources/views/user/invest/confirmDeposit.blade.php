@@ -82,12 +82,7 @@
                                                             <!-- <h4>1</h4> -->
                                                             <h6>{{$walletAddress}}
                                                             </h6>
-                                                            <img style="    width: 20px;
-    color: white;
-    margin-left: 350px;
-}"
-                                        data-v-56930b78="" class="copy-btn" onclick="copyFunctionwallet()"
-                                        >
+                                                            <i class="fa fa-copy" style="width: 20px; color: white;" data-v-56930b78="" class="copy-btn" onclick="copyFunctionwallet()"></i>
                                                         </li>
 
                                                     </ul>
