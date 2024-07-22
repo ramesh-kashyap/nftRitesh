@@ -3677,7 +3677,7 @@ header .art-header-panel .panel .header-option .menu {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-radius: 8px;
-  padding: 15px 0;
+  padding: 15px 0 ;
   background: #111429;
   background-clip: padding-box;
   border: 1px solid transparent;
