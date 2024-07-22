@@ -107,71 +107,115 @@
 
     <!-- options starts -->
     <section class="section-t-space">
-        <div class="custom-container">
-            <div class="wallet-options">
-                <ul class="wallet-list">
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0 USDT</h3>
-                            <h6>Your Total Rewards</h6>
-                    </li>
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0 USDT</h3>
-                            <h6>1st place in 24 hours</h6>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <div class="custom-container">
+      <div class="details mt-0">
+        <ul>
+          <li>
+            <h4>0</h4>
+            <h6>New Members</h6>
+          </li>
+         
+          <li>
+            <h4>0.00</h4>
+            <h6>New Earning</h6>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
     <!-- options starts -->
     <section class="section-t-space">
-        <div class="custom-container">
-            <div class="wallet-options">
-                <ul class="wallet-list">
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Total Registered Member</h6>
-                    </li>
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Total Valid Member</h6>
-                    </li>
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Member A</h6>
-                    </li>
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Valid A</h6>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <div class="custom-container">
+      <div class="details mt-0">
+        <ul>
+          <li>
+            <h4>1</h4>
+            <h6>Total Earn</h6>
+          </li>
+          <li>
+            <h4>1</h4>
+            <h6>Total Reacharge</h6>
+          </li>
+          <li>
+            <h4>1</h4>
+            <h6>Total Withdraw</h6>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </section>
     <!-- options starts -->
     <section class="section-t-space">
-        <div class="custom-container">
+     
             <div class="wallet-options">
+               <div style="margin-bottom:5px;color:#fff"> <h3>Gen 1</h3></div>
                 <ul class="wallet-list">
+              
                     <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Member B</h6>
+                        <h2 style="color:#fff">0/0</h3>
+                            <h6>ValidMembers</h6>
+                    </li>
+                 
+                    <li class="wallet-items">
+                        <h2 style="color:#fff">5%</h3>
+                            <h6>Commision</h6>
                     </li>
                     <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Valid B</h6>
-                    </li>
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Member C</h6>
-                    </li>
-                    <li class="wallet-items">
-                        <h2 style="color:#fff">0</h3>
-                            <h6>Valid C</h6>
+                        <h2 style="color:#fff">0.00</h3>
+                            <h6>Total Eearning</h6>
                     </li>
                 </ul>
             </div>
         </div>
     </section>
+    <section class="section-t-space">
+     
+     <div class="wallet-options">
+        <div style="margin-bottom:5px;color:#fff"> <h3>Gen 1</h3></div>
+         <ul class="wallet-list">
+       
+             <li class="wallet-items">
+                 <h2 style="color:#fff">0/0</h3>
+                     <h6>ValidMembers</h6>
+             </li>
+          
+             <li class="wallet-items">
+                 <h2 style="color:#fff">5%</h3>
+                     <h6>Commision</h6>
+             </li>
+             <li class="wallet-items">
+                 <h2 style="color:#fff">0.00</h3>
+                     <h6>Total Eearning</h6>
+             </li>
+         </ul>
+     </div>
+ </div>
+</section>
+<section class="section-t-space">
+     
+     <div class="wallet-options">
+        <div style="margin-bottom:5px;color:#fff"> <h3>Gen 1</h3></div>
+         <ul class="wallet-list">
+       
+             <li class="wallet-items">
+                 <h2 style="color:#fff">0/0</h3>
+                     <h6>ValidMembers</h6>
+             </li>
+          
+             <li class="wallet-items">
+                 <h2 style="color:#fff">5%</h3>
+                     <h6>Commision</h6>
+             </li>
+             <li class="wallet-items">
+                 <h2 style="color:#fff">0.00</h3>
+                     <h6>Total Eearning</h6>
+             </li>
+         </ul>
+     </div>
+ </div>
+</section>
+
 
 
     <!-- wallet start -->
@@ -185,15 +229,15 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#amem-tab-pane"
-                            type="button" role="tab">AMember</button>
+                            type="button" role="tab">Level 1</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#bmem-tab-pane"
-                            type="button" role="tab">BMember</button>
+                            type="button" role="tab">Level 2</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#cmem-tab-pane"
-                            type="button" role="tab">CMember</button>
+                            type="button" role="tab">Level 3 </button>
                     </li>
                 </ul>
             </div>
@@ -241,7 +285,7 @@
                     <!-- empty Notification starts -->
                     <section class="section-t-space p-0">
                         <div class="custom-container">
-                            <ul class="nav nav-pills tab-style1" id="pills-tab" role="tablist">
+                            <!-- <ul class="nav nav-pills tab-style1" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-home" type="button" role="tab">AMember</button>
@@ -250,7 +294,7 @@
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile" type="button" role="tab">Rebate</button>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <div class="tab-content w-100" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" tabindex="0">
                                     <div class="empty-tab">
@@ -275,7 +319,7 @@
                     <!-- empty Notification starts -->
                     <section class="section-t-space p-0">
                         <div class="custom-container">
-                            <ul class="nav nav-pills tab-style1" id="pills-tab" role="tablist">
+                            <!-- <ul class="nav nav-pills tab-style1" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-home" type="button" role="tab">BMember</button>
@@ -284,7 +328,7 @@
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile" type="button" role="tab">Rebate</button>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <div class="tab-content w-100" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" tabindex="0">
                                     <div class="empty-tab">
@@ -304,12 +348,12 @@
                         </div>
                     </section>
                     <!-- empty Notification end -->
-                </div> 
+                </div>                                                        
                 <div class="tab-pane fade" id="cmem-tab-pane" role="tabpanel" tabindex="0">
                     <!-- empty Notification starts -->
                     <section class="section-t-space p-0">
                         <div class="custom-container">
-                            <ul class="nav nav-pills tab-style1" id="pills-tab" role="tablist">
+                            <!-- <ul class="nav nav-pills tab-style1" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-home" type="button" role="tab">CMember</button>
@@ -318,7 +362,7 @@
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile" type="button" role="tab">Rebate</button>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <div class="tab-content w-100" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" tabindex="0">
                                     <div class="empty-tab">
