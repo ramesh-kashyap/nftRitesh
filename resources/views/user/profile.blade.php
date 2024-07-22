@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <style>
+<style>
         a:hover {
             text-decoration: none;
             list-style: none;
