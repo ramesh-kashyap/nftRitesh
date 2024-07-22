@@ -153,7 +153,7 @@
                 <ul class="wallet-list">
               
                     <li class="wallet-items">
-                        <h2 style="color:#fff">0/0</h3>
+                        <h2 style="color:#fff"></h3>
                             <h6>ValidMembers</h6>
                     </li>
                  
@@ -220,27 +220,67 @@
 
     <!-- wallet start -->
     <section class="section-lg-t-space section-lg-b-space">
-        <div class="custom-container">
-            <div class="category-detail-tab">
-                <ul class="nav nav-tabs tab-style2" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#token-tab-pane"
-                            type="button" role="tab">Invite</button>
-                    </li>
+    <div class="custom-container">
+        <div class="category-detail-tab">
+            <ul class="nav nav-tabs tab-style2" id="myTab" role="tablist">
+                @for ($l = 1; $l <= 3; $l++)
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#amem-tab-pane"
-                            type="button" role="tab">Level 1</button>
+                            type="button" role="tab">
+                            <a style="color: {{ Session::get('selected_level') == $l ? 'green' : '#fff' }}" href="{{ route('user.referral-team') }}?selected_level={{ $l }}">
+                                @lang('Member') {{ $l }}
+                            </a>
+                        </button>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#bmem-tab-pane"
-                            type="button" role="tab">Level 2</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#cmem-tab-pane"
-                            type="button" role="tab">Level 3 </button>
-                    </li>
-                </ul>
-            </div>
+                @endfor
+            </ul>
+        </div>
+
+        <section class="section-t-space">
+            @if(is_array($direct_team) || is_object($direct_team))
+                <?php $cnt = $direct_team->perPage() * ($direct_team->currentPage() - 1); ?>
+                @foreach ($direct_team as $value)
+                    <div class="custom-container">
+                        <ul class="order-listing product-listing">
+                            <li>
+                                <div class="product-details">
+                                    <!-- <div class="product-img">
+                                        <img class="img-fluid" src="assets/images/product/trend6.png" alt="security" />
+                                    </div> -->
+                                    <div class="product-content">
+                                        <div>
+                                            <h4 class="product-item">@lang('Deposit')</h4>
+                                            <h4 class="product-item">@lang('Username')</h4>
+                                            <h4 class="product-item">@lang('Status')</h4>
+                                        </div>
+                                        <div class="right-panal">
+                                            <div class="counter"></div>
+                                            <div class="timeing">
+                                                <h5>{{ $value->investment->sum('amount') ?: 0 }} USDT</h5>
+                                            </div>
+                                            <div class="timeing">
+                                                <h5>{{ $value->username }}</h5>
+                                            </div>
+                                            <div class="timeing">
+                                                <h5>{{ $value->active_status }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                @endforeach
+            @endif
+        </section>
+    </div>
+</section>
+
+ 
+
+                                        
+
+
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="token-tab-pane" role="tabpanel" tabindex="0">
                     <ul class="token-box">
