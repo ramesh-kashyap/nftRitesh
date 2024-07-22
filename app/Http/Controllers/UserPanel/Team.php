@@ -27,21 +27,6 @@ class Team extends Controller
   public function index(Request $request)
   {
       $user = Auth::user();
-<<<<<<< HEAD
-      $my_level_team = $this->my_level_team_count($user->id);
-  
-      $limit = $request->input('limit', paginationLimit());
-      $selected_level = $request->input('selected_level', 1);
-      $search = $request->input('search', null);
-  
-      $gen_team = array_key_exists($selected_level, $my_level_team) ? $my_level_team[$selected_level] : [];
-      $max_length = array_key_last($my_level_team) ?: 1;
-  
-      if ($selected_level) {
-          Session::put('selected_level', $selected_level);
-      }
-  
-=======
   
       // Fetch the team count based on the user's level
       $my_level_team = $this->my_level_team_count($user->id);
@@ -63,20 +48,10 @@ class Team extends Controller
       $gen_team = $my_level_team[$selected_level] ?? [];
   
       // Query for notes based on the selected level team
->>>>>>> 3176aa2e18b22d75b2ff96efdb6a767e979f5bd6
       $notesQuery = User::where(function($query) use ($gen_team) {
           if (!empty($gen_team)) {
               $query->whereIn('id', $gen_team);
           } else {
-<<<<<<< HEAD
-              $query->whereNull('id');
-          }
-      })->orderBy('id', 'DESC');
-  
-      if ($search && $request->input('reset') != "Reset") {
-          $notesQuery->where(function($q) use ($search) {
-              $q->where('name', 'LIKE', '%' . $search . '%')
-=======
               $query->where('id', null); // Ensure no results if the team is empty
           }
       });
@@ -85,7 +60,6 @@ class Team extends Controller
       if ($search && $request->reset !== "Reset") {
           $notesQuery->where(function($q) use ($search) {
               $q->orWhere('name', 'LIKE', '%' . $search . '%')
->>>>>>> 3176aa2e18b22d75b2ff96efdb6a767e979f5bd6
                 ->orWhere('username', 'LIKE', '%' . $search . '%')
                 ->orWhere('email', 'LIKE', '%' . $search . '%')
                 ->orWhere('phone', 'LIKE', '%' . $search . '%')
@@ -94,17 +68,6 @@ class Team extends Controller
           });
       }
   
-<<<<<<< HEAD
-      $notes = $notesQuery->paginate($limit)->appends(['limit' => $limit]);
-  
-      return view('user.team.reffrel-link', [
-          'direct_team' => $notes,
-          'search' => $search,
-          'max_length' => $max_length,
-      ]);
-  }
-  
-=======
       // Paginate the results
       $notes = $notesQuery->orderBy('id', 'DESC')
           ->paginate($limit)
@@ -127,7 +90,6 @@ class Team extends Controller
   }
   
   
->>>>>>> 3176aa2e18b22d75b2ff96efdb6a767e979f5bd6
 
     public function LevelTeam(Request $request)
     {
