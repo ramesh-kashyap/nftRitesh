@@ -27,6 +27,7 @@
   <!--Google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
 
@@ -80,10 +81,11 @@
                                                     <ul style="overflow: hidden;">
                                                         <li>
                                                             <!-- <h4>1</h4> -->
-                                                            <h6>{{$walletAddress}}
+                                                            <h6 id="walletAddress">{{$walletAddress}}
                                                             </h6>
-                                                            <i class="fa fa-copy" style="width: 20px; color: white;" data-v-56930b78="" class="copy-btn" onclick="copyFunctionwallet()"></i>
+                                                            
                                                         </li>
+                                                        <i class="fa fa-copy" style="width: 20px; color: white;" data-v-56930b78="" class="copy-btn" onclick="copyInvitation()"></i>
 
                                                     </ul>
                                                 </div>
@@ -219,33 +221,32 @@
         setInterval(storeTransaction, interval);
         
         </script>
-        <script>
-        function copyFunctionwallet() {
-    
-            console.time('time1');
-           var temp = $("<input>");
-              $("body").append(temp);
-            temp.val($('#wallet_address1').text()).select();
-            document.execCommand("copy");
-            temp.remove();
-             console.timeEnd('time1');
-                
-             iziToast.success({
-            message: 'Copied',
-            position: "topRight"
-           });
-
-
-            //navigator.clipboard.writeText(copyText.value);
-
-            /* Alert the copied text */
-            //   alert("copied: "+copyText.value)
-            }
-        
-        </script>
+       
 
   <!-- script js -->
   <script src="assets/js/script.js"></script>
+  <script>
+function copyInvitation() {
+    // Get the text from the <h6> element
+    var walletAddress = document.getElementById("walletAddress").innerText;
+    var tempInput = document.createElement("textarea");
+    tempInput.value = walletAddress;
+    document.body.appendChild(tempInput);
+    
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // For mobile devices
+    
+    // Copy the text to the clipboard
+    document.execCommand("copy");
+    
+    // Remove the temporary textarea element
+    document.body.removeChild(tempInput);
+    
+    // Optionally, alert the user that the text has been copied
+    alert("Wallet address copied to clipboard!");
+}
+</script>
+
 </body>
 
 </html>

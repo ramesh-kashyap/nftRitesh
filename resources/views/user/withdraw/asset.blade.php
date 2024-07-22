@@ -2,49 +2,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('') }}assets/images/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon_1.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
-    <title>{{ siteName() }}</title>
-    <script type="module" crossorigin="" src="{{ asset('') }}assets/js/index-CrXrt6Gs.js"></script>
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vant-3s7b3naM.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vuei18n-CA58nVJV.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/corejs-C4iS2aBk.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vuex-MbEfqX8_.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/cryptojs-BILcvZe1.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/qrcodejs2fix-CnmRM6Pf.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vueclipboard3-C7DdPEQF.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/uaParserJs-QZjeYS1Z.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vuerouter-7dy5tY0D.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/axios-Cm0UX6qg.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/swiper-C1TWdcvt.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/bignumberjs-DOH-f-tm.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/validator-DnYg83Z5.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vanttouchemulator-Cv_in60N.js">
-    <link rel="stylesheet" crossorigin="" href="{{ asset('') }}assets/css/index-CFWvmehk.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/PageScroll-CKnpGw43.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/PageScroll-B0U5qQ_M.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/MainHeader-BFHJFCqZ.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/MainHeader-DmTIx4Xq.css">
-    <link rel="modulepreload" as="script" crossorigin=""
-        href="{{ asset('') }}assets/js/FloatingBubble-CqXE7Yan.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/FloatingBubble-Dntr2w2Z.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/MainFooter-sb5_wYT5.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/MainFooter-KaNE-uqv.css">
-    <link rel="modulepreload" as="script" crossorigin=""
-        href="{{ asset('') }}assets/js/NoticePopup-BvpOeQc_.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/NoticePopup-SnqEssf-.css">
-    <link rel="modulepreload" as="script" crossorigin=""
-        href="{{ asset('') }}assets/js/CustomerService-CPpgdp_T.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/CustomerService-D5uG7YzE.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/ComImage-BwiU2rTy.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/ComImage-C3FUzSnY.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-CHupy9O3.js">
-    <link rel="modulepreload" as="script" crossorigin=""
-        href="{{ asset('') }}assets/js/icon_record-C7zQIaVK.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-BZLleKh5.css">
-    <link rel="modulepreload" as="script" crossorigin=""
-        href="{{ asset('') }}assets/js/ComSticky-DkAtmWha.js">
+    <title>siteName</title>
+    <script type="module" crossorigin="" src="{{asset('')}}assets/js/index-BR72YH-E.js"></script>
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vant-3s7b3naM.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vuei18n-CA58nVJV.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/corejs-C4iS2aBk.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vuex-MbEfqX8_.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/cryptojs-BILcvZe1.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/qrcodejs2fix-CnmRM6Pf.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vueclipboard3-C7DdPEQF.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/uaParserJs-QZjeYS1Z.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vuerouter-7dy5tY0D.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/axios-Cm0UX6qg.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/swiper-C1TWdcvt.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/bignumberjs-DOH-f-tm.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/validator-DnYg83Z5.js">
+    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vanttouchemulator-Cv_in60N.js">
+    <link rel="stylesheet" crossorigin="" href="{{asset('')}}assets/css/index-CFWvmehk.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/login-CQSdKFaq.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/login-CxmahPYR.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/PageScroll-CWe5U2pE.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/PageScroll-B0U5qQ_M.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/InsideHeader-cUb30gWX.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/icon_back_white-Fd3ZFuzm.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/InsideHeader-k_Fsd2wZ.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/EmailVerify-BmNRfRYW.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/EmailVerify-Dp0-5g_d.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/PsdInp-CEndfO3Z.js">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/eye_close-DJdVF6pM.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/PsdInp-B2SSuLGr.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/ComBtn-CB5ONs6P.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/ComBtn-CgiT3mnI.css">
+    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/FloatingBubble-CfUHYYW9.js">
+    <link rel="stylesheet" href="{{asset('')}}assets/css/FloatingBubble-Dntr2w2Z.css">
 </head>
 
 <body class="">
@@ -153,3 +146,4 @@
                     style="top: 1.88rem; right: 0.2rem;">
                 </div>
             </div>
+            @include('layouts.upnl.footer')
