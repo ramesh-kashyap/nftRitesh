@@ -224,30 +224,25 @@
     <div class="custom-container">
         <div class="category-detail-tab">
             <ul class="nav nav-tabs tab-style2" id="myTab" role="tablist">
-                @for ($l = 1; $l <= 3; $l++)
+                @for ($l = 1; $l <= $max_length; $l++)
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nft-tab" data-bs-toggle="tab" data-bs-target="#amem-tab-pane"
-                            type="button" role="tab">
-                            <a style="color: {{ Session::get('selected_level') == $l ? 'green' : '#fff' }}" href="{{ route('user.referral-team') }}?selected_level={{ $l }}">
+                        <button class="nav-link level-button" data-level="{{ $l }}" id="nft-tab" type="button" role="tab">
+                            <span style="color: {{ $selected_level == $l ? 'green' : '#fff' }}">
                                 @lang('Member') {{ $l }}
-                            </a>
+                            </span>
                         </button>
                     </li>
                 @endfor
             </ul>
         </div>
 
-        <section class="section-t-space">
-            @isset($direct_team)  <!-- Check if $direct_team is set -->
-                <?php $cnt = $direct_team->perPage() * ($direct_team->currentPage() - 1); ?>
-                @foreach ($direct_team as $value)
-                    <div class="custom-container">
+        <section class="section-t-space" id="data-container">
+            @foreach ($direct_team as $level => $team)
+                <div class="data-section custom-container" data-level="{{ $level }}" style="display: none;">
+                    @foreach ($team as $value)
                         <ul class="order-listing product-listing">
                             <li>
                                 <div class="product-details">
-                                    <!-- <div class="product-img">
-                                        <img class="img-fluid" src="assets/images/product/trend6.png" alt="security" />
-                                    </div> -->
                                     <div class="product-content">
                                         <div>
                                             <h4 class="product-item">@lang('Deposit')</h4>
@@ -270,11 +265,9 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                @endforeach
-            @else
-                <p>No direct team members found.</p> <!-- Optional message if no data -->
-            @endisset
+                    @endforeach
+                </div>
+            @endforeach
         </section>
     </div>
 </section>
@@ -491,6 +484,45 @@
                             startTimer(twoHours, display);
                         };
                     </script>
+                    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const levelButtons = document.querySelectorAll('.level-button');
+        const defaultLevel = '{{ $selected_level }}'; // Set the default level from the Blade template
+
+        // Show the data for the default level on page load
+        showLevelData(defaultLevel);
+
+        levelButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const selectedLevel = this.getAttribute('data-level');
+                showLevelData(selectedLevel);
+            });
+        });
+
+        function showLevelData(level) {
+            // Hide all data sections
+            document.querySelectorAll('.data-section').forEach(div => {
+                div.style.display = 'none';
+            });
+
+            // Show the data for the selected level
+            document.querySelectorAll(`.data-section[data-level="${level}"]`).forEach(div => {
+                div.style.display = 'block';
+            });
+
+            // Update the active button style
+            levelButtons.forEach(button => {
+                if (button.getAttribute('data-level') == level) {
+                    button.classList.add('active');
+                    button.querySelector('span').style.color = 'green';
+                } else {
+                    button.classList.remove('active');
+                    button.querySelector('span').style.color = '#fff';
+                }
+            });
+        }
+    });
+</script>
                     <!-- panel-space end -->
                     @include('layouts.upnl.footer')
                     

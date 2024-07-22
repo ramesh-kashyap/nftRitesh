@@ -33,6 +33,7 @@
            <i class="ri-search-fill active"></i>
          </div>
          <span>Assets</span>
+         <span>Assets</span>
        </a>
      </li>
      <li>
