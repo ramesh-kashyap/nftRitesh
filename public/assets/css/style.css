@@ -343,6 +343,7 @@ li {
   background-color: rgba(var(--light-bg), 0.1);
   color: rgba(var(--font-color), 1);
   border: 1px solid transparent;
+  margin-bottom: 90px;
 }
 .gray-btn:hover {
   background-color: rgba(var(--light-bg), 0.1);

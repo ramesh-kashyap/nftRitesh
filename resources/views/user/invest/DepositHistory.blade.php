@@ -1,145 +1,110 @@
-<html lang="en" class="van-theme-light pc" style="font-size: 50px;">
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('') }}assets/images/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Team List</title>
-    <script type="module" crossorigin="" src="{{ asset('') }}assets/js/index-Cu3eXXG0.js"></script>
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vant-3s7b3naM.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vuei18n-CA58nVJV.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/corejs-C4iS2aBk.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vuex-MbEfqX8_.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/cryptojs-BILcvZe1.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/qrcodejs2fix-CnmRM6Pf.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vueclipboard3-C7DdPEQF.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/uaParserJs-QZjeYS1Z.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vuerouter-7dy5tY0D.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/axios-Cm0UX6qg.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/swiper-C1TWdcvt.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/bignumberjs-DOH-f-tm.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/validator-DnYg83Z5.js">
-    <link rel="modulepreload" crossorigin="" href="{{ asset('') }}assets/js/vanttouchemulator-Cv_in60N.js">
-    <link rel="stylesheet" crossorigin="" href="{{ asset('') }}assets/css/index-CFWvmehk.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-B8Wpqfi2.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-DTz0zoMQ.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/echartsCharts-RcjN-jxb.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-DzB4lFNc.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/PageScroll-BjR-l6de.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/PageScroll-B0U5qQ_M.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/MainHeader-D3h2V_im.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/MainHeader-DmTIx4Xq.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/ComPicker-D2IkiGpm.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/FloatingBubble-CGxu3QJe.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/FloatingBubble-Dntr2w2Z.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/MainFooter-Bwjvfc67.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/MainFooter-KaNE-uqv.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-BTvxA5JQ.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-BblBrGU_.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/InsideHeader-BqE9d46l.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/icon_back_white-Fd3ZFuzm.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/InsideHeader-k_Fsd2wZ.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/ComList-CInCVZJE.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/ComList-De3GxwF0.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/ListEmpty-5pO20G0l.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/ListEmpty-BnV8Jpo-.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-Dt82l3-u.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/icon_copy_min-DeS-a5w4.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-CN2cg-QD.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/ComImage-DYXlRKis.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/ComImage-C3FUzSnY.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-BDuupn1p.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/icon_record-C7zQIaVK.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-BZLleKh5.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/ComSticky-BzIdbyp2.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-B2dh4aS5.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-3m6MC6us.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-D4ACcMsm.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/icon_copy-BwRkM0m9.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/icon_tips-BV3W61Vo.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-DF07rLbC.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-CbQiSdtC.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-C9hSSQFb.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-ko4d_xox.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-CB8PRsXb.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{ asset('') }}assets/js/index-xPBJ99Wx.js">
-    <link rel="stylesheet" href="{{ asset('') }}assets/css/index-D0RfEik9.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="nfty" />
+  <meta name="keywords" content="nfty" />
+  <meta name="author" content="nfty" />
+  <base href="{{ asset('') }}">
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
+  <title>nfty App</title>
+  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="assets/images/logo/logo.png" />
+  <meta name="theme-color" content="#205dee" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="nfty" />
+  <meta name="msapplication-TileImage" content="assets/images/logo/logo.png" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!--Google font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" id="rtl-link" type="text/css" href="assets/css/vendors/bootstrap.css" />
+  <!-- remixicon css -->
+  <link rel="stylesheet" type="text/css" href="assets/css/vendors/remixicon.css" />
+
+  <!-- Theme css -->
+  <link rel="stylesheet" id="change-link" type="text/css" href="assets/css/style.css" />
 </head>
 
-<body class="">
-    <div id="app" data-v-app="">
-        <div class="van-config-provider">
-            <!---->
-        </div>
-        
-        <style>
-            .list .item[data-v-74600836] {
-    background: #f5f5f5;
-    margin-bottom: .32rem;
-    border-radius: .24rem;
-    background: #fff;
-    border-radius: .32rem;
-    background: #fff;
-}
-.list .item .item-top .name[data-v-74600836] {
-    font-size: .28rem;
-    font-weight: 500;
-    line-height: 1em;
-    color: #000;
-}
-.list .item .item-top .time[data-v-74600836] {
-    margin-top: .16rem;
-    font-size: .24rem;
-    line-height: 1em;
-    color: #817777;
-}
-        </style>
-        <div data-v-e85f0186="" data-v-6ebc7169="" class="page" style="background-color: rgb(255, 255, 255);">
-            <div data-v-e85f0186="" class="headers">
-                <div data-v-54adc729="" data-v-e85f0186="" class="inside-header">
-                    <div data-v-54adc729="" class="left">
-                        <div data-v-54adc729="" class="back"> <a href="{{route('user.invest')}}"> <img data-v-54adc729=""
-                                src="data:image/png;base64,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"
-                                class="icon"></a></div>
-                    </div>
-                </div>
-            </div>
-            <div data-v-e85f0186="" class="page-container">
-                <div data-v-e85f0186="" class="scroll">
-                    <div data-v-6ebc7169="" style="">
-                        <div class="van-sticky" style="">
-                            <div data-v-6ebc7169="" class="tabs-con container">
-                                <div data-v-6ebc7169="" class="title_heand">Deposit History</div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div data-v-24f31d9d="" data-v-6ebc7169="" class="van-pull-refresh van-refresh-com container">
-                        <div class="van-pull-refresh__track" style="transition-duration: 0ms;">
-                            <div class="van-pull-refresh__head" style="height: 100px;"></div>
-                            <div data-v-24f31d9d="" role="feed" class="van-list" aria-busy="false">
-                            <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
+<body>
 
-                               <?php
-                                date_default_timezone_set('UTC');
-                                 $cnt = 0; ?>
-                                 @foreach($deposit_list as $value)
-                                <div data-v-74600836="" data-v-6ebc7169="" class="list" style="margin-top: 5px;">
-                                    <div data-v-74600836="" class="item">
-                                        <div data-v-74600836="" class="item-top">                                        
-                                            <div data-v-5f911827="" data-v-74600836="" class="com-image avatar">
-                                                <div data-v-5f911827="" class="van-image image">
-                                                <span><img src="{{asset('assets/images/logo.png')}}" class="van-image__img" style="object-fit: cover;">
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div data-v-74600836="" class="right">
-                                                <div data-v-74600836="" class="name">{{ $value->amount }} {{generalDetail()->cur_text}}<span
-                                                        data-v-74600836="">（TID: {{ $value->transaction_id }}） </span></div>
-                                                <div data-v-74600836="" class="time">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</div>
-                                            </div>                                                                                     
-                                            @if($value->status=="Pending")                                          
+  <!-- loader start-->
+  <div class="loader-wrapper" id="loader">
+    <div class="loader">
+      <span>N</span>
+      <span>F</span>
+      <span>T</span>
+      <span>Y</span>
+    </div>
+  </div>
+  <!-- loader end -->
+
+  <!-- header start -->
+  <header class="section-t-space">
+    <div class="custom-container">
+      <div class="header-panel">
+        <a href="{{route('user.invest')}}">
+          <i class="ri-arrow-left-s-line"></i>
+        </a>
+        <h3 class="middle-title">Deposit History</h3>
+      </div>
+    </div>
+  </header>
+  <!-- header end -->
+
+  <!-- Statistics starts -->
+  <section class="pt-0 section-lg-b-space">
+    <div class="custom-container">
+    
+
+      <div class="tab-content w-100" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-rank" role="tabpanel" tabindex="0">
+          <div class="submit-btn filter mt-3">
+            <!-- <a class="theme-btn filter-btn btn" data-bs-toggle="offcanvas" data-bs-target="#rank-filter">
+              <i class="ri-equalizer-line"></i>
+            
+            </a> -->
+          </div>
+          <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
+
+<?php
+ date_default_timezone_set('UTC');
+  $cnt = 0; ?>
+  @foreach($deposit_list as $value)
+          <div class="accordion theme-accordion" id="accordionExample">
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingOne">
+                <div class="" data-bs-toggle="collapse" data-bs-target="#p1">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-1.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>{{ $value->amount }} {{generalDetail()->cur_text}}（TID: {{ $value->transaction_id }}）</h4>
+                          <h6 class="">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</h6>
+                        </div>
+                        <div class="counter">
+                         
+                          <h4 style="margin:30px;"> @if($value->status=="Pending")                                          
                                             <a  href="{{route('user.cancel-payment',['id'=>$value->orderId])}}"
                                                 name="balance/oper_frm_btncancel" data-v-74600836="" 
                                                 class="copy-btn" style="     background: #df3131;
@@ -153,106 +118,541 @@
                                                         @endif
                                         </div>
                                         
-                                        @endforeach   
-                                                                            
-                                        <?php }?>    
-                                        
-                                           <div style="margin-bottom: 30em;"> <br><br><br><br><br><br><br><br><br><br></div>
-                                    </div>
-                                </div>
-                                <!---->
-                                <!---->
-                                <div class="van-list__placeholder"></div>
-                            </div>
+                                        </h4>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                <div data-v-8b363259="" data-v-e85f0186="" class="touch-move-con" style="top: 1.88rem; right: 0.2rem;">
-                </div>
-            </div>
-            <!---->
-     
+              </div>
+   
+              @endforeach   
+                                                                            
+                                                                            <?php }?>    
+             
+            <div class="accordion-item">
+              <!-- <div class="accordion-header" id="headingTwo">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p2"> -->
 
-
-    <div class="van-overlay" role="button" tabindex="0" style="z-index: 2004; display: none;">
-        <!---->
-    </div>
-    <div role="dialog" tabindex="0" class="van-popup van-popup--bottom" style="z-index: 2004; display: none;">
-        <div class="van-picker">
-            <div class="van-picker__toolbar"><button type="button"
-                    class="van-picker__cancel van-haptics-feedback">Cancel</button>
-                <!----><button type="button" class="van-picker__confirm van-haptics-feedback">Confirm</button></div>
-            <!---->
-            <!---->
-            <div class="van-picker__columns" style="height: 264px;">
-                <div class="van-picker-column">
-                    <ul class="van-picker-column__wrapper"
-                        style="transform: translate3d(0px, 110px, 0px); transition-duration: 0ms; transition-property: none;">
-                        <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected"
-                            style="height: 44px;">
-                            <div class="van-ellipsis">All</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Today</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Last 7 Days</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Last 30 Days</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Last 60 Days</div>
-                        </li>
-                    </ul>
                 </div>
-                <div class="van-picker__mask" style="background-size: 100% 110px;"></div>
-                <div class="van-hairline-unset--top-bottom van-picker__frame" style="height: 44px;"></div>
+              </div>
+            
             </div>
-            <!---->
-            <!---->
-        
-    
-    <div class="van-overlay" role="button" tabindex="0" style="z-index: 2005; display: none;">
-        <!---->
-    </div>
-    <div role="dialog" tabindex="0" class="van-popup van-popup--bottom" style="z-index: 2005; display: none;">
-        <div class="van-picker">
-            <div class="van-picker__toolbar"><button type="button"
-                    class="van-picker__cancel van-haptics-feedback">Cancel</button>
-                <!----><button type="button" class="van-picker__confirm van-haptics-feedback">Confirm</button></div>
-            <!---->
-            <!---->
-            <div class="van-picker__columns" style="height: 264px;">
-                <div class="van-picker-column">
-                    <ul class="van-picker-column__wrapper"
-                        style="transform: translate3d(0px, 110px, 0px); transition-duration: 0ms; transition-property: none;">
-                        <li role="button" tabindex="0" class="van-picker-column__item van-picker-column__item--selected"
-                            style="height: 44px;">
-                            <div class="van-ellipsis">All</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Today</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Last 7 Days</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Last 30 Days</div>
-                        </li>
-                        <li role="button" tabindex="0" class="van-picker-column__item" style="height: 44px;">
-                            <div class="van-ellipsis">Last 60 Days</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="van-picker__mask" style="background-size: 100% 110px;"></div>
-                <div class="van-hairline-unset--top-bottom van-picker__frame" style="height: 44px;"></div>
-            </div>
-            <!---->
-            <!---->
+          </div>
         </div>
-        <!---->
-    </div>
-        </div>
-    </div>
 
+        <div class="tab-pane fade" id="pills-activity" role="tabpanel" tabindex="0">
+          <div class="submit-btn filter mt-3">
+            <a class="btn theme-btn filter-btn" data-bs-toggle="offcanvas" data-bs-target="#activity-filter">
+              <i class="ri-equalizer-line"></i>
+              <h5>Filter</h5>
+            </a>
+          </div>
+
+          <div class="accordion theme-accordion" id="accordionExample1">
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingne">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#one">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>1</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-1.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>The Metaplace</h4>
+                          <h6 class="success-color">+23.00%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>272.93</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="one" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+8.26%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingtwo">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#two">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>2</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-2.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>3D Art</h4>
+                          <h6 class="text-danger">-32.01%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="two" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-3.76%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingthree">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#three">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>3</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-3.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>MMA9 #0120</h4>
+                          <h6 class="text-danger">-10.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="three" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-30.16%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingfour">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#four">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>4</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-4.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Lexicoma</h4>
+                          <h6 class="success-color">+23.00%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="four" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+5.32%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingfive">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#five">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>5</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-5.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Cartoon Art</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="five" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+12.16%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingsix">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#six">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>6</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-6.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Wsezug</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="six" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+6.44%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingseven">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#seven">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>7</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-7.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>Glossica</h4>
+                          <h6 class="success-color">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="seven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="danger-color">-5.97%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" id="headingeight">
+                <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#eight">
+                  <div class="nft-horizontal-box">
+                    <div class="product-details">
+                      <span>8</span>
+                      <div class="product-image">
+                        <img class="img-fluid" src="assets/images/product/s-8.jpg" alt="security" />
+                      </div>
+                      <div class="product-content">
+                        <div>
+                          <h4>3D Character</h4>
+                          <h6 class="text-danger">-32.98%</h6>
+                        </div>
+                        <div class="counter">
+                          <img class="img-fluid arrow" src="assets/images/eth-diamond.png" alt="arrow" />
+                          <h4>0.2723</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="eight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <ul class="nft-horizontal-content">
+                    <li>
+                      <h5>24h%</h5>
+                      <h6 class="success-color">+15.26%</h6>
+                    </li>
+                    <li>
+                      <h5>Floor Price</h5>
+                      <h6>0.109</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>6,134</h6>
+                    </li>
+                    <li>
+                      <h5>Owners</h5>
+                      <h6>13,652</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Statistics end -->
+
+  <!-- offcanvas start -->
+  <div class="offcanvas theme-offcanvas offcanvas-bottom" tabindex="-1" id="rank-filter">
+    <div class="offcanvas-body">
+      <form class="auth-form">
+        <div class="dropdown mt-3">
+          <h4>Categories</h4>
+          <select class="form-control category-select form-select">
+            <option selected>All Categories</option>
+            <option value="1">New</option>
+            <option value="2">Art</option>
+            <option value="3">Collectibles</option>
+            <option value="1">Domin Name</option>
+            <option value="2">Music</option>
+            <option value="3">Photography</option>
+            <option value="1">Sports</option>
+            <option value="2">Trading Cards</option>
+            <option value="3">Utility</option>
+          </select>
+        </div>
+
+        <div class="dropdown mt-3">
+          <h4>Chain</h4>
+          <select class="form-control category-select form-select">
+            <option selected>All Chain</option>
+            <option value="1">Ethereum</option>
+            <option value="2">Solana</option>
+            <option value="3">Polygon</option>
+            <option value="1">Klaytn</option>
+          </select>
+        </div>
+        <div class="submit-btn mt-3 mb-0">
+          <a href="statisties.html" data-bs-dismiss="offcanvas" class="btn theme-btn mt-4">Apply</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="offcanvas theme-offcanvas offcanvas-bottom" tabindex="-1" id="activity-filter">
+    <div class="offcanvas-body">
+      <form class="auth-form">
+        <div class="dropdown mt-3 mb-3">
+          <h4>Sales</h4>
+          <select class="form-control category-select form-select">
+            <option selected>All Sales / Transfer</option>
+            <option value="1">Sales</option>
+            <option value="2">Listing</option>
+            <option value="3">Bids</option>
+            <option value="1">Transfers</option>
+          </select>
+        </div>
+
+        <div class="dropdown mt-3 mb-3">
+          <h4>Chain</h4>
+          <select class="form-control category-select form-select">
+            <option selected>All Chain</option>
+            <option value="1">Ethereum</option>
+            <option value="2">Solana</option>
+            <option value="3">Polygon</option>
+            <option value="1">Klaytn</option>
+          </select>
+        </div>
+
+        <div class="submit-btn mt-3 mb-0">
+          <a href="statisties.html" class="btn theme-btn mt-4">Apply</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- offcanvas end -->
+
+  <!-- panel-space start -->
+  <section class="panel-space"></section>
+  <!-- panel-space end -->
+
+  <!-- bottom navbar start -->
+  <div class="navbar-menu">
+    <ul>
+      <li>
+        <a href="landing.html">
+          <div class="icon">
+            <i class="ri-home-5-line unactive"></i>
+            <i class="ri-home-5-fill active"></i>
+          </div>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="statistics.html">
+          <div class="icon">
+            <i class="ri-line-chart-line unactive"></i>
+            <i class="ri-line-chart-fill active"></i>
+          </div>
+          <span class="active">Statistics</span>
+        </a>
+      </li>
+      <li>
+        <a href="create-nft.html" class="plus">
+          <i class="ri-add-line plus-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="search.html">
+          <div class="icon">
+            <i class="ri-search-line unactive"></i>
+            <i class="ri-search-fill active"></i>
+          </div>
+          <span>Search</span>
+        </a>
+      </li>
+      <li>
+        <a href="profile.html">
+          <div class="icon">
+            <i class="ri-user-3-line unactive"></i>
+            <i class="ri-user-3-fill active"></i>
+          </div>
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- bottom navbar end -->
+
+  <!-- bootstrap js -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <!-- script js -->
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
