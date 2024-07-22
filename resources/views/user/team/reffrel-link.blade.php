@@ -219,7 +219,8 @@
 
 
     <!-- wallet start -->
-    <section class="section-lg-t-space section-lg-b-space">
+  <!-- wallet start -->
+<section class="section-lg-t-space section-lg-b-space">
     <div class="custom-container">
         <div class="category-detail-tab">
             <ul class="nav nav-tabs tab-style2" id="myTab" role="tablist">
@@ -237,7 +238,7 @@
         </div>
 
         <section class="section-t-space">
-            @if(is_array($direct_team) || is_object($direct_team))
+            @isset($direct_team)  <!-- Check if $direct_team is set -->
                 <?php $cnt = $direct_team->perPage() * ($direct_team->currentPage() - 1); ?>
                 @foreach ($direct_team as $value)
                     <div class="custom-container">
@@ -271,10 +272,14 @@
                         </ul>
                     </div>
                 @endforeach
-            @endif
+            @else
+                <p>No direct team members found.</p> <!-- Optional message if no data -->
+            @endisset
         </section>
     </div>
 </section>
+
+
 
  
 

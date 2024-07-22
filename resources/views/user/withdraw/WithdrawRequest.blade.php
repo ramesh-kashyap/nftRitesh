@@ -63,7 +63,7 @@
   <header class="section-t-space">
     <div class="custom-container">
       <div class="header-panel">
-        <a href="nft-details.html">
+        <a href="{{route('user.asset')}}">
           <i class="ri-arrow-left-s-line"></i>
         </a>
         <h3 class="middle-title">@lang('Withdraw')</h3>

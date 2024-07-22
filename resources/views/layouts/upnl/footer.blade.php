@@ -27,12 +27,12 @@
        </a>
      </li>
      <li>
-      <a href="{{route('user.search')  }}">
+      <a href="{{route('user.asset')  }}">
         <div class="icon">
            <i class="ri-search-line unactive"></i>
            <i class="ri-search-fill active"></i>
          </div>
-         <span>Search</span>
+         <span>Assets</span>
        </a>
      </li>
      <li>
