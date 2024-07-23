@@ -22,7 +22,7 @@
   <meta name="msapplication-TileImage" content="assets/images/logo/logo.png" />
   <meta name="msapplication-TileColor" content="#FFFFFF" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--Google font-->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -95,13 +95,13 @@
   <section class="pt-0 section-lg-b-space">
     <div class="custom-container">
       <ul class="nav nav-pills tab-style1 mt-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation" >
+        <li class="nav-item" role="presentation" >Z
             
           <button class="nav-link active" id="pills-rank-tab" data-bs-toggle="pill" data-bs-target="#pills-rank"
             type="button" role="tab" style="height:73px; background:#1d1d24;"><div class="price" >
-                <img class="img-fluid arrow" style="height:33px;" src="assets/images/eth-diamond.png" alt="arrow" />
+                <!-- <img class="img-fluid arrow" style="height:33px;" src="assets/images/eth-diamond.png" alt="arrow" /> -->
 
-             
+                <i class="fa fa-money" style="font-size:36px"></i>
               </div><a href="{{route('user.invest')}}" style="color:white;">Deposit</a></button>
         </li>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -109,9 +109,9 @@
             
             <button class="nav-link active" id="pills-rank-tab" data-bs-toggle="pill" data-bs-target="#pills-rank"
               type="button" role="tab" style="height:73px; background:#1d1d24;"><div class="price">
-                  <img class="img-fluid arrow" style="height:33px;" src="assets/images/eth-diamond.png" alt="arrow" />
+                  <!-- <img class="img-fluid arrow" style="height:33px;" src="assets/images/eth-diamond.png" alt="arrow" /> -->
   
-               
+                  <i class="fa fa-bank" style="font-size:36px"></i>
                 </div> <a href="{{route('user.Withdraw')}}" style="color:white;">Withdrawal</a></button>
           </li>
       </ul>
