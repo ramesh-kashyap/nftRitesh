@@ -134,6 +134,11 @@ Route::get('/changelang', [App\Http\Controllers\FrontController::class, 'changeL
 // end profile
 
 
+//nft start
+Route::get('/nft', [App\Http\Controllers\UserPanel\trading::class, 'nftview'])->name('user.nftview');
+//nft end
+
+
 //quality
 Route::get('/quality', [App\Http\Controllers\UserPanel\Invest::class, 'quality'])->name('user.quality');
 Route::get('/quality/records', [App\Http\Controllers\UserPanel\Invest::class, 'records'])->name('user.record');
