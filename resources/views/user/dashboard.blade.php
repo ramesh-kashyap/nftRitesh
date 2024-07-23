@@ -718,8 +718,6 @@
                             </p>
                         </div>
                     </a>
-
-
                 </div>
             </div>
             <div class="mt-24">
