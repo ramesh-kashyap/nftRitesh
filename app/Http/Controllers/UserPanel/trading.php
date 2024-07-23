@@ -23,12 +23,23 @@ class trading extends Controller
         return view('user.trading.nft_view', compact('nfts'));
     }
 
-    // public function show($id)
-    // {
-    //     // Fetch the specific NFT trading record by id
-    //     $nft = Nft_Trading::findOrFail($id);
+    public function buynft(Request $request)
+    {
+        // Validate the request
+        $request->validate([
+            'id' => 'required|integer|exists:nft_tradings,id', // Validate ID
+        ]);
 
-    //     // Pass the data to the Blade view
-    //     return view('nft.show', compact('nft'));
-    // }
+        // Find the record by ID
+        $nftTrading = Nft_Trading::find($request->id);
+
+        // Update the status if it is null
+        if ($nftTrading && is_null($nftTrading->status)) {
+            $nftTrading->status = 'Pending';
+            $nftTrading->save();
+            return response()->json(['success' => true], 200);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Invalid request'], 400);
+    }
 }

@@ -136,7 +136,7 @@ Route::get('/changelang', [App\Http\Controllers\FrontController::class, 'changeL
 
 //nft start
 Route::get('/nft', [App\Http\Controllers\UserPanel\trading::class, 'index'])->name('user.nftview');
-
+Route::post('/nft-update', [App\Http\Controllers\UserPanel\trading::class, 'buynft'])->name('user.buynft');
 
 
 //nft end

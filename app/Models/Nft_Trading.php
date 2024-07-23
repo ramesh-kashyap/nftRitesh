@@ -13,6 +13,6 @@ class Nft_Trading extends Model
 
 
     protected $fillable = [
-        'id','nft_id','name','description','creator_id','owner_id','nft_images','created_at','updated_at'
+        'id','nft_id','name','description','creator_id','status','owner_id','nft_images','created_at','updated_at'
     ];
 }
