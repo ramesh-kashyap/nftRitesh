@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
     <!-- font -->
-    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="stylesheet" href="../fonts/fonts.css">
     <!-- Icons -->
-    <link rel="stylesheet" href="fonts/font-icons.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet"type="text/css" href="css/nouislider.min.css"/>
-    <link rel="stylesheet" href="css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="css/apexcharts.css">
-    <link rel="stylesheet"type="text/css" href="css/styles.css"/>
+    <link rel="stylesheet" href="../fonts/font-icons.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet"type="text/css" href="../css/nouislider.min.css"/>
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../css/apexcharts.css">
+    <link rel="stylesheet"type="text/css" href="../css/styles.css"/>
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
+    <link rel="shortcut icon" href="../images/logo/168.png" />
+    <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
 
     <title>NFTs Details</title>
 </head>
@@ -44,14 +44,17 @@
     <div class="app-content style-2">
         <div class="px-24 card-layout style-2">
             <div class="pb-24 mb-24 line">
+            @foreach ($nfts as $nft)
                 <div class="card-banner-2">
-                    <img class="lazyload" data-src="images/banner/banner-nft-3.jpg" alt="img">
+                    <img class="lazyload" data-src="../images/banner/banner-nft-3.jpg" alt="img">
+                    <img src="{{ $nft->nft_images }}" alt="{{ $nft->name }}" width="200">
                     <div class="box-top d-flex align-items-center justify-content-end">
                         <div class="box-icon w-40 box-heart">
                             <span class="icon icon-heart"></span>
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <div class="mt-20">
                     <h2 class="text-center">Hape Man #367</h2>
                     <div class="d-flex justify-content-center align-items-center gap-4">
@@ -124,7 +127,7 @@
             <ul>
                 <li class="d-flex gap-12 align-items-center">
                     <div class="avatar avt-40">
-                        <img src="images/avt/avt4.png" alt="avt">
+                        <img src="../images/avt/avt4.png" alt="avt">
                     </div>
                     <div class="d-flex gap-8">
                         <span class="body-3 text-dark-2">Created by</span>
@@ -138,7 +141,7 @@
                 </li>
                 <li class="d-flex gap-12 align-items-center mt-16">
                     <div class="avatar avt-40">
-                        <img src="images/avt/avt9.png" alt="avt">
+                        <img src="../images/avt/avt9.png" alt="avt">
                     </div>
                     <div class="d-flex gap-8">
                         <span class="body-3 text-dark-2">Owned by</span>
@@ -182,7 +185,7 @@
                             <div class="card-body">
                                 <div class="d-flex gap-12 align-items-center">
                                     <div class="avatar avt-40">
-                                        <img src="images/avt/avt4.png" alt="avt">
+                                        <img src="../images/avt/avt4.png" alt="avt">
                                     </div>
                                     <span class="button-2 text-blue">
                                         Hape_NFT
@@ -1091,7 +1094,7 @@
             <div class="grid-2 mt-24 gap-15">
                 <a class="card-nft">
                     <div class="box-img">
-                        <img class="lazyload" data-src="images/nfts/nft-9.jpg" alt="img-nft">
+                        <img class="lazyload" data-src="../images/nfts/nft-9.jpg" alt="img-nft">
                         <span class="tag react">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z" stroke="#FB5556" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1118,7 +1121,7 @@
                 </a>
                 <a class="card-nft">
                     <div class="box-img">
-                        <img class="lazyload" data-src="images/nfts/nft-10.jpg" alt="img-nft">
+                        <img class="lazyload" data-src="../images/nfts/nft-10.jpg" alt="img-nft">
                         <span class="tag react">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z" stroke="#FB5556" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1247,17 +1250,17 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/lazysize.min.js"></script>
-    <script type="text/javascript" src="js/countto.js"></script>
-    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/carousel.js"></script>
-    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
-    <script type="text/javascript" src="js/apexcharts.js"></script>
-    <script type="text/javascript" src="js/chart-init.js"></script>
-    <script type="text/javascript" src="js/count-down.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/lazysize.min.js"></script>
+    <script type="text/javascript" src="../js/countto.js"></script>
+    <script type="text/javascript" src="../js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="../js/carousel.js"></script>
+    <script type="text/javascript" src="../js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="../js/apexcharts.js"></script>
+    <script type="text/javascript" src="../js/chart-init.js"></script>
+    <script type="text/javascript" src="../js/count-down.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 
 </body>
 </html>
