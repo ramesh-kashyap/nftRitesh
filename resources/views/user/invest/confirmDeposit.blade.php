@@ -165,7 +165,7 @@
           </div>
 
           <div class="submit-btn w-100 d-flex align-items-center justify-content-center">
-            <a href="profile.html" class="btn theme-btn">Go to Purchase NFT</a>
+            <a href="{{route('user.profile1')}}" class="btn theme-btn">Go to Purchase NFT</a>
             <a href="confirm-offer.html" class="btn gray-btn" data-bs-dismiss="modal">Cancel</a>
           </div>
         </div>
