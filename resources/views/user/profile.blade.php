@@ -2278,14 +2278,14 @@
     <div class="menubar-footer footer-fixed">
         <ul class="inner-bar">
             <li>
-                <a href="index.html">
+                <a href="{{route('user.dashboard')}}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.02 2.84016L3.63 7.04016C2.73 7.74016 2 9.23016 2 10.3602V17.7702C2 20.0902 3.89 21.9902 6.21 21.9902H17.79C20.11 21.9902 22 20.0902 22 17.7802V10.5002C22 9.29016 21.19 7.74016 20.2 7.05016L14.02 2.72016C12.62 1.74016 10.37 1.79016 9.02 2.84016Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12 17.9902V14.9902" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>        
                 </a>
             </li>
-            <li><a href="statistics.html">
+            <li><a href="{{route('user.statistics')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
                     <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -2295,7 +2295,7 @@
                 </a>
             </li>
             <li class="action-add-wallet"><a href="create-new-item-filled.html"><i class="icon-plus"></i></a></li>
-            <li class="active"><a href="profile.html">
+            <li class="active"><a href="{{route('user.profile1')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z" fill="#7F52FF"/>
                     <path d="M17.08 14.1509C14.29 12.2909 9.73996 12.2909 6.92996 14.1509C5.65996 15.0009 4.95996 16.1509 4.95996 17.3809C4.95996 18.6109 5.65996 19.7509 6.91996 20.5909C8.31996 21.5309 10.16 22.0009 12 22.0009C13.84 22.0009 15.68 21.5309 17.08 20.5909C18.34 19.7409 19.04 18.6009 19.04 17.3609C19.03 16.1309 18.34 14.9909 17.08 14.1509Z" fill="#7F52FF"/>
@@ -2303,7 +2303,7 @@
                 <span class="text">Profile</span>                    
                 </a>
             </li>
-            <li><a href="more.html">
+            <li><a href="{{route('user.more')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
                     <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

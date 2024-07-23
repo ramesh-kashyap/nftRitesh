@@ -613,7 +613,7 @@
         </a>
       </li>
       <li class="active">
-        <a href="statistics.html">
+        <a href="{{route('user.statistics')}}">
           <div class="icon">
             <i class="ri-line-chart-line unactive"></i>
             <i class="ri-line-chart-fill active"></i>
@@ -636,7 +636,7 @@
         </a>
       </li>
       <li>
-        <a href="profile.html">
+        <a href="{{route('user.profile1')}}">
           <div class="icon">
             <i class="ri-user-3-line unactive"></i>
             <i class="ri-user-3-fill active"></i>
