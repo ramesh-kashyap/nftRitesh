@@ -107,6 +107,7 @@
       <h5 class="signup">Haven't registered?<a href="{{ route('register') }}"> Sign up now</a></h5>
     </form>
   </div>
+  @include('partials.notify')
   <!-- Sign section end-->
 
   <!-- bootstrap js -->

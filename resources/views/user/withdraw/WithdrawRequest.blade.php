@@ -425,6 +425,8 @@
 
     <!-- bootstrap js -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    @include('partials.notify')
+
 
     <!-- pikaday js -->
     <script src="assets/js/pikaday.js"></script>
