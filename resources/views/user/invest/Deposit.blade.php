@@ -105,7 +105,7 @@
             <div class="tf-container">
                 <div class="input-container mt-24">
                     <h4 class="text-dark-3">@lang('Enter Amount')</h4>
-                    <span class="body-3 text-dark-2 fw-5" style="float: right;">Balance: 652.497 USDT</span>
+                    <!-- <span class="body-3 text-dark-2 fw-5" style="float: right;">Balance: 652.497 USDT</span> -->
                     <input class="mt-16 form-control" type="number" name="Sum" value="10">
                 </div>
                 <div class="input-container mt-24">
