@@ -99,10 +99,10 @@ class Dashboard extends Controller
 
     }
 
-    public function search()
+    public function more()
     {
 
-      $this->data['page'] = 'user.search';
+      $this->data['page'] = 'user.more';
       return $this->dashboard_layout();
 
     }

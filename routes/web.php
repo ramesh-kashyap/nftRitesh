@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function ()
 Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('user.dashboard');
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
-Route::get('/search', [App\Http\Controllers\UserPanel\Dashboard::class, 'search'])->name('user.search');
+Route::get('/more', [App\Http\Controllers\UserPanel\Dashboard::class, 'more'])->name('user.more');
 Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
 
 
