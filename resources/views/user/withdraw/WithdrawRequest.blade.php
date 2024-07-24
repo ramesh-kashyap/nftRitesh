@@ -81,7 +81,37 @@
         .btn-fixed .tf-btn.primary {
             width: calc(100% - 30px); /* Full width minus the gap */
         }
+
+
+
+        
     }
+
+
+
+</style>
+<style>
+.input-container {
+    position: relative;
+}
+
+.code-btn {
+    position: absolute;
+    top: 67%;
+    right: 10px;
+    color: black;
+    cursor: pointer;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+@media (max-width: 767px) {
+    .code-btn {
+        top: 67%;
+        right: 10px;
+        margin-right: 0;
+    }
+}
 </style>
 
 <body>
@@ -135,20 +165,37 @@
                 </div>
 </br>
 
+
+
+<?php 
+                              date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30"z)
+                              
+                             if(empty(Auth::user()->detail_changed_date))
+                             {
+                                $date1 = Auth::user()->adate;
+                                $date1 = strtotime($date1);
+                                $date1 = strtotime(" + 3 day", $date1);
+                                $new_date1= date('Y-m-d H:i:s', $date1);    
+                             }
+                             else
+                             {
+                                 $date1 = Auth::user()->detail_changed_date;
+                                $date1 = strtotime($date1);
+                                $date1 = strtotime(" + 2 day", $date1);
+                                $new_date1= date('Y-m-d H:i:s', $date1);        
+                             }
+                           
+
+                            
+                            ?>
 <div class="input-container mt-24">
-<input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
-                    <h6 class="text-dark-3">{{ Auth::user()->email }}</h6>
-                    
-</br>
-                    <!-- <span class="body-3 text-dark-2 fw-5" style="float: right;">Balance: 652.497 USDT</span> -->
-                    <input type="text" class="form-control"  name="code" value="" placeholder="Enter verification code">
-                    <p class="text-dark-3" style="position: absolute;
-    top: 50;
-    right: 10px;
-    color: black;
-    cursor: pointer;
-    ">Get Code</p>
-                </div>
+    <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
+    <h6 class="text-dark-3">{{ Auth::user()->email }}</h6>
+    </br>
+    <input type="text" class="form-control" name="code" value="" placeholder="Enter verification code">
+    @if(date("Y-m-d H:i:s") > $new_date1) 
+    <p class="text-dark-3 code-btn" onclick="()">Get Code</p> @endif 
+</div>
 </br>
 <div class="input-container mt-24">
 <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
