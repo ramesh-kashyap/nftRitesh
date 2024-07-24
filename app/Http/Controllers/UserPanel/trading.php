@@ -27,7 +27,7 @@ class trading extends Controller
     {
         // Validate the request
         $request->validate([
-            'id' => 'required|integer|exists:nft_tradings,id', // Validate ID
+            'id' => 'required|integer', // Validate ID
         ]);
 
         // Find the record by ID
