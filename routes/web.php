@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function ()
 Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('user.dashboard');
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
-Route::get('/more', [App\Http\Controllers\UserPanel\Dashboard::class, 'more'])->name('user.more');
+
 Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
 
 
@@ -154,6 +154,7 @@ Route::get('/register/{sponsorCode}', [App\Http\Controllers\Register::class, 'sh
 
 Route::get('/record', [App\Http\Controllers\UserPanel\Invest::class, 'showrecord'])->name('user.records');
 Route::get('/invest', [App\Http\Controllers\UserPanel\Invest::class, 'index'])->name('user.invest');
+Route::get('/more', [App\Http\Controllers\UserPanel\Invest::class, 'more'])->name('user.more');
 Route::get('/viewdetail/{txnId}', [App\Http\Controllers\UserPanel\Invest::class, 'viewdetail'])->name('user.viewdetail');
 Route::get('/deposit', [App\Http\Controllers\UserPanel\Invest::class, 'deposit'])->name('user.deposit');
 Route::get('/cancel-payment/{id}', [App\Http\Controllers\UserPanel\Invest::class, 'cancel_payment'])->name('user.cancel-payment');

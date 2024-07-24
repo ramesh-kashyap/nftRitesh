@@ -99,13 +99,7 @@ class Dashboard extends Controller
 
     }
 
-    public function more()
-    {
-
-      $this->data['page'] = 'user.more';
-      return $this->dashboard_layout();
-
-    }
+    
 
     public function profile()
     {
