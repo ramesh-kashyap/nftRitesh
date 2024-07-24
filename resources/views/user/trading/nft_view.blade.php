@@ -34,7 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 
-    <title>NFTs Details</title>
+    <title>NFTs Detail</title>
 </head>
 
 <body class="counter-scroll">
