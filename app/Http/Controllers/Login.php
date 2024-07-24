@@ -110,7 +110,6 @@ class Login extends Controller
 
         if ($credentials)
         {
-
           
            $code = $request->code;
 
