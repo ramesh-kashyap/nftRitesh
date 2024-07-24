@@ -11,7 +11,7 @@ class Trade extends Model
 
 
     protected $fillable = [
-        'package', 'currency', 'lotSize','entryPrice','endPrice','entrytime','endtime','percentage','profitType','tradetype',
+        'package', 'name', 'buyer_id','seller_id','endPrice','entrytime','endtime','percentage','profitType','nft_id',
     ];
 
 }

@@ -35,9 +35,15 @@
 
 
     <title>NFTs Detail</title>
+    <style>
+        .card-nft {
+            display: grid !important;
+        }
+
+    </style>
 </head>
 
-<body class="counter-scroll">
+< class="counter-scroll">
 
     <div class="header fixed-top">
         <div class="left">
@@ -65,80 +71,96 @@
         </div>
     </div>
     <div class="app-content style-2">
-        <div class="px-24 card-layout style-2">
-        <div class="swiper-container">
-    <div class="swiper-wrapper">
-        @foreach($nfts as $nft)
-            <div class="swiper-slide">
-                <div class="card-banner-2">
-                    <img src="{{ $nft->nft_images }}" alt="{{ $nft->name }}" width="200" style="height:150px;">
-                    <div class="box-top d-flex align-items-center justify-content-end">
-                        <div class="box-icon w-40 box-heart">
-                            <span class="icon icon-heart"></span>
+      <div class="tf-container">
+      <div class="card-body mt-20 row">
+          <div class="dropdown text-center col-6">
+              <select class="tf-btn primary form-select" style="overflow:hidden">
+                  <option value="Lev 1">Lev 1 - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 86.98%</option>
+                  <option value="Lev 2">Lev 2 - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 86.98%</option>
+                  <option value="Lev 3">Lev 3 - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 86.98%</option>                
+              </select>
+          </div>
+
+          <div class="dropdown text-center col-6" >
+                        <button type="button" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu full">
+                            <a class="dropdown-item" href="javascript:void(0);"><p>Lev 1</p><p style="padding-left:50%; color:green">86.98%</p></a>
+                           
                         </div>
                     </div>
-                </div>
-                <div class="mt-20">
-                    <h2 class="text-center">{{ $nft->name }}</h2>
-                    <div class="d-flex justify-content-center align-items-center gap-4">
-                        <span class="button-2 text-blue">{{ $nft->description }}</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.3733 7.16036L13.4667 6.10703C13.2933 5.90703 13.1533 5.5337 13.1533 5.26703V4.1337C13.1533 3.42703 12.5733 2.84703 11.8667 2.84703H10.7333C10.4733 2.84703 10.0933 2.70703 9.89334 2.5337L8.84 1.62703C8.38 1.2337 7.62667 1.2337 7.16 1.62703L6.11334 2.54036C5.91334 2.70703 5.53334 2.84703 5.27334 2.84703H4.12C3.41334 2.84703 2.83334 3.42703 2.83334 4.1337V5.2737C2.83334 5.5337 2.69334 5.90703 2.52667 6.10703L1.62667 7.16703C1.24 7.62703 1.24 8.3737 1.62667 8.8337L2.52667 9.8937C2.69334 10.0937 2.83334 10.467 2.83334 10.727V11.867C2.83334 12.5737 3.41334 13.1537 4.12 13.1537H5.27334C5.53334 13.1537 5.91334 13.2937 6.11334 13.467L7.16667 14.3737C7.62667 14.767 8.38 14.767 8.84667 14.3737L9.9 13.467C10.1 13.2937 10.4733 13.1537 10.74 13.1537H11.8733C12.58 13.1537 13.16 12.5737 13.16 11.867V10.7337C13.16 10.4737 13.3 10.0937 13.4733 9.8937L14.38 8.84036C14.7667 8.38036 14.7667 7.62036 14.3733 7.16036ZM10.7733 6.74036L7.55334 9.96036C7.46 10.0537 7.33334 10.107 7.2 10.107C7.06667 10.107 6.94 10.0537 6.84667 9.96036L5.23334 8.34703C5.04 8.1537 5.04 7.8337 5.23334 7.64036C5.42667 7.44703 5.74667 7.44703 5.94 7.64036L7.2 8.90036L10.0667 6.0337C10.26 5.84036 10.58 5.84036 10.7733 6.0337C10.9667 6.22703 10.9667 6.54703 10.7733 6.74036Z" fill="#2664ED"/>
-                        </svg>
-                    </div>
+      </div>
+        <div class="px-24 card-layout style-2 mt-20">
+            <div class="swiper-container" style="overflow:hidden">
+                <div class="swiper-wrapper">
+                    @foreach($nfts as $nft)
+                        <div class="swiper-slide">
+                            <div class="card-banner-2">
+                                <img src="{{ $nft->nft_images }}" alt="{{ $nft->name }}" width="200"
+                                    style="height:150px;">
+                                <div class="box-top d-flex align-items-center justify-content-end">
+                                    <div class="box-icon w-40 box-heart">
+                                        <span class="icon icon-heart"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-20">
+                                <h2 class="text-center">{{ $nft->name }}</h2>
+                                <div class="d-flex justify-content-center align-items-center gap-4">
+                                    <span class="button-2 text-blue">{{ $nft->description }}</span>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M14.3733 7.16036L13.4667 6.10703C13.2933 5.90703 13.1533 5.5337 13.1533 5.26703V4.1337C13.1533 3.42703 12.5733 2.84703 11.8667 2.84703H10.7333C10.4733 2.84703 10.0933 2.70703 9.89334 2.5337L8.84 1.62703C8.38 1.2337 7.62667 1.2337 7.16 1.62703L6.11334 2.54036C5.91334 2.70703 5.53334 2.84703 5.27334 2.84703H4.12C3.41334 2.84703 2.83334 3.42703 2.83334 4.1337V5.2737C2.83334 5.5337 2.69334 5.90703 2.52667 6.10703L1.62667 7.16703C1.24 7.62703 1.24 8.3737 1.62667 8.8337L2.52667 9.8937C2.69334 10.0937 2.83334 10.467 2.83334 10.727V11.867C2.83334 12.5737 3.41334 13.1537 4.12 13.1537H5.27334C5.53334 13.1537 5.91334 13.2937 6.11334 13.467L7.16667 14.3737C7.62667 14.767 8.38 14.767 8.84667 14.3737L9.9 13.467C10.1 13.2937 10.4733 13.1537 10.74 13.1537H11.8733C12.58 13.1537 13.16 12.5737 13.16 11.867V10.7337C13.16 10.4737 13.3 10.0937 13.4733 9.8937L14.38 8.84036C14.7667 8.38036 14.7667 7.62036 14.3733 7.16036ZM10.7733 6.74036L7.55334 9.96036C7.46 10.0537 7.33334 10.107 7.2 10.107C7.06667 10.107 6.94 10.0537 6.84667 9.96036L5.23334 8.34703C5.04 8.1537 5.04 7.8337 5.23334 7.64036C5.42667 7.44703 5.74667 7.44703 5.94 7.64036L7.2 8.90036L10.0667 6.0337C10.26 5.84036 10.58 5.84036 10.7733 6.0337C10.9667 6.22703 10.9667 6.54703 10.7733 6.74036Z"
+                                            fill="#2664ED" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
-    </div>
-</div>
 
-            <!-- Section to be hidden/shown -->
-            <!-- <div class="app-content pb-0" id="imageModal" style="display: none;">
-                <div class="tf-container">
-                    <a href="nft-item-details.html" class="card-banner-2">
-                        <img class="lazyload" id="popupImage" src="" alt="NFT Image">
-                        <div class="box-top d-flex align-items-center justify-content-between">
-                            <div class="tag button-2 text-white">Artwork</div>
-                            <div class="box-icon w-40 box-heart press-toggle">
-                                <span class="icon icon-heart"></span>
-                            </div>
-                        </div>                        
-                    </a>
-                </div>
-                <span onclick="closeModal()" class="tf-btn primary btn-icon" style="cursor: pointer;">Confirm</span>
-            </div> -->
+            
             <!----->
             <div class="modal fade modalCenter" id="success" id="imageModal" style="display: none;">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="mb-40 text-center">
-                        <img src="" id="popupImage" alt="NFT Image" style="height:150px;width:auto; border-radius:20px">
+                            <img src="" id="popupImage" alt="NFT Image"
+                                style="height:150px;width:auto; border-radius:20px">
                         </div>
                         <div class="mb-32 text-center">
                             <h4 class="text-dark-3">0.038ETH</h4>
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                         </div>
                         <div class="">
-                            <span id="buyButton" class="tf-btn primary" data-bs-dismiss="modal" style="cursor: pointer;">Place a bid</span>
+                            <form>
+                                <input type="hidden" id="popupImage">
+
+                            </form>
+                            <span id="buyButton" class="tf-btn primary" data-bs-dismiss="modal"
+                                style="cursor: pointer;">Place a bid</span>
                             <!-- <a href="#" class="tf-btn disabled-primary mt-16" data-bs-dismiss="modal">SELL</a> -->
                         </div>
                     </div>
                 </div>
             </div>
 
-             <div class="" style="padding-bottom :30px;">
-                 <div class="grid-2 gap-15">
-                     <a href="make-offer.html" class="tf-btn disabled-primary btn-icon"><span
-                             class="icon icon-ticket-star"></span> Sell Now</a>
-                     <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
-                             class="icon icon-wallet-money"></span> Buy Now</a>
-                 </div>
-             </div>
-    
+            <div class="" style="padding-bottom :30px;">
+                <div class="grid-2 gap-15">
+                    <a href="make-offer.html" class="tf-btn disabled-primary btn-icon"><span
+                            class="icon icon-ticket-star"></span> Sell Now</a>
+                    <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
+                            class="icon icon-wallet-money"></span> Buy Now</a>
+                </div>
+            </div>
 
-            
 
-            
+
+
+
             <div class="pb-24 mb-24 line" id="purchaseInfoSection" style="display: none;">
                 <p class="body-3 text-dark-2">You Can Buy Next NFT After</p>
                 <div class="mt-16 box-countdown-2">
@@ -150,6 +172,7 @@
                     let purchaseInfoSection = document.getElementById('purchaseInfoSection');
                     purchaseInfoSection.style.display = 'block'; // Show the section
                 });
+
             </script>
             <div class="pb-24 mb-24 line">
                 <div class="d-flex gap-14 tf-counter">
@@ -1469,8 +1492,9 @@
             </div>
         </div>
     </div>
+    </div>
 
-   
+
 
     <div class="offcanvas offcanvas-bottom" id="share">
         <div class="offcanvas-body">
@@ -1601,13 +1625,31 @@
     <script type="text/javascript" src="../js/chart-init.js"></script>
     <script type="text/javascript" src="../js/count-down.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
+     <!-- Include jQuery library if not already included -->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var swiper = new Swiper('.swiper-container', {
+                loop: true,
+                autoplay: {
+                    delay: 2500, // 1.5 seconds delay
+                    disableOnInteraction: false,
+                },
+                slidesPerView: 1,
+                spaceBetween: 10,
+            });
+        });
+
+    </script>
     <script>
         let nfts = @json($nfts);
         let currentIndex = 0;
 
         function showImage(index) {
             let selectedNft = nfts[index];
-            document.getElementById('popupImage').src = selectedNft.nft_images;
+            document.getElementById('popupImage').src = selectedNft.nft_images;            
             document.getElementById('imageModal').style.display = 'block';
         }
 
@@ -1622,6 +1664,7 @@
         document.getElementById('buyNowBtn').addEventListener('click', function () {
             let randomIndex = getRandomIndex();
             showImage(randomIndex);
+            
         });
 
         // Optional: Add functionality to automatically close the modal after 5 seconds
@@ -1631,46 +1674,10 @@
 
         document.getElementById('imageModal').addEventListener('click', autoCloseModal);
 
-    </script>
-    <!-- Include jQuery library if not already included -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    var swiper = new Swiper('.swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 2500, // 1.5 seconds delay
-            disableOnInteraction: false,
-        },
-        slidesPerView: 1,
-        spaceBetween: 10,
-    });
-});
 
-    </script>
+   
 
-    <script>
-        document.getElementById('buyButton').addEventListener('click', function () {
-        if (selectedNftId) {
-        $.ajax({
-        url: '{{ route("user.buynft") }}',
-        type: 'POST',
-        data: {
-        id: selectedNftId, // Use the selected NFT ID for the update
-        _token: '{{ csrf_token() }}' // CSRF token for Laravel
-        },
-        success: function(response) {
-        console.log("Status updated successfully.");
-        closeModal();
-        },
-        error: function(xhr, status, error) {
-        console.error("Error updating status:", error);
-        }
-        });
-        }
-        });
-        </script>
+</script>    
 
 
 </body>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers\UserPanel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Nft_Trading;
-
+use App\Models\Trade;
+use Illuminate\Support\Facades\Auth;
 class trading extends Controller
 {
     //
@@ -23,23 +24,23 @@ class trading extends Controller
         return view('user.trading.nft_view', compact('nfts'));
     }
 
-    public function buynft(Request $request)
+   public function trade(Request $request)
     {
-        // Validate the request
         $request->validate([
-            'id' => 'required|integer', // Validate ID
+            'nft_id' => 'required|exists:nfts,id',
         ]);
 
-        // Find the record by ID
-        $nftTrading = Nft_Trading::find($request->id);
+        $nft = Nft_trading::find($request->nft_id);
+        dd($nft);
 
-        // Update the status if it is null
-        if ($nftTrading && is_null($nftTrading->status)) {
-            $nftTrading->status = 'Pending';
-            $nftTrading->save();
-            return response()->json(['success' => true], 200);
-        }
+        // Assuming each NFT has a unique name
+        $trade = Trade::create([
+            'nft_id' => $nft->id,
+            'name' => $nft->name,
+            'status' => 'Pending',
+            'buyer_id' => Auth::id(),
+        ]);
 
-        return response()->json(['success' => false, 'message' => 'Invalid request'], 400);
+        return response()->json(['message' => 'Trade created successfully'], 200);
     }
 }
