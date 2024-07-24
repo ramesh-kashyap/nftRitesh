@@ -1557,7 +1557,7 @@
                           <li><a href="{{route('user.more')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                                   <span>More</span>
                               </a></li>
-                          <li><a href="setting.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                          <li><a href="{{route('user.setting')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                                   <span>Settings</span>
                               </a></li>
                         

@@ -102,6 +102,12 @@ class Profile extends Controller
     {
     $this->data['page'] = 'user.profile.ChangePass';
     return $this->dashboard_layout();
+    }
+
+    public function setting()
+    {
+    $this->data['page'] = 'user.profile.setting';
+    return $this->dashboard_layout();
 
     }
 
@@ -436,7 +442,6 @@ public function BankDetail()
     // send code for validation 
     public function sendCode(Request $request)
     {
-
         $user=Auth::user();
         $code = verificationCode(6);
       

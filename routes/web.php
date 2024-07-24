@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function ()
 Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('user.dashboard');
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
-Route::get('/more', [App\Http\Controllers\UserPanel\Dashboard::class, 'more'])->name('user.more');
+
 Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
 
 
@@ -115,6 +115,7 @@ Route::post('/wallet_change', [App\Http\Controllers\UserPanel\Profile::class, 'w
 Route::post('/sendCode', [App\Http\Controllers\UserPanel\Profile::class, 'sendCode'])->name('user.send_code');
 Route::get('/change-trx-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_trx_password'])->name('user.change-trx-password');
 Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'change_password'])->name('user.ChangePass');
+Route::get('/setting', [App\Http\Controllers\UserPanel\Profile::class, 'setting'])->name('user.setting');
 Route::get('/security-password', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeSecurityPass'])->name('user.security-password');
 Route::get('/share', [App\Http\Controllers\UserPanel\Profile::class, 'share'])->name('user.share');
 Route::get('/ChangeMail', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeMail'])->name('user.ChangeMail');
@@ -162,6 +163,7 @@ Route::get('/register/{sponsorCode}', [App\Http\Controllers\Register::class, 'sh
 
 Route::get('/record', [App\Http\Controllers\UserPanel\Invest::class, 'showrecord'])->name('user.records');
 Route::get('/invest', [App\Http\Controllers\UserPanel\Invest::class, 'index'])->name('user.invest');
+Route::get('/more', [App\Http\Controllers\UserPanel\Invest::class, 'more'])->name('user.more');
 Route::get('/viewdetail/{txnId}', [App\Http\Controllers\UserPanel\Invest::class, 'viewdetail'])->name('user.viewdetail');
 Route::get('/deposit', [App\Http\Controllers\UserPanel\Invest::class, 'deposit'])->name('user.deposit');
 Route::get('/cancel-payment/{id}', [App\Http\Controllers\UserPanel\Invest::class, 'cancel_payment'])->name('user.cancel-payment');

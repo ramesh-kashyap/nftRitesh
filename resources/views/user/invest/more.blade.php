@@ -20,7 +20,12 @@
 
     <title>more</title>
 </head>
+<style>
 
+
+
+    
+</style>
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -144,7 +149,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="setting.html">
+                    <a href="{{route('user.setting')}}">
                         <div class="box-icon w-48 blue round">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.1 9.21945C18.29 9.21945 17.55 7.93945 18.45 6.36945C18.97 5.45945 18.66 4.29945 17.75 3.77945L16.02 2.78945C15.23 2.31945 14.21 2.59945 13.74 3.38945L13.63 3.57945C12.73 5.14945 11.25 5.14945 10.34 3.57945L10.23 3.38945C9.78 2.59945 8.76 2.31945 7.97 2.78945L6.24 3.77945C5.33 4.29945 5.02 5.46945 5.54 6.37945C6.45 7.93945 5.71 9.21945 3.9 9.21945C2.86 9.21945 2 10.0694 2 11.1194V12.8794C2 13.9194 2.85 14.7794 3.9 14.7794C5.71 14.7794 6.45 16.0594 5.54 17.6294C5.02 18.5394 5.33 19.6994 6.24 20.2194L7.97 21.2094C8.76 21.6794 9.78 21.3995 10.25 20.6094L10.36 20.4194C11.26 18.8494 12.74 18.8494 13.65 20.4194L13.76 20.6094C14.23 21.3995 15.25 21.6794 16.04 21.2094L17.77 20.2194C18.68 19.6994 18.99 18.5294 18.47 17.6294C17.56 16.0594 18.3 14.7794 20.11 14.7794C21.15 14.7794 22.01 13.9294 22.01 12.8794V11.1194C22 10.0794 21.15 9.21945 20.1 9.21945ZM12 15.2494C10.21 15.2494 8.75 13.7894 8.75 11.9994C8.75 10.2094 10.21 8.74945 12 8.74945C13.79 8.74945 15.25 10.2094 15.25 11.9994C15.25 13.7894 13.79 15.2494 12 15.2494Z" fill="url(#paint0_linear_2932_1673)"/>
@@ -299,7 +304,7 @@
                         <div class="box-icon w-48 round"><span class="icon icon-bag-2"></span></div>
                         <span class="fw-6 text-dark">Deposit</span>
                     </a></li>
-                    <li><a href="#" class="item">
+                    <li><a href="{{route('user.share')}}" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-send-2"></span></div>
                         <span class="fw-6 text-dark">Invite</span>
                     </a></li>
@@ -313,10 +318,10 @@
                         <ul class="nav nav-tabs tab-1" role="tablist" >
                             <li class="item-slide-effect"></li>
                             <li class="nav-item active" role="presentation">   
-                                <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#tokens">Tokens</button>
+                                <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#tokens" style="width:1000px;">Deposit History</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#NFTs">NFTs</button>
+                               
                             </li> 
                         </ul>
                     </div>
@@ -324,113 +329,57 @@
                         <div class="tab-pane fade active show" id="tokens" role="tabpanel">
                             <ul class="list-view check-list">
                                 <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-10.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">324.67539 ETH</div>
-                                            <p class="body-4 mt-4">$410,750.45</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
+                                    
                                             
                                     </a>
                                 </li>
+                                <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
+
+<?php
+ date_default_timezone_set('UTC');
+  $cnt = 0; ?>
+  @foreach($deposit_list as $value)
                                 <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
+                                <a  href="{{route('user.cancel-payment',['id'=>$value->orderId])}}" >                                          
+                                        
+                                        <!-- <div class="image">
                                             <img src="images/wallet/wallet-12.png" alt="wallet">
-                                        </div>
+                                        </div> -->
+
+
+                                    
                                         <div class="content">
-                                            <div class="body-1">36.348508 USDC</div>
-                                            <p class="body-4 mt-4">$36.4212</p>
+                                            <div class="body-1" style="font-size: 13px;">{{ $value->amount }} {{generalDetail()->cur_text}}</div>
+                                            <div class="body-1" style="font-size: 13px;">（TID: {{ $value->transaction_id }}） </div>
+                                            <div class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</div>
+                                          
                                         </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
+                                        </br>
+                                       
+                                        @if($value->status=="Pending")     
+                                        <span style="background:#df3131;">                                     
+                                            Cancel
+                                </span>
+                                            @else
+                                                            <span>Completed</span>                                       
+                                                        @endif
+
+                                                        @endforeach   
+                                                                            
+                                                                            <?php }?>   
                                     </a>
+
+                       
                                 </li>
                                 <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-11.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">58.487037 USDT</div>
-                                            <p class="body-4 mt-4">$36.4212</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
-                                    </a>
+                                   
                                 </li>   
                             </ul>
-                        </div>
-                        <div class="tab-pane fade" id="NFTs" role="tabpanel">
-                            <ul class="list-view check-list">
-                                <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-10.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">324.67539 ETH</div>
-                                            <p class="body-4 mt-4">$410,750.45</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-12.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">36.348508 USDC</div>
-                                            <p class="body-4 mt-4">$36.4212</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-11.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">58.487037 USDT</div>
-                                            <p class="body-4 mt-4">$36.4212</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
-                                    </a>
-                                </li>   
-                            </ul>
-                        </div>
+
+ 
+                        
+
+
                         
                     </div>
                 </div>
