@@ -1,145 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="nfty" />
-  <meta name="keywords" content="nfty" />
-  <meta name="author" content="nfty" />
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" href="{{asset('')}}assets/images/logo/logo.png" type="image/x-icon" />
-  <title>nfty App</title>
-  <link rel="icon" href="{{asset('')}}assets/images/logo/logo.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="{{asset('')}}assets/images/logo/logo.png" />
-  <meta name="theme-color" content="#205dee" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="nfty" />
-  <meta name="msapplication-TileImage" content="{{asset('')}}assets/images/logo/logo.png" />
-  <meta name="msapplication-TileColor" content="#FFFFFF" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+    <!-- font -->
+    <base href="{{ asset('') }}">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="fonts/font-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.min.css" />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/apexcharts.css">
+    <link rel="stylesheet" href="css/jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-  <!--Google font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="images/logo/168.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+    <title>Create an Account</title>
+    <style>
+        .btn-section .google-btn {
+            padding: 12px 0;
+            background-color: rgb(30 30 30);
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            gap: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            width: 100%;
+        }
 
-  <!-- bootstrap css -->
-  <link rel="stylesheet" id="rtl-link" type="text/css" href="{{asset('')}}assets/css/vendors/bootstrap.css" />
+    </style>
 
-  <!-- remixicon css -->
-  <link rel="stylesheet" type="text/css" href="{{asset('')}}assets/css/vendors/remixicon.css" />
-
-  <!-- Theme css -->
-  <link rel="stylesheet" id="change-link" type="text/css" href="{{asset('')}}assets/css/style.css" />
 </head>
 
 <body>
 
-  <!-- loader start-->
-  <div class="loader-wrapper" id="loader">
-    <div class="loader">
-      <span>N</span>
-      <span>F</span>
-      <span>T</span>
-      <span>Y</span>
+    <div class="header fixed-top">
+
+        <h3>Create an Account</h3>
+
     </div>
-  </div>
-  <!-- loader end -->
+    <div class="app-content style-2">
+        <div class="tf-container">
+            <div class="mb-24 pb-24 line-3">
+                <div class="card pb-20">
+                    <form method="POST" action="{{ route('registers') }}" class="auth-form">
+                        {{ csrf_field() }}
+                        @php
+                        $sponsor = @$_GET['ref'];
+                        $name = \App\Models\User::where('username', $sponsor)->first();
+                        @endphp
+                        <div class="card-body">
+                            <div class="delete-item mt-20 ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="
+    font-size: 16px;
+    font-weight: 500;">Phone Number</span>
 
-  <!-- header start-->
-  <header>
-    <div class="custom-container">
-      <div class="auth-title">
-        <h1>Create an Account</h1>
-      </div>
+                                </div>
+                                <input class="mt-12 form-control" name="phone" type="number"   placeholder="Enter Your Number"  id="phone">
+                                <i class="ri-user-line user"></i>
+                            </div>
+                            <div class="delete-item mt-20">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="
+                                font-size: 16px;
+                                font-weight: 500;">Invitation Code</span>
+
+                                </div>
+                                <input class="mt-12 form-control" name="sponsor" type="text" value="{{$sponsor}}" placeholder="Enter your Sponsor">
+                            </div>
+                            <div class="delete-item mt-20 ">
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <span class="body-4" style="
+  font-size: 16px;
+  font-weight: 500;">Password</span>
+
+                              </div>
+                              <input class="mt-12 form-control" id="test-input" name="password"
+                              type="password" placeholder="Enter your password">
+                              <i class="ri-user-line user"></i>
+                          </div>
+                          <div class="delete-item mt-20 ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="body-4" style="
+font-size: 16px;
+font-weight: 500;">Confirm Password</span>
+
+                            </div>
+                            <input class="mt-12 form-control" name="password_confirmation"
+                            type="password" placeholder="Confirm your password">
+                            <i class="ri-user-line user"></i>
+                        </div>
+
+                            <div class="submit-btn pt-1 pb-1">
+                                <button type="submit" class="tf-btn theme-btn mt-10">Continue</button>
+                            </div>
+                            <div class="division text-center mt-10 mb-10">
+                                <span class="text-info text-md-start text-center">OR</span>
+                            </div>
+
+                            <div class="btn-section">
+                                <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
+                                        src="{{asset('')}}images/logo/apple.png" alt="google"
+                                        style="width: 22px" /><span class="text-primar"> Continue with Apple </span></a>
+
+                                <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google"
+                                        src="{{asset('')}}images/logo/google.png" alt="google" style="width: 22px" />
+                                    <span class="text-primar">Continue with Google </span></a>
+                            </div>
+
+                            <h5 class="signup mt-10"><span class="text-mut">Already have an account ?</span><a
+                                    href="{{ route('login') }}" class="text-primary">Sign in now</a></h5>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <!-- header start-->
+    </div>
 
-  <!-- Sign Form start-->
-  <div class="custom-container">
-    <form action="{{ route('registers') }}" method="POST" name="login_frm"  id="form-id" class="auth-form">
-      {{ csrf_field() }}
-      <div class="form-group mb-3">
-        @php
-        $sponsor = @$_GET['ref'];
-        $name = \App\Models\User::where('username', $sponsor)->first();
-        @endphp
-        <label for="inputusername" class="form-label">Phone Number</label>
-        <div class="form-input">
-          <input id="phone"  class="form-control" name="phone" type="number"   placeholder="Enter Your Number">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lazysize.min.js"></script>
+    <script type="text/javascript" src="js/countto.js"></script>
+    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="js/jqueryui.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
-          <input type="hidden"  id="country-name" name ="country" value="" >
-          <input type="hidden"  id="dial-code" name ="dialCode" value="" >
-          <input type="hidden"  id="country_iso" name ="country_iso" value="" >
-          <i class="ri-user-line user"></i>
-        </div>
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="inputusername" class="form-label">Invitation Code</label>
-        <div class="form-input">
-          <input class="form-control" name="sponsor" type="text" value="{{$sponsor}}" placeholder="Enter your Sponsor">
-
-          <i class="ri-user-line user"></i>
-        </div>
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="inputPassword" class="form-label">Password</label>
-        <div class="form-input">
-
-          <input class="form-control"  id="test-input" name="password"
-                                                type="password" placeholder="Enter your password">
-          <i class="ri-door-lock-line"></i>
-        </div>
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="inputPassword" class="form-label">Confirm Password</label>
-        <div class="form-input">
-
-                                                <input class="form-control" name="password_confirmation"
-                                                type="password" placeholder="Confirm your password">
-          <i class="ri-door-lock-line"></i>
-        </div>
-      </div>
-
-      <div class="submit-btn">
-        <button type="submit"  class="btn theme-btn">Continue</button>
-      </div>
-
-      <div class="division">
-        <span>OR</span>
-      </div>
-       
-      <div class="btn-section">
-        <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
-            src="{{asset('')}}assets/images/icons/apple.png" alt="google" /> Continue with Apple</a>
-
-        <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google"
-            src="{{asset('')}}assets/images/icons/google.png" alt="google" /> Continue with Google</a>
-      </div>
-
-      <h5 class="signup">Already have an account ?<a href="{{ route('login') }}"> Sign in now</a></h5>
-    </form>
-    <!-- Sign Form end -->
-  </div>
-  @include('partials.notify')
-  <!-- bootstrap js -->
-  <script src="{{asset('')}}assets/js/bootstrap.bundle.min.js"></script>
-
-  <!-- script js -->
-  <script src="{{asset('')}}assets/js/script.js"></script>
 </body>
 
 </html>

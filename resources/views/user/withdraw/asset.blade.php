@@ -230,7 +230,7 @@
                 </svg>                                       
                 </a>
             </li>
-            <li class="action-add-wallet"><a href="create-new-item-filled.html"><i class="icon-plus"></i></a></li>
+            <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
             <li><a href="profile.html">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
@@ -716,7 +716,7 @@
               </svg>
           </a>
       </li>
-      <li class="action-add-wallet"><a href="create-new-item-filled.html"><i class="icon-plus"></i></a></li>
+      <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
       <li><a href="profile.html">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.6">
@@ -1418,7 +1418,7 @@
                       <li><a href="create-new-item-blank.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
                               <span>Create new Item Blank</span>
                           </a></li>
-                      <li><a href="create-new-item-filled.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <li><a href="{{route('user.createNft')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                               <span>Create New Item Filled</span>
                           </a></li>
                       <li><a href="nft-details-unlisting.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
