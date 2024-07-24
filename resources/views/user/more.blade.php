@@ -291,21 +291,21 @@
                     </div>
                 </div>
                 <ul class="py-20 px-16 box-service line">
-                    <li><a href="#" class="item">
+                    <li><a href="{{route('user.Withdraw')}}" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-import"></span></div>
-                        <span class="fw-6 text-dark">Receive</span>
+                        <span class="fw-6 text-dark">Withdrawal</span>
                     </a></li>
-                    <li><a href="#" class="item">
+                    <li><a href="{{route('user.invest')}}" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-bag-2"></span></div>
-                        <span class="fw-6 text-dark">Buy</span>
+                        <span class="fw-6 text-dark">Deposit</span>
                     </a></li>
                     <li><a href="#" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-send-2"></span></div>
-                        <span class="fw-6 text-dark">Send</span>
+                        <span class="fw-6 text-dark">Invite</span>
                     </a></li>
                     <li><a href="#" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-arrow-swap"></span></div>
-                        <span class="fw-6 text-dark">Swap</span>
+                        <span class="fw-6 text-dark">My Order</span>
                     </a></li>
                 </ul>
                 <div class="mt-24">
