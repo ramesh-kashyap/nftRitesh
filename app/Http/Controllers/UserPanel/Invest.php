@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Investment;
 use App\Models\Income;
+use App\Models\Withdraw;
 use App\Models\Contract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\URL;
@@ -508,13 +509,14 @@ public function viewdetail($txnId)
 
 
 
-        public function invest_list(Request $request){
+        public function more(Request $request){
 
       $user=Auth::user();
       $limit = $request->limit ? $request->limit : paginationLimit();
         $status = $request->status ? $request->status : null;
         $search = $request->search ? $request->search : null;
         $notes = Investment::where('user_id',$user->id);
+        $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC');
       if($search <> null && $request->reset!="Reset"){
         $notes = $notes->where(function($q) use($search){
           $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
@@ -528,13 +530,17 @@ public function viewdetail($txnId)
 
         $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
 
-      $this->data['search'] =$search;
-      $this->data['deposit_list'] =$notes;
-      $this->data['page'] = 'user.invest.DepositHistory';
-      return $this->dashboard_layout();
+        $this->data['search'] =$search;
+        $this->data['deposit_list'] =$notes;
+        $this->data['withdraw_report'] =$withdraw;
 
+        $this->data['page'] = 'user.invest.more';
+        return $this->dashboard_layout();
 
         }
+
+
+     
 
 
 
