@@ -344,19 +344,21 @@
                                             </div>
                                             <span class="content">
                                                 <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
-                                                <span class="body-4 mt-4">（TID: {{ $value->transaction_id }}）</span>
+                                                <span class="body-4 mt-4 tid">（TID: {{ $value->transaction_id }}）</span>
 
                                                 <br>
                                                 <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</span>
 
                                             </span>
                                             @if($value->status == "Pending")
-                                            <form type="POST" action="{{ route('user.cancel-payment', ['id' => $value->orderId]) }}">
-                                                @csrf
+                                            
                                                 <div class="col-sm-2 button-danger">
-                                                    <button class="btn-sm" type="submit">Cancel</button>
+                                                    <form type="POST" action="{{ route('user.cancel-payment', ['id' => $value->orderId]) }}">
+                                                        @csrf
+                                                      <button class="tf-btn btn-sm primary" type="submit">Cancel</button>
+                                                    </form>
                                                 </div>
-                                            </form>
+                                           
                                             @else
                                             <div class="col-sm-2 ">
                                                 <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'success' : 'danger' }}">{{ $value->status }}</button>
@@ -373,59 +375,61 @@
                         </div>
                         <div class="tab-pane fade" id="NFTs" role="tabpanel">
                             <ul class="list-view check-list">
-                                <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-10.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">324.67539 ETH</div>
-                                            <p class="body-4 mt-4">$410,750.45</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
+                                <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
+
+                                    <?php
+                                    date_default_timezone_set('UTC');
+                                    $cnt = 0; ?>
+                                    @foreach($withdraw_report as $value)
+
+                                    <li class="item">
+                                        <a href="#" class="gap-12">
+                                            <div class="image">
+                                                <img src="images/wallet/wallet-10.png" alt="wallet">
+                                            </div>
+                                            <span class="content">
+                                                <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
+                                                <span class="body-4 mt-4 tid">（TID: {{ $value->txn_id }}）</span>
+
+                                                <br>
+                                                <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->paid_date))}}</span>
+
+                                            </span>
+                                            @if($value->status == "Pending")
                                             
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-12.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">36.348508 USDC</div>
-                                            <p class="body-4 mt-4">$36.4212</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
-                                    </a>
-                                </li>
-                                <li class="item">
-                                    <a href="nft-item-details.html" class="gap-12">
-                                        <div class="image">
-                                            <img src="images/wallet/wallet-11.png" alt="wallet">
-                                        </div>
-                                        <div class="content">
-                                            <div class="body-1">58.487037 USDT</div>
-                                            <p class="body-4 mt-4">$36.4212</p>
-                                        </div>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.6">
-                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                        </svg>
-                                            
-                                    </a>
-                                </li>   
+                                            <div class="col-sm-2 ">
+                                                <button class="tf-btn btn-sm info">{{ $value->status }}</button>
+                                            </div>
+                                           
+                                            @else
+                                            <div class="col-sm-2 ">
+                                                <button class="tf-btn btn-sm {{ $value->status == 'Approved' ? 'success' : 'danger' }}">{{ $value->status }}</button>
+                                            </div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    
+                                @endforeach
+                                <?php }?> 
+                               
                             </ul>
                         </div>
+                        <style>
+                            .tid {
+    display: inline-block; /* Ensure it's treated as a block element for scrolling */
+    max-width: 150px; /* Set a fixed width as needed */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+    padding-bottom: 5px; /* Add some padding if necessary */
+    margin-top: 5px; /* Add some margin if necessary */
+}
+
+.tid:hover {
+    overflow-x: auto; /* Show horizontal scroll on hover */
+}
+
+                        </style>
                         
                     </div>
                 </div>
