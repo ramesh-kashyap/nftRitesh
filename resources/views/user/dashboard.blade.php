@@ -1433,7 +1433,7 @@
                       </li>
                       
                       <li class="mt-16">
-                          <a href="boarding.html" class="nav-link-item not-link">
+                          <a href="{{route('logout')}}" class="nav-link-item not-link">
                               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                   viewBox="0 0 20 20" fill="none">
                                   <path opacity="0.4"
@@ -1478,7 +1478,7 @@
                   <div class="tf-container">
                       <ul>
                         
-                          <li><a href="boarding.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                          <li><a href="{{route('logout')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                                   <span>Boarding</span>
 
                               </a></li>
