@@ -164,10 +164,10 @@ public function viewdetail($txnId)
     
      $invest_check=Investment::where('user_id',$user->id)->where('status','Pending')->first();
 
-    // if ($invest_check) 
-    // {
-    //   return  redirect()->route('user.DepositHistory')->withErrors(array('your deposit already pending'));
-    // }
+    if ($invest_check) 
+    {
+      return  redirect()->route('user.more')->withErrors(array('your deposit already pending'));
+    }
    
    
     $amountTotal= $request->Sum;
