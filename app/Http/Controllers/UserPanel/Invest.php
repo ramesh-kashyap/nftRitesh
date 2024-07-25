@@ -516,7 +516,7 @@ public function viewdetail($txnId)
         $status = $request->status ? $request->status : null;
         $search = $request->search ? $request->search : null;
         $notes = Investment::where('user_id',$user->id);
-        $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC');
+        $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC')->get();
       if($search <> null && $request->reset!="Reset"){
         $notes = $notes->where(function($q) use($search){
           $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
@@ -527,7 +527,7 @@ public function viewdetail($txnId)
         });
 
       }
-
+          
         $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
 
         $this->data['search'] =$search;
