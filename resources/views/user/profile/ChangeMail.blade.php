@@ -1,229 +1,196 @@
-
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+    <!-- font -->
+    <base href="{{ asset('') }}">
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="fonts/font-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/nouislider.min.css" />
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/apexcharts.css">
+    <link rel="stylesheet" href="css/jqueryui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="images/logo/168.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
+
+    <title>Change Email</title>
     <style>
-        a:hover {
-            text-decoration: none;
-            list-style: none;
+        .btn-section .google-btn {
+            padding: 12px 0;
+            background-color: rgb(30 30 30);
+            color: #fff;
+            border-radius: 6px;
+            border: none;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            gap: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+            width: 100%;
         }
     </style>
-
-
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="nfty" />
-  <meta name="keywords" content="nfty" />
-  <meta name="author" content="nfty" />
-  <base href="{{ asset('') }}">
-
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
-  <title>nfty App</title>
-  <link rel="icon" href="assets/images/logo/logo.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="assets/images/logo/logo.png" />
-  <meta name="theme-color" content="#205dee" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="nfty" />
-  <meta name="msapplication-TileImage" content="assets/images/logo/logo.png" />
-  <meta name="msapplication-TileColor" content="#FFFFFF" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <!--Google font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
-
-  <!-- bootstrap css -->
-  <link rel="stylesheet" id="rtl-link" type="text/css" href="assets/css/vendors/bootstrap.css" />
-  <!-- remixicon css -->
-  <link rel="stylesheet" type="text/css" href="assets/css/vendors/remixicon.css" />
-
-  <!-- Theme css -->
-  <link rel="stylesheet" id="change-link" type="text/css" href="assets/css/style.css" />
 </head>
-
 
 <body>
 
-  <!-- loader start-->
-  <div class="loader-wrapper" id="loader">
-    <div class="loader">
-      <span>N</span>
-      <span>F</span>
-      <span>T</span>
-      <span>Y</span>
+    <div class="header fixed-top">
+        <h3>Change Email</h3>
     </div>
-  </div>
-  <!-- loader end -->
+    <div class="app-content style-2">
+        <div class="tf-container">
+            <div class="mb-24 pb-24 line-3">
+                <div class="card pb-20">
+                    <form method="POST" action="{{ route('user.changeEmailAction') }}" class="auth-form">
+                        {{ csrf_field() }}
+                        <div class="card-body">
+                            <div class="delete-item mt-20 ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">User Name</span>
+                                </div>
+                                <input class="mt-12 form-control" type="text" id="inputusername" readonly="" value="{{ Auth::user()->username }}">
+                                <i class="ri-user-line user"></i>
+                            </div>
 
-  <!-- header start -->
-  <header class="section-t-space">
-    <div class="custom-container">
-      <div class="header-panel">
-        <a href="landing.html">
-          <i class="ri-arrow-left-s-line"></i>
-        </a>
-        <h3 class="middle-title">Input Style</h3>
-      </div>
+                            <div class="delete-item mt-20 ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">Email</span>
+                                </div>
+                                <input class="mt-12 form-control" type="email" id="inputemail" readonly value="{{ Auth::user()->email }}" placeholder="Enter your email">
+                                <i class="ri-user-line user"></i>
+                            </div>
+                            <div class="delete-item mt-20 ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">Verification Code</span>
+                                </div>
+                                <input class="mt-12 form-control" type="text" id="inputPassword" name="first_code" placeholder="Enter verification code">
+                                <span class="first-code-send code-btn text-primary" style="position: absolute; top: 46%; right: 26px; cursor: pointer;">Get Code</span>
+                                <i class="ri-user-line user"></i>
+                            </div>
+                            <div class="delete-item mt-20 ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">New Mail</span>
+                                </div>
+                                <input class="mt-12 form-control" type="email" name="newEmail" id="emailId" placeholder="Enter your email">
+                                <i class="ri-user-line user"></i>
+                            </div>
+                            <div class="delete-item mt-20 ">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">Verification Code</span>
+                                </div>
+                                <input class="mt-12 form-control" type="text" name="second_code" placeholder="Enter verification code">
+                                <div class="sencond-code-send text-primary" style="position: absolute; top: 79.5%; right: 26px; cursor:pointer;">Get Code</div>
+                                <i class="ri-user-line user"></i>
+                            </div>
+
+                            <div class="submit-btn pt-1 pb-1">
+                                <button type="submit" class="tf-btn theme-btn mt-10">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
-  <!-- header end -->
 
-  <!-- form-input start -->
-  <section class="section-t-space section-lg-b-space">
-    <div class="custom-container">
-      <form method="post" action="{{ route('user.changeEmailAction') }}" class="auth-form create-form">
-      {{ csrf_field()}}
-        <div class="form-group mb-3">
-          <label for="inputusername" class="form-label">User Name</label>
-          <div class="form-input">
-            <input type="text" class="form-control" id="inputusername"type="text" readonly="" value="{{Auth::user()->username}}" />
-            <i class="ri-user-line user"></i>
-          </div>
-        </div>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lazysize.min.js"></script>
+    <script type="text/javascript" src="js/countto.js"></script>
+    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="js/jqueryui.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
-        <div class="form-group mb-3">
-          <label for="inputusername" class="form-label">Email</label>
-          <div class="form-input">
-            <input type="email" class="form-control" id="inputemail" type="email" readonly value="{{Auth::user()->email}}"  placeholder="Enter your email"/>
-            <i class="ri-user-line user"></i>
-          </div>
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="inputPassword" class="form-label">Varification Code</label>
-          <div class="form-input">
-            <input type="password" class="form-control" id="inputPassword"  name="first_code" type="text" placeholder="Enter verification code"/>
-            <div class="first-code-send" style="
-    position: absolute;
-    top: 30%;
-    right: 10px;
-    color: white;
-      cursor: pointer;
-">Get Code</div>
-            <div class="count-down" style="display: none;"></div>
-            <i class="ri-door-lock-line"></i>
-          </div>
-        </div>
-
-        <div class="form-group mb-3">
-          <label for="inputPassword" class="form-label">New Mail</label>
-          <div class="form-input">
-            <input type="password" class="form-control"  type="email" name="newEmail" value="" id="emailId"  placeholder="Enter your email"/>
-            <i class="ri-door-lock-line"></i>
-          </div>
-        </div>
-        <div class="form-group mb-3">
-          <label for="inputPassword" class="form-label">Varification Code</label>
-          <div class="form-input">
-            <input type="password" class="form-control" name="second_code" type="text" placeholder="Enter verification code"/>
-            <div class=" sencond-code-send" style="
-    position: absolute;
-    top: 30%;
-    right: 10px;
-    color: white;
-    cursor: pointer;
-">Get Code</div>
-            <div class="count-down" style="display: none;"></div>
-            <i class="ri-door-lock-line"></i>
-          </div>
-        </div>
-
-        <div class="submit-btn mb-0">
-          <button type="submit" class="btn theme-btn">Submit</button>
-        </div>
-      </form>
-    </div>
-  </section>
-  <!-- form-input end -->
-
-  <!-- panel-space start -->
-  <section class="panel-space"></section>
-  <!-- panel-space end -->
-  <script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
-
-
-<script>
-
-        $('.first-code-send').click(function(e) {
-            var ths = $(this);
- 
-          
-            // alert(sponsor); 
-            $.ajax({
-                type: "POST"
-                , url: "{{ route('user.send_code') }}"
-                , data: {
-                    "emailId": ""
-                    , "_token": "{{ csrf_token() }}"
-                , }
-                , success: function(response) {
-                    // alert(response);      
-                    if (response) {
-                        // alert("hh");
-                        iziToast.success({
-                        message: 'Email send Successfully',
-                        position: "topRight"
-                    });
-                    } else {
-                        // alert("hi");
-                        iziToast.error({
-                        message: 'Error!',
-                        position: "topRight"
-                    });
-                    }
-                }
-            });
-        });
-
-        $('.sencond-code-send').click(function(e) {
-            var ths = $(this);
-            var emailId = $('#emailId').val();
-       
-            if (!emailId) 
-            {
-                iziToast.error({
-                        message: 'Invalid Email!',
-                        position: "topRight"
-                    });
-                    return false;
-            }
-            // alert(sponsor); 
-            $.ajax({
-                type: "POST"
-                , url: "{{ route('user.send_code') }}"
-                , data: {
-                    "emailId": emailId
-                    , "_token": "{{ csrf_token() }}"
-                , }
-                , success: function(response) {
-                    // alert(response);      
-                    if (response) {
-                        // alert("hh");
-                        iziToast.success({
-                        message: 'Email send Successfully',
-                        position: "topRight"
-                    });
-                    } else {
-                        // alert("hi");
-                        iziToast.error({
-                        message: 'Error!',
-                        position: "topRight"
-                    });
-                    }
-                }
-            });
-        });
-
-            </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
             
-  @include('layouts.upnl.footer')
+      $('.first-code-send').click(function(e) {
+          var ths = $(this);
+
+        
+          // alert(sponsor); 
+          $.ajax({
+              type: "POST"
+              , url: "{{ route('user.send_code') }}"
+              , data: {
+                  "emailId": ""
+                  , "_token": "{{ csrf_token() }}"
+              , }
+              , success: function(response) {
+                  // alert(response);      
+                  if (response) {
+                      // alert("hh");
+                      iziToast.success({
+                      message: 'Email send Successfully',
+                      position: "topRight"
+                  });
+                  } else {
+                      // alert("hi");
+                      iziToast.error({
+                      message: 'Error!',
+                      position: "topRight"
+                  });
+                  }
+              }
+          });
+      });
+
+      $('.sencond-code-send').click(function(e) {
+          var ths = $(this);
+          var emailId = $('#emailId').val();
+     
+          if (!emailId) 
+          {
+              iziToast.error({
+                      message: 'Invalid Email!',
+                      position: "topRight"
+                  });
+                  return false;
+          }
+          // alert(sponsor); 
+          $.ajax({
+              type: "POST"
+              , url: "{{ route('user.send_code') }}"
+              , data: {
+                  "emailId": emailId
+                  , "_token": "{{ csrf_token() }}"
+              , }
+              , success: function(response) {
+                  // alert(response);      
+                  if (response) {
+                      // alert("hh");
+                      iziToast.success({
+                      message: 'Email send Successfully',
+                      position: "topRight"
+                  });
+                  } else {
+                      // alert("hi");
+                      iziToast.error({
+                      message: 'Error!',
+                      position: "topRight"
+                  });
+                  }
+              }
+          });
+      });
+
+          </script>
+          @include('partials.notify')
