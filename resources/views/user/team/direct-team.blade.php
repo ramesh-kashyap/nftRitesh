@@ -94,19 +94,22 @@
                 
                 <div class="mt-24">
                     <div class="tab-slide wrapper-tab">
-                    @for ($l=1;$l<=3;$l++)
+                    
 
-                        <ul class="nav nav-tabs tab-1" role="tablist" >
+                        <ul class="nav nav-tabs tab-1" role="tablist" style="grid-template-columns: 1fr 1fr 1fr">
                             <li class="item-slide-effect"></li>
-                            
-                            <li class="nav-item active" role="presentation">  
-                            <?php echo  (Session::get('selected_level')==$l)?"":""?> 
-                            <a style="color: <?php echo  (Session::get('selected_level')==$l)?"#fff":"#000"?>" href="{{route('user.referral-team') }}?selected_level={{$l}}" >
-                                <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#tokens" style="width:183px;">Level {{$l}}</button>
-                            </li>
-                           
-                        </ul>
-                        @endfor
+        
+                                @for ($l=1;$l<=3;$l++)
+                                
+                                <li class="nav-item active" role="presentation">  
+                                <?php echo  (Session::get('selected_level')==$l)?"":""?> 
+                                <a class="nav-link active" style="color: <?php echo  (Session::get('selected_level')==$l)?"#fff":"#000"?>" href="{{route('user.referral-team') }}?selected_level={{$l}}" >
+                                    Level {{$l}}</a>
+                                </li>
+                                @endfor
+                            </ul>
+
+
                     </div>
                     <div class="tab-content mt-24">
                         <div class="tab-pane fade active show" id="tokens" role="tabpanel">
