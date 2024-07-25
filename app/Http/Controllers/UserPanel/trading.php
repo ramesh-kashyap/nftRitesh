@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\UserPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Investment;
 use Illuminate\Http\Request;
 use App\Models\Nft_Trading;
+use App\Models\Package;
 use App\Models\Trade;
 use Illuminate\Support\Facades\Auth;
 class trading extends Controller
@@ -46,4 +48,19 @@ class trading extends Controller
 
         return back()->with("Your NFT Buying Sucessfully");
     }
+
+    public function investamount()
+    {
+        $user = Auth::user();    
+    $iamount = Package::all();
+    $nfts = Nft_Trading::all();
+
+    $this->data['iamount'] = $iamount;
+    $this->data['nfts'] = $nfts;
+    $this->data['page'] = 'user.trading.nft_view';
+    return $this->dashboard_layout();
+    }
+
+
+
 }

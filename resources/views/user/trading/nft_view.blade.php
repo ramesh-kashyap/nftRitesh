@@ -74,25 +74,25 @@
       <div class="tf-container">
       <div class="card-body mt-20 row">
           <div class="dropdown text-center col-6">
-              <select class="tf-btn primary form-select" style="overflow:hidden">
-                  <option value="Lev 1">Lev 1 - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 86.98%</option>
-                  <option value="Lev 2">Lev 2 - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 86.98%</option>
-                  <option value="Lev 3">Lev 3 - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 86.98%</option>                
+              <select id="levelSelect" class="tf-btn primary form-select" style="overflow:hidden">
+              @foreach($iamount as $iamt)
+                  <option value="{{ $iamt->id }}" data-level="{{ $iamt->level }}" data-package-min="{{ $iamt->package_min }}" data-package-max="{{ $iamt->package_max }}" data-min-amount="{{ $iamt->min_amount }}" data-max-amount="{{ $iamt->max_amount }}">{{$iamt->level}} - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{$iamt->package_min}}-{{$iamt->package_max}}%</option>                  
+               @endforeach                   
               </select>
           </div>
 
-          <div class="dropdown text-center col-6" >
-                        <button type="button" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
-                            Dropdown button
+          <div class="dropdown text-center col-6" >                         
+                        <button  type="button" id="selectedLevelButton" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
+                        Select a Package
                         </button>
-                        <div class="dropdown-menu full">
-                            <a class="dropdown-item" href="javascript:void(0);"><p>Lev 1</p><p style="padding-left:50%; color:green">86.98%</p></a>
+                        <!-- <div class="dropdown-menu full">
+                            <a class="dropdown-item" ><p>Lev 1</p><p style="padding-left:30%; color:green">88.90%</p></a>
                            
-                        </div>
+                        </div> -->
                     </div>
       </div>
         <div class="px-24 card-layout style-2 mt-20">
-            <div class="swiper-container" style="overflow:hidden">
+            <div class="swiper-container" style="overflow:hidden; max-height: 250px;">
                 <div class="swiper-wrapper">
                     @foreach($nfts as $nft)
                         <div class="swiper-slide">
@@ -1682,7 +1682,35 @@
 
    
 
-</script>    
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectElement = document.getElementById('levelSelect');
+        const buttonElement = document.getElementById('selectedLevelButton');
+
+        // Function to update button text with selected option's level and package range
+        function updateButtonText() {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const level = selectedOption.getAttribute('data-level');
+            const packageMin = selectedOption.getAttribute('data-package-min');
+            const packageMax = selectedOption.getAttribute('data-package-max');
+            const minAmount = selectedOption.getAttribute('data-min-amount');
+            const maxAmount = selectedOption.getAttribute('data-max-amount');  
+            if (level && packageMin && packageMax) {
+                buttonElement.textContent = `${minAmount}-${maxAmount}%`;
+            } else {
+                buttonElement.textContent = 'Select a Level';
+            }
+        }
+
+        // Update button text when the page loads
+        updateButtonText();
+
+        // Update button text whenever a new option is selected
+        selectElement.addEventListener('change', updateButtonText);
+    });
+</script>
+
 
 
 </body>
