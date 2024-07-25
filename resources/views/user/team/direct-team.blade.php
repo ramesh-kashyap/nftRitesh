@@ -393,111 +393,241 @@
                 <span class="text">statistics</span>                    
                 </a>
             </li>
-            <li class="action-add-wallet"><a href="create-new-item-filled.html"><i class="icon-plus"></i></a></li>
-            <li><a href="profile.html">
+            <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
+            <li><a href="{{route('user.myWallet')}}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.6">
+                        <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path
+                            d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </g>
+                </svg>
+                 
+                      
+                  </a>
+              </li>
+              <li><a href="{{route('user.more')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
                     <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </g>
                 </svg>
-                </a>
-            </li>
-            <li><a href="more.html">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g opacity="0.6">
-                    <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                    </g>
-                </svg>
-                </a>
-            </li>
+                  </a>
+              </li>
         </ul>
          
     </div>
-    
-    <div class="offcanvas offcanvas-bottom" id="categories">
-        <div class="offcanvas-body">
-            <fieldset class="d-flex gap-12 pt-0 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-1" checked> 
-                <label for="check-1" class="h5">All Categories</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-2"> 
-                <label for="check-2" class="h5">New</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-3"> 
-                <label for="check-3" class="h5">Art</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-4"> 
-                <label for="check-4" class="h5">Collectibles</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-5"> 
-                <label for="check-5" class="h5">Domain Names</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-6"> 
-                <label for="check-6" class="h5">Music</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-7"> 
-                <label for="check-7" class="h5">Photography</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-8"> 
-                <label for="check-8" class="h5">Sports</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-9"> 
-                <label for="check-9" class="h5">Trading Cards</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 pb-0">
-                <input type="checkbox" class="tf-checkbox" name="check-categories" id="check-10"> 
-                <label for="check-10" class="h5">Utility</label>
-            </fieldset>
+        
+ 
+    <!--wallet  -->
+    <div class="offcanvas offcanvas-end full" id="myWallet">
+        <div class="header fixed-top">
+            <div class="left">
+              <a href="javascript:void(0);" data-bs-dismiss="offcanvas" class="icon-close"><i class="icon-close2"></i></a>
+            </div>
+            <h3>My Wallet</h3>
+            <div class="right">
+                <a href="javascript:void(0);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.9965 12H16.0054" stroke="#1A1528" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9955 12H12.0045" stroke="#1A1528" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.99451 12H8.00349" stroke="#1A1528" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>    
+                </a>
+            </div>
         </div>
-    </div>
+        <div class="overflow-auto app-content style-1">
+            <div class="tf-container">
+                <div class="pb-24 line d-flex flex-column align-items-center box-wallet">
+                    <div class="avatar round avt-110">
+                        <img class="lazyload" data-src="images/avt/avt10.png" alt="img">
+                    </div>
+                    <div class="mt-20 box-content text-center">
+                        <h4>Beacon_NFT</h4>
+                        <span class="button-2 mt-12 d-block ">$410,885.95</span>
+                    </div>
+                    <div class="value-field-wallet mt-16">
+                        <img src="images/avt/metamask.png" alt="metamask">
+                        <input type="text" value="7EK933L1...C93676P7Q4">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.1665 11.1673V13.6673C14.1665 17.0007 12.8332 18.334 9.49984 18.334H6.33317C2.99984 18.334 1.6665 17.0007 1.6665 13.6673V10.5007C1.6665 7.16732 2.99984 5.83398 6.33317 5.83398H8.83317" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9.6665 1.66602H12.9998" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.8335 4.16602C5.8335 2.78268 6.95016 1.66602 8.3335 1.66602H10.5168" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.3339 6.66602V11.8243C18.3339 13.116 17.2839 14.166 15.9922 14.166" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.3335 6.66602H15.8335C13.9585 6.66602 13.3335 6.04102 13.3335 4.16602V1.66602L18.3335 6.66602Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>  
+                    </div>
+                </div>
+                <ul class="py-20 px-16 box-service line">
+                    <li><a href="{{route('user.Withdraw')}}" class="item">
+                        <div class="box-icon w-48 round"><span class="icon icon-import"></span></div>
+                        <span class="fw-6 text-dark">Withdrawal</span>
+                    </a></li>
+                    <li><a href="{{route('user.invest')}}" class="item">
+                        <div class="box-icon w-48 round"><span class="icon icon-bag-2"></span></div>
+                        <span class="fw-6 text-dark">Deposit</span>
+                    </a></li>
+                    <li><a href="{{route('user.share')}}" class="item">
+                        <div class="box-icon w-48 round"><span class="icon icon-send-2"></span></div>
+                        <span class="fw-6 text-dark">Invite</span>
+                    </a></li>
+                    <li><a href="#" class="item">
+                        <div class="box-icon w-48 round"><span class="icon icon-arrow-swap"></span></div>
+                        <span class="fw-6 text-dark">My Order</span>
+                    </a></li>
+                </ul>
 
-    <div class="offcanvas offcanvas-bottom" id="chain1">
-        <div class="offcanvas-body">
-            <fieldset class="d-flex gap-12 pt-0 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-chain" id="check-chain-1"> 
-                <label for="check-chain-1" class="h5">All Chains</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-chain" id="check-chain-2" checked> 
-                <label for="check-chain-2" class="h5 d-flex align-items-center gap-8">
-                    <svg class="icon-eth" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.7501 7.58294L9.72507 5.81628C9.90007 5.74128 10.1001 5.74128 10.2668 5.81628L14.2418 7.58294C14.5918 7.74128 14.9167 7.31628 14.6751 7.01628L10.5084 1.92461C10.2251 1.57461 9.75841 1.57461 9.47508 1.92461L5.30841 7.01628C5.07508 7.31628 5.4001 7.74128 5.7501 7.58294Z" fill="#1A1528"/>
-                        <path d="M5.74981 12.4171L9.73312 14.1837C9.90812 14.2587 10.1081 14.2587 10.2748 14.1837L14.2581 12.4171C14.6081 12.2587 14.9331 12.6837 14.6915 12.9837L10.5248 18.0754C10.2415 18.4254 9.7748 18.4254 9.49147 18.0754L5.3248 12.9837C5.0748 12.6837 5.39148 12.2587 5.74981 12.4171Z" fill="#1A1528"/>
-                        <path d="M9.81648 7.90898L6.3748 9.62565C6.06647 9.77565 6.06647 10.2173 6.3748 10.3673L9.81648 12.084C9.93314 12.1423 10.0748 12.1423 10.1914 12.084L13.6331 10.3673C13.9414 10.2173 13.9414 9.77565 13.6331 9.62565L10.1914 7.90898C10.0664 7.85065 9.93314 7.85065 9.81648 7.90898Z" fill="#1A1528"/>
-                    </svg>
-                    Ethereum</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-chain" id="check-chain-3"> 
-                <label for="check-chain-3" class="h5 d-flex align-items-center gap-8">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.26196 3.66242C4.36881 3.55984 4.50986 3.5 4.65518 3.5H18.2213C18.4692 3.5 18.5932 3.79919 18.4179 3.97443L15.738 6.65432C15.6355 6.7569 15.4944 6.81674 15.3448 6.81674H1.77868C1.53078 6.81674 1.40683 6.51755 1.58207 6.34231L4.26196 3.66242ZM4.83859 14.5059L3.52185 15.8226H15.1614L16.4781 14.5059H4.83859ZM17.4781 13.5059H4.65518C4.50559 13.5059 4.36454 13.5657 4.26196 13.6683L2.10764 15.8226L2.05484 15.8754L1.77868 16.1516L1.58207 16.3482C1.40683 16.5234 1.53078 16.8226 1.77868 16.8226H2.0565H2.44722H2.52185H15.3448C15.4944 16.8226 15.6355 16.7628 15.738 16.6602L17.8924 14.5059L17.9452 14.4531L18.2213 14.1769L18.4179 13.9803C18.5932 13.805 18.4692 13.5059 18.2213 13.5059H17.9435H17.5528H17.4781ZM15.3448 8.4707C15.4944 8.4707 15.6355 8.53054 15.738 8.63312L18.4179 11.313C18.5932 11.4883 18.4692 11.7874 18.2213 11.7874H4.65518C4.50559 11.7874 4.36454 11.7276 4.26196 11.625L1.58207 8.94513C1.40683 8.76989 1.53078 8.4707 1.77868 8.4707H15.3448Z" fill="url(#paint0_linear_90_6190)"/>
-                        <defs>
-                        <linearGradient id="paint0_linear_90_6190" x1="14.8596" y1="0.820497" x2="5.47079" y2="18.8039" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#00FFA3"/>
-                        <stop offset="1" stop-color="#DC1FFF"/>
-                        </linearGradient>
-                        </defs>
-                    </svg>
-                    Solana</label>
-            </fieldset>
-            <fieldset class="d-flex gap-12 py-20 line">
-                <input type="checkbox" class="tf-checkbox" name="check-chain" id="check-chain-4"> 
-                <label for="check-chain-4" class="h5 d-flex align-items-center gap-8">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.3655 12.7328V13.2859C10.3655 13.8674 10.6857 14.3859 11.1483 14.6511C11.1489 14.6514 11.1495 14.6518 11.1501 14.6521L13.0555 15.7599L13.0691 15.7678L13.0832 15.7749C13.5686 16.0176 14.1465 16.0324 14.6201 15.7618L14.6202 15.7619L14.6278 15.7573L16.492 14.6477L16.4921 14.6478L16.5013 14.642C17.0038 14.3279 17.2689 13.8119 17.2689 13.2859V11.0666C17.2689 10.4851 16.9488 9.96663 16.4862 9.70142C16.4856 9.70106 16.485 9.7007 16.4844 9.70034L14.579 8.59255L14.5654 8.58464L14.5513 8.57759C14.0659 8.33491 13.4879 8.32006 13.0143 8.59068L13.0143 8.59067L13.011 8.59263L10.5706 10.0125L10.5697 10.013L8.88395 10.989L8.88302 10.9895L6.45705 12.401C6.23716 12.5064 6.0222 12.4909 5.87716 12.4086C5.87677 12.4084 5.87639 12.4081 5.87601 12.4079L2.29156 10.328C2.08823 10.1983 2 10.0061 2 9.82376V5.65144C2 5.458 2.094 5.29204 2.25624 5.21092L2.27099 5.20355L2.28523 5.19522L5.90903 3.07397C6.12823 2.96908 6.34248 2.98431 6.4874 3.06607L10.0286 5.14652C10.2326 5.27628 10.3211 5.46877 10.3211 5.65144V6.8723L9.63447 7.26985V6.67232C9.63447 6.09252 9.31616 5.57538 8.8558 5.30948L6.95192 4.1583L6.93476 4.14792L6.91682 4.13895C6.43145 3.89626 5.85347 3.88141 5.37987 4.15204L5.37986 4.15203L5.37663 4.15391L3.46801 5.26357L3.4611 5.26759L3.45432 5.27182C2.95179 5.5859 2.68668 6.10193 2.68668 6.62794V8.84726C2.68668 9.42706 3.00498 9.9442 3.46534 10.2101L5.36923 11.3613L5.38639 11.3717L5.40433 11.3806C5.8897 11.6233 6.46768 11.6382 6.94128 11.3675L6.94134 11.3676L6.95046 11.3622L9.3841 9.90199L11.063 8.97417L11.0631 8.97434L11.075 8.96732L13.5441 7.51233C13.7635 7.40754 13.978 7.42308 14.1228 7.50522C14.1232 7.50546 14.1236 7.50569 14.124 7.50592L17.7084 9.5858C17.9118 9.71556 18 9.90771 18 10.0901V14.3068C18 14.5235 17.8772 14.7146 17.7193 14.8048L17.7164 14.8064L14.1361 16.8839C13.9162 16.9894 13.7011 16.9739 13.5561 16.8916C13.5557 16.8914 13.5553 16.8912 13.5549 16.8909L9.97041 14.8111C9.76708 14.6813 9.67885 14.4892 9.67885 14.3068V13.1303L10.3655 12.7328Z" stroke="#7F52FF"/>
+                
+                <div class="mt-24">
+                    <div class="tab-slide wrapper-tab">
+                        <ul class="nav nav-tabs tab-1" role="tablist" >
+                            <li class="item-slide-effect"></li>
+                            <li class="nav-item active" role="presentation">   
+                                <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#tokens">Deposit</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#NFTs">Withdraw</button>
+                            </li> 
+                        </ul>
+                    </div>
+                    <div class="tab-content mt-24">
+                        <div class="tab-pane fade active show" id="tokens" role="tabpanel">
+                            <ul class="list-view check-list">
+                                <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
+
+                                    <?php
+                                    date_default_timezone_set('UTC');
+                                    $cnt = 0; ?>
+                                    @foreach($deposit_list as $value)
+
+                                    <li class="item">
+                                        <a href="#" class="gap-12">
+                                            <div class="image">
+                                                <img src="images/wallet/wallet-10.png" alt="wallet">
+                                            </div>
+                                            <span class="content">
+                                                <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
+                                                <span class="body-4 mt-4">（TID: {{ $value->transaction_id }}）</span>
+
+                                                <br>
+                                                <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</span>
+
+                                            </span>
+                                            @if($value->status == "Pending")
+                                            <form type="POST" action="{{ route('user.cancel-payment', ['id' => $value->orderId]) }}">
+                                                @csrf
+                                                <div class="col-sm-2 button-danger">
+                                                    <button class="btn-sm" type="submit">Cancel</button>
+                                                </div>
+                                            </form>
+                                            @else
+                                            <div class="col-sm-2 ">
+                                                <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'success' : 'danger' }}">{{ $value->status }}</button>
+                                            </div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    
+                                @endforeach
+                                <?php }?> 
+                              
+                          
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="NFTs" role="tabpanel">
+                            <ul class="list-view check-list">
+                                <li class="item">
+                                    <a href="nft-item-details.html" class="gap-12">
+                                        <div class="image">
+                                            <img src="images/wallet/wallet-10.png" alt="wallet">
+                                        </div>
+                                        <div class="content">
+                                            <div class="body-1">324.67539 ETH</div>
+                                            <p class="body-4 mt-4">$410,750.45</p>
+                                        </div>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.6">
+                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </g>
+                                        </svg>
+                                            
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="nft-item-details.html" class="gap-12">
+                                        <div class="image">
+                                            <img src="images/wallet/wallet-12.png" alt="wallet">
+                                        </div>
+                                        <div class="content">
+                                            <div class="body-1">36.348508 USDC</div>
+                                            <p class="body-4 mt-4">$36.4212</p>
+                                        </div>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.6">
+                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </g>
+                                        </svg>
+                                            
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="nft-item-details.html" class="gap-12">
+                                        <div class="image">
+                                            <img src="images/wallet/wallet-11.png" alt="wallet">
+                                        </div>
+                                        <div class="content">
+                                            <div class="body-1">58.487037 USDT</div>
+                                            <p class="body-4 mt-4">$36.4212</p>
+                                        </div>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.6">
+                                            <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </g>
+                                        </svg>
+                                            
+                                    </a>
+                                </li>   
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>       
+    </div>      
+    </div>
+    
+    <!-- my collection -->
+    <div class="offcanvas offcanvas-end full" id="myCollection">
+        <div class="header fixed-top">
+            <div class="left">
+              <a href="javascript:void(0);" data-bs-dismiss="offcanvas" class="icon"><i class="icon-arrow-right"></i></a>
+            </div>
+            <h3>My Collection</h3>
+            <div class="right">
+                <a href="javascript:void(0);" class="icon">
+                    <i class="icon-plus"></i>
+                </a>
+                <a href="javascript:void(0);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.9965 12H16.0054" stroke="#1A1528" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9955 12H12.0045" stroke="#1A1528" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.99451 12H8.00349" stroke="#1A1528" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>    
                     Polygon</label>
             </fieldset>

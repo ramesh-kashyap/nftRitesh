@@ -539,7 +539,35 @@ public function viewdetail($txnId)
 
         }
 
+        public function wallet(Request $request){
 
+          $user=Auth::user();
+          $limit = $request->limit ? $request->limit : paginationLimit();
+            $status = $request->status ? $request->status : null;
+            $search = $request->search ? $request->search : null;
+            $notes = Investment::where('user_id',$user->id);
+            $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC')->get();
+          if($search <> null && $request->reset!="Reset"){
+            $notes = $notes->where(function($q) use($search){
+              $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
+              ->orWhere('txn_no', 'LIKE', '%' . $search . '%')
+              ->orWhere('status', 'LIKE', '%' . $search . '%')
+              ->orWhere('type', 'LIKE', '%' . $search . '%')
+              ->orWhere('amount', 'LIKE', '%' . $search . '%');
+            });
+    
+          }
+              
+            $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
+    
+            $this->data['search'] =$search;
+            $this->data['deposit_list'] =$notes;
+            $this->data['withdraw_report'] =$withdraw;
+    
+            $this->data['page'] = 'user.invest.myWallet';
+            return $this->dashboard_layout();
+    
+            }
      
 
 
