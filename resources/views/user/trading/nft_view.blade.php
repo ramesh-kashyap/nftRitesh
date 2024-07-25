@@ -85,10 +85,10 @@
                         <button  type="button" id="selectedLevelButton" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
                         Select a Package
                         </button>
-                        <!-- <div class="dropdown-menu full">
-                            <a class="dropdown-item" ><p>Lev 1</p><p style="padding-left:30%; color:green">88.90%</p></a>
+                        <div class="dropdown-menu full">
+                            <a class="dropdown-item" >{{ number_format($pamount, 2) }}</a>
                            
-                        </div> -->
+                        </div>
                     </div>
       </div>
         <div class="px-24 card-layout style-2 mt-20">
@@ -1710,7 +1710,36 @@
         selectElement.addEventListener('change', updateButtonText);
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectElement = document.getElementById('levelSelect');
+        const buyNowBtn = document.getElementById('buyNowBtn');
 
+        // Example user investment amount; this should be dynamically provided from the server-side
+        const userInvestmentAmount = parseFloat('{{ number_format($pamount, 2, ".", "") }}'); // Ensure this is in float format
+
+        function updateButtonState() {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const maxAmount = parseFloat(selectedOption.getAttribute('data-max-amount'));
+
+            if (userInvestmentAmount < maxAmount) {
+                buyNowBtn.disabled = true;
+                buyNowBtn.style.backgroundColor = 'gray'; // Optional: visually indicate disabled state
+                buyNowBtn.style.cursor = 'not-allowed';
+            } else {
+                buyNowBtn.disabled = false;
+                buyNowBtn.style.backgroundColor = ''; // Reset to default
+                buyNowBtn.style.cursor = 'pointer';
+            }
+        }
+
+        // Initialize button state based on the initial selection
+        updateButtonState();
+
+        // Update button state when a new option is selected
+        selectElement.addEventListener('change', updateButtonState);
+    });
+</script>
 
 
 </body>

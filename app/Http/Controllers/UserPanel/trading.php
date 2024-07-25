@@ -54,8 +54,11 @@ class trading extends Controller
         $user = Auth::user();    
     $iamount = Package::all();
     $nfts = Nft_Trading::all();
+    $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
+
 
     $this->data['iamount'] = $iamount;
+    $this->data['pamount'] = $pamount;
     $this->data['nfts'] = $nfts;
     $this->data['page'] = 'user.trading.nft_view';
     return $this->dashboard_layout();
