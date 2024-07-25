@@ -43,7 +43,7 @@
     </style>
 </head>
 
-< class="counter-scroll">
+<div class="counter-scroll">
 
     <div class="header fixed-top">
         <div class="left">
@@ -136,13 +136,16 @@
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                         </div>
                         <div class="">
-                            <form>
-                                <input type="hidden" id="popupImage">
-
-                            </form>
-                            <span id="buyButton" class="tf-btn primary" data-bs-dismiss="modal"
-                                style="cursor: pointer;">Place a bid</span>
+                            <form action="{{ route('user.submitnft') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="nft_id" id="hiddenNftId">
+                                <input type="hidden" name="nft_name" id="hiddenNftName">
+                                <input type="hidden" name="status" value="Pending">
+                                <img id="popupImage" src="" alt="Selected NFT" style="display:none;">
+                                <button id="buyButton" type="submit" class="tf-btn primary" data-bs-dismiss="modal"
+                                style="cursor: pointer;">Place a bid</button>
                             <!-- <a href="#" class="tf-btn disabled-primary mt-16" data-bs-dismiss="modal">SELL</a> -->
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -1649,7 +1652,9 @@
 
         function showImage(index) {
             let selectedNft = nfts[index];
-            document.getElementById('popupImage').src = selectedNft.nft_images;            
+            document.getElementById('popupImage').src = selectedNft.nft_images;
+            document.getElementById('hiddenNftId').value = selectedNft.id; // Set hidden input value
+            document.getElementById('hiddenNftName').value = selectedNft.name;            
             document.getElementById('imageModal').style.display = 'block';
         }
 

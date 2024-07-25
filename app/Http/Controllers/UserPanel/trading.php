@@ -24,23 +24,26 @@ class trading extends Controller
         return view('user.trading.nft_view', compact('nfts'));
     }
 
-   public function trade(Request $request)
+   public function submitnft(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
-            'nft_id' => 'required|exists:nfts,id',
+            'nft_id' => 'required',
         ]);
 
-        $nft = Nft_trading::find($request->nft_id);
-        dd($nft);
+        $nft = Nft_Trading::find($request->nft_id);
+        // dd($nft);
 
         // Assuming each NFT has a unique name
         $trade = Trade::create([
             'nft_id' => $nft->id,
             'name' => $nft->name,
             'status' => 'Pending',
+            'currency' =>'USDT',
             'buyer_id' => Auth::id(),
         ]);
 
-        return response()->json(['message' => 'Trade created successfully'], 200);
+        return back()->with("Your NFT Buying Sucessfully");
     }
 }
