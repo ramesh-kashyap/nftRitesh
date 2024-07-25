@@ -166,7 +166,7 @@ public function viewdetail($txnId)
 
     if ($invest_check) 
     {
-      return  redirect()->route('user.more')->withErrors(array('your deposit already pending'));
+      return  redirect()->route('user.myWallet')->withErrors(array('your deposit already pending'));
     }
    
    
