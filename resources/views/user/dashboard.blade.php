@@ -99,35 +99,7 @@
     </div>
     <div class="app-content">
         <div class="tf-container">
-            <div class="search-box">
-                <a href="search-result-show-item.html" class="icon-left">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g opacity="0.6">
-                            <path
-                                d="M9.58317 17.4993C13.9554 17.4993 17.4998 13.9549 17.4998 9.58268C17.4998 5.21043 13.9554 1.66602 9.58317 1.66602C5.21092 1.66602 1.6665 5.21043 1.6665 9.58268C1.6665 13.9549 5.21092 17.4993 9.58317 17.4993Z"
-                                stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M18.3332 18.3327L16.6665 16.666" stroke="#1A1528" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </g>
-                    </svg>
-                </a>
-                <input type="text" class="search-field" placeholder="Search NFT, creator, collection, ...">
-                <span class="right-icon" data-bs-target="#filter" data-bs-toggle="offcanvas" aria-controls="offcanvasRight">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.60851 13.8269H3.35791" stroke="#7F52FF" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M10.9507 5.75072H16.2013" stroke="#7F52FF" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M7.27207 5.70521C7.27207 4.6255 6.39027 3.75 5.30278 3.75C4.2153 3.75 3.3335 4.6255 3.3335 5.70521C3.3335 6.78492 4.2153 7.66042 5.30278 7.66042C6.39027 7.66042 7.27207 6.78492 7.27207 5.70521Z"
-                            stroke="#7F52FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M16.6666 13.7951C16.6666 12.7153 15.7855 11.8398 14.698 11.8398C13.6098 11.8398 12.728 12.7153 12.728 13.7951C12.728 14.8748 13.6098 15.7503 14.698 15.7503C15.7855 15.7503 16.6666 14.8748 16.6666 13.7951Z"
-                            stroke="#7F52FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                </span>
-            </div>
+           
             <div class="mt-24 swiper tf-sw sw-auto sw-lr" data-preview="auto" data-space="15" style="height: fit-content;">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -838,34 +810,35 @@
               </a>
           </li>
           <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
-          <li><a href="{{route('user.profile1')}}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g opacity="0.6">
-                  <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </g>
-              </svg>
+          <li><a href="{{route('user.myWallet')}}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.6">
+                    <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+            </svg>
+             
                   
               </a>
           </li>
           <li><a href="{{route('user.more')}}">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g opacity="0.6">
-                          <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
-                              stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round" />
-                          <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
-                              stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round" />
-                          <path
-                              d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
-                              stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round" />
-                          <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
-                              stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round" />
-                      </g>
-                  </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.6">
+                <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
               </a>
           </li>
       </ul>
@@ -1363,7 +1336,7 @@
               <div class="sidebar-content">
                   <div class="d-flex gap-10 align-items-center pb-20 line-bt">
                       <div class="avatar avt-40">
-                          <img src="images/avt/avt-wallet.png" alt="img">
+                          <img src="images/avt/avt10.png" alt="img">
                       </div>
                       <div class="content-right">
                           <p class="text-1">Good morning</p>
