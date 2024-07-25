@@ -114,10 +114,7 @@
                         <div class="box-icon w-48 round"><span class="icon icon-send-2"></span></div>
                         <span class="fw-6 text-dark">Invite</span>
                     </a></li>
-                    <li><a href="#" class="item">
-                        <div class="box-icon w-48 round"><span class="icon icon-arrow-swap"></span></div>
-                        <span class="fw-6 text-dark">My Order</span>
-                    </a></li>
+                    
                 </ul>
 
                 
@@ -146,11 +143,14 @@
                                     <li class="item">
                                         <a href="#" class="gap-12">
                                             <div class="image">
-                                                <img src="images/wallet/wallet-10.png" alt="wallet">
+                                                
                                             </div>
                                             <span class="content">
                                                 <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
-                                                <span class="body-4 mt-4 tid">（TID: {{ $value->transaction_id }}）</span>
+                                                <span class="body-4 mt-4 tid" style="
+                                                padding-bottom: 0px;
+                                                margin-bottom: -4px;
+                                            ">（TID: {{ $value->transaction_id }}）</span>
 
                                                 <br>
                                                 <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</span>
@@ -191,11 +191,14 @@
                                     <li class="item">
                                         <a href="#" class="gap-12">
                                             <div class="image">
-                                                <img src="images/wallet/wallet-10.png" alt="wallet">
+                                                
                                             </div>
                                             <span class="content">
                                                 <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
-                                                <span class="body-4 mt-4 tid">（TID: {{ $value->txn_id }}）</span>
+                                                <span class="body-4 mt-4 tid" style="
+                                                padding-bottom: 0px;
+                                                margin-bottom: -4px;
+                                            ">（TID: {{ $value->txn_id }}）</span>
 
                                                 <br>
                                                 <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->paid_date))}}</span>
