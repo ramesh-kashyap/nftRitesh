@@ -121,10 +121,11 @@
                             
                     </a>
                 </li>
+             
                 <li class="item">
-                    <a href="#watchlist" data-bs-toggle="offcanvas" aria-controls="offcanvasRight">
-                        <div class="box-icon w-48 green round">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="{{route('user.level-team')}}">
+                        <div class="box-icon w-48 blue round">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21.25 9.14969C18.94 5.51969 15.56 3.42969 12 3.42969C10.22 3.42969 8.49 3.94969 6.91 4.91969C5.33 5.89969 3.91 7.32969 2.75 9.14969C1.75 10.7197 1.75 13.2697 2.75 14.8397C5.06 18.4797 8.44 20.5597 12 20.5597C13.78 20.5597 15.51 20.0397 17.09 19.0697C18.67 18.0897 20.09 16.6597 21.25 14.8397C22.25 13.2797 22.25 10.7197 21.25 9.14969ZM12 16.0397C9.76 16.0397 7.96 14.2297 7.96 11.9997C7.96 9.76969 9.76 7.95969 12 7.95969C14.24 7.95969 16.04 9.76969 16.04 11.9997C16.04 14.2297 14.24 16.0397 12 16.0397Z" fill="url(#paint0_linear_2932_1746)"/>
                                 <path d="M12.0004 9.14062C10.4304 9.14062 9.15039 10.4206 9.15039 12.0006C9.15039 13.5706 10.4304 14.8506 12.0004 14.8506C13.5704 14.8506 14.8604 13.5706 14.8604 12.0006C14.8604 10.4306 13.5704 9.14062 12.0004 9.14062Z" fill="url(#paint1_linear_2932_1746)"/>
                                 <defs>
@@ -137,9 +138,9 @@
                                 <stop offset="1" stop-color="#1EE495"/>
                                 </linearGradient>
                                 </defs>
-                            </svg>                                  
+                            </svg>                                                               
                         </div>
-                        <p class="content">Watchlist</p>
+                        <p class="content">Team List</p>
                         <svg class="icon-arr-dark" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.6">
                             <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -148,6 +149,7 @@
                             
                     </a>
                 </li>
+                
                 <li class="item">
                     <a href="{{route('user.setting')}}">
                         <div class="box-icon w-48 blue round">
@@ -567,9 +569,9 @@
     <div class="offcanvas offcanvas-end full" id="watchlist">
         <div class="header fixed-top">
             <div class="left">
-              <a href="javascript:void(0);" data-bs-dismiss="offcanvas" class="icon"><i class="icon-arrow-right"></i></a>
+              <a href="{{route('user.level-team')}}" data-bs-dismiss="offcanvas" class="icon"><i class="icon-arrow-right"></i></a>
             </div>
-            <h3>Watchlist</h3>
+            <h3>Team list</h3>
             <div class="right">
                 <a href="javascript:void(0);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
