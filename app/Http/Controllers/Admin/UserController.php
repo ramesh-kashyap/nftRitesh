@@ -870,6 +870,7 @@ public function add_bonus_post(Request $request)
         ]);
 
 
+
         if($validation->fails()) {
             Log::info($validation->getMessageBag()->first());
 
@@ -877,9 +878,7 @@ public function add_bonus_post(Request $request)
         }
 
     
-        $nft=CollectionDetail::where('collection_id',$request->collection_id)->first();
-            if (!$nft)          
-            {
+            
                 $icon_image = $request->file('img');
                 $imageName = time().'.'.$icon_image->extension();
                 $request->img->move(public_path('image/'),$imageName);
@@ -901,11 +900,8 @@ public function add_bonus_post(Request $request)
 
           
                # code...
-           }
-          else
-          {
-            return Redirect::back()->withErrors(array('NFT already Exists! '));
-          }
+           
+         
 
         }
        catch(\Exception $e){
