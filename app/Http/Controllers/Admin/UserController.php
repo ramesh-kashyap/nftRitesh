@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Crypt;
 use App\Models\Income;
 use App\Models\Investment;
 use App\Models\Collection;
+use App\Models\CollectionDetail;
 
 use App\Models\Bank;
 use App\Models\Withdraw;
@@ -786,7 +787,7 @@ public function add_bonus_post(Request $request)
            
             'price' => 'required',
             'description' => 'required',
-            'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp',
+            'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp,avif',
 
         ]);
 
@@ -816,6 +817,89 @@ public function add_bonus_post(Request $request)
                  'img' => 'image/'.$imageName,
             ];
             $payment = Collection::firstOrCreate(['name'=>$request->name],$data);
+
+            $notify[] = ['success', ' NFT Details Added successfully'];
+            return redirect()->back()->withNotify($notify);
+
+          
+               # code...
+           }
+          else
+          {
+            return Redirect::back()->withErrors(array('NFT already Exists! '));
+          }
+
+        }
+       catch(\Exception $e){
+        Log::info('error here');
+        Log::info($e->getMessage());
+        print_r($e->getMessage());
+        die("hi");
+        return  Redirect::back()->withErrors('error', $e->getMessage())->withInput();
+        }
+
+
+        }
+
+
+
+
+        public function addnftimage()
+        {
+          $categories = DB::table('collections')->get();
+
+          // dd($categories);
+          // Pass the data to the view
+          $this->data['categories'] = $categories;
+         $this->data['page'] = 'admin.users.addnftimage';
+         return $this->admin_dashboard();
+    
+        }
+
+                  
+    public function addnft_post(Request $request)
+    {
+
+    try{
+        $validation =  Validator::make($request->all(), [
+            // 'id' => 'required',
+            'number' => 'required',
+          
+            'sale' => 'required',
+           
+            'price' => 'required',
+            'collection_id' => 'required',
+            'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp,avif',
+
+        ]);
+
+
+        if($validation->fails()) {
+            Log::info($validation->getMessageBag()->first());
+
+            return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+        }
+
+    
+        $nft=CollectionDetail::where('collection_id',$request->collection_id)->first();
+            if (!$nft)          
+            {
+                $icon_image = $request->file('img');
+                $imageName = time().'.'.$icon_image->extension();
+                $request->img->move(public_path('image/'),$imageName);
+                
+                
+           $data = [
+                // 'id' =>$request->id,
+                'collection_id' => $request->collection_id,
+                'number' =>$request->number,
+                'sale' =>$request->sale,
+              
+                'price' =>$request->price,
+              
+                 'img' => 'image/'.$imageName,
+            ];
+            $payment = CollectionDetail::firstOrCreate(['collection_id'=>$request->collection_id],$data);
 
             $notify[] = ['success', ' NFT Details Added successfully'];
             return redirect()->back()->withNotify($notify);

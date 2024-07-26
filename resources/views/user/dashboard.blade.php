@@ -147,7 +147,7 @@
                         </div>
                         <div class="swiper-slide">
                             <a href="nft-item-details.html" class="card-banner-2">
-                                <img class="lazyload" data-src="images/banner/banner-nft-2.jpg" alt="img">
+                                <img class="lazyload" data-src="images/lil-pug/699698f3757baa2f659333988f539417.avif" alt="img">
                                 <div class="box-top d-flex align-items-center justify-content-between">
                                     <div class="tag button-2 text-white">Artwork</div>
                                     <div class="box-icon w-40 box-heart press-toggle">
@@ -567,7 +567,7 @@
                     </a>
                     <a href="nft-details-listed.html" class="card-nft">
                         <div class="box-img">
-                            <img class="lazyload" data-src="images/nfts/nft-11.jpg" alt="img-nft">
+                            <img class="lazyload" data-src="images/lil-pug/699698f3757baa2f659333988f539417.avif" alt="img-nft">
                             <span class="tag react">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">

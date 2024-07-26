@@ -264,7 +264,8 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
  Route::get('activities_submit', [App\Http\Controllers\Admin\UserController::class, 'activities_submit'])->name('admin.activities_submit');
  Route::post('addnftt', [App\Http\Controllers\Admin\UserController::class, 'addnftt'])->name('admin.addnftt');
  Route::get('addnft', [App\Http\Controllers\Admin\UserController::class, 'addnft'])->name('admin.addnft');
-
+ Route::post('addnft_post', [App\Http\Controllers\Admin\UserController::class, 'addnft_post'])->name('admin.addnft_post');
+ Route::get('addnftimage', [App\Http\Controllers\Admin\UserController::class, 'addnftimage'])->name('admin.addnftimage');
  
  //end userController
 
