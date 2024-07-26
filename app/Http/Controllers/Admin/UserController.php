@@ -864,7 +864,6 @@ public function add_bonus_post(Request $request)
             'collection_id' => 'required',
             'number' => 'required',
           
-            'sale' => 'required',
             'price' => 'required',
             'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp,avif',
 
@@ -888,13 +887,12 @@ public function add_bonus_post(Request $request)
                 // 'id' =>$request->id,
                 'collection_id' => $request->collection_id,
                 'number' =>$request->number,
-                'sale' =>$request->sale,
                 'price' =>$request->price,
               
                  'img' => 'image/'.$imageName,
             ];
 
-            $payment = CollectionDetail::firstOrCreate(['collection_id'=>$request->collection_id],$data);
+            $payment = CollectionDetail::Create($data);
 
             $notify[] = ['success', ' NFT Details Added successfully'];
             return redirect()->back()->withNotify($notify);
