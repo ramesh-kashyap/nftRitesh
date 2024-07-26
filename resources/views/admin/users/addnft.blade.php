@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row page-titles">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Product</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Add Agent Product</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Nft</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Add Nft Details</a></li>
                     </ol>
                 </div>
                 <!-- row -->
@@ -16,7 +16,7 @@
                     <div class="col-xl-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Add Agent Product</h4>
+                                <h4 class="card-title">Add Nft Details</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
@@ -24,32 +24,36 @@
                                      {{ csrf_field() }}
                                         <div class="row">
                                             <div class="mb-3 col-md-12">
-                                                <label class="form-label">Product Name</label>
-                                                <input class="form-control" id="inputEmail3" placeholder="Product Name" type="text" name="productName">
+                                                <label class="form-label">Id</label>
+                                                <input class="form-control" id="inputEmail3" placeholder="ID" type="" name="id">
                                             </div>
      
                                            
                                             <div class="mb-3 col-md-12">
-                                                <label class="form-label">Product Price</label>
-                                                <input class="form-control" id="inputEmail3" placeholder="Product Price" type="number" name="productPrice">
+                                                <label class="form-label">Name</label>
+                                                <input class="form-control" id="inputEmail3" placeholder="name" type="" name="name">
                                             </div>
                                           
                                             <div class="mb-3 col-md-12">
-                                                <label class="form-label">Product Discount Price</label>
-                                                <input class="form-control" id="inputEmail3" placeholder="Product Discount Price" type="text" name="productDiscountPrice">
+                                                <label class="form-label">Price</label>
+                                                <input class="form-control" id="inputEmail3" placeholder="Price" type="" name="price">
+                                            </div>
+                                            <div class="mb-3 col-md-12">
+                                                <label class="form-label">Volume</label>
+                                                <input class="form-control" id="inputEmail3" placeholder="Volume" type="" name="volume">
                                             </div>
                                             <div class="mb-3 col-md-12">
                                                 <label class="form-label">Upload Image</label>
-                                                <input class="form-control" id="inputEmail3" placeholder="Upload Image" type="file" name="icon_image">
+                                                <input class="form-control" id="inputEmail3" placeholder="Upload Image" type="file" name="img">
                                             </div>
 
                                            
 
 
                                             <div class="mb-3 col-md-12">
-                                                <label class="form-label">Product Discription</label>
+                                                <label class="form-label">Discription</label>
                                               
-                                                <textarea name="ProductDiscription" class="form-control" ></textarea>
+                                                <textarea name="description" class="form-control" ></textarea>
                                             </div>               
                                         </div>
      
