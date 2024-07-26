@@ -779,14 +779,12 @@ public function add_bonus_post(Request $request)
 
     try{
         $validation =  Validator::make($request->all(), [
-            // 'id' => 'required',
             'name' => 'required',
           
             'volume' => 'required',
            
             'price' => 'required',
             'description' => 'required',
-            'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp',
 
         ]);
 
@@ -807,7 +805,6 @@ public function add_bonus_post(Request $request)
                 
                 
            $data = [
-                // 'id' =>$request->id,
                 'name' =>$request->name,
                 'description' =>$request->description,
               

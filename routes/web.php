@@ -76,7 +76,7 @@ Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'inde
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
 
-Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+Route::get('/profile/{id}', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
 
 
 
