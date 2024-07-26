@@ -84,8 +84,8 @@
                             <input type="text" class="mt-12 form-control" name="password" id="inputPassword" placeholder="Enter Your Password">
                         </div>
 
-                        <div class="forgot">
-                          <a href="forgot-password.html" >Forgot password?</a>
+                        <div class="forgot content text-primary mt-4 mb-2">
+                          <a href="{{ route('forgot-password') }}" >Forgot password?</a>
                         </div>
                   
                         <div class="submit-btn pt-1 pb-1">
@@ -124,3 +124,4 @@
 
 </body>
 </html>
+@include('partials.notify')
