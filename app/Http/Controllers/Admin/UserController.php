@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Income;
 use App\Models\Investment;
+use App\Models\Collection;
+
 use App\Models\Bank;
 use App\Models\Withdraw;
 use App\Models\BuyFund;
@@ -778,12 +780,13 @@ public function add_bonus_post(Request $request)
     try{
         $validation =  Validator::make($request->all(), [
             'id' => 'required',
-            'name' => 'required|numeric',
+            'name' => 'required',
           
-            'bg_img' => 'required',
+            'volume' => 'required',
            
             'price' => 'required',
-            'volume'=>'max:4096|mimes:jpeg,png,jpg,svg,webp',
+            'description' => 'required',
+            'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp',
 
         ]);
 
@@ -795,27 +798,26 @@ public function add_bonus_post(Request $request)
         }
 
     
-        $product=Vproduct::where('id',$request->id)->first();
-            if (!$product)          
+        $nft=Collection::where('id',$request->id)->first();
+            if (!$nft)          
             {
-                $icon_image = $request->file('icon_image');
+                $icon_image = $request->file('img');
                 $imageName = time().'.'.$icon_image->extension();
-                $request->icon_image->move(public_path('image/'),$imageName);
+                $request->img->move(public_path('image/'),$imageName);
                 
                 
            $data = [
                 'id' =>$request->id,
                 'name' =>$request->name,
+                'description' =>$request->description,
               
-                'img' => $request->img,
-                // 'productName' =>$request->type,
                 'price' =>$request->price,
                 'volume' => $request->volume,
-                 'image' => 'image/'.$imageName,
+                 'img' => 'image/'.$imageName,
             ];
-            $payment = Vproduct::firstOrCreate(['productName'=>$request->name],$data);
+            $payment = Collection::firstOrCreate(['id'=>$request->id],$data);
 
-            $notify[] = ['success', ' Product Added successfully'];
+            $notify[] = ['success', ' NFT Details Added successfully'];
             return redirect()->back()->withNotify($notify);
 
           
@@ -823,7 +825,7 @@ public function add_bonus_post(Request $request)
            }
           else
           {
-            return Redirect::back()->withErrors(array('Products already Exists! '));
+            return Redirect::back()->withErrors(array('NFT already Exists! '));
           }
 
         }
