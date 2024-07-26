@@ -762,7 +762,81 @@ public function add_bonus_post(Request $request)
         return redirect()->back()->withNotify($notify);
     }
 
+    public function addnft()
+    {
+     
+     $this->data['page'] = 'admin.users.addnft';
+     return $this->admin_dashboard();
 
+    }
+
+
+          
+    public function addnftt(Request $request)
+    {
+
+    try{
+        $validation =  Validator::make($request->all(), [
+            'id' => 'required',
+            'name' => 'required|numeric',
+          
+            'bg_img' => 'required',
+           
+            'price' => 'required',
+            'volume'=>'max:4096|mimes:jpeg,png,jpg,svg,webp',
+
+        ]);
+
+
+        if($validation->fails()) {
+            Log::info($validation->getMessageBag()->first());
+
+            return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+        }
+
+    
+        $product=Vproduct::where('id',$request->id)->first();
+            if (!$product)          
+            {
+                $icon_image = $request->file('icon_image');
+                $imageName = time().'.'.$icon_image->extension();
+                $request->icon_image->move(public_path('image/'),$imageName);
+                
+                
+           $data = [
+                'id' =>$request->id,
+                'name' =>$request->name,
+              
+                'img' => $request->img,
+                // 'productName' =>$request->type,
+                'price' =>$request->price,
+                'volume' => $request->volume,
+                 'image' => 'image/'.$imageName,
+            ];
+            $payment = Vproduct::firstOrCreate(['productName'=>$request->name],$data);
+
+            $notify[] = ['success', ' Product Added successfully'];
+            return redirect()->back()->withNotify($notify);
+
+          
+               # code...
+           }
+          else
+          {
+            return Redirect::back()->withErrors(array('Products already Exists! '));
+          }
+
+        }
+       catch(\Exception $e){
+        Log::info('error here');
+        Log::info($e->getMessage());
+        print_r($e->getMessage());
+        die("hi");
+        return  Redirect::back()->withErrors('error', $e->getMessage())->withInput();
+        }
+
+
+        }
 
 
 }

@@ -262,6 +262,9 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
  Route::get('deposit-activities', [App\Http\Controllers\Admin\UserController::class, 'pendingActivities'])->name('admin.deposit-activities');
  Route::get('activities-list', [App\Http\Controllers\Admin\UserController::class, 'activities_list'])->name('admin.activities-list');
  Route::get('activities_submit', [App\Http\Controllers\Admin\UserController::class, 'activities_submit'])->name('admin.activities_submit');
+ Route::post('addnftt', [App\Http\Controllers\Admin\UserController::class, 'addnftt'])->name('admin.addnftt');
+ Route::get('addnft', [App\Http\Controllers\Admin\UserController::class, 'addnft'])->name('admin.addnft');
+
  
  //end userController
 
