@@ -182,7 +182,7 @@
                 <ul class="mt-20 list-view-v7">
                     @foreach($collections as $key=>$collection)
                     <li>
-                        <a href="nft-item-details.html" class="item">
+                        <a href="{{ route('user.profile1', ['id' => $collection->id]) }}" class="item">
                             <h6>{{ $key+1 }}</h6>
                             <div class="flex-grow-1 d-flex gap-16 align-items-center">
                                 <div class="avatar round avt-50">
@@ -1023,7 +1023,7 @@
                           </a>
                       </li>
 
-                      <li class="mt-16">
+                      {{-- <li class="mt-16">
                           <a href="{{route('user.profile1')}}" class="nav-link-item not-link">
                               <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                   viewBox="0 0 20 20" fill="none">
@@ -1036,7 +1036,7 @@
                               </svg>
                               <span>Profile</span>
                           </a>
-                      </li>
+                      </li> --}}
                       
                       <li class="mt-16">
                           <a href="{{route('logout')}}" class="nav-link-item not-link">
@@ -1157,9 +1157,9 @@
                           <li><a href="nft-details-listed.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
                                   <span>NFT Detail Listed</span>
                               </a></li>
-                          <li><a href="{{route('user.profile1')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                          {{-- <li><a href="{{route('user.profile1')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                                   <span>Profile</span>
-                              </a></li>
+                              </a></li> --}}
                           <li><a href="{{route('user.more')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                                   <span>More</span>
                               </a></li>

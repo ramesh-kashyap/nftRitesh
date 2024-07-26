@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\Investment;
 use App\Models\Income;
 use App\Models\Collection;
+use App\Models\CollectionDetail;
+
 use App\Models\User_trade;
 use App\Models\Contract;
 use App\Models\Activitie;
@@ -102,22 +104,26 @@ class Dashboard extends Controller
 
     
 
-    public function profile()
+    public function profile(Request $request)
     {
       $validation =  Validator::make($request->all(), [
         'id' => 'required',]);
 
-        if($validation->fails()) {
-          Log::info($validation->getMessageBag()->first());
+      //   if($validation->fails()) {
+      //     Log::info($validation->getMessageBag()->first());
 
-          return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
-      }
+      //     return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+      // }
 
         $id=$request->id;
+
+        $data=Collection::where('id',$id)->first();
+
 
         $collections=CollectionDetail::where('collection_id',$id)->get();
 
       $this->data['collections'] = $collections;
+      $this->data['datas'] = $data;
       $this->data['page'] = 'user.profile';
       return $this->dashboard_layout();
 
