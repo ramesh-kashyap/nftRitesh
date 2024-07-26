@@ -31,7 +31,7 @@
                                            
                                             <div class="mb-3 col-md-12">
                                                 <label class="form-label">Number</label>
-                                                <input class="form-control" id="inputEmail3" placeholder="number" type="" name="number">
+                                                <input class="form-control" id="inputEmail3" placeholder="number" type="number" name="number">
                                             </div>
 
 
@@ -53,6 +53,10 @@
                                             <div class="mb-3 col-md-12">
                                                 <label class="form-label">Price</label>
                                                 <input class="form-control" id="inputEmail3" placeholder="Price" type="" name="price">
+                                            </div>
+                                            <div class="mb-3 col-md-12">
+                                                <label class="form-label">Sale</label>
+                                                <input class="form-control" id="inputEmail3" placeholder="Sale" type="" name="sale">
                                             </div>
                                             
                                             <div class="mb-3 col-md-12">
