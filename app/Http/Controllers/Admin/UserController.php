@@ -862,7 +862,6 @@ public function add_bonus_post(Request $request)
             // 'id' => 'required',
             'number' => 'required',
           
-            'sale' => 'required',
            
             'price' => 'required',
             'collection_id' => 'required',
@@ -890,7 +889,6 @@ public function add_bonus_post(Request $request)
                 // 'id' =>$request->id,
                 'collection_id' => $request->collection_id,
                 'number' =>$request->number,
-                'sale' =>$request->sale,
               
                 'price' =>$request->price,
               
