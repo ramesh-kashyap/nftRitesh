@@ -13,5 +13,8 @@ class Collection extends Model
         'name', 'img', 'bg_img', 'description', 'price', 'volume'
     ];
 
-    
+    public function collectionDetails()
+    {
+        return $this->hasMany(CollectionDetail::class);
+    }
 }
