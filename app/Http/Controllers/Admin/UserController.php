@@ -779,7 +779,7 @@ public function add_bonus_post(Request $request)
 
     try{
         $validation =  Validator::make($request->all(), [
-            'id' => 'required',
+            // 'id' => 'required',
             'name' => 'required',
           
             'volume' => 'required',
@@ -798,7 +798,7 @@ public function add_bonus_post(Request $request)
         }
 
     
-        $nft=Collection::where('id',$request->id)->first();
+        $nft=Collection::where('name',$request->name)->first();
             if (!$nft)          
             {
                 $icon_image = $request->file('img');
@@ -807,7 +807,7 @@ public function add_bonus_post(Request $request)
                 
                 
            $data = [
-                'id' =>$request->id,
+                // 'id' =>$request->id,
                 'name' =>$request->name,
                 'description' =>$request->description,
               
@@ -815,7 +815,7 @@ public function add_bonus_post(Request $request)
                 'volume' => $request->volume,
                  'img' => 'image/'.$imageName,
             ];
-            $payment = Collection::firstOrCreate(['id'=>$request->id],$data);
+            $payment = Collection::firstOrCreate(['name'=>$request->name],$data);
 
             $notify[] = ['success', ' NFT Details Added successfully'];
             return redirect()->back()->withNotify($notify);

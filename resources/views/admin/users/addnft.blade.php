@@ -23,10 +23,10 @@
                                     <form action="{{ route('admin.addnftt') }}" method="POST" enctype="multipart/form-data">
                                      {{ csrf_field() }}
                                         <div class="row">
-                                            <div class="mb-3 col-md-12">
+                                            <!-- <div class="mb-3 col-md-12">
                                                 <label class="form-label">Id</label>
                                                 <input class="form-control" id="inputEmail3" placeholder="ID" type="" name="id">
-                                            </div>
+                                            </div> -->
      
                                            
                                             <div class="mb-3 col-md-12">
