@@ -10,7 +10,7 @@ class CollectionDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'collection_id', 'img', 'price', 'sale'
+        'collection_id', 'img', 'price', 'sale','number',
     ];
 
     public function collection()
