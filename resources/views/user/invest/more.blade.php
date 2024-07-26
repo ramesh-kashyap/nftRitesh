@@ -297,7 +297,7 @@
                     </div>
                     <div class="value-field-wallet mt-16">
                         <img src="images/avt/metamask.png" alt="metamask">
-                        <input type="text" value="7EK933L1...C93676P7Q4">
+                        <input type="text" value="">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.1665 11.1673V13.6673C14.1665 17.0007 12.8332 18.334 9.49984 18.334H6.33317C2.99984 18.334 1.6665 17.0007 1.6665 13.6673V10.5007C1.6665 7.16732 2.99984 5.83398 6.33317 5.83398H8.83317" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
