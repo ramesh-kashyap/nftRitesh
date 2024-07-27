@@ -106,7 +106,9 @@ class Profile extends Controller
         $user->secret_key
     );
 
-    $qrCodeImageUrl = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.urlencode($qrCodeUrl);
+    $qrCodeImageUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($qrCodeUrl);
+
+
 
     
     $this->data['qrCodeImageUrl'] =$qrCodeImageUrl;
@@ -171,7 +173,7 @@ class Profile extends Controller
             $user->email,
             $user->secret_key
         );
-        $qrCodeImageUrl = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . urlencode($qrCodeUrl);
+        $qrCodeImageUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($qrCodeUrl);
     }
     
     $this->data['qrCodeImageUrl'] =$qrCodeImageUrl;

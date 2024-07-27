@@ -34,11 +34,15 @@ class Login extends Controller
 
             if ($user && $user->twofa) {
                 // Verify the 2FA code
+                 if(!$request->google2facode){
+                    return Redirect::back()->withErrors(array('2FA is required'));
+                 }
+
                 $google2fa = new Google2FA();
                 $valid = $google2fa->verifyKey($user->secret_key, $request->google2facode);
         
                 if (!$valid) {
-                    return redirect()->back()->withErrors(['google2facode' => 'Invalid 2FA code']);
+                    return Redirect::back()->withErrors(array('Invalid 2FA'));
                 }
             }
                  

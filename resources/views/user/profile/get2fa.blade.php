@@ -86,7 +86,7 @@
 
                             @else  
                             <h6 class="text-info mt-4 mb-2 pt-2">Scan for 2FA</h6>
-                            <img src="{{ $qrCodeImageUrl }}" alt="QR Code">
+                           <center> <img src="{{ $qrCodeImageUrl }}" alt="QR Code" style="width:100px !important"></center>
 
                             <form method="POST" action="{{ route('user.disable2fa') }}" class="auth-form">
                                 @csrf
