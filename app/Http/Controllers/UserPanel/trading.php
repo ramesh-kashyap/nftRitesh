@@ -26,52 +26,96 @@ class trading extends Controller
         return view('user.trading.nft_view', compact('nfts'));
     }
 
-   public function submitnft(Request $request)
+    public function submitnft(Request $request)
     {
-        // dd($request->all());
-
+        // Validate the request
         $request->validate([
-            'nft_id' => 'required',
+            'nft_id' => 'required|integer|exists:nft_tradings,id',
         ]);
-
-        $nft = Nft_Trading::find($request->nft_id);
-        // dd($nft);
-        if ($nft) {
-
-            $nft->status = 'Pending';
-            $nft->save();
-            }
-
-        // Assuming each NFT has a unique name
-        $trade = Trade::create([
-            'nft_id' => $nft->id,
+    
+        $user = Auth::user();
+        $nft_id = $request->input('nft_id');
+        // dd($request->nft_image);
+    
+        // Check if the user has made a purchase in the last 24 hours
+        $lastPurchase = Trade::where('buyer_id', $user->username)
+            ->latest('created_at')
+            ->first();
+    
+        if ($lastPurchase && $lastPurchase->created_at->diffInHours(now()) < 24) {
+            return redirect()->back()->with('error', 'You can only buy one NFT every 24 hours.');
+        }
+    
+        // Find the NFT and update its status
+        $nft = Nft_Trading::find($nft_id);
+        if (!$nft) {
+            return redirect()->back()->with('error', 'NFT not found.');
+        }
+    
+        // Update the NFT status
+        $nft->status = 'Pending';
+        $nft->save();
+    
+        // Create a new trade record
+        Trade::create([
+            'nft_id' => $nft->nft_id,
             'name' => $nft->name,
+            'nft_image' => $nft->nft_image,
             'status' => 'Pending',
-            'currency' =>'USDT',
-            'buyer_id' => Auth::user()->username,
-
-            
+            'currency' => 'USDT',
+            'buyer_id' => $user->username,
         ]);
-
-        
-
-        return back()->with("Your NFT Buying Sucessfully");
+    
+        // Redirect with success message
+        return redirect()->back()->with('success', 'Your NFT is being purchased successfully. You can buy another NFT after 24 hours.');
     }
+    
 
     public function investamount()
-    {
-        $user = Auth::user();    
+{
+    $user = Auth::user();   
     $iamount = Package::all();
     $nfts = Nft_Trading::all();
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
+    $lastTrade = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
 
+
+    $nftimg = null;
+
+    if ($lastTrade) {
+        // Fetch the NFT associated with the last trade
+        $nftd = Nft_Trading::where('nft_id', $lastTrade->nft_id)->first();
+        // if ($nft) {
+        //     $nftimg = $nft->nft_images;
+        // }
+    }
+
+
+    // Calculate the remaining time
+    $currentTime = now();
+    $countdownTime = null;
+
+    if ($lastTrade) {
+        $purchaseTime = $lastTrade->created_at;
+        $differenceInHours = $purchaseTime->diffInHours($currentTime);
+
+        // If less than 24 hours, calculate remaining time
+        if ($differenceInHours < 24) {
+            $remainingTimeInSeconds = (24 - $differenceInHours) * 3600 - $currentTime->diffInSeconds($purchaseTime);
+            $countdownTime = $remainingTimeInSeconds;
+        }
+    }
 
     $this->data['iamount'] = $iamount;
     $this->data['pamount'] = $pamount;
     $this->data['nfts'] = $nfts;
+    $this->data['nftd'] = $nftd;
+    $this->data['countdownTime'] = $countdownTime; // Pass the remaining time to the view
     $this->data['page'] = 'user.trading.nft_view';
+
     return $this->dashboard_layout();
-    }
+}
+
 
     // NftController.php
     public function sellnft(Request $request)
@@ -91,19 +135,25 @@ class trading extends Controller
         }
     
         // Update status in the Trade table where buyer_id matches the logged-in user's username
-        $trade = Trade::where('nft_id', $request->input('nft_id'))
-            ->where('buyer_id', Auth::user()->username)
-            ->first();
-            dd($trade);
+        $trade = Trade::where('nft_id', $request->input('nft_id'))->first();
+            // dd($trade);
         if ($trade) {
             $trade->status = $request->input('status');
             $trade->save();
-            return back()->with("Your NFT Buying Sucessfully");
+            return back()->with("Your NFT Sell Sucessfully");
         }
     
         return back()->with('error', 'Failed to update NFT status.');
     }
     
+
+    // public function fatchtime(){
+
+    //     $user= Auth::user();
+    //     $laste = Trade::where('buyer_id', $user->username)
+    //         ->latest('created_at')
+    //         ->first();
+    // }
 
 
 

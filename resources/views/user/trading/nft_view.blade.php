@@ -34,8 +34,22 @@
         .card-nft {
             display: grid !important;
         }
+        .alert {
+        transition: opacity 0.5s ease-out;
+    }
 
     </style>
+    <style>
+            /* #purchaseInfoSection {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .box-countdown-2 {
+            font-size: 18px;
+        } */
+</style>
+
 </head>
 
 <div class="counter-scroll">
@@ -65,8 +79,32 @@
             </a>
         </div>
     </div>
+    
     <div class="app-content style-2">
       <div class="tf-container">
+      @if (session('success'))
+    <div id="successAlert" class="alert alert-success">
+        {{ session('success') }}
+        <div id="countdown" style="margin-top: 10px;"></div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div id="errorAlert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if ($errors->any())
+    <div id="errorAlert" class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
       <div class="card-body mt-20 row">
           <div class="dropdown text-center col-6">
               <select id="levelSelect" class="tf-btn primary form-select" style="overflow:hidden">
@@ -74,8 +112,7 @@
                   <option value="{{ $iamt->id }}" data-level="{{ $iamt->level }}" data-package-min="{{ $iamt->package_min }}" data-package-max="{{ $iamt->package_max }}" data-min-amount="{{ $iamt->min_amount }}" data-max-amount="{{ $iamt->max_amount }}"><span>{{$iamt->level}} -</span>   <span>{{$iamt->package_min}}-{{$iamt->package_max}}%</span></option>                  
                @endforeach                   
               </select>
-          </div>
-
+          </div>         
           <div class="dropdown text-center col-6" >                         
                         <button  type="button" id="selectedLevelButton" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
                         Select a Package
@@ -131,48 +168,38 @@
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                         </div>
                         <div class="">
-                           
+                            <form id="buyForm" action="{{ route('user.submitnft') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="nft_id" id="hiddenNftId">
+                                <input type="hidden" name="nft_name" id="hiddenNftName">
+                                <input type="hidden" name="status" value="Pending">
+                                <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
+                                <button type="submit" id="buyButton"  class="tf-btn primary" data-bs-dismiss="modal"
+                                style="cursor: pointer;">Place a bid</button>
+                            <!-- <a href="#" class="tf-btn disabled-primary mt-16" data-bs-dismiss="modal">SELL</a> -->
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="" style="padding-bottom :30px;">
-                <div class="grid-2 gap-15">
-                    <form action="{{ route('user.sellnft') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="nft_id" id="hiddenNftId">
-                        <input type="hidden" name="nft_name" id="hiddenNftName">
-                        <input type="hidden" name="status" value="Approved">
-                        <img id="popupImage" src="" alt="Selected NFT" style="display:none;">
-                        <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
-                            Now</button>
-                    </form>
+                <div class="grid-2 gap-15">                   
 
-                    <!-- <a href="" id="sellButton" class="tf-btn disabled-primary btn-icon"><span
-                            class="icon icon-ticket-star"></span> Sell Now</a> -->
+                    <a href="" id="sellButton" class="tf-btn disabled-primary btn-icon"><span
+                            class="icon icon-ticket-star"></span> Sell Now</a>
                     <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</a>
                 </div>
-            </div>
-
-
-
-
-
-            <div class="pb-24 mb-24 line" id="purchaseInfoSection" style="display: none;">
-                <p class="body-3 text-dark-2">You Can Buy Next NFT After</p>
+            </div>       
+           
+            <div class="pb-24 mb-24 line" id="purchaseInfoSection">
+                <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
                 <div class="mt-16 box-countdown-2">
-                    <div class="js-countdown" data-timer="86400" data-labels="Day, Hour, Mins, Secs"></div>
+                    <div class="js-countdown" data-timer="{{ $countdownTime }}" data-labels="Day, Hour, Mins, Secs"></div>
                 </div>
             </div>
-            <script>
-                document.getElementById('buyButton').addEventListener('click', function () {
-                    let purchaseInfoSection = document.getElementById('purchaseInfoSection');
-                    purchaseInfoSection.style.display = 'block'; // Show the section
-                });
 
-            </script>
             <div class="pb-24 mb-24 line">
                 <div class="d-flex gap-14 tf-counter">
                     <div class="counter-box favourites count-style-2">
@@ -262,6 +289,65 @@
                 </li>
             </ul>
         </div>
+        <div class="mt-24 px-24">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>Expiring Soon</h4>
+                <a href="expiring-soon.html" class="text-primary fw-6">See All</a>
+            </div>
+            <div class="grid-2 mt-24 gap-15">
+                <a class="card-nft">
+                    <div class="box-img">
+                        <img class="lazyload" data-src="{{ $nftd->nft_images }}" alt="img-nft">
+                        <span class="tag react">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z"
+                                    stroke="#FB5556" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            20
+                        </span>
+                        <span class="tag ethereum">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.45006 4.55055L5.83504 3.49055C5.94004 3.44555 6.06005 3.44555 6.16005 3.49055L8.54506 4.55055C8.75506 4.64555 8.95004 4.39055 8.80504 4.21055L6.30504 1.15555C6.13504 0.945547 5.85505 0.945547 5.68505 1.15555L3.18505 4.21055C3.04505 4.39055 3.24006 4.64555 3.45006 4.55055Z"
+                                    fill="white" />
+                                <path
+                                    d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z"
+                                    fill="white" />
+                                <path
+                                    d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z"
+                                    fill="white" />
+                            </svg>
+                            10,145.93
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="button-1 name">{{ $nftd->name }}</div>
+                        <p class="mt-4 id-name">{{ $nftd->description }}
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.3731 7.16036L13.4664 6.10703C13.2931 5.90703 13.1531 5.5337 13.1531 5.26703V4.1337C13.1531 3.42703 12.5731 2.84703 11.8664 2.84703H10.7331C10.4731 2.84703 10.0931 2.70703 9.89309 2.5337L8.83976 1.62703C8.37976 1.2337 7.62643 1.2337 7.15976 1.62703L6.11309 2.54036C5.91309 2.70703 5.53309 2.84703 5.27309 2.84703H4.11976C3.41309 2.84703 2.83309 3.42703 2.83309 4.1337V5.2737C2.83309 5.5337 2.69309 5.90703 2.52643 6.10703L1.62643 7.16703C1.23976 7.62703 1.23976 8.3737 1.62643 8.8337L2.52643 9.8937C2.69309 10.0937 2.83309 10.467 2.83309 10.727V11.867C2.83309 12.5737 3.41309 13.1537 4.11976 13.1537H5.27309C5.53309 13.1537 5.91309 13.2937 6.11309 13.467L7.16643 14.3737C7.62643 14.767 8.37976 14.767 8.84643 14.3737L9.89976 13.467C10.0998 13.2937 10.4731 13.1537 10.7398 13.1537H11.8731C12.5798 13.1537 13.1598 12.5737 13.1598 11.867V10.7337C13.1598 10.4737 13.2998 10.0937 13.4731 9.8937L14.3798 8.84036C14.7664 8.38036 14.7664 7.62036 14.3731 7.16036ZM10.7731 6.74036L7.55309 9.96036C7.45976 10.0537 7.33309 10.107 7.19976 10.107C7.06643 10.107 6.93976 10.0537 6.84643 9.96036L5.23309 8.34703C5.03976 8.1537 5.03976 7.8337 5.23309 7.64036C5.42643 7.44703 5.74643 7.44703 5.93976 7.64036L7.19976 8.90036L10.0664 6.0337C10.2598 5.84036 10.5798 5.84036 10.7731 6.0337C10.9664 6.22703 10.9664 6.54703 10.7731 6.74036Z"
+                                    fill="#2664ED" />
+                            </svg>
+                        </p>
+                    </div>
+                    <form action="{{ route('user.sellnft') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="nft_id" value="{{ $nftd->id}}">
+                        <input type="hidden" name="nft_name" value="{{ $nftd->name}}">
+                        <input type="hidden" name="status" value="Approved">
+                        <img  src="{{ $nftd->images}}" alt="Selected NFT" style="display:none;">
+                        <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
+                            Now</button>
+                    </form>                    
+                </a>
+
+            </div>
+            </div>
 
         <div class="mt-28 px-24">
             <div class="wrap-slider-tab">
@@ -284,8 +370,7 @@
 
                     </ul>
                 </div>
-            </div>
-
+            </div>            
             <div class="tab-content mt-28">
                 <div class="tab-pane fade active show" id="details" role="tabpanel">
                     <div class="card-nft-1">
@@ -304,10 +389,10 @@
                             <div class="card-body">
                                 <div class="d-flex gap-12 align-items-center">
                                     <div class="avatar avt-40">
-                                        <img src="../images/avt/avt4.png" alt="avt">
+                                        <img src="{{$nftd->nft_images}}" alt="avt">
                                     </div>
                                     <span class="button-2 text-blue">
-                                        Hape_NFT
+                                    {{$nftd->name}}
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1399,97 +1484,7 @@
 
             </div>
         </div>
-        <div class="mt-24 px-24">
-            <div class="d-flex justify-content-between align-items-center">
-                <h4>Expiring Soon</h4>
-                <a href="expiring-soon.html" class="text-primary fw-6">See All</a>
-            </div>
-            <div class="grid-2 mt-24 gap-15">
-                <a class="card-nft">
-                    <div class="box-img">
-                        <img class="lazyload" data-src="../images/nfts/nft-9.jpg" alt="img-nft">
-                        <span class="tag react">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z"
-                                    stroke="#FB5556" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            20
-                        </span>
-                        <span class="tag ethereum">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M3.45006 4.55055L5.83504 3.49055C5.94004 3.44555 6.06005 3.44555 6.16005 3.49055L8.54506 4.55055C8.75506 4.64555 8.95004 4.39055 8.80504 4.21055L6.30504 1.15555C6.13504 0.945547 5.85505 0.945547 5.68505 1.15555L3.18505 4.21055C3.04505 4.39055 3.24006 4.64555 3.45006 4.55055Z"
-                                    fill="white" />
-                                <path
-                                    d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z"
-                                    fill="white" />
-                                <path
-                                    d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z"
-                                    fill="white" />
-                            </svg>
-                            10,145.93
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="button-1 name">Hape Man #92</div>
-                        <p class="mt-4 id-name">@Tamim Rahman
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.3731 7.16036L13.4664 6.10703C13.2931 5.90703 13.1531 5.5337 13.1531 5.26703V4.1337C13.1531 3.42703 12.5731 2.84703 11.8664 2.84703H10.7331C10.4731 2.84703 10.0931 2.70703 9.89309 2.5337L8.83976 1.62703C8.37976 1.2337 7.62643 1.2337 7.15976 1.62703L6.11309 2.54036C5.91309 2.70703 5.53309 2.84703 5.27309 2.84703H4.11976C3.41309 2.84703 2.83309 3.42703 2.83309 4.1337V5.2737C2.83309 5.5337 2.69309 5.90703 2.52643 6.10703L1.62643 7.16703C1.23976 7.62703 1.23976 8.3737 1.62643 8.8337L2.52643 9.8937C2.69309 10.0937 2.83309 10.467 2.83309 10.727V11.867C2.83309 12.5737 3.41309 13.1537 4.11976 13.1537H5.27309C5.53309 13.1537 5.91309 13.2937 6.11309 13.467L7.16643 14.3737C7.62643 14.767 8.37976 14.767 8.84643 14.3737L9.89976 13.467C10.0998 13.2937 10.4731 13.1537 10.7398 13.1537H11.8731C12.5798 13.1537 13.1598 12.5737 13.1598 11.867V10.7337C13.1598 10.4737 13.2998 10.0937 13.4731 9.8937L14.3798 8.84036C14.7664 8.38036 14.7664 7.62036 14.3731 7.16036ZM10.7731 6.74036L7.55309 9.96036C7.45976 10.0537 7.33309 10.107 7.19976 10.107C7.06643 10.107 6.93976 10.0537 6.84643 9.96036L5.23309 8.34703C5.03976 8.1537 5.03976 7.8337 5.23309 7.64036C5.42643 7.44703 5.74643 7.44703 5.93976 7.64036L7.19976 8.90036L10.0664 6.0337C10.2598 5.84036 10.5798 5.84036 10.7731 6.0337C10.9664 6.22703 10.9664 6.54703 10.7731 6.74036Z"
-                                    fill="#2664ED" />
-                            </svg>
-                        </p>
-                    </div>
-                </a>
-                <a class="card-nft">
-                    <div class="box-img">
-                        <img class="lazyload" data-src="../images/nfts/nft-10.jpg" alt="img-nft">
-                        <span class="tag react">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z"
-                                    stroke="#FB5556" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            48
-                        </span>
-                        <span class="tag ethereum">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M3.45006 4.55055L5.83504 3.49055C5.94004 3.44555 6.06005 3.44555 6.16005 3.49055L8.54506 4.55055C8.75506 4.64555 8.95004 4.39055 8.80504 4.21055L6.30504 1.15555C6.13504 0.945547 5.85505 0.945547 5.68505 1.15555L3.18505 4.21055C3.04505 4.39055 3.24006 4.64555 3.45006 4.55055Z"
-                                    fill="white" />
-                                <path
-                                    d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z"
-                                    fill="white" />
-                                <path
-                                    d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z"
-                                    fill="white" />
-                            </svg>
-                            10,145.93
-                        </span>
-                    </div>
-                    <div class="content">
-                        <div class="button-1 name">Hape Man #122</div>
-                        <p class="mt-4 id-name">@Hape Collection
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.3731 7.16036L13.4664 6.10703C13.2931 5.90703 13.1531 5.5337 13.1531 5.26703V4.1337C13.1531 3.42703 12.5731 2.84703 11.8664 2.84703H10.7331C10.4731 2.84703 10.0931 2.70703 9.89309 2.5337L8.83976 1.62703C8.37976 1.2337 7.62643 1.2337 7.15976 1.62703L6.11309 2.54036C5.91309 2.70703 5.53309 2.84703 5.27309 2.84703H4.11976C3.41309 2.84703 2.83309 3.42703 2.83309 4.1337V5.2737C2.83309 5.5337 2.69309 5.90703 2.52643 6.10703L1.62643 7.16703C1.23976 7.62703 1.23976 8.3737 1.62643 8.8337L2.52643 9.8937C2.69309 10.0937 2.83309 10.467 2.83309 10.727V11.867C2.83309 12.5737 3.41309 13.1537 4.11976 13.1537H5.27309C5.53309 13.1537 5.91309 13.2937 6.11309 13.467L7.16643 14.3737C7.62643 14.767 8.37976 14.767 8.84643 14.3737L9.89976 13.467C10.0998 13.2937 10.4731 13.1537 10.7398 13.1537H11.8731C12.5798 13.1537 13.1598 12.5737 13.1598 11.867V10.7337C13.1598 10.4737 13.2998 10.0937 13.4731 9.8937L14.3798 8.84036C14.7664 8.38036 14.7664 7.62036 14.3731 7.16036ZM10.7731 6.74036L7.55309 9.96036C7.45976 10.0537 7.33309 10.107 7.19976 10.107C7.06643 10.107 6.93976 10.0537 6.84643 9.96036L5.23309 8.34703C5.03976 8.1537 5.03976 7.8337 5.23309 7.64036C5.42643 7.44703 5.74643 7.44703 5.93976 7.64036L7.19976 8.90036L10.0664 6.0337C10.2598 5.84036 10.5798 5.84036 10.7731 6.0337C10.9664 6.22703 10.9664 6.54703 10.7731 6.74036Z"
-                                    fill="#2664ED" />
-                            </svg>
-                        </p>
-                    </div>
-                </a>
-
-            </div>
-        </div>
+        
     </div>
     </div>
 
@@ -1627,6 +1622,28 @@
     <script type="text/javascript" src="../js/slick.min.js"></script>
      <!-- Include jQuery library if not already included -->
      <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+     <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function hideAlertAfterDelay(selector, delay) {
+            const alert = document.querySelector(selector);
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.opacity = 0;
+                    setTimeout(() => {
+                        alert.style.display = 'none';
+                    }, 500); // Allow time for opacity transition
+                }, delay);
+            }
+        }
+
+        // Hide success alert after 2 seconds
+        hideAlertAfterDelay('#successAlert', 2000);
+
+        // Hide error alert after 3 seconds
+        hideAlertAfterDelay('#errorAlert', 3000);
+    });
+</script>
+
      <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     
     
