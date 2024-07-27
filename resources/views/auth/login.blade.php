@@ -50,78 +50,95 @@
 </head>
 
 <body>
-    
-    <div class="header fixed-top">
-        
-        <h3>Sign In</h3> 
-        
-    </div>
-    <div class="app-content style-2">
-        <div class="tf-container">
-            <div class="mb-24 pb-24 line-3">
-                <div class="card pb-20">
+  <div class="header fixed-top">
+      <h3>Sign In</h3>
+  </div>
+  <div class="app-content style-2">
+      <div class="tf-container">
+          <div class="mb-24 pb-24 line-3">
+              <div class="card pb-20">
                   <form method="POST" action="{{ route('loginp') }}" class="auth-form">
-                        {{ csrf_field() }} 
-                    
-                        <div class="card-body">
-                        <div class="delete-item mt-20 ">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="
-    font-size: 16px;
-    font-weight: 500;">User Name</span>
-                                
-                            </div>
-                            <input type="text" class="mt-12 form-control" id="inputusername" name="username" placeholder="Enter User Name">
-                            <i class="ri-user-line user"></i>
-                        </div>
-                        <div class="delete-item mt-20">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="
-                                font-size: 16px;
-                                font-weight: 500;">Password</span>
-                                
-                            </div>
-                            <input type="text" class="mt-12 form-control" name="password" id="inputPassword" placeholder="Enter Your Password">
-                        </div>
-
-                        <div class="forgot content text-primary mt-4 mb-2">
-                          <a href="{{ route('forgot-password') }}" >Forgot password?</a>
-                        </div>
-                  
-                        <div class="submit-btn pt-1 pb-1">
-                          <button type="submit" class="tf-btn theme-btn">Sign In</button>
+                      {{ csrf_field() }}
+                      <div class="card-body">
+                          <div class="delete-item mt-20">
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <span class="body-4" style="font-size: 16px; font-weight: 500;">User Name</span>
                               </div>
-                        <div class="division text-center mt-10 mb-10">
-                          <span class="text-info text-md-start text-center">OR</span>
-                        </div>
-                  
-                        <div class="btn-section">
-                          <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
-                              src="{{asset('')}}images/logo/apple.png" alt="google" style="width: 22px" /><span class="text-primar"> Continue with Apple </span></a>
-                  
-                          <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google"
-                              src="{{asset('')}}images/logo/google.png" alt="google" style="width: 22px" /> <span class="text-primar">Continue with Google </span></a>
-                        </div>
-                  
-                        <h5 class="signup mt-10"><span class="text-mut">Haven't registered?</span><a href="{{ route('register') }}" class="text-primary"> Sign up now</a></h5>
-                      </form>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>  
-    </div> 
+                              <input type="text" class="mt-12 form-control" id="inputusername" name="username" placeholder="Enter User Name">
+                              <i class="ri-user-line user"></i>
+                          </div>
+                          <div class="delete-item mt-20">
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <span class="body-4" style="font-size: 16px; font-weight: 500;">Password</span>
+                              </div>
+                              <input type="password" class="mt-12 form-control" name="password" id="inputPassword" placeholder="Enter Your Password">
+                          </div>
 
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/lazysize.min.js"></script>
-    <script type="text/javascript" src="js/countto.js"></script>
-    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/carousel.js"></script>
-    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
-    <script type="text/javascript" src="js/jqueryui.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+                          <!-- 2FA Code Input -->
+                          <div class="delete-item mt-20" id="2fa-code" style="display: none;">
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <span class="body-4" style="font-size: 16px; font-weight: 500;">2FA Code</span>
+                              </div>
+                              <input type="number" class="mt-12 form-control" name="google2facode" id="google2facode" placeholder="Enter 2FA Code">
+                          </div>
 
+                          <div class="forgot content text-primary mt-4 mb-2">
+                              <a href="{{ route('forgot-password') }}">Forgot password?</a>
+                          </div>
+
+                          <div class="submit-btn pt-1 pb-1">
+                              <button type="submit" class="tf-btn theme-btn">Sign In</button>
+                          </div>
+                          <div class="division text-center mt-10 mb-10">
+                              <span class="text-info text-md-start text-center">OR</span>
+                          </div>
+
+                          <div class="btn-section">
+                              <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google" src="{{asset('')}}images/logo/apple.png" alt="google" style="width: 22px" /><span class="text-primar"> Continue with Apple </span></a>
+
+                              <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google" src="{{asset('')}}images/logo/google.png" alt="google" style="width: 22px" /> <span class="text-primar">Continue with Google </span></a>
+                          </div>
+
+                          <h5 class="signup mt-10"><span class="text-mut">Haven't registered?</span><a href="{{ route('register') }}" class="text-primary"> Sign up now</a></h5>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/lazysize.min.js"></script>
+  <script type="text/javascript" src="js/countto.js"></script>
+  <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+  <script type="text/javascript" src="js/carousel.js"></script>
+  <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
+  <script type="text/javascript" src="js/jqueryui.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+
+  <script>
+      $(document).ready(function() {
+          $('#inputusername').on('blur', function() {
+              var username = $(this).val();
+              if (username) {
+                  $.ajax({
+                      url: '{{ route("check-2fa") }}',
+                      type: 'POST',
+                      data: {
+                          _token: '{{ csrf_token() }}',
+                          username: username
+                      },
+                      success: function(response) {
+                          if (response.twofa == 1) {
+                              $('#2fa-code').show();
+                          } else {
+                              $('#2fa-code').hide();
+                          }
+                      }
+                  });
+              }
+          });
+      });
+  </script>
 </body>
-</html>
-@include('partials.notify')
