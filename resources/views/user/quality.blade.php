@@ -175,7 +175,7 @@
                                 <div class="box-bottom">
                                     <div class="content">
                                         <div class="d-flex justify-content-between">
-                                            <span class="text-white body-3">@lang('Unlocked this level yet')</span>
+                                            <span class="text-white body-3"></span>
                                         </div>
                                        
                                     </div>
