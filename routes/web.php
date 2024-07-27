@@ -43,6 +43,8 @@ Route::post('/sendforgot', [App\Http\Controllers\Login::class, 'sendforgot'])->n
 
 Route::get('login', [App\Http\Controllers\Login::class, 'loginPage'])->name('login');
 Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp'); 
+Route::post('/check-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'check2fa'])->name('check-2fa');
+
 
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
@@ -122,6 +124,9 @@ Route::get('/ChangeMail', [App\Http\Controllers\UserPanel\Profile::class, 'Chang
 Route::get('/bindMail', [App\Http\Controllers\UserPanel\Profile::class, 'bindMail'])->name('user.bindMail');
 Route::post('/bindemail-action', [App\Http\Controllers\UserPanel\Profile::class, 'bindemail_action'])->name('user.bindemail-action');
 Route::post('/changeEmailAction', [App\Http\Controllers\UserPanel\Profile::class, 'changeEmailAction'])->name('user.changeEmailAction');
+Route::get('/2fa', [App\Http\Controllers\UserPanel\Profile::class, 'get2fa'])->name('user.get2fa');
+Route::post('/enable-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'enable2fa'])->name('user.enable2fa');
+Route::post('/disable-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'disable2fa'])->name('user.disable2fa');
 
 
 Route::post('/edit-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_password_post'])->name('user.edit-password');

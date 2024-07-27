@@ -32,9 +32,9 @@
     <div class="app-content style-1">
         <div class="tf-container">
             <ul class="list-view-v2 mb-28 pb-28 line">
-                <li><a href="#eWallet" class="item" data-bs-toggle="offcanvas" aria-controls="offcanvasRight">
-                    <span class="icon icon-wallet-money"></span>
-                    <span class="body-1 content">E-Wallet</span>
+                <li><a href="{{ route('user.get2fa') }}" class="item">
+                    <span class="icon icon-shield-tick"></span>
+                    <span class="body-1 content">Google 2FA</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.6">
                         <path d="M7.42505 16.6004L12.8584 11.1671C13.5 10.5254 13.5 9.47539 12.8584 8.83372L7.42505 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
