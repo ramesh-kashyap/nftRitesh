@@ -36,6 +36,11 @@ class trading extends Controller
 
         $nft = Nft_Trading::find($request->nft_id);
         // dd($nft);
+        if ($nft) {
+
+            $nft->status = 'Pending';
+            $nft->save();
+            }
 
         // Assuming each NFT has a unique name
         $trade = Trade::create([
@@ -43,8 +48,12 @@ class trading extends Controller
             'name' => $nft->name,
             'status' => 'Pending',
             'currency' =>'USDT',
-            'buyer_id' => Auth::id(),
+            'buyer_id' => Auth::user()->username,
+
+            
         ]);
+
+        
 
         return back()->with("Your NFT Buying Sucessfully");
     }
@@ -63,6 +72,39 @@ class trading extends Controller
     $this->data['page'] = 'user.trading.nft_view';
     return $this->dashboard_layout();
     }
+
+    // NftController.php
+    public function sellnft(Request $request)
+    {
+        // dd($request->all());
+        // Validate the request
+        $request->validate([
+            // 'nft_id' => 'required|integer|exists:nfts,id',
+            'status' => 'required|in:Approved',
+        ]);
+    
+        // Update status in the Nft_Trading table
+        $nftTrading = Nft_Trading::find($request->nft_id);
+        if ($nftTrading) {
+            $nftTrading->status = 'Approved';
+            $nftTrading->save();
+        }
+    
+        // Update status in the Trade table where buyer_id matches the logged-in user's username
+        $trade = Trade::where('nft_id', $request->input('nft_id'))
+            ->where('buyer_id', Auth::user()->username)
+            ->first();
+            dd($trade);
+        if ($trade) {
+            $trade->status = $request->input('status');
+            $trade->save();
+            return back()->with("Your NFT Buying Sucessfully");
+        }
+    
+        return back()->with('error', 'Failed to update NFT status.');
+    }
+    
+
 
 
 

@@ -14,25 +14,20 @@
     <link rel="stylesheet" href="../css/swiper-bundle.min.css">
     <link rel="stylesheet" href="../css/apexcharts.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/slick-theme.min.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" /> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> -->
 
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="../images/logo/168.png" />
     <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
-    <!-- Slick Carousel CSS -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-    <!-- Slick Carousel JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
+    
 
     <title>NFTs Detail</title>
     <style>
@@ -76,7 +71,7 @@
           <div class="dropdown text-center col-6">
               <select id="levelSelect" class="tf-btn primary form-select" style="overflow:hidden">
               @foreach($iamount as $iamt)
-                  <option value="{{ $iamt->id }}" data-level="{{ $iamt->level }}" data-package-min="{{ $iamt->package_min }}" data-package-max="{{ $iamt->package_max }}" data-min-amount="{{ $iamt->min_amount }}" data-max-amount="{{ $iamt->max_amount }}">{{$iamt->level}} - &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp {{$iamt->package_min}}-{{$iamt->package_max}}%</option>                  
+                  <option value="{{ $iamt->id }}" data-level="{{ $iamt->level }}" data-package-min="{{ $iamt->package_min }}" data-package-max="{{ $iamt->package_max }}" data-min-amount="{{ $iamt->min_amount }}" data-max-amount="{{ $iamt->max_amount }}"><span>{{$iamt->level}} -</span>   <span>{{$iamt->package_min}}-{{$iamt->package_max}}%</span></option>                  
                @endforeach                   
               </select>
           </div>
@@ -136,16 +131,7 @@
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                         </div>
                         <div class="">
-                            <form action="{{ route('user.submitnft') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="nft_id" id="hiddenNftId">
-                                <input type="hidden" name="nft_name" id="hiddenNftName">
-                                <input type="hidden" name="status" value="Pending">
-                                <img id="popupImage" src="" alt="Selected NFT" style="display:none;">
-                                <button id="buyButton" type="submit" class="tf-btn primary" data-bs-dismiss="modal"
-                                style="cursor: pointer;">Place a bid</button>
-                            <!-- <a href="#" class="tf-btn disabled-primary mt-16" data-bs-dismiss="modal">SELL</a> -->
-                            </form>
+                           
                         </div>
                     </div>
                 </div>
@@ -153,8 +139,18 @@
 
             <div class="" style="padding-bottom :30px;">
                 <div class="grid-2 gap-15">
-                    <a href="make-offer.html" class="tf-btn disabled-primary btn-icon"><span
-                            class="icon icon-ticket-star"></span> Sell Now</a>
+                    <form action="{{ route('user.sellnft') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="nft_id" id="hiddenNftId">
+                        <input type="hidden" name="nft_name" id="hiddenNftName">
+                        <input type="hidden" name="status" value="Approved">
+                        <img id="popupImage" src="" alt="Selected NFT" style="display:none;">
+                        <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
+                            Now</button>
+                    </form>
+
+                    <!-- <a href="" id="sellButton" class="tf-btn disabled-primary btn-icon"><span
+                            class="icon icon-ticket-star"></span> Sell Now</a> -->
                     <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</a>
                 </div>
@@ -1628,9 +1624,11 @@
     <script type="text/javascript" src="../js/chart-init.js"></script>
     <script type="text/javascript" src="../js/count-down.js"></script>
     <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/slick.min.js"></script>
      <!-- Include jQuery library if not already included -->
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    
     
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -1673,11 +1671,11 @@
         });
 
         // Optional: Add functionality to automatically close the modal after 5 seconds
-        function autoCloseModal() {
-            setTimeout(closeModal, 5000);
-        }
+        // function autoCloseModal() {
+        //     setTimeout(closeModal, 5000);
+        // }
 
-        document.getElementById('imageModal').addEventListener('click', autoCloseModal);
+        // document.getElementById('imageModal').addEventListener('click', autoCloseModal);
 
 
    
@@ -1740,6 +1738,7 @@
         selectElement.addEventListener('change', updateButtonState);
     });
 </script>
+
 
 
 </body>
