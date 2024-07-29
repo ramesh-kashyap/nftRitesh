@@ -9,6 +9,7 @@ use App\Models\Nft_Trading;
 use App\Models\Package;
 use App\Models\Trade;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 class trading extends Controller
 {
     //
@@ -90,6 +91,11 @@ class trading extends Controller
         // }
     }
 
+    else{
+        $nftd = '../images/logo/168.png';
+        Log::info("You do Not have any NFT: ");
+
+    }
 
     // Calculate the remaining time
     $currentTime = now();
@@ -135,10 +141,10 @@ class trading extends Controller
         }
     
         // Update status in the Trade table where buyer_id matches the logged-in user's username
-        $trade = Trade::where('nft_id', $request->input('nft_id'))->first();
+        $trade = Trade::where('nft_id', $request->nft_id)->first();
             // dd($trade);
         if ($trade) {
-            $trade->status = $request->input('status');
+            $trade->status = 'Approved';
             $trade->save();
             return back()->with("Your NFT Sell Sucessfully");
         }

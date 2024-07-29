@@ -40,15 +40,43 @@
 
     </style>
     <style>
-            /* #purchaseInfoSection {
-            display: none;
-            margin-top: 20px;
+        /* CSS for the rotating circle */
+        .buffering-indicator {
+            display: none; /* Initially hidden */
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            color: white;
+            z-index: 9999; /* Ensure it appears above other content */
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .buffering-indicator .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .box-countdown-2 {
-            font-size: 18px;
-        } */
-</style>
+        /* CSS to disable background interactions */
+        .background-disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+    </style>
 
 </head>
 
@@ -175,7 +203,7 @@
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
                                 <button type="submit" id="buyButton"  class="tf-btn primary" data-bs-dismiss="modal"
-                                style="cursor: pointer;">Place a bid</button>
+                                style="cursor: pointer;">Buy Now</button>
                             <!-- <a href="#" class="tf-btn disabled-primary mt-16" data-bs-dismiss="modal">SELL</a> -->
                             </form>
                         </div>
@@ -199,6 +227,11 @@
                     <div class="js-countdown" data-timer="{{ $countdownTime }}" data-labels="Day, Hour, Mins, Secs"></div>
                 </div>
             </div>
+
+            <div id="bufferingSection" class="buffering-indicator">
+        <div class="spinner"></div>
+        <p>Your NFT is buying...</p>
+    </div>
 
             <div class="pb-24 mb-24 line">
                 <div class="d-flex gap-14 tf-counter">
@@ -337,7 +370,7 @@
                     </div>
                     <form action="{{ route('user.sellnft') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="nft_id" value="{{ $nftd->id}}">
+                        <input type="hidden" name="nft_id" value="{{ $nftd->nft_id}}">
                         <input type="hidden" name="nft_name" value="{{ $nftd->name}}">
                         <input type="hidden" name="status" value="Approved">
                         <img  src="{{ $nftd->images}}" alt="Selected NFT" style="display:none;">
@@ -1756,6 +1789,46 @@
     });
 </script>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var countdownElement = document.querySelector('.js-countdown');
+            var bufferingSection = document.getElementById('bufferingSection');
+            var body = document.body;
+
+            function startCountdown() {
+                // Calculate the end time of the countdown
+                var timerDuration = countdownElement.getAttribute('data-timer');
+                var endTime = Date.now() + timerDuration * 1000;
+                var startBufferTime = endTime - (24 * 60 * 60 * 1000); // 1 day
+                var stopBufferTime = endTime - (23 * 60 * 60 * 1000) - (59 * 60 * 1000) - (40 * 1000); // 23 hours 59 minutes 40 seconds
+
+                // Start the countdown
+                var countdown = new Countdown(countdownElement, {
+                    value: endTime,
+                    labels: countdownElement.getAttribute('data-labels').split(',')
+                });
+
+                function checkBuffering() {
+                    var now = Date.now();
+                    if (now >= startBufferTime && now <= stopBufferTime) {
+                        // Show buffering indicator and disable background
+                        bufferingSection.style.display = 'flex';
+                        body.classList.add('background-disabled');
+                    } else {
+                        // Hide buffering indicator and enable background
+                        bufferingSection.style.display = 'none';
+                        body.classList.remove('background-disabled');
+                    }
+                }
+
+                // Check buffering status every second
+                setInterval(checkBuffering, 1000);
+            }
+
+            // Start countdown (this function can be triggered based on your application logic)
+            startCountdown();
+        });
+    </script>
 
 
 </body>
