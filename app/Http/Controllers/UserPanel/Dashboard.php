@@ -32,57 +32,130 @@ class Dashboard extends Controller
 
     public function index()
     {
-
-      $user=Auth::user();
-
-      
-      $user_direct=User::where('sponsor',$user->id)->where('active_status','Active')->count();
-      $directIds=User::where('sponsor',$user->id)->where('active_status','Active')->pluck('id');
-      $personal_deposit=Investment::where('user_id',$user->id)->where('status','Active')->sum('amount');
-
-      $tolteam=$this->my_level_team_count($user->id);               
- 
-      
-
-     
-      $deposit_report = Investment::where('user_id',$user->id)->orderBy('id','desc')->get();
-      $weekly_profit = Income::where('user_id',$user->id)
-      ->whereBetween('ttime', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('comm');
-      $totalIncome = Income::where('user_id',$user->id)->sum('comm');
-
-        $transaction_data = Income::where('user_id',$user->id)->orderBy('id', 'desc')->take(10)->get();
-          $this->data['todaysRoiSum'] = \DB::table('contract')->where('user_id',$user->id)->where('ttime',date('Y-m-d'))->where('c_status','-1')->sum('profit');
-
-         $total_team=User::whereIn('id',(!empty($tolteam)?$tolteam:array()))->where('active_status','Active')->count();
-        $this->data['weekly_profit'] =$weekly_profit;
-            $this->data['total_team'] =$total_team;
-        $this->data['transaction_data'] =$transaction_data;
-        $this->data['deposit_report'] =$deposit_report;
-        $this->data['user_direct'] =$user_direct;
-        $total = $personal_deposit*200/100;
+        $user = Auth::user();
+    
+        // Existing code for user data
+        $user_direct = User::where('sponsor', $user->id)->where('active_status', 'Active')->count();
+        $directIds = User::where('sponsor', $user->id)->where('active_status', 'Active')->pluck('id');
+        $personal_deposit = Investment::where('user_id', $user->id)->where('status', 'Active')->sum('amount');
+        $tolteam = $this->my_level_team_count($user->id);
+        $deposit_report = Investment::where('user_id', $user->id)->orderBy('id', 'desc')->get();
+        $weekly_profit = Income::where('user_id', $user->id)
+            ->whereBetween('ttime', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('comm');
+        $totalIncome = Income::where('user_id', $user->id)->sum('comm');
+        $transaction_data = Income::where('user_id', $user->id)->orderBy('id', 'desc')->take(10)->get();
+        $this->data['todaysRoiSum'] = \DB::table('contract')->where('user_id', $user->id)->where('ttime', date('Y-m-d'))->where('c_status', '-1')->sum('profit');
+    
+        $total_team = User::whereIn('id', (!empty($tolteam) ? $tolteam : array()))->where('active_status', 'Active')->count();
+        $this->data['weekly_profit'] = $weekly_profit;
+        $this->data['total_team'] = $total_team;
+        $this->data['transaction_data'] = $transaction_data;
+        $this->data['deposit_report'] = $deposit_report;
+        $this->data['user_direct'] = $user_direct;
+        $total = $personal_deposit * 200 / 100;
         $portion = $totalIncome;
-        if($personal_deposit>0)
-        {
-             $percentage = ($portion / $total) * 100; // 20 
+        if ($personal_deposit > 0) {
+            $percentage = ($portion / $total) * 100; // 20
+        } else {
+            $percentage = 0;
         }
-        else
-        {
-        $percentage=0;    
+    
+        $this->data['willgetProfit'] = $personal_deposit * 200 / 100;
+        $this->data['remaining_amount'] = ($personal_deposit * 2) - $totalIncome;
+        $this->data['totalIncome'] = $percentage;
+
+
+    
+        // Fetch collections from OpenSea API
+        $client = new \GuzzleHttp\Client();
+        try {
+            $response = $client->request('GET', 'https://api.opensea.io/api/v2/collections?chain=ethereum&limit=10&order_by=seven_day_volume', [
+                'headers' => [
+                    'accept' => 'application/json',
+                    'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                ],
+            ]);
+    
+            $body = $response->getBody();
+            $collections = json_decode($body, true);
+
+            $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=4', [
+              'headers' => [
+                'accept' => 'application/json',
+                'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+              ],
+            ]);
+
+            $nfts = $response->getBody();
+            $nftsLatest = json_decode($nfts, true);
+
+// Filter out NFTs with empty image_url
+$filteredNftsLatest = array_filter($nftsLatest['asset_events'], function($nft) {
+  return !empty($nft['asset']['image_url']);
+});
+
+$this->data['nftsLatest'] = $filteredNftsLatest;
+    
+            // Filter out collections with empty image_url and add slug
+            $filtered_collections = array_map(function($collection) {
+                $slug = $this->extractSlug($collection['opensea_url']);
+                if (!empty($collection['image_url'])) {
+                    $collection['slug'] = $slug;
+                    return $collection;
+                }
+                return null;
+            }, $collections['collections']);
+    
+            // Remove null values from the array
+            $filtered_collections = array_filter($filtered_collections);
+    
+            // Fetch stats for each collection
+            $collectionStats = [];
+            foreach ($filtered_collections as $collection) {
+                $slug = $collection['slug'];
+                if ($slug) {
+                    try {
+                        $statsResponse = $client->request('GET', "https://api.opensea.io/api/v2/collections/{$slug}/stats", [
+                            'headers' => [
+                                'accept' => 'application/json',
+                                'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                            ],
+                        ]);
+    
+                        $statsBody = $statsResponse->getBody();
+                        $statsData = json_decode($statsBody, true);
+                        $collectionStats[$slug] = $statsData;
+                    } catch (\Exception $e) {
+                        $collectionStats[$slug] = [];
+                    }
+                }
+            }
+    
+            // Add stats to collections
+            foreach ($filtered_collections as &$collection) {
+                $slug = $collection['slug'];
+                $collection['stats'] = $collectionStats[$slug] ?? [];
+            }
+    
+            $this->data['collections'] = $filtered_collections;
+        } catch (\Exception $e) {
+            $this->data['collections'] = [];
         }
-      
-        $this->data['willgetProfit'] =$personal_deposit*200/100;
-        $this->data['remaining_amount'] =($personal_deposit*2)-$totalIncome;
-        $this->data['totalIncome'] =$percentage;
-
-        $collection=Collection::all();
-
-
-        $this->data['collections'] = $collection;
-      $this->data['page'] = 'user.dashboard';
-      return $this->dashboard_layout();
-
-
+    
+        $this->data['page'] = 'user.dashboard';
+        return $this->dashboard_layout();
     }
+    
+    private function extractSlug($url) {
+        $parts = explode('/collection/', $url);
+        if (isset($parts[1])) {
+            $slug = explode('/', $parts[1])[0];
+            return $slug;
+        }
+        return null;
+    }
+    
+
 
     
     public function stats()
@@ -106,29 +179,62 @@ class Dashboard extends Controller
 
     public function profile(Request $request)
     {
-      $validation =  Validator::make($request->all(), [
-        'id' => 'required',]);
+        $validation = Validator::make($request->all(), [
+            'slug' => 'required',
+        ]);
+    
+    
+        $slug = $request->slug;
+        if(!$slug){
+          return redirect()->back()->withErrors("Unable to fetch NFT's now...");
 
-      //   if($validation->fails()) {
-      //     Log::info($validation->getMessageBag()->first());
+        }
+        // Initialize Guzzle client
+        $client = new \GuzzleHttp\Client();
+    
+        try {
+            // Fetch collection stats
+            $response = $client->request('GET', "https://api.opensea.io/api/v2/collections/{$slug}/stats", [
+                'headers' => [
+                    'accept' => 'application/json',
+                    'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                ],
+            ]);
+            $stats = json_decode($response->getBody(), true);
+    
+            // Fetch NFTs for the collection
+            $response = $client->request('GET', "https://api.opensea.io/api/v2/collection/{$slug}/nfts?limit=6", [
+                'headers' => [
+                    'accept' => 'application/json',
+                    'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                ],
+            ]);
+            $nfts = json_decode($response->getBody(), true);
 
-      //     return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
-      // }
-
-        $id=$request->id;
-
-        $data=Collection::where('id',$id)->first();
-
-
-        $collections=CollectionDetail::where('collection_id',$id)->get();
-
-      $this->data['collections'] = $collections;
-      $this->data['datas'] = $data;
-      $this->data['page'] = 'user.profile';
-      return $this->dashboard_layout();
-
+            $response = $client->request('GET', "https://api.opensea.io/api/v2/collections/{$slug}", [
+              'headers' => [
+                'accept' => 'application/json',
+                'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+              ],
+            ]);  
+            $datas = json_decode($response->getBody(), true);
+            // Pass data to the view
+            $this->data['collections'] = $nfts['nfts'] ?? []; // Ensure it's the correct array 
+            $this->data['datas'] = $datas; // Ensure it's the correct array key
+            $this->data['stats'] = $stats['total']; // Ensure it's the correct array key
+            $this->data['page'] = 'user.profile';
+            
+            return $this->dashboard_layout();
+        } catch (\Exception $e) {
+            // Handle error
+            $this->data['collections'] = [];
+            $this->data['stats'] = [];
+            $this->data['error'] = 'Failed to fetch data from OpenSea.';
+            dd($e);
+            return $this->dashboard_layout();
+        }
     }
-
+    
 
     public function stop_trade(){
         $user=Auth::user();

@@ -16,6 +16,8 @@
 
     <!-- font -->
     <link rel="stylesheet" href="fonts/fonts.css">
+    <base href="{{ asset('') }}">
+
     <!-- Icons -->
     <link rel="stylesheet" href="fonts/font-icons.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">

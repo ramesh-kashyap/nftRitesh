@@ -135,22 +135,69 @@
     <div class="app-content">
         <div class="tf-container">
             <div class="round-20 hidden">
-                <img class="lazyload" data-src="{{ asset($datas->bg_img) }}" alt="img" style="width:auto;height:500px">
+                <img class="lazyload" data-src="{{ asset($datas['banner_image_url']) }}" alt="img" style="width:auto;height:500px">
             </div>
             <div class="mt--40 pb-24 mb-24 line">
                 <div class="d-flex justify-content-center">
                     <div class="avatar avt-80 line-3 round">
-                        <img src="{{ asset('') }}images/avt/avt10.png" alt="img">
+                        <img src="{{ asset($datas['image_url']) }}" alt="img">
                     </div>
                 </div>
-                <h2 class="mt-16 d-flex justify-content-center align-items-center gap-6">{{ $datas->name }} 
+                <h2 class="mt-16 d-flex justify-content-center align-items-center gap-6">{{ $datas['name'] }} 
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21.5599 10.7405L20.1999 9.16055C19.9399 8.86055 19.7299 8.30055 19.7299 7.90055V6.20055C19.7299 5.14055 18.8599 4.27055 17.7999 4.27055H16.0999C15.7099 4.27055 15.1399 4.06055 14.8399 3.80055L13.2599 2.44055C12.5699 1.85055 11.4399 1.85055 10.7399 2.44055L9.16988 3.81055C8.86988 4.06055 8.29988 4.27055 7.90988 4.27055H6.17988C5.11988 4.27055 4.24988 5.14055 4.24988 6.20055V7.91055C4.24988 8.30055 4.03988 8.86055 3.78988 9.16055L2.43988 10.7505C1.85988 11.4405 1.85988 12.5605 2.43988 13.2505L3.78988 14.8405C4.03988 15.1405 4.24988 15.7005 4.24988 16.0905V17.8005C4.24988 18.8605 5.11988 19.7305 6.17988 19.7305H7.90988C8.29988 19.7305 8.86988 19.9405 9.16988 20.2005L10.7499 21.5605C11.4399 22.1505 12.5699 22.1505 13.2699 21.5605L14.8499 20.2005C15.1499 19.9405 15.7099 19.7305 16.1099 19.7305H17.8099C18.8699 19.7305 19.7399 18.8605 19.7399 17.8005V16.1005C19.7399 15.7105 19.9499 15.1405 20.2099 14.8405L21.5699 13.2605C22.1499 12.5705 22.1499 11.4305 21.5599 10.7405ZM16.1599 10.1105L11.3299 14.9405C11.1899 15.0805 10.9999 15.1605 10.7999 15.1605C10.5999 15.1605 10.4099 15.0805 10.2699 14.9405L7.84988 12.5205C7.55988 12.2305 7.55988 11.7505 7.84988 11.4605C8.13988 11.1705 8.61988 11.1705 8.90988 11.4605L10.7999 13.3505L15.0999 9.05055C15.3899 8.76055 15.8699 8.76055 16.1599 9.05055C16.4499 9.34055 16.4499 9.82055 16.1599 10.1105Z" fill="#2664ED"/>
                     </svg>
                 </h2>
-                <p class="mt-16 text-dark-2">{{ $datas->description }}</p>
+                <p class="mt-16 text-dark-2">{{ $datas['description'] }}</p>
                 
             </div>
+
+            {{-- <div class="d-flex gap-12 tf-counter">
+                <div class="counter-box">
+                    <div class="count-number">                                  
+                        <span class="number">{{ $stats['sales'] }}                                   
+                    </div>
+                    
+                    <div class="title-count">Sales</div>                              
+                </div>
+                <div class="counter-box count-2">
+                    <div class="d-flex align-items-center gap-5">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.7501 7.58294L9.72507 5.81628C9.90007 5.74128 10.1001 5.74128 10.2668 5.81628L14.2418 7.58294C14.5918 7.74128 14.9167 7.31628 14.6751 7.01628L10.5084 1.92461C10.2251 1.57461 9.75841 1.57461 9.47508 1.92461L5.30841 7.01628C5.07508 7.31628 5.4001 7.74128 5.7501 7.58294Z" fill="white"/>
+                            <path d="M5.74981 12.4171L9.73312 14.1837C9.90812 14.2587 10.1081 14.2587 10.2748 14.1837L14.2581 12.4171C14.6081 12.2587 14.9331 12.6837 14.6915 12.9837L10.5248 18.0754C10.2415 18.4254 9.7748 18.4254 9.49147 18.0754L5.3248 12.9837C5.0748 12.6837 5.39148 12.2587 5.74981 12.4171Z" fill="white"/>
+                            <path d="M9.81648 7.90898L6.3748 9.62565C6.06647 9.77565 6.06647 10.2173 6.3748 10.3673L9.81648 12.084C9.93314 12.1423 10.0748 12.1423 10.1914 12.084L13.6331 10.3673C13.9414 10.2173 13.9414 9.77565 13.6331 9.62565L10.1914 7.90898C10.0664 7.85065 9.93314 7.85065 9.81648 7.90898Z" fill="white"/>
+                        </svg>
+                            
+                        <div class="count-number">                                  
+                            <span class="number" data-speed="2000" data-to="6.4" data-dec="1" data-inviewport="yes">{{ $stats['floor_price'] }}                                   
+                        </div>
+                    </div>
+                    
+                    <div class="title-count">Floor Price</div>                              
+                </div>
+                <div class="counter-box count-3">
+                    <div class="count-number">                                  
+                        <span class="number" data-speed="2000" data-to="12" data-dec="1" data-inviewport="yes">{{ $stats['num_owners'] }}                                  
+                    </div>
+                    
+                    <div class="title-count">Owners</div>                              
+                </div>
+                <div class="counter-box count-4">
+                    <div class="d-flex align-items-center gap-5">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.7501 7.58294L9.72507 5.81628C9.90007 5.74128 10.1001 5.74128 10.2668 5.81628L14.2418 7.58294C14.5918 7.74128 14.9167 7.31628 14.6751 7.01628L10.5084 1.92461C10.2251 1.57461 9.75841 1.57461 9.47508 1.92461L5.30841 7.01628C5.07508 7.31628 5.4001 7.74128 5.7501 7.58294Z" fill="white"/>
+                            <path d="M5.74981 12.4171L9.73312 14.1837C9.90812 14.2587 10.1081 14.2587 10.2748 14.1837L14.2581 12.4171C14.6081 12.2587 14.9331 12.6837 14.6915 12.9837L10.5248 18.0754C10.2415 18.4254 9.7748 18.4254 9.49147 18.0754L5.3248 12.9837C5.0748 12.6837 5.39148 12.2587 5.74981 12.4171Z" fill="white"/>
+                            <path d="M9.81648 7.90898L6.3748 9.62565C6.06647 9.77565 6.06647 10.2173 6.3748 10.3673L9.81648 12.084C9.93314 12.1423 10.0748 12.1423 10.1914 12.084L13.6331 10.3673C13.9414 10.2173 13.9414 9.77565 13.6331 9.62565L10.1914 7.90898C10.0664 7.85065 9.93314 7.85065 9.81648 7.90898Z" fill="white"/>
+                        </svg>
+                            
+                        <div class="count-number">                                  
+                            <span class="number" data-speed="2000" data-to="280" data-inviewport="yes">{{ $stats['volume'] }}                                  
+                        </div>
+                    </div>
+                    
+                    <div class="title-count">Total Volume</div>                              
+                </div>
+            </div> --}}
           
             
             <div class="mt-24">
@@ -185,26 +232,27 @@
                         
                         <div class="grid-2 mt-28 gap-15">
                             @foreach($collections as $value)
+
                             <a href="creator-details.html" class="card-nft">
                                 <div class="box-img">
-                                    <img class="lazyload" data-src="{{ asset($value->img) }}" alt="img-nft">
+                                    <img class="lazyload" data-src="{{ asset($value['display_image_url']) }}" alt="img-nft">
                                     <span class="tag react">
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z" stroke="#FB5556" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                          20   
                                     </span>
-                                    <span class="tag ethereum">
+                                    {{-- <span class="tag ethereum">
                                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M3.45006 4.55055L5.83504 3.49055C5.94004 3.44555 6.06005 3.44555 6.16005 3.49055L8.54506 4.55055C8.75506 4.64555 8.95004 4.39055 8.80504 4.21055L6.30504 1.15555C6.13504 0.945547 5.85505 0.945547 5.68505 1.15555L3.18505 4.21055C3.04505 4.39055 3.24006 4.64555 3.45006 4.55055Z" fill="white"/>
                                             <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="white"/>
                                             <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="white"/>
                                         </svg>
                                         {{ $value->price }} 
-                                    </span>
+                                    </span> --}}
                                 </div>
                                 <div class="content">
-                                    <div class="button-1 name">{{ $value->collection->name }}  #{{ $value->number }} </div>
+                                    <div class="button-1 name">{{ $value['name'] }}</div>
                                     
                                 </div>
                             </a>
