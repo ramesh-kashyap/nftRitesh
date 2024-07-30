@@ -28,7 +28,7 @@ class trading extends Controller
 
         try {
             // Make the API request
-            $response = $client->request('GET', 'https://api.opensea.io/api/v2/events', [
+            $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=1', [
                 'headers' => [
                     'accept' => 'application/json',
                     'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
@@ -111,7 +111,7 @@ class trading extends Controller
     $user = Auth::user();   
     // $iamount = Package::all();
     $client = new Client();
-    $response = $client->request('GET', 'https://api.opensea.io/api/v2/events', [
+    $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=6', [
         'headers' => [
             'accept' => 'application/json',
             'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
@@ -121,9 +121,13 @@ class trading extends Controller
     $body = $response->getBody();            
     // Decode the JSON response
     $nfts = json_decode($body, true);
-    // dd($nfts);
     
-    $nftsData = isset($nfts['asset_events']) ? $nfts['asset_events'] : [];
+    $filteredNftsLatest = array_filter($nfts['asset_events'], function($nft) {
+        return !empty($nft['nft']['image_url']);
+      });
+
+
+    $nftsData = $filteredNftsLatest;
 
     
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
