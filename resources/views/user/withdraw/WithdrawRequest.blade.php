@@ -21,6 +21,27 @@
     <title>@lang('Withdraw')</title>
 </head>
 
+<style>
+    .input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .input-container input {
+        width: 100%;
+        padding-right: 90px; /* Add padding to the right to make space for the button */
+    }
+
+    .input-container .code-btn {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        background-color: #f0f0f0; /* Adjust the background color to match your design */
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
+</style>
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -116,13 +137,15 @@
                             ?>
 
 <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
-                        <fieldset class="mt-20 input-fill">
-                            <label>{{ Auth::user()->email }}</label>
-                            <input type="text" class="form-control" name="code" value="" placeholder="Enter verification code">
-                        </fieldset>
-
-                        @if(date("Y-m-d H:i:s") > $new_date1) 
-                        <p class="text-dark-3 code-btn" onclick="()">Get Code</p> @endif 
+<fieldset class="mt-20 input-fill">
+    <label>{{ Auth::user()->email }}</label>
+    <div class="input-container">
+        <input type="text" class="form-control" name="code" value="" placeholder="Enter verification code">
+        @if(date("Y-m-d H:i:s") > $new_date1) 
+            <p class="text-dark-3 code-btn" onclick="()">Get Code</p>
+        @endif
+    </div>
+</fieldset>
                         <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
                         <fieldset class="mt-20 input-fill">
                             <label>@lang('Transaction password')</label>
@@ -146,7 +169,7 @@
                             <span class="body-3 text-dark-2 fw-5" style="float: left;">@lang('Registartion Bonus'):</span>
                    
                             </br>
-                        <button class="mt-20 tf-btn primary">Button</button>
+                        <button class="mt-20 tf-btn primary">Withdraw</button>
 
 
 
@@ -168,7 +191,137 @@
         </div>
     </div>
     
-    
+    <script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
+
+<script>
+    $(function(){
+        $('input[name="amount"]').on('change keyup',function () {
+            let str = $(this).val();
+            str = str.replace(',','.');
+            $(this).val(str);
+            let min =  $('#min_withdrawal').val();
+            let max =  $('#max_withdrawal').val();
+
+            let charge = $('#chargeAmt').val();
+      
+            let amount = parseFloat(str);
+        
+        
+          
+         
+            if (amount>=min && amount<=max) 
+            {
+               
+            $(".submit-btn").prop("disabled", false);
+            $('.submit-btn').removeClass('van-button van-button--default van-button--disabled van-button--normal com-btn on');         
+            $('.submit-btn').addClass('van-button van-button--default  van-button--normal com-btn on');         
+            }
+            else
+            {
+
+            $(".submit-btn").prop("disabled", true);  
+            $('.submit-btn').removeClass('van-button van-button--default van-button--normal com-btn on');         
+            $('.submit-btn').addClass('van-button van-button--default van-button--disabled van-button--normal com-btn on');         
+            }
+            
+            if(amount<=10)
+            {
+                  $('#ActualAmount').html(amount-amount*50/100+" USDT");  
+                  $('#chargefee').html("5 USDT");  
+            }
+            else
+            {
+             $('#ActualAmount').html(amount-amount*charge/100+" USDT");
+                $('#chargefee').html(charge+" %");  
+            }
+          
+            
+        
+            //console.log(summ_usd);
+        });
+
+        $('input[name="PSys"]').change(function () {
+           
+            let icon = $(this).data('icon');
+            if (icon=="usdtTrc20") {
+                $('#walletAddress').val('{{Auth::user()->usdtTrc20}}');
+                
+            }else{
+                $('#walletAddress').val('{{Auth::user()->usdtBep20}}');
+            }
+            
+        });
+
+        $('.code-btn').click(function(e) {
+var ths = $(this);
+var emailId = $('#emailId').val();
+
+if (!emailId) 
+{
+    iziToast.error({
+            message: 'Invalid Email!',
+            position: "topRight"
+        });
+        return false;
+}
+// alert(sponsor); 
+$.ajax({
+    type: "POST"
+    , url: "{{ route('user.send_code') }}"
+    , data: {
+        "emailId": emailId
+        , "_token": "{{ csrf_token() }}"
+    , }
+    , success: function(response) {
+        // alert(response);      
+        if (response) {
+            // alert("hh");
+            iziToast.success({
+            message: 'Email send Successfully',
+            position: "topRight"
+        });
+        } else {
+            // alert("hi");
+            iziToast.error({
+            message: 'Error!',
+            position: "topRight"
+        });
+        }
+    }
+});
+});
+
+
+    })
+
+</script>
+
+<script>
+$(document).ready(function() {
+
+$('#check').click(function(){
+
+if($(this).hasClass('fa-eye-slash')){
+
+$(this).removeClass('fa-eye-slash');
+
+$(this).addClass('fa-eye');
+
+$('#test-input').attr('type','text');
+
+}else{
+
+$(this).removeClass('fa-eye');
+
+$(this).addClass('fa-eye-slash');  
+
+$('#test-input').attr('type','password');
+}
+});
+
+});
+</script>
+
 
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>

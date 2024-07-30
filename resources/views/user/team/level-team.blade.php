@@ -91,7 +91,7 @@
                     <h6 class="fw-7 flex-grow-1">@lang('Earnings Analysis')</h6>
                     <a href="{{ route('user.referral-team') }}" style="text-decoration: none;">
                         <button type="button"
-                            style="background-color: green; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">
+                            style="background-color: #8052ff; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">
                             <span>
                                 <h6 class="fw-7 flex-grow-1" style="margin: 0;">@lang('View Team List')</h6>
                             </span>

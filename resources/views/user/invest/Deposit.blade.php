@@ -83,7 +83,7 @@
                         </fieldset>
                       
                       
-                        <button class="mt-20 tf-btn primary">Button</button>
+                        <button class="mt-20 tf-btn primary">Deposit</button>
                     </form>
 
 
