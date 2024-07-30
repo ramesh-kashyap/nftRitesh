@@ -157,7 +157,7 @@
                     @foreach($nfts as $nft)
                         <div class="swiper-slide">
                             <div class="card-banner-2">
-                                <img src="{{ $nft->nft_images }}" alt="{{ $nft->name }}" width="200"
+                                <img src="{{ $nft['asset']['image_url'] ?? ''}}" alt="{{ $nft['asset']['name'] ?? '' }}" width="200"
                                     style="height:150px;">
                                 <div class="box-top d-flex align-items-center justify-content-end">
                                     <div class="box-icon w-40 box-heart">
@@ -166,9 +166,9 @@
                                 </div>
                             </div>
                             <div class="mt-20">
-                                <h2 class="text-center">{{ $nft->name }}</h2>
+                                <h2 class="text-center">{{ $nft['asset']['name'] ?? '' }}</h2>
                                 <div class="d-flex justify-content-center align-items-center gap-4">
-                                    <span class="button-2 text-blue">{{ $nft->description }}</span>
+                                    <span class="button-2 text-blue">{{ $nft['asset']['name'] ?? 'NFT Image' }}</span>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -192,14 +192,16 @@
                                 style="height:150px;width:auto; border-radius:20px">
                         </div>
                         <div class="mb-32 text-center">
-                            <h4 class="text-dark-3">0.038ETH</h4>
+                            <h4 class="text-dark-3" >
+                                <!-- <input id="hiddenNftName" value="" readonly style="text-align:center"> -->
+                            </h4>
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                         </div>
                         <div class="">
                             <form id="buyForm" action="{{ route('user.submitnft') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="nft_id" id="hiddenNftId">
-                                <input type="hidden" name="nft_name" id="hiddenNftName">
+                                <input type="hidden" name="nft_name" value="" id="hiddenNftName">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
                                 <button type="submit" id="buyButton"  class="tf-btn primary" data-bs-dismiss="modal"
@@ -228,10 +230,7 @@
                 </div>
             </div>
 
-            <div id="bufferingSection" class="buffering-indicator">
-        <div class="spinner"></div>
-        <p>Your NFT is buying...</p>
-    </div>
+          
 
             <div class="pb-24 mb-24 line">
                 <div class="d-flex gap-14 tf-counter">
@@ -371,9 +370,9 @@
                     <form action="{{ route('user.sellnft') }}" method="POST">
                         @csrf
                         <input type="hidden" name="nft_id" value="{{ $nftd->nft_id}}">
-                        <input type="hidden" name="nft_name" value="{{ $nftd->name}}">
+                        <input type="hidden" name="nft_name" value="{{ $nftd->nft_name}}">
                         <input type="hidden" name="status" value="Approved">
-                        <img  src="{{ $nftd->images}}" alt="Selected NFT" style="display:none;">
+                        <img  src="{{ $nftd->nft_image}}" alt="Selected NFT" style="display:none;">
                         <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
                             Now</button>
                     </form>                    
@@ -1700,9 +1699,9 @@
 
         function showImage(index) {
             let selectedNft = nfts[index];
-            document.getElementById('popupImage').src = selectedNft.nft_images;
-            document.getElementById('hiddenNftId').value = selectedNft.id; // Set hidden input value
-            document.getElementById('hiddenNftName').value = selectedNft.name;            
+            document.getElementById('popupImage').src = selectedNft.asset.image_url;
+            document.getElementById('hiddenNftId').value = selectedNft.asset.identifier; // Set hidden input value
+            document.getElementById('hiddenNftName').value = selectedNft.asset.name;            
             document.getElementById('imageModal').style.display = 'block';
         }
 
@@ -1789,46 +1788,7 @@
     });
 </script>
 
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var countdownElement = document.querySelector('.js-countdown');
-            var bufferingSection = document.getElementById('bufferingSection');
-            var body = document.body;
 
-            function startCountdown() {
-                // Calculate the end time of the countdown
-                var timerDuration = countdownElement.getAttribute('data-timer');
-                var endTime = Date.now() + timerDuration * 1000;
-                var startBufferTime = endTime - (24 * 60 * 60 * 1000); // 1 day
-                var stopBufferTime = endTime - (23 * 60 * 60 * 1000) - (59 * 60 * 1000) - (40 * 1000); // 23 hours 59 minutes 40 seconds
-
-                // Start the countdown
-                var countdown = new Countdown(countdownElement, {
-                    value: endTime,
-                    labels: countdownElement.getAttribute('data-labels').split(',')
-                });
-
-                function checkBuffering() {
-                    var now = Date.now();
-                    if (now >= startBufferTime && now <= stopBufferTime) {
-                        // Show buffering indicator and disable background
-                        bufferingSection.style.display = 'flex';
-                        body.classList.add('background-disabled');
-                    } else {
-                        // Hide buffering indicator and enable background
-                        bufferingSection.style.display = 'none';
-                        body.classList.remove('background-disabled');
-                    }
-                }
-
-                // Check buffering status every second
-                setInterval(checkBuffering, 1000);
-            }
-
-            // Start countdown (this function can be triggered based on your application logic)
-            startCountdown();
-        });
-    </script>
 
 
 </body>

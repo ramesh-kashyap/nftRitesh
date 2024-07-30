@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\UserPanel;
 
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Exception\RequestException;
 use App\Models\Investment;
 use Illuminate\Http\Request;
 use App\Models\Nft_Trading;
 use App\Models\Package;
 use App\Models\Trade;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+
 class trading extends Controller
 {
     //
@@ -20,18 +24,48 @@ class trading extends Controller
 
     public function index()
     {
-        // Fetch all NFT trading records
-        $nfts = Nft_Trading::all();
+        $client = new Client();
 
-        // Pass the data to the Blade view
-        return view('user.trading.nft_view', compact('nfts'));
+        try {
+            // Make the API request
+            $response = $client->request('GET', 'https://api.opensea.io/api/v2/events', [
+                'headers' => [
+                    'accept' => 'application/json',
+                    'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                ],                
+            ]);
+    
+            // Check the status code
+            if ($response->getStatusCode() !== 200) {
+                Log::error('API request failed with status code: ' . $response->getStatusCode());
+                return view('user.trading.nft_view')->withErrors(['error' => 'Failed to fetch data']);
+            }    
+            // Get the response body
+            $body = $response->getBody();            
+            // Decode the JSON response
+            $nfts = json_decode($body, true);
+            dd($nfts);    
+            // Pass the data to the Blade view
+            return view('user.trading.nft_view', compact('nfts'));
+    
+        } catch (RequestException $e) {
+            // Handle request errors
+            Log::error('Error fetching NFT data: ' . $e->getMessage());
+    
+            if ($e->hasResponse()) {
+                Log::error('Response body: ' . $e->getResponse()->getBody());
+            }
+    
+            // Pass error to Blade view
+            return view('user.trading.nft_view')->withErrors(['error' => 'An error occurred while fetching data']);
+        }
     }
 
     public function submitnft(Request $request)
     {
         // Validate the request
         $request->validate([
-            'nft_id' => 'required|integer|exists:nft_tradings,id',
+            'nft_id' => 'required',
         ]);
     
         $user = Auth::user();
@@ -48,20 +82,20 @@ class trading extends Controller
         }
     
         // Find the NFT and update its status
-        $nft = Nft_Trading::find($nft_id);
-        if (!$nft) {
-            return redirect()->back()->with('error', 'NFT not found.');
-        }
+        // $nft = Nft_Trading::find($nft_id);
+        // if (!$nft) {
+        //     return redirect()->back()->with('error', 'NFT not found.');
+        // }
     
         // Update the NFT status
-        $nft->status = 'Pending';
-        $nft->save();
+        // $nft->status = 'Pending';
+        // $nft->save();
     
         // Create a new trade record
         Trade::create([
-            'nft_id' => $nft->nft_id,
-            'name' => $nft->name,
-            'nft_image' => $nft->nft_image,
+            'nft_id' => $request->nft_id,
+            'name' => $request->nft_name,
+            'nft_image' => $request->nft_image,
             'status' => 'Pending',
             'currency' => 'USDT',
             'buyer_id' => $user->username,
@@ -76,23 +110,38 @@ class trading extends Controller
 {
     $user = Auth::user();   
     $iamount = Package::all();
-    $nfts = Nft_Trading::all();
+    $client = new Client();
+    $response = $client->request('GET', 'https://api.opensea.io/api/v2/events', [
+        'headers' => [
+            'accept' => 'application/json',
+            'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+        ],                
+    ]);
+
+    $body = $response->getBody();            
+    // Decode the JSON response
+    $nfts = json_decode($body, true);
+    // dd($nfts);
+    
+    $nftsData = isset($nfts['asset_events']) ? $nfts['asset_events'] : [];
+
+    
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
     $lastTrade = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
-
-
+    
+    
+    // dd($nfts);
     $nftimg = null;
 
     if ($lastTrade) {
         // Fetch the NFT associated with the last trade
-        $nftd = Nft_Trading::where('nft_id', $lastTrade->nft_id)->first();
-        // if ($nft) {
-        //     $nftimg = $nft->nft_images;
+        $nftd = Trade::where('nft_id', $lastTrade->nft_id)->first();
+        // if ($nftd->status=="Approved") {
+            
         // }
     }
 
-    else{
-        $nftd = '../images/logo/168.png';
+    else{        
         Log::info("You do Not have any NFT: ");
 
     }
@@ -114,8 +163,8 @@ class trading extends Controller
 
     $this->data['iamount'] = $iamount;
     $this->data['pamount'] = $pamount;
-    $this->data['nfts'] = $nfts;
-    $this->data['nftd'] = $nftd;
+    $this->data['nfts'] = $nftsData;
+    $this->data['nftd'] = $nftd;    
     $this->data['countdownTime'] = $countdownTime; // Pass the remaining time to the view
     $this->data['page'] = 'user.trading.nft_view';
 
