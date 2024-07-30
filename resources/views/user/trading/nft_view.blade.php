@@ -260,7 +260,7 @@
                 </div>
             </div> -->
                         @if($countdownTime > 0)
-                            <div class="pb-24 mb-24 line" id="purchaseInfoSection">
+                            <div class="pb-24 mb-24 line" >
                                 <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
                                 <div class="mt-16 box-countdown-2">
                                     <div class="js-countdown" data-timer="{{ $countdownTime }}"
