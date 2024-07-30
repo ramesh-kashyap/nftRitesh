@@ -128,8 +128,8 @@
 </br>
 <fieldset class="mt-20 input-fill">
     <div class="box-view-hide" style="position: relative;">
-        <input type="text" class="form-control" value="{{$walletAddress}}" style="padding-right: 30px;">
-        <svg onclick="copyFunctionwallet()" class="copy-btn" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #fff; cursor: pointer;" class="copy-btn" onclick="copyFunctionwallet()">
+        <input id="walletAddressInput" type="text" class="form-control" value="{{$walletAddress}}" style="padding-right: 30px;">
+        <svg onclick="copyFunctionwallet()" class="copy-btn" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 24px; color: #fff; cursor: pointer;" title="Copy wallet address">
             <g opacity="0.6">
                 <path d="M14.1666 11.1673V13.6673C14.1666 17.0007 12.8333 18.334 9.49996 18.334H6.33329C2.99996 18.334 1.66663 17.0007 1.66663 13.6673V10.5007C1.66663 7.16732 2.99996 5.83398 6.33329 5.83398H8.83329" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -141,6 +141,7 @@
         </svg>
     </div>
 </fieldset>
+
 
           
 <a href="{{route('user.invest')}}" class="mt-20 tf-btn primary">Cancel</a>
@@ -230,6 +231,22 @@
             }
         
         </script>
+
+<script>
+function copyFunctionwallet() {
+    var walletAddressInput = document.getElementById("walletAddressInput");
+    walletAddressInput.select();
+    walletAddressInput.setSelectionRange(0, 99999); // For mobile devices
+
+    navigator.clipboard.writeText(walletAddressInput.value).then(function() {
+        // Display success message
+        alert(" " + walletAddressInput.value);
+    }, function(err) {
+        // Handle error
+        alert("Failed to copy wallet address: ", err);
+    });
+}
+</script>
     
 </body>
 </html>
