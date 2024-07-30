@@ -39,45 +39,6 @@
     }
 
     </style>
-    <style>
-        /* CSS for the rotating circle */
-        .buffering-indicator {
-            display: none; /* Initially hidden */
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-            color: white;
-            z-index: 9999; /* Ensure it appears above other content */
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .buffering-indicator .spinner {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* CSS to disable background interactions */
-        .background-disabled {
-            pointer-events: none;
-            opacity: 0.5;
-        }
-    </style>
-
 </head>
 
 <div class="counter-scroll">
@@ -214,23 +175,32 @@
             </div>
 
             <div class="" style="padding-bottom :30px;">
-                <div class="grid-2 gap-15">                   
+                <div class=" gap-15">                   
 
-                    <a href="" id="sellButton" class="tf-btn disabled-primary btn-icon"><span
-                            class="icon icon-ticket-star"></span> Sell Now</a>
+                    <!-- <a href="" id="sellButton" class="tf-btn disabled-primary btn-icon"><span
+                            class="icon icon-ticket-star"></span> Sell Now</a> -->
                     <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</a>
                 </div>
             </div>       
            
-            <div class="pb-24 mb-24 line" id="purchaseInfoSection">
+            <!-- <div class="pb-24 mb-24 line" >
                 <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
                 <div class="mt-16 box-countdown-2">
                     <div class="js-countdown" data-timer="{{ $countdownTime }}" data-labels="Day, Hour, Mins, Secs"></div>
                 </div>
-            </div>
+            </div> -->
+                        @if($countdownTime > 0)
+                            <div class="pb-24 mb-24 line" id="purchaseInfoSection">
+                                <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
+                                <div class="mt-16 box-countdown-2">
+                                    <div class="js-countdown" data-timer="{{ $countdownTime }}"
+                                        data-labels="Day, Hour, Mins, Secs"></div>
+                                </div>
+                            </div>
+                        @endif
 
-          
+                    
 
             <div class="pb-24 mb-24 line">
                 <div class="d-flex gap-14 tf-counter">
@@ -1785,6 +1755,54 @@
 
         // Update button state when a new option is selected
         selectElement.addEventListener('change', updateButtonState);
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const purchaseInfoSection = document.getElementById('purchaseInfoSection');
+        const countdownElement = document.querySelector('.js-countdown');
+        
+        if (purchaseInfoSection && countdownElement) {
+            const countdownTime = parseInt(countdownElement.getAttribute('data-timer'), 10);
+            
+            // Show the section if countdown time is greater than 0
+            if (countdownTime > 0) {
+                purchaseInfoSection.style.display = 'block';
+                
+                const targetDate = new Date().getTime() + countdownTime * 1000; // Convert seconds to milliseconds
+                
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const distance = targetDate - now;
+                    
+                    if (distance <= 0) {
+                        // Timer has finished
+                        purchaseInfoSection.style.display = 'none';
+                        clearInterval(countdownInterval);
+                    } else {
+                        // Calculate time remaining
+                        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        
+                        // Update the countdown display
+                        countdownElement.innerHTML = `
+                            <div>${days} ${countdownElement.getAttribute('data-labels').split(',')[0]}</div>
+                            <div>${hours} ${countdownElement.getAttribute('data-labels').split(',')[1]}</div>
+                            <div>${minutes} ${countdownElement.getAttribute('data-labels').split(',')[2]}</div>
+                            <div>${seconds} ${countdownElement.getAttribute('data-labels').split(',')[3]}</div>
+                        `;
+                    }
+                }
+                
+                // Update countdown every second
+                const countdownInterval = setInterval(updateCountdown, 1000);
+                
+                // Initial call to display countdown immediately
+                updateCountdown();
+            }
+        }
     });
 </script>
 
