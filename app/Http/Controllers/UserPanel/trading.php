@@ -134,17 +134,20 @@ class trading extends Controller
     $lastTrade = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
 
     // dd($lastTrade);
-    $nftimg = null;
+    $nftd = null;
 
-    if ($lastTrade) {
-        // Fetch the NFT associated with the last trade
-        $nftd = Trade::where('nft_id', $lastTrade->nft_id)->first();
-        // dd($nftd);
-           }
+    // Check if the Trade table is empty or if there are no trades for the user
+    if (!$lastTrade) {
+        Log::info("No trades found for the user: " . $user->username);
+        $nftd = null;
+        $nftsData = [];
+    } else {
+        $nftd = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
 
-    else{        
-        Log::info("You do Not have any NFT: ");
-
+        if (!$nftd) {
+            Log::info("No NFT found for the last trade with ID: " . $lastTrade->nft_id);
+            $nftd = null;
+        }
     }
 
     // Calculate the remaining time

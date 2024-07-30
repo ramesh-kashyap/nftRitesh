@@ -361,15 +361,11 @@
                 </li>
             </ul>
         </div>
-        <div class="mt-24 px-24">
-            <div class="d-flex justify-content-between align-items-center">
-                <h4>Expiring Soon</h4>
-                <a href="expiring-soon.html" class="text-primary fw-6">See All</a>
-            </div>
+        <div class="mt-24 px-24">            
             <div class="grid-2 mt-24 gap-15">
                 <a class="card-nft">
                     <div class="box-img">
-                        <img class="lazyload" data-src="" alt="img-nft">
+                        <img class="lazyload" data-src="{{$nftd->nft_image}}" alt="img-nft">
                         <span class="tag react">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -393,7 +389,7 @@
                                     d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z"
                                     fill="white" />
                             </svg>
-                            10,145.93
+                            {{$nftd->name}}
                         </span>
                     </div>
                     <div class="content">
@@ -439,15 +435,8 @@
                 <div class="tab-pane fade active show" id="details" role="tabpanel">
                     <div class="card-nft-1">
                         <div class="card-header" data-bs-toggle="collapse" data-bs-target="#collection"
-                            aria-expanded="true" aria-controls="collection">
-                            <h6>About Collection</h6>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19.9201 8.94922L13.4001 15.4692C12.6301 16.2392 11.3701 16.2392 10.6001 15.4692L4.08008 8.94922"
-                                    stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                            aria-expanded="true" aria-controls="collection">    
+                            <img src="{{$nftd->nft_image}}" width="10" height="10" viewBox="0 0 24 24" fill="none">
                         </div>
                         <div id="collection" class="accordion-collapse collapse show" aria-labelledby="collection">
                             <div class="card-body">
@@ -546,132 +535,6 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="card-nft-1 mt-24">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#properties"
-                            aria-expanded="true" aria-controls="properties">
-                            <h6>Properties</h6>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19.9201 8.94922L13.4001 15.4692C12.6301 16.2392 11.3701 16.2392 10.6001 15.4692L4.08008 8.94922"
-                                    stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div id="properties" class="accordion-collapse collapse show" aria-labelledby="properties">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center pb-12 mb-12 line-2">
-                                    <div class="content-left">
-                                        <div class="mb-4 body-4 text-dark-2">BACKGROUND</div>
-                                        <span class="text-primary button-2">Light Pest</span>
-                                    </div>
-                                    <h6 class="text-primary">37%</h6>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center pb-12 mb-12 line-2">
-                                    <div class="content-left">
-                                        <div class="mb-4 body-4 text-dark-2">CLOTHING</div>
-                                        <span class="text-primary button-2">T-Shirt</span>
-                                    </div>
-                                    <h6 class="text-primary">20%</h6>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center pb-12 mb-12 line-2">
-                                    <div class="content-left">
-                                        <div class="mb-4 body-4 text-dark-2">HAT</div>
-                                        <span class="text-primary button-2">Yellow</span>
-                                    </div>
-                                    <h6 class="text-primary">3%</h6>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center pb-12 mb-12 line-2">
-                                    <div class="content-left">
-                                        <div class="mb-4 body-4 text-dark-2">HAIR</div>
-                                        <span class="text-primary button-2">Light Pest</span>
-                                    </div>
-                                    <h6 class="text-primary">12%</h6>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="content-left">
-                                        <div class="mb-4 body-4 text-dark-2">TYPE</div>
-                                        <span class="text-primary button-2">Human</span>
-                                    </div>
-                                    <h6 class="text-primary">28%</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-nft-1 mt-24">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#details-accordion"
-                            aria-expanded="true" aria-controls="details-accordion">
-                            <h6>Details</h6>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19.9201 8.94922L13.4001 15.4692C12.6301 16.2392 11.3701 16.2392 10.6001 15.4692L4.08008 8.94922"
-                                    stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div id="details-accordion" class="accordion-collapse collapse show"
-                            aria-labelledby="details-accordion">
-                            <div class="card-body">
-                                <div class="mb-20 d-flex justify-content-between align-items-center">
-                                    <span class="body-3 text-dark-2">Contract Address</span>
-                                    <span class="button-2 text-primary">7EK933L1...6P7Q4</span>
-                                </div>
-                                <div class="mb-20 d-flex justify-content-between align-items-center">
-                                    <span class="body-3 text-dark-2">Token ID</span>
-                                    <span class="button-2 text-primary">5721</span>
-                                </div>
-                                <div class="mb-20 d-flex justify-content-between align-items-center">
-                                    <span class="body-3 text-dark-2">Token Standard</span>
-                                    <span class="button-2">NPC-773</span>
-                                </div>
-                                <div class="mb-20 d-flex justify-content-between align-items-center">
-                                    <span class="body-3 text-dark-2">Blockchain</span>
-                                    <span class="button-2">Ethereum</span>
-                                </div>
-                                <div class="mb-20 d-flex justify-content-between align-items-center">
-                                    <span class="body-3 text-dark-2">Last Updated</span>
-                                    <span class="button-2">4 Days Ago</span>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="body-3 text-dark-2">Creator Earnings</span>
-                                    <span class="button-2">2.5%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-nft-1 mt-24">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#price-history"
-                            aria-expanded="true" aria-controls="price-history">
-                            <h6>Price History</h6>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M19.9201 8.94922L13.4001 15.4692C12.6301 16.2392 11.3701 16.2392 10.6001 15.4692L4.08008 8.94922"
-                                    stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div id="price-history" class="accordion-collapse collapse show"
-                            aria-labelledby="price-history">
-                            <div class="card-body wrap-chart">
-                                <div class="top">
-                                    <div class="nice-select tf-select-v2" tabindex="0"><span class="current">Last
-                                            Month</span>
-                                        <ul class="list">
-                                            <li data-value="last-month" class="option selected">Last Month</li>
-                                            <li data-value="last-week" class="option">Last Week</li>
-                                        </ul>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-4">
-                                        <span class="caption text-primary">Last 30 days average price -</span>
-                                        <div class="button-2 text-primary">$27,789USD</div>
-                                    </div>
-                                </div>
-                                <div id="nft-chart"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="offers" role="tabpanel">
