@@ -201,12 +201,12 @@
 
             
             <!----->
-            <div class="modal fade modalCenter" id="success" id="imageModal" style="display: none;">
+            <div class="modal fade modalCenter" id="success" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <center>
                             <div class="pyramid-loader" id="loader" style="display:none">
-                                <h3 class="text-primary">Buying Nft for you, Please Wait...</h3>
+                                <h3 class="text-primary" id="loaderText">Buying NFT for you, Please Wait...</h3>
                                 <div class="wrapper">
                                     <span class="side side1"></span>
                                     <span class="side side2"></span>
@@ -220,19 +220,16 @@
                                     <img src="" id="popupImage" alt="NFT Image" style="height:150px;width:auto; border-radius:20px">
                                 </div>
                                 <div class="mb-32 text-center">
-                                    <h4 class="text-dark-3">
+                                    <h4 class="text-dark-3" id="nftName">
                                         <!-- <input id="hiddenNftName" value="" readonly style="text-align:center"> -->
                                     </h4>
-                                    <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                                 </div>
-                                <form action="{{ route('user.sellnft') }}" method="POST">
+                                <form id="sellForm" action="{{ route('user.sellnft') }}" method="POST">
                                     @csrf
-                                    <!-- <input type="hidden" name="nft_id" >
-                                    <input type="hidden" name="nft_name" > -->
                                     <input type="hidden" name="status" value="Approved">
-                                    <!-- <img src="" alt="Selected NFT" style="display:none;"> -->
                                     <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell Now</button>
                                 </form>
+                                <button id="closeButton" class="tf-btn primary" style="display:none; cursor: pointer;" data-bs-dismiss="modal">Close</button>
                             </div>
                         </center>
                     </div>
@@ -263,7 +260,7 @@
            
                         @if($countdownTime > 0)
                             <div class="pb-24 mb-24 line" >
-                                <p class="body-3 text-dark-2 text-center">You Can Buy Next NFT After-</p>
+                                <p class="body-3 text-dark-2 fw-800">You Can Buy Next NFT After-</p>
                                 <div class="mt-16 box-countdown-2">
                                     <div class="js-countdown" data-timer="{{ $countdownTime }}"
                                         data-labels="Day, Hour, Mins, Secs"></div>
@@ -1687,7 +1684,43 @@
             setTimeout(function() {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('contentDiv').style.display = 'block';
-            }, 5000); // 10 seconds = 10000 milliseconds
+            }, 10000); // 10 seconds = 10000 milliseconds
+        });
+    
+        $('#sellForm').on('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+            // Show loader and hide content div
+            document.getElementById('loaderText').innerText = 'Selling NFT for you, Please Wait...';
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('contentDiv').style.display = 'none';
+    
+            // Submit the form via AJAX
+            $.ajax({
+                url: $(this).attr('action'),
+                method: $(this).attr('method'),
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Handle the successful response
+                    setTimeout(function() {
+                        document.getElementById('loaderText').innerText = 'Selling NFT for you, Please Wait...';
+                    }, 5000); // 5 seconds = 5000 milliseconds
+    
+                    setTimeout(function() {
+                        document.getElementById('loader').style.display = 'none';
+                        document.getElementById('contentDiv').style.display = 'block';
+                        document.getElementById('sellButton').style.display = 'none';
+                        document.getElementById('closeButton').style.display = 'block';
+                        // Show success message
+                        document.getElementById('nftName').innerHTML = '<h1 class="text-success">Success!</h1><i class="fa fa-check text-success"></i>';
+                    }, 10000); // 10 seconds = 10000 milliseconds
+                },
+                error: function(response) {
+                    // Handle the error response
+                    alert('An error occurred. Please try again.');
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('contentDiv').style.display = 'block';
+                }
+            });
         });
     });
     </script>
@@ -1731,3 +1764,4 @@
 </body>
 
 </html>
+@include('partials.notify')
