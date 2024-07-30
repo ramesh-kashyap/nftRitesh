@@ -78,7 +78,7 @@ Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'inde
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
 
-Route::get('/profile/{id}', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+Route::get('/profile/{slug}', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
 
 
 
@@ -138,6 +138,15 @@ Route::post('/change-trxpasswword', [App\Http\Controllers\UserPanel\Profile::cla
 Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('user.lang');
 Route::get('/changelang', [App\Http\Controllers\FrontController::class, 'changeLang'])->name('user.language');
 // end profile
+
+
+//nft start
+// Route::get('/nft', [App\Http\Controllers\UserPanel\trading::class, 'index'])->name('user.nftview');
+Route::post('/nft-submit', [App\Http\Controllers\UserPanel\trading::class, 'submitnft'])->name('user.submitnft');
+Route::get('/nft', [App\Http\Controllers\UserPanel\trading::class, 'investamount'])->name('user.iamount');
+Route::post('/sellnft', [App\Http\Controllers\UserPanel\trading::class, 'sellnft'])->name('user.sellnft');
+
+//nft end
 
 
 //quality

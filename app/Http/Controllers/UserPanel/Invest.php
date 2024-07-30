@@ -661,7 +661,6 @@ public function viewdetail($txnId)
         $this->data['gen_team3total'] =$gen_team3->count();
         $this->data['active_gen_team3total'] =$gen_team3->where('active_status','Active')->count();
 
-
         $this->data['gen_team1Income'] =$gen_team1->count();
 
 
