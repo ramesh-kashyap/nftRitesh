@@ -251,8 +251,11 @@
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
+                                @if($countdownTime <= 0)
+
                     <button type="submit" href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</button>
+                            @endif
                             </form>
                             <div id="responseMessage"></div>
                 </div>
@@ -260,7 +263,7 @@
            
                         @if($countdownTime > 0)
                             <div class="pb-24 mb-24 line" >
-                                <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
+                                <p class="body-3 text-dark-2 text-center">You Can Buy Next NFT After-</p>
                                 <div class="mt-16 box-countdown-2">
                                     <div class="js-countdown" data-timer="{{ $countdownTime }}"
                                         data-labels="Day, Hour, Mins, Secs"></div>
