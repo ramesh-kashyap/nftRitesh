@@ -250,7 +250,7 @@
                                 <input type="hidden" name="nft_id" id="hiddenNftId">
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
                                 <input type="hidden" name="status" value="Pending">
-                                <input type="text" name="nft_image" id="imageName" value="" alt="Selected NFT" style="display:none;">
+                                <input type="text" name="nft_image"  value="" alt="Selected NFT" style="display:none;">
                     <button type="submit" href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</button>
                             </form>
