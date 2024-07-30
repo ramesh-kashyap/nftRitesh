@@ -64,7 +64,7 @@ class trading extends Controller
     public function submitnft(Request $request)
     {
         // Validate the request
-        // dd($request->nft_image);
+        dd($request->nft_image);
         $request->validate([
             'nft_id' => 'required',
         ]);
