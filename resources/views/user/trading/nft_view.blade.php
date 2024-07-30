@@ -172,8 +172,8 @@
                     @foreach($nfts as $nft)
                         <div class="swiper-slide">
                             <div class="card-banner-2">
-                                <img src="{{ $nft['asset']['image_url'] ?? ''}}" alt="{{ $nft['asset']['name'] ?? '' }}" width="200"
-                                    style="height:150px;">
+                                <img src="{{ $nft['nft']['display_image_url'] ?? ''}}" alt="{{ $nft['nft']['name'] ?? '' }}" width="200"
+                                    style="height:150px;object-fit:contain">
                                 <div class="box-top d-flex align-items-center justify-content-end">
                                     <div class="box-icon w-40 box-heart">
                                         <span class="icon icon-heart"></span>
@@ -181,9 +181,9 @@
                                 </div>
                             </div>
                             <div class="mt-20">
-                                <h2 class="text-center">{{ $nft['asset']['name'] ?? '' }}</h2>
+                                <h2 class="text-center">{{ $nft['nft']['name'] ?? '' }}</h2>
                                 <div class="d-flex justify-content-center align-items-center gap-4">
-                                    <span class="button-2 text-blue">{{ $nft['asset']['name'] ?? 'NFT Image' }}</span>
+                                    <span class="button-2 text-blue">{{ $nft['nft']['collection'] ?? 'NFT Image' }}</span>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -202,7 +202,7 @@
             <div class="modal fade modalCenter" id="success" id="imageModal" style="display: none;">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="mb-40 text-center">
+                         <div class="mb-40 text-center">
                             <img src="" id="popupImage" alt="NFT Image"
                                 style="height:150px;width:auto; border-radius:20px">
                         </div>
@@ -1729,9 +1729,9 @@
 
         function showImage(index) {
             let selectedNft = nfts[index];
-            document.getElementById('popupImage').src = selectedNft.asset.image_url;
-            document.getElementById('hiddenNftId').value = selectedNft.asset.identifier; // Set hidden input value
-            document.getElementById('hiddenNftName').value = selectedNft.asset.name;            
+            document.getElementById('popupImage').src = selectedNft.nft.display_image_url;
+            document.getElementById('hiddenNftId').value = selectedNft.nft.identifier; // Set hidden input value
+            document.getElementById('hiddenNftName').value = selectedNft.nft.name;            
             document.getElementById('imageModal').style.display = 'block';
         }
 
