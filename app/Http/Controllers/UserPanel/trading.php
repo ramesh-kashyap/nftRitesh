@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use GuzzleHttp\Exception\RequestException;
 use App\Models\Investment;
 use Illuminate\Http\Request;
-use App\Models\Nft_Trading;
+// use App\Models\Nft_Trading;
 use App\Models\Package;
 use App\Models\Trade;
 use GuzzleHttp\Client;
@@ -109,7 +109,7 @@ class trading extends Controller
     public function investamount()
 {
     $user = Auth::user();   
-    $iamount = Package::all();
+    // $iamount = Package::all();
     $client = new Client();
     $response = $client->request('GET', 'https://api.opensea.io/api/v2/events', [
         'headers' => [
@@ -161,7 +161,7 @@ class trading extends Controller
         }
     }
 
-    $this->data['iamount'] = $iamount;
+    // $this->data['iamount'] = $iamount;
     $this->data['pamount'] = $pamount;
     $this->data['nfts'] = $nftsData;
     $this->data['nftd'] = $nftd;    
