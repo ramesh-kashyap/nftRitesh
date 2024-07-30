@@ -121,10 +121,11 @@
                             
                     </a>
                 </li>
+             
                 <li class="item">
-                    <a href="#watchlist" data-bs-toggle="offcanvas" aria-controls="offcanvasRight">
-                        <div class="box-icon w-48 green round">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="{{route('user.level-team')}}">
+                        <div class="box-icon w-48 blue round">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21.25 9.14969C18.94 5.51969 15.56 3.42969 12 3.42969C10.22 3.42969 8.49 3.94969 6.91 4.91969C5.33 5.89969 3.91 7.32969 2.75 9.14969C1.75 10.7197 1.75 13.2697 2.75 14.8397C5.06 18.4797 8.44 20.5597 12 20.5597C13.78 20.5597 15.51 20.0397 17.09 19.0697C18.67 18.0897 20.09 16.6597 21.25 14.8397C22.25 13.2797 22.25 10.7197 21.25 9.14969ZM12 16.0397C9.76 16.0397 7.96 14.2297 7.96 11.9997C7.96 9.76969 9.76 7.95969 12 7.95969C14.24 7.95969 16.04 9.76969 16.04 11.9997C16.04 14.2297 14.24 16.0397 12 16.0397Z" fill="url(#paint0_linear_2932_1746)"/>
                                 <path d="M12.0004 9.14062C10.4304 9.14062 9.15039 10.4206 9.15039 12.0006C9.15039 13.5706 10.4304 14.8506 12.0004 14.8506C13.5704 14.8506 14.8604 13.5706 14.8604 12.0006C14.8604 10.4306 13.5704 9.14062 12.0004 9.14062Z" fill="url(#paint1_linear_2932_1746)"/>
                                 <defs>
@@ -137,9 +138,9 @@
                                 <stop offset="1" stop-color="#1EE495"/>
                                 </linearGradient>
                                 </defs>
-                            </svg>                                  
+                            </svg>                                                               
                         </div>
-                        <p class="content">Watchlist</p>
+                        <p class="content">Team List</p>
                         <svg class="icon-arr-dark" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.6">
                             <path d="M7.4248 16.6004L12.8581 11.1671C13.4998 10.5254 13.4998 9.47539 12.8581 8.83372L7.4248 3.40039" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -148,6 +149,7 @@
                             
                     </a>
                 </li>
+                
                 <li class="item">
                     <a href="{{route('user.setting')}}">
                         <div class="box-icon w-48 blue round">
@@ -171,7 +173,7 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#logout" data-bs-toggle="offcanvas" data-bs-target="#logout" aria-controls="offcanvasBottom" class="line">
+                    <a href="{{ route('logout') }}" class="line">
                         <div class="box-icon w-48 error round">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.2 22L9.8 22C13 22 15 20 15 16.8L15 12.75L8.75 12.75C8.34 12.75 8 12.41 8 12C8 11.59 8.34 11.25 8.75 11.25L15 11.25L15 7.2C15 4 13 2 9.8 2L7.21 2C4.01 2 2.01 4 2.01 7.2L2.01 16.8C2 20 4 22 7.2 22Z" fill="url(#paint0_linear_2932_6794)"/>
@@ -229,26 +231,37 @@
                 </a>
             </li>
             <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
-            <li><a href="{{route('user.profile1')}}">
+            <li><a href="{{route('user.myWallet')}}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.6">
+                        <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path
+                            d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </g>
+                </svg>
+                 
+                      
+                  </a>
+              </li>
+              <li><a href="{{route('user.more')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
                     <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </g>
-                </svg>                     
-                </a>
-            </li>
-            <li class="active"><a href="{{route('user.more')}}">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#7F52FF"/>
-                    <path d="M18.6704 2H16.7704C14.5904 2 13.4404 3.15 13.4404 5.33V7.23C13.4404 9.41 14.5904 10.56 16.7704 10.56H18.6704C20.8504 10.56 22.0004 9.41 22.0004 7.23V5.33C22.0004 3.15 20.8504 2 18.6704 2Z" fill="#7F52FF"/>
-                    <path d="M18.6704 13.4297H16.7704C14.5904 13.4297 13.4404 14.5797 13.4404 16.7597V18.6597C13.4404 20.8397 14.5904 21.9897 16.7704 21.9897H18.6704C20.8504 21.9897 22.0004 20.8397 22.0004 18.6597V16.7597C22.0004 14.5797 20.8504 13.4297 18.6704 13.4297Z" fill="#7F52FF"/>
-                    <path d="M7.24 13.4297H5.34C3.15 13.4297 2 14.5797 2 16.7597V18.6597C2 20.8497 3.15 21.9997 5.33 21.9997H7.23C9.41 21.9997 10.56 20.8497 10.56 18.6697V16.7697C10.57 14.5797 9.42 13.4297 7.24 13.4297Z" fill="#7F52FF"/>
                 </svg>
-                    
-                <span class="text">More</span>                    
-                </a>
-            </li>
+                  </a>
+              </li>
         </ul>
          
     </div>
@@ -276,7 +289,7 @@
             <div class="tf-container">
                 <div class="pb-24 line d-flex flex-column align-items-center box-wallet">
                     <div class="avatar round avt-110">
-                        <img class="lazyload" data-src="images/avt/avt-wallet.png" alt="img">
+                        <img class="lazyload" data-src="images/avt/avt10.png" alt="img">
                     </div>
                     <div class="mt-20 box-content text-center">
                         <h4>Beacon_NFT</h4>
@@ -284,7 +297,7 @@
                     </div>
                     <div class="value-field-wallet mt-16">
                         <img src="images/avt/metamask.png" alt="metamask">
-                        <input type="text" value="7EK933L1...C93676P7Q4">
+                        <input type="text" value="">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.1665 11.1673V13.6673C14.1665 17.0007 12.8332 18.334 9.49984 18.334H6.33317C2.99984 18.334 1.6665 17.0007 1.6665 13.6673V10.5007C1.6665 7.16732 2.99984 5.83398 6.33317 5.83398H8.83317" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -308,84 +321,137 @@
                         <div class="box-icon w-48 round"><span class="icon icon-send-2"></span></div>
                         <span class="fw-6 text-dark">Invite</span>
                     </a></li>
-                    <li><a href="#" class="item">
-                        <div class="box-icon w-48 round"><span class="icon icon-arrow-swap"></span></div>
-                        <span class="fw-6 text-dark">My Order</span>
-                    </a></li>
+                    
                 </ul>
+
+                
                 <div class="mt-24">
                     <div class="tab-slide wrapper-tab">
                         <ul class="nav nav-tabs tab-1" role="tablist" >
                             <li class="item-slide-effect"></li>
                             <li class="nav-item active" role="presentation">   
-                                <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#tokens" style="width:1000px;">Deposit History</button>
+                                <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#tokens">Deposit</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                               
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#NFTs">Withdraw</button>
                             </li> 
                         </ul>
                     </div>
                     <div class="tab-content mt-24">
                         <div class="tab-pane fade active show" id="tokens" role="tabpanel">
                             <ul class="list-view check-list">
-                                <li class="item">
-                                    
-                                            
-                                    </a>
-                                </li>
                                 <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
 
-<?php
- date_default_timezone_set('UTC');
-  $cnt = 0; ?>
-  @foreach($deposit_list as $value)
-                                <li class="item">
-                                <a  href="{{route('user.cancel-payment',['id'=>$value->orderId])}}" >                                          
-                                        
-                                        <!-- <div class="image">
-                                            <img src="images/wallet/wallet-12.png" alt="wallet">
-                                        </div> -->
+                                    <?php
+                                    date_default_timezone_set('UTC');
+                                    $cnt = 0; ?>
+                                    @foreach($deposit_list as $value)
 
+                                    <li class="item">
+                                        <a href="#" class="gap-12">
+                                            <div class="image">
+                                                
+                                            </div>
+                                            <span class="content">
+                                                <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
+                                                <span class="body-4 mt-4 tid" style="
+                                                padding-bottom: 0px;
+                                                margin-bottom: -4px;
+                                            ">（TID: {{ $value->transaction_id }}）</span>
 
-                                    
-                                        <div class="content">
-                                            <div class="body-1" style="font-size: 13px;">{{ $value->amount }} {{generalDetail()->cur_text}}</div>
-                                            <div class="body-1" style="font-size: 13px;">（TID: {{ $value->transaction_id }}） </div>
-                                            <div class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</div>
-                                          
-                                        </div>
-                                        </br>
-                                       
-                                        @if($value->status=="Pending")     
-                                        <span style="background:#df3131;">                                     
-                                            Cancel
-                                </span>
+                                                <br>
+                                                <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</span>
+
+                                            </span>
+                                            @if($value->status == "Pending")
+                                            
+                                                <div class="col-sm-2 button-danger">
+                                                    <form type="POST" action="{{ route('user.cancel-payment', ['id' => $value->orderId]) }}">
+                                                        @csrf
+                                                      <button class="tf-btn btn-sm primary" type="submit">Cancel</button>
+                                                    </form>
+                                                </div>
+                                           
                                             @else
-                                                            <span>Completed</span>                                       
-                                                        @endif
-
-                                                        @endforeach   
-                                                                            
-                                                                            <?php }?>   
-                                    </a>
-
-                       
-                                </li>
-                                <li class="item">
-                                   
-                                </li>   
+                                            <div class="col-sm-2 ">
+                                                <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'success' : 'danger' }}">{{ $value->status }}</button>
+                                            </div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    
+                                @endforeach
+                                <?php }?> 
+                              
+                          
                             </ul>
+                        </div>
+                        <div class="tab-pane fade" id="NFTs" role="tabpanel">
+                            <ul class="list-view check-list">
+                                <?php if(is_array($deposit_list) || is_object($deposit_list)){ ?>
 
- 
-                        
+                                    <?php
+                                    date_default_timezone_set('UTC');
+                                    $cnt = 0; ?>
+                                    @foreach($withdraw_report as $value)
 
+                                    <li class="item">
+                                        <a href="#" class="gap-12">
+                                            <div class="image">
+                                                
+                                            </div>
+                                            <span class="content">
+                                                <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
+                                                <span class="body-4 mt-4 tid" style="
+                                                padding-bottom: 0px;
+                                                margin-bottom: -4px;
+                                            ">（TID: {{ $value->txn_id }}）</span>
 
+                                                <br>
+                                                <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->paid_date))}}</span>
+
+                                            </span>
+                                            @if($value->status == "Pending")
+                                            
+                                            <div class="col-sm-2 ">
+                                                <button class="tf-btn btn-sm info">{{ $value->status }}</button>
+                                            </div>
+                                           
+                                            @else
+                                            <div class="col-sm-2 ">
+                                                <button class="tf-btn btn-sm {{ $value->status == 'Approved' ? 'success' : 'danger' }}">{{ $value->status }}</button>
+                                            </div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    
+                                @endforeach
+                                <?php }?> 
+                               
+                            </ul>
+                        </div>
+                        <style>
+                            .tid {
+    display: inline-block; /* Ensure it's treated as a block element for scrolling */
+    max-width: 150px; /* Set a fixed width as needed */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflow */
+    padding-bottom: 5px; /* Add some padding if necessary */
+    margin-top: 5px; /* Add some margin if necessary */
+}
+
+.tid:hover {
+    overflow-x: auto; /* Show horizontal scroll on hover */
+}
+
+                        </style>
                         
                     </div>
                 </div>
                 
             </div>
         </div>       
+    </div>      
     </div>
     
     <!-- my collection -->
@@ -506,9 +572,9 @@
     <div class="offcanvas offcanvas-end full" id="watchlist">
         <div class="header fixed-top">
             <div class="left">
-              <a href="javascript:void(0);" data-bs-dismiss="offcanvas" class="icon"><i class="icon-arrow-right"></i></a>
+              <a href="{{route('user.level-team')}}" data-bs-dismiss="offcanvas" class="icon"><i class="icon-arrow-right"></i></a>
             </div>
-            <h3>Watchlist</h3>
+            <h3>Team list</h3>
             <div class="right">
                 <a href="javascript:void(0);">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -621,7 +687,7 @@
                 <h6 class="text-center">Are you sure you want to log out?</h6>
                 <div class="grid-2 gap-15 mt-32">
                     <a href="#" data-bs-dismiss="offcanvas" class="tf-btn danger-disabled">Cancel</a>
-                    <a href="boarding.html" class="tf-btn danger">Yes, Logout</a>
+                    <a href="{{route('logout')}}" class="tf-btn danger">Yes, Logout</a>
                 </div>
             </div>
     </div>

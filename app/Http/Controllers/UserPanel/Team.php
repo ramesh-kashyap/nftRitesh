@@ -80,11 +80,11 @@ class Team extends Controller
       }
   
       // Pass data to the view
-      $this->data['direct_team'] = $allData;
+      $this->data['direct_team'] = $notes;
       $this->data['search'] = $search;
       $this->data['max_length'] = $max_length;
       $this->data['selected_level'] = $selected_level;
-      $this->data['page'] = 'user.team.reffrel-link';
+      $this->data['page'] = 'user.team.direct-team';
   
       return $this->dashboard_layout();
   }

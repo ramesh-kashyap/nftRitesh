@@ -13,6 +13,8 @@ use App\Models\PasswordReset;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use PragmaRX\Google2FA\Google2FA;
+
 
 use Auth;
 use Log;
@@ -22,6 +24,11 @@ use Validator;
 
 class Profile extends Controller
 {
+    public function check2fa(Request $request)
+{
+    $user = User::where('username', $request->username)->first();
+    return response()->json(['twofa' => $user ? $user->twofa : 0]);
+}
 
     public function index()
     {
@@ -84,6 +91,31 @@ class Profile extends Controller
   
     }
 
+
+    public function enable2fa(Request $request)
+{
+    $user = auth()->user();
+    $google2fa = new Google2FA();
+    $user->secret_key = $google2fa->generateSecretKey();
+    $user->twofa = 1;
+    $user->save();
+
+    $qrCodeUrl = $google2fa->getQRCodeUrl(
+        'NFT',
+        $user->email,
+        $user->secret_key
+    );
+
+    $qrCodeImageUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($qrCodeUrl);
+
+
+
+    
+    $this->data['qrCodeImageUrl'] =$qrCodeImageUrl;
+    $this->data['page'] = 'user.profile.get2fa';
+    return $this->dashboard_layout();
+}
+
     
 
     public function wallets()
@@ -126,6 +158,30 @@ class Profile extends Controller
     return $this->dashboard_layout();
 
     }
+
+    public function get2fa()
+    {
+        $user = auth()->user();
+
+        $qrCodeImageUrl=0;
+       
+        if($user->twofa==1){
+            $google2fa = new Google2FA();
+
+        $qrCodeUrl = $google2fa->getQRCodeUrl(
+            'NFT',
+            $user->email,
+            $user->secret_key
+        );
+        $qrCodeImageUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" . urlencode($qrCodeUrl);
+    }
+    
+    $this->data['qrCodeImageUrl'] =$qrCodeImageUrl;
+
+    $this->data['page'] = 'user.profile.get2fa';
+    return $this->dashboard_layout();
+
+    }
     
 
     public function change_trx_password()
@@ -151,6 +207,29 @@ class Profile extends Controller
 
     }
     
+
+    public function disable2fa(Request $request)
+{
+    $request->validate([
+        'google2facode' => 'required|numeric',
+    ]);
+
+    $user = auth()->user();
+    $google2fa = new Google2FA();
+
+    // Verify the provided code with the user's secret key
+    if ($google2fa->verifyKey($user->secret_key, $request->input('google2facode'))) {
+        // Code is correct, disable 2FA
+        $user->twofa = 0;
+        $user->secret_key = null;
+        $user->save();
+
+        return redirect()->route('user.get2fa')->with('success', '2FA has been disabled.');
+    } else {
+        // Code is incorrect
+        return redirect()->route('user.get2fa')->with('error', 'Invalid verification code.');
+    }
+}
 
  
     public function showinfo()

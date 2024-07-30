@@ -441,246 +441,67 @@
                     
                 </div>
                 <div class="tab-pane fade" id="activity" role="tabpanel">
-                    <div class="px-24 card-layout">
-                        <div class="d-flex gap-16">
-                            <div class="nice-select" tabindex="0" data-bs-target="#sale" data-bs-toggle="offcanvas"  aria-controls="offcanvasBottom"><span class="current">Sales</span></div>
-                            <div class="nice-select" tabindex="0"><span class="current">Chains</span>
-                                <ul class="list">  
-                                    <li data-value class="option selected">All</li>                                                        
-                                    <li data-value="villa" class="option">Villa</li>
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                        
-                    </div>
+                    
                     <div class="px-16 mt-24">
                         <ul class="mt-24 list-view-v9 check-list">
-                            <li>
-                                <a href="javascript:void(0);" class="item active box-accordion" >
-                                    <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-st-1" aria-expanded="true" aria-controls="accordion-st-1">
+                            @foreach($datas as $key=>$data)
+                            @php
+                            $quantityInWei = $data['payment']['quantity'];
+                            $quantityInEther = $quantityInWei / pow(10, 18);
+                            @endphp
+                            <li class="mt-20">
+                                <a href="javascript:void(0);" class="item active box-accordion">
+                                    <div class="box d-flex justify-content-between align-items-center gap-16 collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-st-{{ $key }}" aria-expanded="true" aria-controls="accordion-st-{{ $key }}">
                                         <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-1.png" alt="">                      
+                                            <img src="{{ $data['nft']['display_image_url'] }}" alt="">                      
                                         </div>
                                         <div class="content d-flex justify-content-between">
                                             <div class="content-left">
-                                                <span class="body-3 text-dark-2">Billionaire Club</span>
-                                                <p class="body-1 mt-2">Exclusive Ape #105</p>
+                                                <span class="body-3 text-dark-2">{{ $data['nft']['collection'] }}</span>
+                                                <p class="body-1 mt-2">{{ $data['nft']['name'] }}</p>
                                                 <span class="more text-primary mt-2 button-3">+more</span>
                                                 <span class="less text-primary mt-2 button-3">-less</span>
                                             </div>
                                             <div class="content-right text-end">
                                                 <span class="body-3 text-dark-2">Sale</span>
                                                 <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">0.624</span>  
+                                                    <span class="button-2">{{ number_format($quantityInEther, 3) }} {{ $data['payment']['symbol'] }}</span>  
                                                 </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">24 seconds ago</span>
+                                                <span class="mt-2 d-block body-4 text-dark-2">{{ $data['nft']['updated_at'] }}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="accordion-st-1" class="accordion-collapse collapse" aria-labelledby="accordion-st-1">
+                                    <div id="accordion-st-{{ $key }}" class="accordion-collapse collapse" aria-labelledby="accordion-st-{{ $key }}">
                                         <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
                                             <li>
-                                                <div class="body-5">Floor Price</div>
+                                                <div class="body-5">Quantity</div>
                                                 <div class="d-flex gap-4 align-items-center">
-                                                    <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                        <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                        <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-3">84.3</span>  
+                                                    <span class="button-3">{{ $data['quantity'] }}</span>  
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="body-5">7 Day%</div>
-                                                <span class="button-3 text-green">245,37 %</span>  
+                                                <div class="body-5">Seller</div>
+                                                <a href="https://opensea.io/{{ $data['seller'] }}" target="_blank" class="button-3 text-green">
+                                                    {{ substr($data['seller'], 0, 4) . '...' . substr($data['seller'], -4) }}
+                                                </a>
                                             </li>
                                             <li>
-                                                <div class="body-5">Owners</div>
-                                                <span class="button-3">6,378</span>  
+                                                <div class="body-5">Buyers</div>
+                                                <a href="https://opensea.io/{{ $data['buyer'] }}" target="_blank" class="button-3">
+                                                    {{ substr($data['buyer'], 0, 4) . '...' . substr($data['buyer'], -4) }}
+                                                </a>
                                             </li>
                                             <li>
-                                                <div class="body-5">Assets</div>
-                                                <span class="button-3">9,673</span>
+                                                <div class="body-5">Chain</div>
+                                                <span class="button-3">{{ $data['chain'] }}</span>
                                             </li>
                                         </ul>
                                     </div> 
                                 </a>
                             </li>
-                            <li class="mt-20">
-                                <a href="javascript:void(0);" class="item box-accordion">
-                                    <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-st-2" aria-expanded="true" aria-controls="accordion-st-2">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-2.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <span class="body-3 text-dark-2">Billionaire Club</span>
-                                                <p class="body-1 mt-2">Exclusive Ape #103</p>
-                                                <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <span class="body-3 text-dark-2">Sale</span>
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M11.4978 5.65744C11.2493 5.51541 10.9297 5.51541 10.6456 5.65744L8.65711 6.82924L7.30777 7.57494L5.35476 8.74674C5.1062 8.88877 4.78662 8.88877 4.50255 8.74674L2.97565 7.8235C2.72709 7.68146 2.54954 7.39739 2.54954 7.07781V5.30235C2.54954 5.01828 2.69158 4.7342 2.97565 4.55666L4.50255 3.66893C4.75111 3.52689 5.07069 3.52689 5.35476 3.66893L6.88166 4.59217C7.13022 4.7342 7.30777 5.01828 7.30777 5.33786V6.50966L8.65711 5.72846V4.52115C8.65711 4.23708 8.51508 3.953 8.23101 3.77546L5.39027 2.10653C5.14171 1.96449 4.82213 1.96449 4.53805 2.10653L1.62631 3.81097C1.34223 3.953 1.2002 4.23708 1.2002 4.52115V7.85901C1.2002 8.14308 1.34223 8.42716 1.62631 8.6047L4.50255 10.2736C4.75111 10.4157 5.07069 10.4157 5.35476 10.2736L7.30777 9.13734L8.65711 8.35614L10.6101 7.21984C10.8587 7.07781 11.1783 7.07781 11.4623 7.21984L12.9892 8.10757C13.2378 8.24961 13.4153 8.53368 13.4153 8.85327V10.6287C13.4153 10.9128 13.2733 11.1969 12.9892 11.3744L11.4978 12.2621C11.2493 12.4042 10.9297 12.4042 10.6456 12.2621L9.11873 11.3744C8.87017 11.2324 8.69262 10.9483 8.69262 10.6287V9.49243L7.34328 10.2736V11.4454C7.34328 11.7295 7.48531 12.0136 7.76939 12.1911L10.6456 13.8601C10.8942 14.0021 11.2138 14.0021 11.4978 13.8601L14.3741 12.1911C14.6227 12.0491 14.8002 11.765 14.8002 11.4454V8.07206C14.8002 7.78799 14.6582 7.50392 14.3741 7.32637L11.4978 5.65744Z" fill="#8247E5"/>
-                                                    </svg>
-                                                    <span class="button-2">182.19</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">15 minutes ago</span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div id="accordion-st-2" class="accordion-collapse collapse" aria-labelledby="accordion-st-2">
-                                        <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                            <li>
-                                                <div class="body-5">Floor Price</div>
-                                                <div class="d-flex gap-4 align-items-center">
-                                                    <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                        <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                        <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-3">84.3</span>  
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="body-5">7 Day%</div>
-                                                <span class="button-3 text-green">245,37 %</span>  
-                                            </li>
-                                            <li>
-                                                <div class="body-5">Owners</div>
-                                                <span class="button-3">6,378</span>  
-                                            </li>
-                                            <li>
-                                                <div class="body-5">Assets</div>
-                                                <span class="button-3">9,673</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mt-20">
-                                <a href="javascript:void(0);" class="item box-accordion">
-                                    <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-st-3" aria-expanded="true" aria-controls="accordion-st-3">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-3.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <span class="body-3 text-dark-2">Billionaire Club</span>
-                                                <p class="body-1 mt-2">Exclusive Ape #107</p>
-                                                <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <span class="body-3 text-dark-2">Sale</span>
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">0.982</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">22 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="accordion-st-3" class="accordion-collapse collapse" aria-labelledby="accordion-st-3">
-                                        <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                            <li>
-                                                <div class="body-5">Floor Price</div>
-                                                <div class="d-flex gap-4 align-items-center">
-                                                    <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                        <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                        <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-3">84.3</span>  
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="body-5">7 Day%</div>
-                                                <span class="button-3 text-green">245,37 %</span>  
-                                            </li>
-                                            <li>
-                                                <div class="body-5">Owners</div>
-                                                <span class="button-3">6,378</span>  
-                                            </li>
-                                            <li>
-                                                <div class="body-5">Assets</div>
-                                                <span class="button-3">9,673</span>
-                                            </li>
-                                        </ul>
-                                    </div>  
-                                </a>
-                            </li>
-                            <li class="mt-20">
-                                <a href="javascript:void(0);" class="item box-accordion">
-                                    <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-st-4" aria-expanded="true" aria-controls="accordion-st-4">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-4.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <span class="body-3 text-dark-2">Billionaire Club</span>
-                                                <p class="body-1 mt-2">Exclusive Ape #102</p>
-                                                <span class="d-block mt-2 text-dark-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <span class="body-3 text-dark-2">Sale</span>
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.40976 2.93072C3.49525 2.84865 3.60808 2.80078 3.72434 2.80078H14.5773C14.7756 2.80078 14.8747 3.04013 14.7345 3.18033L12.5906 5.32424C12.5086 5.4063 12.3957 5.45417 12.2761 5.45417H1.42314C1.22482 5.45417 1.12566 5.21482 1.26585 5.07463L3.40976 2.93072ZM3.40976 10.9354C3.49183 10.8533 3.60466 10.8055 3.72434 10.8055H14.5773C14.7756 10.8055 14.8747 11.0448 14.7345 11.185L12.5906 13.3289C12.5086 13.411 12.3957 13.4589 12.2761 13.4589H1.42314C1.22482 13.4589 1.12566 13.2195 1.26585 13.0793L3.40976 10.9354ZM12.2761 6.77734C12.3957 6.77734 12.5086 6.82521 12.5906 6.90728L14.7345 9.05119C14.8747 9.19138 14.7756 9.43073 14.5773 9.43073H3.72434C3.60466 9.43073 3.49183 9.38286 3.40976 9.3008L1.26585 7.15689C1.12566 7.0167 1.22482 6.77734 1.42314 6.77734H12.2761Z" fill="url(#paint0_linear_149_12564)"/>
-                                                        <defs>
-                                                        <linearGradient id="paint0_linear_149_12564" x1="11.8879" y1="0.657179" x2="4.37682" y2="15.0439" gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="#00FFA3"/>
-                                                        <stop offset="1" stop-color="#DC1FFF"/>
-                                                        </linearGradient>
-                                                        </defs>
-                                                    </svg>
-                                                        
-                                                    <span class="button-2">378.41</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">40 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="accordion-st-4" class="accordion-collapse collapse" aria-labelledby="accordion-st-4">
-                                        <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                            <li>
-                                                <div class="body-5">Floor Price</div>
-                                                <div class="d-flex gap-4 align-items-center">
-                                                    <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                        <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                        <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-3">84.3</span>  
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="body-5">7 Day%</div>
-                                                <span class="button-3 text-green">245,37 %</span>  
-                                            </li>
-                                            <li>
-                                                <div class="body-5">Owners</div>
-                                                <span class="button-3">6,378</span>  
-                                            </li>
-                                            <li>
-                                                <div class="body-5">Assets</div>
-                                                <span class="button-3">9,673</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </li>
+                            @endforeach   
                         </ul>
+                        
                     </div>
                 </div>
         </div>
@@ -704,24 +525,35 @@
               </a>
           </li>
           <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
-          <li><a href="{{route('user.profile1')}}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g opacity="0.6">
-                  <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </g>
-              </svg>
+          <li><a href="{{route('user.myWallet')}}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.6">
+                    <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                        stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+            </svg>
+             
+                  
               </a>
           </li>
           <li><a href="{{route('user.more')}}">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g opacity="0.6">
-                  <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                  </g>
-              </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g opacity="0.6">
+                <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+            </svg>
               </a>
           </li>
       </ul>

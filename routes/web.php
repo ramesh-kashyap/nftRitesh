@@ -43,6 +43,8 @@ Route::post('/sendforgot', [App\Http\Controllers\Login::class, 'sendforgot'])->n
 
 Route::get('login', [App\Http\Controllers\Login::class, 'loginPage'])->name('login');
 Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp'); 
+Route::post('/check-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'check2fa'])->name('check-2fa');
+
 
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
@@ -76,7 +78,7 @@ Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'inde
 Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
 Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
 
-Route::get('/profile', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+Route::get('/profile/{slug}', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
 
 
 
@@ -122,6 +124,9 @@ Route::get('/ChangeMail', [App\Http\Controllers\UserPanel\Profile::class, 'Chang
 Route::get('/bindMail', [App\Http\Controllers\UserPanel\Profile::class, 'bindMail'])->name('user.bindMail');
 Route::post('/bindemail-action', [App\Http\Controllers\UserPanel\Profile::class, 'bindemail_action'])->name('user.bindemail-action');
 Route::post('/changeEmailAction', [App\Http\Controllers\UserPanel\Profile::class, 'changeEmailAction'])->name('user.changeEmailAction');
+Route::get('/2fa', [App\Http\Controllers\UserPanel\Profile::class, 'get2fa'])->name('user.get2fa');
+Route::post('/enable-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'enable2fa'])->name('user.enable2fa');
+Route::post('/disable-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'disable2fa'])->name('user.disable2fa');
 
 
 Route::post('/edit-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_password_post'])->name('user.edit-password');
@@ -165,6 +170,7 @@ Route::get('/register/{sponsorCode}', [App\Http\Controllers\Register::class, 'sh
 Route::get('/record', [App\Http\Controllers\UserPanel\Invest::class, 'showrecord'])->name('user.records');
 Route::get('/invest', [App\Http\Controllers\UserPanel\Invest::class, 'index'])->name('user.invest');
 Route::get('/more', [App\Http\Controllers\UserPanel\Invest::class, 'more'])->name('user.more');
+Route::get('/myWallet', [App\Http\Controllers\UserPanel\Invest::class, 'wallet'])->name('user.myWallet');
 Route::get('/viewdetail/{txnId}', [App\Http\Controllers\UserPanel\Invest::class, 'viewdetail'])->name('user.viewdetail');
 Route::get('/deposit', [App\Http\Controllers\UserPanel\Invest::class, 'deposit'])->name('user.deposit');
 Route::get('/cancel-payment/{id}', [App\Http\Controllers\UserPanel\Invest::class, 'cancel_payment'])->name('user.cancel-payment');
@@ -270,6 +276,10 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
  Route::get('deposit-activities', [App\Http\Controllers\Admin\UserController::class, 'pendingActivities'])->name('admin.deposit-activities');
  Route::get('activities-list', [App\Http\Controllers\Admin\UserController::class, 'activities_list'])->name('admin.activities-list');
  Route::get('activities_submit', [App\Http\Controllers\Admin\UserController::class, 'activities_submit'])->name('admin.activities_submit');
+ Route::post('addnftt', [App\Http\Controllers\Admin\UserController::class, 'addnftt'])->name('admin.addnftt');
+ Route::get('addnft', [App\Http\Controllers\Admin\UserController::class, 'addnft'])->name('admin.addnft');
+ Route::post('addnft_post', [App\Http\Controllers\Admin\UserController::class, 'addnft_post'])->name('admin.addnft_post');
+ Route::get('addnftimage', [App\Http\Controllers\Admin\UserController::class, 'addnftimage'])->name('admin.addnftimage');
  
  //end userController
 

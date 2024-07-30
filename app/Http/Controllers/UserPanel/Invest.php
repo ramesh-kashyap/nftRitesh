@@ -164,10 +164,10 @@ public function viewdetail($txnId)
     
      $invest_check=Investment::where('user_id',$user->id)->where('status','Pending')->first();
 
-    // if ($invest_check) 
-    // {
-    //   return  redirect()->route('user.DepositHistory')->withErrors(array('your deposit already pending'));
-    // }
+    if ($invest_check) 
+    {
+      return  redirect()->route('user.myWallet')->withErrors(array('your deposit already pending'));
+    }
    
    
     $amountTotal= $request->Sum;
@@ -516,7 +516,7 @@ public function viewdetail($txnId)
         $status = $request->status ? $request->status : null;
         $search = $request->search ? $request->search : null;
         $notes = Investment::where('user_id',$user->id);
-        $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC');
+        $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC')->get();
       if($search <> null && $request->reset!="Reset"){
         $notes = $notes->where(function($q) use($search){
           $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
@@ -527,7 +527,7 @@ public function viewdetail($txnId)
         });
 
       }
-
+          
         $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
 
         $this->data['search'] =$search;
@@ -539,7 +539,35 @@ public function viewdetail($txnId)
 
         }
 
+        public function wallet(Request $request){
 
+          $user=Auth::user();
+          $limit = $request->limit ? $request->limit : paginationLimit();
+            $status = $request->status ? $request->status : null;
+            $search = $request->search ? $request->search : null;
+            $notes = Investment::where('user_id',$user->id);
+            $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC')->get();
+          if($search <> null && $request->reset!="Reset"){
+            $notes = $notes->where(function($q) use($search){
+              $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
+              ->orWhere('txn_no', 'LIKE', '%' . $search . '%')
+              ->orWhere('status', 'LIKE', '%' . $search . '%')
+              ->orWhere('type', 'LIKE', '%' . $search . '%')
+              ->orWhere('amount', 'LIKE', '%' . $search . '%');
+            });
+    
+          }
+              
+            $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
+    
+            $this->data['search'] =$search;
+            $this->data['deposit_list'] =$notes;
+            $this->data['withdraw_report'] =$withdraw;
+    
+            $this->data['page'] = 'user.invest.myWallet';
+            return $this->dashboard_layout();
+    
+            }
      
 
 
@@ -630,7 +658,6 @@ public function viewdetail($txnId)
 
         $this->data['gen_team3total'] =$gen_team3->count();
         $this->data['active_gen_team3total'] =$gen_team3->where('active_status','Active')->count();
-
 
         $this->data['gen_team1Income'] =$gen_team1->count();
 

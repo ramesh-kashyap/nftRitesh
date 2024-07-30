@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Income;
 use App\Models\Investment;
+use App\Models\Collection;
+use App\Models\CollectionDetail;
+
 use App\Models\Bank;
 use App\Models\Withdraw;
 use App\Models\BuyFund;
@@ -762,7 +765,154 @@ public function add_bonus_post(Request $request)
         return redirect()->back()->withNotify($notify);
     }
 
+    public function addnft()
+    {
+     
+     $this->data['page'] = 'admin.users.addnft';
+     return $this->admin_dashboard();
 
+    }
+
+
+          
+    public function addnftt(Request $request)
+    {
+
+    try{
+        $validation =  Validator::make($request->all(), [
+            'name' => 'required',
+          
+            'volume' => 'required',
+           
+            'price' => 'required',
+            'description' => 'required',
+
+        ]);
+
+
+        if($validation->fails()) {
+            Log::info($validation->getMessageBag()->first());
+
+            return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+        }
+
+    
+        $nft=Collection::where('name',$request->name)->first();
+            if (!$nft)          
+            {
+                $icon_image = $request->file('img');
+                $imageName = time().'.'.$icon_image->extension();
+                $request->img->move(public_path('image/'),$imageName);
+                
+                
+           $data = [
+                'name' =>$request->name,
+                'description' =>$request->description,
+              
+                'price' =>$request->price,
+                'volume' => $request->volume,
+                 'img' => 'image/'.$imageName,
+            ];
+            $payment = Collection::firstOrCreate(['name'=>$request->name],$data);
+
+            $notify[] = ['success', ' NFT Details Added successfully'];
+            return redirect()->back()->withNotify($notify);
+
+          
+               # code...
+           }
+          else
+          {
+            return Redirect::back()->withErrors(array('NFT already Exists! '));
+          }
+
+        }
+       catch(\Exception $e){
+        Log::info('error here');
+        Log::info($e->getMessage());
+        print_r($e->getMessage());
+        die("hi");
+        return  Redirect::back()->withErrors('error', $e->getMessage())->withInput();
+        }
+
+
+        }
+
+
+
+
+        public function addnftimage()
+        {
+          $categories = DB::table('collections')->get();
+
+          // dd($categories);
+          // Pass the data to the view
+          $this->data['categories'] = $categories;
+         $this->data['page'] = 'admin.users.addnftimage';
+         return $this->admin_dashboard();
+    
+        }
+
+                  
+    public function addnft_post(Request $request)
+    {
+
+    try{
+        $validation =  Validator::make($request->all(), [
+            // 'id' => 'required',
+           
+            'collection_id' => 'required',
+            'number' => 'required',
+          
+            'price' => 'required',
+            'img'=>'max:4096|mimes:jpeg,png,jpg,svg,webp,avif',
+
+        ]);
+
+          // dd($validation);
+        if($validation->fails()) {
+            Log::info($validation->getMessageBag()->first());
+
+            return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
+        }
+
+    
+    
+                $icon_image = $request->file('img');
+                $imageName = time().'.'.$icon_image->extension();
+                $request->img->move(public_path('image/'),$imageName);
+                
+                
+           $data = [
+                // 'id' =>$request->id,
+                'collection_id' => $request->collection_id,
+                'number' =>$request->number,
+                'price' =>$request->price,
+              
+                 'img' => 'image/'.$imageName,
+            ];
+
+            $payment = CollectionDetail::Create($data);
+
+            $notify[] = ['success', ' NFT Details Added successfully'];
+            return redirect()->back()->withNotify($notify);
+
+          
+               # code...
+           
+        
+
+        }
+       catch(\Exception $e){
+        Log::info('error here');
+        Log::info($e->getMessage());
+        print_r($e->getMessage());
+        die("hi");
+        return  Redirect::back()->withErrors('error', $e->getMessage())->withInput();
+        }
+
+
+        }
 
 
 }

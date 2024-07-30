@@ -231,26 +231,37 @@
                 </a>
             </li>
             <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
-            <li><a href="profile.html">
+            <li><a href="{{route('user.myWallet')}}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.6">
+                        <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M17 10H19C21 10 22 9 22 7V5C22 3 21 2 19 2H17C15 2 14 3 14 5V7C14 9 15 10 17 10Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path
+                            d="M17 22H19C21 22 22 21 22 19V17C22 15 21 14 19 14H17C15 14 14 15 14 17V19C14 21 15 22 17 22Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5 22H7C9 22 10 21 10 19V17C10 15 9 14 7 14H5C3 14 2 15 2 17V19C2 21 3 22 5 22Z"
+                            stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </g>
+                </svg>
+                 
+                      
+                  </a>
+              </li>
+              <li><a href="{{route('user.more')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">
                     <path d="M12.1596 10.87C12.0596 10.86 11.9396 10.86 11.8296 10.87C9.44957 10.79 7.55957 8.84 7.55957 6.44C7.55957 3.99 9.53957 2 11.9996 2C14.4496 2 16.4396 3.99 16.4396 6.44C16.4296 8.84 14.5396 10.79 12.1596 10.87Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M7.15973 14.56C4.73973 16.18 4.73973 18.82 7.15973 20.43C9.90973 22.27 14.4197 22.27 17.1697 20.43C19.5897 18.81 19.5897 16.17 17.1697 14.56C14.4297 12.73 9.91973 12.73 7.15973 14.56Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </g>
-                </svg>                     
-                </a>
-            </li>
-            <li class="active"><a href="more.html">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.24 2H5.34C3.15 2 2 3.15 2 5.33V7.23C2 9.41 3.15 10.56 5.33 10.56H7.23C9.41 10.56 10.56 9.41 10.56 7.23V5.33C10.57 3.15 9.42 2 7.24 2Z" fill="#7F52FF"/>
-                    <path d="M18.6704 2H16.7704C14.5904 2 13.4404 3.15 13.4404 5.33V7.23C13.4404 9.41 14.5904 10.56 16.7704 10.56H18.6704C20.8504 10.56 22.0004 9.41 22.0004 7.23V5.33C22.0004 3.15 20.8504 2 18.6704 2Z" fill="#7F52FF"/>
-                    <path d="M18.6704 13.4297H16.7704C14.5904 13.4297 13.4404 14.5797 13.4404 16.7597V18.6597C13.4404 20.8397 14.5904 21.9897 16.7704 21.9897H18.6704C20.8504 21.9897 22.0004 20.8397 22.0004 18.6597V16.7597C22.0004 14.5797 20.8504 13.4297 18.6704 13.4297Z" fill="#7F52FF"/>
-                    <path d="M7.24 13.4297H5.34C3.15 13.4297 2 14.5797 2 16.7597V18.6597C2 20.8497 3.15 21.9997 5.33 21.9997H7.23C9.41 21.9997 10.56 20.8497 10.56 18.6697V16.7697C10.57 14.5797 9.42 13.4297 7.24 13.4297Z" fill="#7F52FF"/>
                 </svg>
-                    
-                <span class="text">More</span>                    
-                </a>
-            </li>
+                  </a>
+              </li>
         </ul>
          
     </div>
@@ -278,7 +289,7 @@
             <div class="tf-container">
                 <div class="pb-24 line d-flex flex-column align-items-center box-wallet">
                     <div class="avatar round avt-110">
-                        <img class="lazyload" data-src="images/avt/avt-wallet.png.jpeg" alt="img">
+                        <img class="lazyload" data-src="images/avt/avt10.png.jpeg" alt="img">
                     </div>
                     <div class="mt-20 box-content text-center">
                         <h4>Beacon_NFT</h4>
@@ -679,7 +690,7 @@
                 <h6 class="text-center">Are you sure you want to log out?</h6>
                 <div class="grid-2 gap-15 mt-32">
                     <a href="#" data-bs-dismiss="offcanvas" class="tf-btn danger-disabled">Cancel</a>
-                    <a href="boarding.html" class="tf-btn danger">Yes, Logout</a>
+                    <a href="{{route('logout')}}" class="tf-btn danger">Yes, Logout</a>
                 </div>
             </div>
     </div>
@@ -1242,7 +1253,7 @@
           <div class="sidebar-content">
               <div class="d-flex gap-10 align-items-center pb-20 line-bt">
                   <div class="avatar avt-40">
-                      <img src="images/avt/avt-wallet.png" alt="img">
+                      <img src="images/avt/avt10.png" alt="img">
                   </div>
                   <div class="content-right">
                       <p class="text-1">Good morning</p>
@@ -1312,7 +1323,7 @@
                   </li>
                   
                   <li class="mt-16">
-                      <a href="boarding.html" class="nav-link-item not-link">
+                      <a href="{{route('logout')}}" class="nav-link-item not-link">
                           <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                               viewBox="0 0 20 20" fill="none">
                               <path opacity="0.4"
@@ -1357,7 +1368,7 @@
               <div class="tf-container">
                   <ul>
                     
-                      <li><a href="boarding.html" class="nav-link-item pt-16 pb-16 line-bt not-link">
+                      <li><a href="{{route('logout')}}" class="nav-link-item pt-16 pb-16 line-bt not-link">
                               <span>Boarding</span>
 
                           </a></li>

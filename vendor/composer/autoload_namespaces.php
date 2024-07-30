@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'Endroid' => array($vendorDir . '/endroid/qr-code/src'),
     'BaconQrCode' => array($vendorDir . '/bacon/bacon-qr-code/src'),
 );

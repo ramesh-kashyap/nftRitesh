@@ -9,6 +9,8 @@ use Redirect;
 use App\Models\PasswordReset;
 use App\Models\User;
 use App\Models\UserLogin;
+use PragmaRX\Google2FA\Google2FA;
+
 
 use DB;
 class Login extends Controller
@@ -26,6 +28,23 @@ class Login extends Controller
             // dd($request);
             $post_array  = $request->all();
             $credentials = $request->only('username', 'password');
+
+            $user = User::where('username', $request->username)->first();
+
+
+            if ($user && $user->twofa) {
+                // Verify the 2FA code
+                 if(!$request->google2facode){
+                    return Redirect::back()->withErrors(array('2FA is required'));
+                 }
+
+                $google2fa = new Google2FA();
+                $valid = $google2fa->verifyKey($user->secret_key, $request->google2facode);
+        
+                if (!$valid) {
+                    return Redirect::back()->withErrors(array('Invalid 2FA'));
+                }
+            }
                  
             if (Auth::attempt($credentials)) {
                 $user = Auth::user();
