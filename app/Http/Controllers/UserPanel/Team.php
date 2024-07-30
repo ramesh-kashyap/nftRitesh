@@ -24,62 +24,72 @@ class Team extends Controller
 
   
 
-    public function index(Request $request)
-    {
-      $user=Auth::user();
-      // print_r($user->username);die();
-        $my_level_team=$this->my_level_team_count($user->id);
-
-
-      // print_r($ids);die;
-        $limit = $request->limit ? $request->limit : paginationLimit();
-        $selected_level = $request->selected_level ? $request->selected_level :1;
-            
-        $search = $request->search ? $request->search : null;
-        // $notes = User::where('sponsor',$user->username);
-    $gen_team =  (array_key_exists($selected_level,$my_level_team) ? $my_level_team[$selected_level]:array());
-       end($my_level_team);        
-          $key = key($my_level_team);
-          $max_lenght=$key;
-          
-    ($selected_level)?Session::put('selected_level',$selected_level):"";
-
-            // $notes = User::where('sponsor',$user->username);
-          $notes = User::where(function($query) use($gen_team)
-              {
-                if(!empty($gen_team)){
-                  foreach ($gen_team as $key => $value) {
-                  //   $f = explode(",", $value);
-                  //   print_r($f)."<br>";
-                    $query->orWhere('id', $value);
-                  }
-                }else{$query->where('id',null);}
-              })->orderBy('id', 'DESC');
-      
-       if($search <> null && $request->reset!="Reset"){
-        $notes = $notes->where(function($q) use($search){
-          $q->orWhere('name', 'LIKE', '%' . $search . '%')
-          ->orWhere('username', 'LIKE', '%' . $search . '%')
-          ->orWhere('email', 'LIKE', '%' . $search . '%')
-          ->orWhere('phone', 'LIKE', '%' . $search . '%')
-          ->orWhere('jdate', 'LIKE', '%' . $search . '%')
-          ->orWhere('active_status', 'LIKE', '%' . $search . '%');
-        });
-
+  public function index(Request $request)
+  {
+      $user = Auth::user();
+  
+      // Fetch the team count based on the user's level
+      $my_level_team = $this->my_level_team_count($user->id);
+  
+      // Set default values for pagination and selected level
+      $limit = $request->limit ?? paginationLimit();
+      $selected_level = $request->selected_level ?? 1;
+      $search = $request->search ?? null;
+  
+      // Determine the maximum level for pagination
+      end($my_level_team);
+      $key = key($my_level_team);
+      $max_length = $key;
+  
+      // Store the selected level in the session
+      Session::put('selected_level', $selected_level);
+  
+      // Fetch the team for the selected level
+      $gen_team = $my_level_team[$selected_level] ?? [];
+  
+      // Query for notes based on the selected level team
+      $notesQuery = User::where(function($query) use ($gen_team) {
+          if (!empty($gen_team)) {
+              $query->whereIn('id', $gen_team);
+          } else {
+              $query->where('id', null); // Ensure no results if the team is empty
+          }
+      });
+  
+      // Apply search filter if provided
+      if ($search && $request->reset !== "Reset") {
+          $notesQuery->where(function($q) use ($search) {
+              $q->orWhere('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('username', 'LIKE', '%' . $search . '%')
+                ->orWhere('email', 'LIKE', '%' . $search . '%')
+                ->orWhere('phone', 'LIKE', '%' . $search . '%')
+                ->orWhere('jdate', 'LIKE', '%' . $search . '%')
+                ->orWhere('active_status', 'LIKE', '%' . $search . '%');
+          });
       }
-            $notes = $notes->paginate($limit)
-                ->appends([
-                    'limit' => $limit
-                ]);
-
-        $this->data['direct_team'] =$notes;
-        $this->data['search'] =$search;
-       $this->data['max_lenght'] =$max_lenght;
-
-    $this->data['page'] = 'user.team.direct-team';
-    return $this->dashboard_layout();
-
-    }
+  
+      // Paginate the results
+      $notes = $notesQuery->orderBy('id', 'DESC')
+          ->paginate($limit)
+          ->appends(['limit' => $limit]);
+  
+      // Organize data by levels
+      $allData = [];
+      foreach ($my_level_team as $level => $team) {
+          $allData[$level] = User::whereIn('id', $team)->get();
+      }
+  
+      // Pass data to the view
+      $this->data['direct_team'] = $notes;
+      $this->data['search'] = $search;
+      $this->data['max_length'] = $max_length;
+      $this->data['selected_level'] = $selected_level;
+      $this->data['page'] = 'user.team.direct-team';
+  
+      return $this->dashboard_layout();
+  }
+  
+  
 
     public function LevelTeam(Request $request)
     {
@@ -513,7 +523,6 @@ class Team extends Controller
               $arrin = array();
           }
       }
-
       $final = array();
       if(!empty($ret)){
           array_walk_recursive($ret, function($item, $key) use (&$final){
@@ -523,6 +532,17 @@ class Team extends Controller
 
 
       return $final;
+
+  }
+
+
+
+
+  public function level_count(Request $request){
+     $user= Auth::user();
+     $count= user::where($user->id, 'sponsor');
+     dd('$count');
+
 
   }
 

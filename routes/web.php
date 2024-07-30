@@ -42,7 +42,9 @@ Route::get('/manage-trade', [App\Http\Controllers\Cron::class, 'manage_trade'])-
 Route::post('/sendforgot', [App\Http\Controllers\Login::class, 'sendforgot'])->name('send_forgot');
 
 Route::get('login', [App\Http\Controllers\Login::class, 'loginPage'])->name('login');
-Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp');
+Route::post('loginp', [App\Http\Controllers\Login::class, 'login'])->name('loginp'); 
+Route::post('/check-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'check2fa'])->name('check-2fa');
+
 
 Route::get('logout', [App\Http\Controllers\Login::class, 'logout'])->name('logout');
 Route::get('forgot-password', [App\Http\Controllers\Login::class, 'forgot_password'])->name('forgot-password');
@@ -54,7 +56,7 @@ Route::get('resetPassword', [App\Http\Controllers\Login::class, 'resetPassword']
 
 Route::post('/getUserName', [App\Http\Controllers\Register::class, 'getUserNameAjax'])->name('getUserName');
 Route::post('/registers', [App\Http\Controllers\Register::class, 'register'])->name('registers');
-Route::get('/register_sucess', [App\Http\Controllers\Register::class, 'index'])->name('register_sucess');
+Route::get('/register', [App\Http\Controllers\Register::class, 'index'])->name('register');
 
 Route::get('/Index', [App\Http\Controllers\FrontController::class, 'index'])->name('Index');
 Route::get('/about-us', [App\Http\Controllers\FrontController::class, 'about'])->name('about-us');
@@ -65,7 +67,6 @@ Route::get('/tutorial', [App\Http\Controllers\FrontController::class, 'tutorial'
 Route::get('/team', [App\Http\Controllers\FrontController::class, 'team'])->name('team');
 Route::get('/privacy-policy', [App\Http\Controllers\FrontController::class, 'termcandition'])->name('privacy-policy');
 Route::get('/news', [App\Http\Controllers\FrontController::class, 'news'])->name('news');
-Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('lang');
 
 
 Route::get('/home', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('home');
@@ -74,7 +75,15 @@ Route::prefix('user')->group(function ()
 Route::middleware('auth')->group(function ()
 {
 Route::get('/dashboard', [App\Http\Controllers\UserPanel\Dashboard::class, 'index'])->name('user.dashboard');
+Route::get('/statistics', [App\Http\Controllers\UserPanel\Dashboard::class, 'stats'])->name('user.statistics');
+Route::get('/create-nft', [App\Http\Controllers\UserPanel\Dashboard::class, 'createNft'])->name('user.createNft');
+
+Route::get('/profile/{id}', [App\Http\Controllers\UserPanel\Dashboard::class, 'profile'])->name('user.profile1');
+
+
+
 Route::get('/tradeOn', [App\Http\Controllers\UserPanel\Dashboard::class, 'tradeOn'])->name('user.tradeOn');
+
 Route::get('/close-trade', [App\Http\Controllers\UserPanel\Dashboard::class, 'stop_trade'])->name('user.close-trade');
 
 Route::get('/lang', [App\Http\Controllers\UserPanel\Dashboard::class, 'lang'])->name('user.lang');
@@ -83,13 +92,17 @@ Route::get('/activities', [App\Http\Controllers\UserPanel\Dashboard::class, 'act
 Route::post('/submitActivity', [App\Http\Controllers\UserPanel\Dashboard::class, 'submitActivity'])->name('user.submitActivity');
 Route::post('/checkPaymentStatus', [App\Http\Controllers\UserPanel\Dashboard::class, 'checkPaymentStatus'])->name('user.checkPaymentStatus');
 Route::post('/lastWithdrawal', [App\Http\Controllers\UserPanel\Dashboard::class, 'lastWithdrawal'])->name('user.lastWithdrawal');
+// extra  defi
+Route::get('defi',[App\Http\Controllers\Extra::class, 'defi'])->name('user.defi');
+
+
 // profile
 
 
 Route::get('/article', [App\Http\Controllers\UserPanel\Profile::class, 'terms'])->name('user.terms');
 
 
-Route::get('/profile', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
+Route::get('/profile1', [App\Http\Controllers\UserPanel\Profile::class, 'index'])->name('user.profile');
 Route::get('/showinfo', [App\Http\Controllers\UserPanel\Profile::class, 'showinfo'])->name('user.showinfo');
 Route::post('/info', [App\Http\Controllers\UserPanel\Profile::class, 'infochange'])->name('user.infochange');
 
@@ -104,12 +117,16 @@ Route::post('/wallet_change', [App\Http\Controllers\UserPanel\Profile::class, 'w
 Route::post('/sendCode', [App\Http\Controllers\UserPanel\Profile::class, 'sendCode'])->name('user.send_code');
 Route::get('/change-trx-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_trx_password'])->name('user.change-trx-password');
 Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'change_password'])->name('user.ChangePass');
+Route::get('/setting', [App\Http\Controllers\UserPanel\Profile::class, 'setting'])->name('user.setting');
 Route::get('/security-password', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeSecurityPass'])->name('user.security-password');
 Route::get('/share', [App\Http\Controllers\UserPanel\Profile::class, 'share'])->name('user.share');
 Route::get('/ChangeMail', [App\Http\Controllers\UserPanel\Profile::class, 'ChangeMail'])->name('user.ChangeMail');
 Route::get('/bindMail', [App\Http\Controllers\UserPanel\Profile::class, 'bindMail'])->name('user.bindMail');
 Route::post('/bindemail-action', [App\Http\Controllers\UserPanel\Profile::class, 'bindemail_action'])->name('user.bindemail-action');
 Route::post('/changeEmailAction', [App\Http\Controllers\UserPanel\Profile::class, 'changeEmailAction'])->name('user.changeEmailAction');
+Route::get('/2fa', [App\Http\Controllers\UserPanel\Profile::class, 'get2fa'])->name('user.get2fa');
+Route::post('/enable-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'enable2fa'])->name('user.enable2fa');
+Route::post('/disable-2fa', [App\Http\Controllers\UserPanel\Profile::class, 'disable2fa'])->name('user.disable2fa');
 
 
 Route::post('/edit-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_password_post'])->name('user.edit-password');
@@ -117,6 +134,9 @@ Route::post('/update-password', [App\Http\Controllers\UserPanel\Profile::class, 
 Route::get('/BankDetail', [App\Http\Controllers\UserPanel\Profile::class, 'BankDetail'])->name('user.BankDetail');
 Route::post('/bank-update', [App\Http\Controllers\UserPanel\Profile::class, 'bank_profile_update'])->name('user.bank-update');
 Route::post('/change-trxpasswword', [App\Http\Controllers\UserPanel\Profile::class, 'change_trxpassword_post'])->name('user.change-trxpasswword');
+
+Route::get('/change/{lang?}', [App\Http\Controllers\FrontController::class, 'changeLanguage'])->name('user.lang');
+Route::get('/changelang', [App\Http\Controllers\FrontController::class, 'changeLang'])->name('user.language');
 // end profile
 
 
@@ -140,6 +160,8 @@ Route::get('/register/{sponsorCode}', [App\Http\Controllers\Register::class, 'sh
 
 Route::get('/record', [App\Http\Controllers\UserPanel\Invest::class, 'showrecord'])->name('user.records');
 Route::get('/invest', [App\Http\Controllers\UserPanel\Invest::class, 'index'])->name('user.invest');
+Route::get('/more', [App\Http\Controllers\UserPanel\Invest::class, 'more'])->name('user.more');
+Route::get('/myWallet', [App\Http\Controllers\UserPanel\Invest::class, 'wallet'])->name('user.myWallet');
 Route::get('/viewdetail/{txnId}', [App\Http\Controllers\UserPanel\Invest::class, 'viewdetail'])->name('user.viewdetail');
 Route::get('/deposit', [App\Http\Controllers\UserPanel\Invest::class, 'deposit'])->name('user.deposit');
 Route::get('/cancel-payment/{id}', [App\Http\Controllers\UserPanel\Invest::class, 'cancel_payment'])->name('user.cancel-payment');
@@ -169,6 +191,8 @@ Route::get('/left-team', [App\Http\Controllers\UserPanel\Team::class, 'leftteam'
 Route::get('/right-team', [App\Http\Controllers\UserPanel\Team::class, 'rightteam'])->name('user.right-team');
 Route::get('/tree-view', [App\Http\Controllers\UserPanel\Team::class, 'genealogy'])->name('user.tree-view');
 Route::any('/UsrBinaryReport',[App\Http\Controllers\UserPanel\BinaryReport::class,'userReport'])->name('UsrBinaryReport');
+
+
 //end team
 
 //bonus
@@ -243,6 +267,10 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
  Route::get('deposit-activities', [App\Http\Controllers\Admin\UserController::class, 'pendingActivities'])->name('admin.deposit-activities');
  Route::get('activities-list', [App\Http\Controllers\Admin\UserController::class, 'activities_list'])->name('admin.activities-list');
  Route::get('activities_submit', [App\Http\Controllers\Admin\UserController::class, 'activities_submit'])->name('admin.activities_submit');
+ Route::post('addnftt', [App\Http\Controllers\Admin\UserController::class, 'addnftt'])->name('admin.addnftt');
+ Route::get('addnft', [App\Http\Controllers\Admin\UserController::class, 'addnft'])->name('admin.addnft');
+ Route::post('addnft_post', [App\Http\Controllers\Admin\UserController::class, 'addnft_post'])->name('admin.addnft_post');
+ Route::get('addnftimage', [App\Http\Controllers\Admin\UserController::class, 'addnftimage'])->name('admin.addnftimage');
  
  //end userController
 

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
+use PragmaRX\Google2FA\Google2FA;
+
 
 class User extends Authenticatable
 {
@@ -19,7 +21,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password','phone','username','sponsor','ParentId','position','active_status','jdate','level','tpassword','adate','PSR','TPSR','country','country_iso','dialCode'
+        'name', 'email', 'password','phone','username','sponsor','ParentId','position','active_status','jdate','level','tpassword','adate','PSR','TPSR','country','country_iso','dialCode','twofa','secret_key'
     ];
 
     /**
@@ -45,6 +47,22 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\User', 'sponsor');
     } 
+
+    public function generateGoogle2FASecret()
+    {
+        $google2fa = new Google2FA();
+        return $google2fa->generateSecretKey();
+    }
+
+    public function getQRCodeUrl($label)
+    {
+        $google2fa = new Google2FA();
+        return $google2fa->getQRCodeUrl(
+            $label,
+            $this->email,
+            $this->secret_key
+        );
+    }
 
 
     public function sponsor_detail()

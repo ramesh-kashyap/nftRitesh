@@ -1,102 +1,103 @@
-<html lang="en" class="van-theme-light pc" style="font-size: 50px;">
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('') }}assets/images/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Invite Friends</title>
-    <script type="module" crossorigin="" src="{{asset('')}}assets/js/index-CrXrt6Gs.js"></script>
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vant-3s7b3naM.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vuei18n-CA58nVJV.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/corejs-C4iS2aBk.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vuex-MbEfqX8_.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/cryptojs-BILcvZe1.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/qrcodejs2fix-CnmRM6Pf.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vueclipboard3-C7DdPEQF.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/uaParserJs-QZjeYS1Z.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vuerouter-7dy5tY0D.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/axios-Cm0UX6qg.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/swiper-C1TWdcvt.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/bignumberjs-DOH-f-tm.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/validator-DnYg83Z5.js">
-    <link rel="modulepreload" crossorigin="" href="{{asset('')}}assets/js/vanttouchemulator-Cv_in60N.js">
-    <link rel="stylesheet" crossorigin="" href="{{asset('')}}assets/css/index-CFWvmehk.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/index-Da1lBwkd.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/icon_copy-BwRkM0m9.js">
-    <link rel="stylesheet" href="{{asset('')}}assets/css/index-CzoxWi67.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="/{{asset('')}}assets/js/PageScroll-CKnpGw43.js">
-    <link rel="stylesheet" href="{{asset('')}}assets/css/PageScroll-B0U5qQ_M.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/InsideHeader-CGABY78l.js">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/icon_back_white-Fd3ZFuzm.js">
-    <link rel="stylesheet" href="{{asset('')}}assets/css/InsideHeader-k_Fsd2wZ.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/ComBtn-NyABp2iF.js">
-    <link rel="stylesheet" href="{{asset('')}}assets/css/ComBtn-CgiT3mnI.css">
-    <link rel="modulepreload" as="script" crossorigin="" href="{{asset('')}}assets/js/FloatingBubble-CqXE7Yan.js">
-    <link rel="stylesheet" href="{{asset('')}}assets/css/FloatingBubble-Dntr2w2Z.css">
- 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+    <!-- font -->
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <base href="{{ asset('') }}">
+    <!-- Icons -->
+    <link rel="stylesheet" href="fonts/font-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet"type="text/css" href="css/nouislider.min.css"/>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/apexcharts.css">
+    <link rel="stylesheet" href="css/jqueryui.min.css">
+    <link rel="stylesheet"type="text/css" href="css/styles.css"/>
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="images/logo/168.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
+
+    <title>Create New Item</title>
 </head>
 
 <body>
-    <div id="app" data-v-app="">
-        <div class="van-config-provider">
-            <!---->
+    
+    <div class="header fixed-top">
+        <div class="left">
+          <a href="javascript:void(0);" class="icon back-btn fs-12"><i class="icon-close2"></i></a>
         </div>
-        <div data-v-e85f0186="" data-v-19974f11="" class="page" style="background-color: rgb(254, 254, 251);">
-            <div data-v-e85f0186="" class="headers">
-                <div data-v-54adc729="" data-v-e85f0186="" class="inside-header">
-                    <div data-v-54adc729="" class="left">
-                        <div data-v-54adc729="" class="back"><a href="{{route('user.dashboard')}}"><img data-v-54adc729=""
-                                src="data:image/png;base64,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"
-                                class="icon"></a></div>
+        <!-- <h3>Create New Item</h3> -->
+        <div class="right">
+            <a href="{{route('user.dashboard')}}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.02 2.84016L3.63 7.04016C2.73 7.74016 2 9.23016 2 10.3602V17.7702C2 20.0902 3.89 21.9902 6.21 21.9902H17.79C20.11 21.9902 22 20.0902 22 17.7802V10.5002C22 9.29016 21.19 7.74016 20.2 7.05016L14.02 2.72016C12.62 1.74016 10.37 1.79016 9.02 2.84016Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 17.9902V14.9902" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>        
+            </a>
+        </div> 
+    </div>
+    <div class="app-content style-2">
+        <div class="tf-container">
+            <h4 class="text-dark-3">Invite Friends</h4>
+           
+            <div class="mt-20">
+                <label class="boxuploadfile">
+                    <div class="btn-upload">
+                    <img src="{{$qrImage}}" alt="logo" class="logo-light">
+
+                    </div>
+                </label>
+            </div>
+            <div class="pb-24 mb-24 line">
+                <h6>@lang('Invitation code')</h6>
+                <div class="mb-16 box-ip-field-val">
+
+                    <img class="lazyload" data-src="images/banner/banner-nft-3.jpg" alt="img">
+                    <input type="text" class="form-control" value="{{Auth::user()->username}}">
+                    <div class="group-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"  style="font-size:24px; color:#fff" type="button" onclick="copyLink()" >
+                            <g opacity="0.6">
+                            <path d="M14.1666 11.1673V13.6673C14.1666 17.0007 12.8333 18.334 9.49996 18.334H6.33329C2.99996 18.334 1.66663 17.0007 1.66663 13.6673V10.5007C1.66663 7.16732 2.99996 5.83398 6.33329 5.83398H8.83329" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9.66638 1.66602H12.9997" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.83337 4.16602C5.83337 2.78268 6.95004 1.66602 8.33337 1.66602H10.5167" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.3337 6.66602V11.8243C18.3337 13.116 17.2837 14.166 15.9921 14.166" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.3334 6.66602H15.8334C13.9584 6.66602 13.3334 6.04102 13.3334 4.16602V1.66602L18.3334 6.66602Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg>
+                       
+                               
                     </div>
                 </div>
+            <div class="mt-24">
+                <h4 class="text-dark-3">@lang('Invitation link')</h4>
+              
+                <input type="text" class="mt-16 form-control" value="{{ asset('') }}register?ref={{ Auth::user()->username }}" style="    width: 100%;" name="link" readonly id="clipboardright">
             </div>
-            <div data-v-e85f0186="" class="page-container">
-                <div data-v-e85f0186="" class="scroll">
-                    <div data-v-19974f11="" class="container">
-                        <div data-v-19974f11="" class="title_heand">@lang('Invite Friends')</div>
-                        <div data-v-19974f11="" class="code-box"><img data-v-19974f11="" class="bg"
-                                src="{{asset('')}}assets/images/reffrial.png">
-                            <div data-v-19974f11="" class="content">
-                                <div data-v-19974f11="" class="top_img"><img data-v-19974f11=""
-                                        src="{{asset('')}}assets/images/logo-2.png"></div>
-                                <p data-v-19974f11="">@lang("Let's pass GSTAIQ to the world together, so everyone feels joy and reward")</p>
-                                <div data-v-19974f11="" class="qr-con">
-                                    <div data-v-19974f11="" title="https">
-                                        <canvas width="130" height="130" style="display: none;"></canvas>
-                                        
-                                      
-                                        <img
-                                            alt="Scan me!"
-                                            src="{{$qrImage}}"
-                                            style="display: block;"></div>
-                                </div>
-                                <div data-v-19974f11="" class="code-con">
-                                    <div data-v-19974f11="" class="left">
-                                        <div data-v-19974f11="" class="title">@lang('Invitation code')</div>
-                                        <div data-v-19974f11="" class="code">{{Auth::user()->username}}</div>
-                                    </div>
-                                    <div data-v-19974f11="" class="right"><i class="fa fa-copy"  type="button" onclick="copyLink()" style="font-size:24px; color:#fff"></i>                                 
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div data-v-19974f11="" class="url-box">
-    <div data-v-19974f11="" class="box-title">@lang('Invitation link')</div>
-    <div data-v-19974f11="" class="url">
-        <input type="text" value="{{ asset('') }}register?ref={{ Auth::user()->username }}" style="    width: 100%;" name="link" readonly id="clipboardright">
-       
-    </div>
-</div>
-<button data-v-359df9df="" data-v-19974f11="" type="button" onclick="copyLink()"
-    class="van-button van-button--default van-button--normal com-btn on url-btn">
-    <div class="van-button__content">
-        <span class="van-button__text">@lang('Copy invitation link')</span>
-    </div>
-</button>
 
-<script>
+            <div class="mt-24">
+              
+              
+                <input type="text" class="mt-16 form-control" value="@lang('Copy invitation link')" style="width: 100%;background: #8052ff;color: white; text-align: center;">
+            </div>
+          
+        </div>
+        
+        
+    </div>
+
+    <div class="btn-fixed">
+        <div class="grid-2 gap-15">
+            <!-- <a href="index.html" class="tf-btn disabled-primary">CANCEL</a> -->
+            <!-- <a href="nft-details-unlisting.html" class="tf-btn primary">CREATE</a> -->
+
+        </div>
+    </div>
+
+    <script>
     function copyLink() {
         var copyText = document.getElementById("clipboardright");
         copyText.select();
@@ -105,19 +106,17 @@
         alert("Copied the link: " + copyText.value);
     }
 </script>
-
-                    </div>
     
-                </div>
-                <div data-v-8b363259="" data-v-e85f0186="" class="touch-move-con" style="top: 1.88rem; right: 0.2rem;">
-                </div>
-            </div>
-            <!---->
-        </div>
-        <!---->
-    </div>
 
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lazysize.min.js"></script>
+    <script type="text/javascript" src="js/countto.js"></script>
+    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
+    <script type="text/javascript" src="js/jqueryui.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
 </body>
-
 </html>

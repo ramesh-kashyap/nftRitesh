@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Investment;
 use App\Models\Income;
+use App\Models\Withdraw;
 use App\Models\Contract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\URL;
@@ -163,10 +164,10 @@ public function viewdetail($txnId)
     
      $invest_check=Investment::where('user_id',$user->id)->where('status','Pending')->first();
 
-    if ($invest_check) 
-    {
-      return  redirect()->route('user.DepositHistory')->withErrors(array('your deposit already pending'));
-    }
+    // if ($invest_check) 
+    // {
+    //   return  redirect()->route('user.myWallet')->withErrors(array('your deposit already pending'));
+    // }
    
    
     $amountTotal= $request->Sum;
@@ -508,13 +509,14 @@ public function viewdetail($txnId)
 
 
 
-        public function invest_list(Request $request){
+        public function more(Request $request){
 
       $user=Auth::user();
       $limit = $request->limit ? $request->limit : paginationLimit();
         $status = $request->status ? $request->status : null;
         $search = $request->search ? $request->search : null;
         $notes = Investment::where('user_id',$user->id);
+        $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC')->get();
       if($search <> null && $request->reset!="Reset"){
         $notes = $notes->where(function($q) use($search){
           $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
@@ -525,16 +527,48 @@ public function viewdetail($txnId)
         });
 
       }
-
+          
         $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
 
-      $this->data['search'] =$search;
-      $this->data['deposit_list'] =$notes;
-      $this->data['page'] = 'user.invest.DepositHistory';
-      return $this->dashboard_layout();
+        $this->data['search'] =$search;
+        $this->data['deposit_list'] =$notes;
+        $this->data['withdraw_report'] =$withdraw;
 
+        $this->data['page'] = 'user.invest.more';
+        return $this->dashboard_layout();
 
         }
+
+        public function wallet(Request $request){
+
+          $user=Auth::user();
+          $limit = $request->limit ? $request->limit : paginationLimit();
+            $status = $request->status ? $request->status : null;
+            $search = $request->search ? $request->search : null;
+            $notes = Investment::where('user_id',$user->id);
+            $withdraw = Withdraw::where('user_id',$user->id)->orderBy('wdate','DESC')->get();
+          if($search <> null && $request->reset!="Reset"){
+            $notes = $notes->where(function($q) use($search){
+              $q->Where('user_id_fk', 'LIKE', '%' . $search . '%')
+              ->orWhere('txn_no', 'LIKE', '%' . $search . '%')
+              ->orWhere('status', 'LIKE', '%' . $search . '%')
+              ->orWhere('type', 'LIKE', '%' . $search . '%')
+              ->orWhere('amount', 'LIKE', '%' . $search . '%');
+            });
+    
+          }
+              
+            $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
+    
+            $this->data['search'] =$search;
+            $this->data['deposit_list'] =$notes;
+            $this->data['withdraw_report'] =$withdraw;
+    
+            $this->data['page'] = 'user.invest.myWallet';
+            return $this->dashboard_layout();
+    
+            }
+     
 
 
 
@@ -620,8 +654,10 @@ public function viewdetail($txnId)
         $this->data['gen_team1total'] =$gen_team1->count();
         $this->data['active_gen_team1total'] =$gen_team1->where('active_status','Active')->count();
         $this->data['gen_team2total'] =$gen_team2->count();
+
         $this->data['active_gen_team2total'] =$gen_team2->where('active_status','Active')->count();
 
+     
         $this->data['gen_team3total'] =$gen_team3->count();
         $this->data['active_gen_team3total'] =$gen_team3->where('active_status','Active')->count();
 
@@ -638,7 +674,7 @@ public function viewdetail($txnId)
           $this->data['todaysRoi'] = $todaysRoi->count();
           $this->data['todaysRoiSum'] = \DB::table('contract')->where('user_id',$user->id)->where('ttime',date('Y-m-d'))->where('c_status','-1')->sum('profit');
           $this->data['todaysLevelIncome'] = \DB::table('incomes')->where('user_id',$user->id)->where('ttime',date('Y-m-d'))->where('remarks','Quantify Level Income')->sum('comm');
-          $this->data['totalLevelIncome'] = \DB::table('incomes')->where('user_id',$user->id)->where('remarks','Quantify Level Income')->sum('comm');
+          $this->data['directIncome'] = \DB::table('incomes')->where('user_id',$user->id)->where('remarks','Team Commision')->sum('comm');
           $this->data['balance'] =round($user->available_balance(),2);
           $this->data['page'] = 'user.quality';
           return $this->dashboard_layout();
