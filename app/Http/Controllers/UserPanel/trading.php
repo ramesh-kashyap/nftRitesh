@@ -183,11 +183,11 @@ class trading extends Controller
         ]);
     
         // Update status in the Nft_Trading table
-        $nftTrading = Nft_Trading::find($request->nft_id);
-        if ($nftTrading) {
-            $nftTrading->status = 'Approved';
-            $nftTrading->save();
-        }
+        // $nftTrading = Nft_Trading::find($request->nft_id);
+        // if ($nftTrading) {
+        //     $nftTrading->status = 'Approved';
+        //     $nftTrading->save();
+        // }
     
         // Update status in the Trade table where buyer_id matches the logged-in user's username
         $trade = Trade::where('nft_id', $request->nft_id)->first();
