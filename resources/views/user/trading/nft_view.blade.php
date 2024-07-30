@@ -202,39 +202,41 @@
             <div class="modal fade modalCenter" id="success" id="imageModal" style="display: none;">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                         <div class="mb-40 text-center">
-                            <img src="" id="popupImage" alt="NFT Image"
-                                style="height:150px;width:auto; border-radius:20px">
-                        </div>
-                        <div class="mb-32 text-center">
-                            <h4 class="text-dark-3" >
-                                <input id="hiddenNftName" value="" readonly style="text-align:center">
-                            </h4>
-                            <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
-                        </div>
                         <center>
-                        <!-- <div class="pyramid-loader">
-                            <div class="wrapper">
-                                <span class="side side1"></span>
-                                <span class="side side2"></span>
-                                <span class="side side3"></span>
-                                <span class="side side4"></span>
-                                <span class="shadow"></span>
+                            <div class="pyramid-loader" id="loader" style="display:none">
+                                <h3 class="text-primary">Buying Nft for you, Please Wait...</h3>
+                                <div class="wrapper">
+                                    <span class="side side1"></span>
+                                    <span class="side side2"></span>
+                                    <span class="side side3"></span>
+                                    <span class="side side4"></span>
+                                    <span class="shadow"></span>
+                                </div>
                             </div>
-                        </div> -->
-                        <form action="{{ route('user.sellnft') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="nft_id" value="{{ $nftd->nft_id}}">
-                        <input type="hidden" name="nft_name" value="{{ $nftd->nft_name}}">
-                        <input type="hidden" name="status" value="Approved">
-                        <img  src="{{ $nftd->nft_image}}" alt="Selected NFT" style="display:none;">
-                        <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
-                            Now</button>
-                    </form> 
+                            <div id="contentDiv" style="display:block">
+                                <div class="mb-40 text-center">
+                                    <img src="" id="popupImage" alt="NFT Image" style="height:150px;width:auto; border-radius:20px">
+                                </div>
+                                <div class="mb-32 text-center">
+                                    <h4 class="text-dark-3">
+                                        <input id="hiddenNftName" value="" readonly style="text-align:center">
+                                    </h4>
+                                    <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
+                                </div>
+                                <form action="{{ route('user.sellnft') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="nft_id" value="{{ $nftd->nft_id }}">
+                                    <input type="hidden" name="nft_name" value="{{ $nftd->nft_name }}">
+                                    <input type="hidden" name="status" value="Approved">
+                                    <img src="{{ $nftd->nft_image }}" alt="Selected NFT" style="display:none;">
+                                    <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell Now</button>
+                                </form>
+                            </div>
                         </center>
                     </div>
                 </div>
             </div>
+            
 
             <div class="" style="padding-bottom :30px;">
                 <div class=" gap-15">                   
@@ -1809,6 +1811,21 @@
         }
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        $('#success').on('show.bs.modal', function (e) {
+            // Show loader and hide content div
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('contentDiv').style.display = 'none';
+    
+            // After 10 seconds, hide loader and show content div
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('contentDiv').style.display = 'block';
+            }, 5000); // 10 seconds = 10000 milliseconds
+        });
+    });
+    </script>
 
 
 
