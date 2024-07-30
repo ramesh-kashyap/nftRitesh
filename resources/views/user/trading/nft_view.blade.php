@@ -164,18 +164,7 @@
     </div>
 @endif
 
-      <div class="card-body mt-20 row">
-                 
-          <div class="dropdown text-center col-6" >                         
-                        <button  type="button" id="selectedLevelButton" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
-                        Select a Package
-                        </button>
-                        <div class="dropdown-menu full">
-                            <a class="dropdown-item" >{{ number_format($pamount, 2) }}</a>
-                           
-                        </div>
-                    </div>
-      </div>
+
         <div class="px-24 card-layout style-2 mt-20">
             <div class="swiper-container" style="overflow:hidden; max-height: 250px;">
                 <div class="swiper-wrapper">
