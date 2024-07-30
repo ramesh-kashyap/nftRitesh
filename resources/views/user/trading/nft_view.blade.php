@@ -115,7 +115,28 @@
 </head>
 
 <div class="counter-scroll">
+@if (session('success'))
+    <div id="successAlert" class="alert alert-success">
+        {{ session('success') }}
+        <div id="countdown" style="margin-top: 10px;"></div>
+    </div>
+@endif
 
+@if (session('error'))
+    <div id="errorAlert" class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if ($errors->any())
+    <div id="errorAlert" class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="header fixed-top">
         <div class="left">
             <a href="javascript:void(0);" class="icon back-btn"><i class="icon-arrow-right"></i></a>
@@ -144,28 +165,7 @@
     
     <div class="app-content style-2">
       <div class="tf-container">
-      @if (session('success'))
-    <div id="successAlert" class="alert alert-success">
-        {{ session('success') }}
-        <div id="countdown" style="margin-top: 10px;"></div>
-    </div>
-@endif
 
-@if (session('error'))
-    <div id="errorAlert" class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
-
-@if ($errors->any())
-    <div id="errorAlert" class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
 
         <div class="px-24 card-layout style-2 mt-20">
@@ -1732,7 +1732,7 @@
         function showImage(index) {
             let selectedNft = nfts[index];
             document.getElementById('popupImage').src = selectedNft.nft.display_image_url;
-            document.getElementById('imageName').value = selectedNft.nft.display_image_url;
+            // document.getElementById('imageName').value = selectedNft.nft.display_image_url;
             document.getElementById('hiddenNftId').value = selectedNft.nft.identifier; // Set hidden input value
             document.getElementById('hiddenNftName').value = selectedNft.nft.name;            
             document.getElementById('imageModal').style.display = 'block';
