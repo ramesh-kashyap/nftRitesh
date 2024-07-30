@@ -12,7 +12,7 @@ use App\Models\Investment;
 use App\Models\Income;
 use App\Models\Collection;
 use App\Models\CollectionDetail;
-
+use GuzzleHttp\Client;
 use App\Models\User_trade;
 use App\Models\Contract;
 use App\Models\Activitie;
@@ -185,7 +185,23 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
 
     public function createNft()
     {
+      $client = new Client();
+      $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=6', [
+          'headers' => [
+              'accept' => 'application/json',
+              'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+          ],                
+      ]);
+  
+      $body = $response->getBody();            
+      // Decode the JSON response
+      $nfts = json_decode($body, true);
+      
+      $filteredNftsLatest = array_filter($nfts['asset_events'], function($nft) {
+          return !empty($nft['nft']['image_url']);
+        });
 
+      $this->data['nfts'] = $filteredNftsLatest;
       $this->data['page'] = 'user.create-nft';
       return $this->dashboard_layout();
 
