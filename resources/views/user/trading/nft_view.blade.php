@@ -38,6 +38,76 @@
         transition: opacity 0.5s ease-out;
     }
 
+    .pyramid-loader {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: block;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.pyramid-loader .wrapper .side {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient( #2F2585 10%, #F028FD 70%, #2BDEAC 120%); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform-origin: center top;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.pyramid-loader .wrapper .side1 {
+  transform: rotateZ(-30deg) rotateY(90deg);
+  background: conic-gradient( #2BDEAC, #F028FD, #D8CCE6, #2F2585);
+}
+
+.pyramid-loader .wrapper .side2 {
+  transform: rotateZ(30deg) rotateY(90deg);
+  background: conic-gradient( #2F2585, #D8CCE6, #F028FD, #2BDEAC);
+}
+
+.pyramid-loader .wrapper .side3 {
+  transform: rotateX(30deg);
+  background: conic-gradient( #2F2585, #D8CCE6, #F028FD, #2BDEAC);
+}
+
+.pyramid-loader .wrapper .side4 {
+  transform: rotateX(-30deg);
+  background: conic-gradient( #2BDEAC, #F028FD, #D8CCE6, #2F2585);
+}
+
+.pyramid-loader .wrapper .shadow {
+  width: 60px;
+  height: 60px;
+  background: #8B5AD5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotateX(90deg) translateZ(-40px);
+  filter: blur(12px);
+}
     </style>
 </head>
 
@@ -95,13 +165,7 @@
 @endif
 
       <div class="card-body mt-20 row">
-          <div class="dropdown text-center col-6">
-              <select id="levelSelect" class="tf-btn primary form-select" style="overflow:hidden">
-              @foreach($iamount as $iamt)
-                  <option value="{{ $iamt->id }}" data-level="{{ $iamt->level }}" data-package-min="{{ $iamt->package_min }}" data-package-max="{{ $iamt->package_max }}" data-min-amount="{{ $iamt->min_amount }}" data-max-amount="{{ $iamt->max_amount }}"><span>{{$iamt->level}} -</span>   <span>{{$iamt->package_min}}-{{$iamt->package_max}}%</span></option>                  
-               @endforeach                   
-              </select>
-          </div>         
+                 
           <div class="dropdown text-center col-6" >                         
                         <button  type="button" id="selectedLevelButton" class="tf-btn primary btn-md dropdown-toggle" data-bs-toggle="dropdown">
                         Select a Package
@@ -148,18 +212,27 @@
             <div class="modal fade modalCenter" id="success" id="imageModal" style="display: none;">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="mb-40 text-center">
+                        <!-- <div class="mb-40 text-center">
                             <img src="" id="popupImage" alt="NFT Image"
                                 style="height:150px;width:auto; border-radius:20px">
                         </div>
                         <div class="mb-32 text-center">
                             <h4 class="text-dark-3" >
-                                <!-- <input id="hiddenNftName" value="" readonly style="text-align:center"> -->
+                                <input id="hiddenNftName" value="" readonly style="text-align:center">
                             </h4>
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
+                        </div> -->
+                        <center>
+                        <div class="pyramid-loader">
+                            <div class="wrapper">
+                                <span class="side side1"></span>
+                                <span class="side side2"></span>
+                                <span class="side side3"></span>
+                                <span class="side side4"></span>
+                                <span class="shadow"></span>
+                            </div>
                         </div>
-                        <div class="">
-                            <form id="buyForm" action="{{ route('user.submitnft') }}" method="POST">
+                            <!-- <form id="buyForm" action="{{ route('user.submitnft') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="nft_id" id="hiddenNftId">
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
@@ -167,9 +240,9 @@
                                 <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
                                 <button type="submit" id="buyButton"  class="tf-btn primary" data-bs-dismiss="modal"
                                 style="cursor: pointer;">Buy Now</button>
-                            <!-- <a href="#" class="tf-btn disabled-primary mt-16" data-bs-dismiss="modal">SELL</a> -->
-                            </form>
-                        </div>
+                            
+                            </form> -->
+                        </center>
                     </div>
                 </div>
             </div>
@@ -201,7 +274,6 @@
                         @endif
 
                     
-
             <div class="pb-24 mb-24 line">
                 <div class="d-flex gap-14 tf-counter">
                     <div class="counter-box favourites count-style-2">
@@ -1700,63 +1772,7 @@
    
 
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectElement = document.getElementById('levelSelect');
-        const buttonElement = document.getElementById('selectedLevelButton');
 
-        // Function to update button text with selected option's level and package range
-        function updateButtonText() {
-            const selectedOption = selectElement.options[selectElement.selectedIndex];
-            const level = selectedOption.getAttribute('data-level');
-            const packageMin = selectedOption.getAttribute('data-package-min');
-            const packageMax = selectedOption.getAttribute('data-package-max');
-            const minAmount = selectedOption.getAttribute('data-min-amount');
-            const maxAmount = selectedOption.getAttribute('data-max-amount');  
-            if (level && packageMin && packageMax) {
-                buttonElement.textContent = `${minAmount}-${maxAmount}%`;
-            } else {
-                buttonElement.textContent = 'Select a Level';
-            }
-        }
-
-        // Update button text when the page loads
-        updateButtonText();
-
-        // Update button text whenever a new option is selected
-        selectElement.addEventListener('change', updateButtonText);
-    });
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectElement = document.getElementById('levelSelect');
-        const buyNowBtn = document.getElementById('buyNowBtn');
-
-        // Example user investment amount; this should be dynamically provided from the server-side
-        const userInvestmentAmount = parseFloat('{{ number_format($pamount, 2, ".", "") }}'); // Ensure this is in float format
-
-        function updateButtonState() {
-            const selectedOption = selectElement.options[selectElement.selectedIndex];
-            const maxAmount = parseFloat(selectedOption.getAttribute('data-max-amount'));
-
-            if (userInvestmentAmount < maxAmount) {
-                buyNowBtn.disabled = true;
-                buyNowBtn.style.backgroundColor = 'gray'; // Optional: visually indicate disabled state
-                buyNowBtn.style.cursor = 'not-allowed';
-            } else {
-                buyNowBtn.disabled = false;
-                buyNowBtn.style.backgroundColor = ''; // Reset to default
-                buyNowBtn.style.cursor = 'pointer';
-            }
-        }
-
-        // Initialize button state based on the initial selection
-        updateButtonState();
-
-        // Update button state when a new option is selected
-        selectElement.addEventListener('change', updateButtonState);
-    });
-</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const purchaseInfoSection = document.getElementById('purchaseInfoSection');
