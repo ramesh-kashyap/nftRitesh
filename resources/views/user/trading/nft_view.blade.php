@@ -108,6 +108,7 @@
   transform: rotateX(90deg) translateZ(-40px);
   filter: blur(12px);
 }
+
     </style>
 </head>
 
@@ -221,16 +222,15 @@
                                 <span class="shadow"></span>
                             </div>
                         </div>
-                            <!-- <form id="buyForm" action="{{ route('user.submitnft') }}" method="POST">
-                                @csrf
-                                <input type="hidden" name="nft_id" id="hiddenNftId">
-                                <input type="hidden" name="nft_name" value="" id="hiddenNftName">
-                                <input type="hidden" name="status" value="Pending">
-                                <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
-                                <button type="submit" id="buyButton"  class="tf-btn primary" data-bs-dismiss="modal"
-                                style="cursor: pointer;">Buy Now</button>
-                            
-                            </form> -->
+                        <form action="{{ route('user.sellnft') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="nft_id" value="{{ $nftd->nft_id}}">
+                        <input type="hidden" name="nft_name" value="{{ $nftd->nft_name}}">
+                        <input type="hidden" name="status" value="Approved">
+                        <img  src="{{ $nftd->nft_image}}" alt="Selected NFT" style="display:none;">
+                        <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
+                            Now</button>
+                    </form> 
                         </center>
                     </div>
                 </div>
@@ -241,8 +241,15 @@
 
                     <!-- <a href="" id="sellButton" class="tf-btn disabled-primary btn-icon"><span
                             class="icon icon-ticket-star"></span> Sell Now</a> -->
+                            <form id="buyForm" action="{{ route('user.submitnft') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="nft_id" id="hiddenNftId">
+                                <input type="hidden" name="nft_name" value="" id="hiddenNftName">
+                                <input type="hidden" name="status" value="Pending">
+                                <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
                     <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</a>
+                            </form>
                 </div>
             </div>       
            
@@ -398,15 +405,7 @@
                             </svg>
                         </p>
                     </div>
-                    <form action="{{ route('user.sellnft') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="nft_id" value="{{ $nftd->nft_id}}">
-                        <input type="hidden" name="nft_name" value="{{ $nftd->nft_name}}">
-                        <input type="hidden" name="status" value="Approved">
-                        <img  src="{{ $nftd->nft_image}}" alt="Selected NFT" style="display:none;">
-                        <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell
-                            Now</button>
-                    </form>                    
+                                       
                 </a>
 
             </div>
