@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
     <link rel="stylesheet" type="text/css" href="../css/slick.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/slick-theme.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
     <!-- <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" /> -->
@@ -142,7 +144,7 @@
     
     <div class="app-content style-2">
       <div class="tf-container">
-      <!-- @if (session('success'))
+      @if (session('success'))
     <div id="successAlert" class="alert alert-success">
         {{ session('success') }}
         <div id="countdown" style="margin-top: 10px;"></div>
@@ -163,7 +165,7 @@
             @endforeach
         </ul>
     </div>
-@endif -->
+@endif
 
 
         <div class="px-24 card-layout style-2 mt-20">
@@ -219,16 +221,16 @@
                                 </div>
                                 <div class="mb-32 text-center">
                                     <h4 class="text-dark-3">
-                                        <input id="hiddenNftName" value="" readonly style="text-align:center">
+                                        <!-- <input id="hiddenNftName" value="" readonly style="text-align:center"> -->
                                     </h4>
                                     <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                                 </div>
                                 <form action="{{ route('user.sellnft') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="nft_id" value="{{ $nftd->nft_id }}">
-                                    <input type="hidden" name="nft_name" value="{{ $nftd->nft_name }}">
+                                    <!-- <input type="hidden" name="nft_id" >
+                                    <input type="hidden" name="nft_name" > -->
                                     <input type="hidden" name="status" value="Approved">
-                                    <img src="{{ $nftd->nft_image }}" alt="Selected NFT" style="display:none;">
+                                    <!-- <img src="" alt="Selected NFT" style="display:none;"> -->
                                     <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell Now</button>
                                 </form>
                             </div>
@@ -249,20 +251,15 @@
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
-                    <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
-                            class="icon icon-wallet-money"></span> Buy Now</a>
+                    <button type="submit" href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
+                            class="icon icon-wallet-money"></span> Buy Now</button>
                             </form>
+                            <div id="responseMessage"></div>
                 </div>
             </div>       
            
-            <!-- <div class="pb-24 mb-24 line" >
-                <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
-                <div class="mt-16 box-countdown-2">
-                    <div class="js-countdown" data-timer="{{ $countdownTime }}" data-labels="Day, Hour, Mins, Secs"></div>
-                </div>
-            </div> -->
                         @if($countdownTime > 0)
-                            <div class="pb-24 mb-24 line" id="purchaseInfoSection">
+                            <div class="pb-24 mb-24 line" >
                                 <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
                                 <div class="mt-16 box-countdown-2">
                                     <div class="js-countdown" data-timer="{{ $countdownTime }}"
@@ -369,7 +366,7 @@
             <div class="grid-2 mt-24 gap-15">
                 <a class="card-nft">
                     <div class="box-img">
-                        <img class="lazyload" data-src="{{ $nftd->nft_images }}" alt="img-nft">
+                        <img class="lazyload" data-src="" alt="img-nft">
                         <span class="tag react">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -397,8 +394,8 @@
                         </span>
                     </div>
                     <div class="content">
-                        <div class="button-1 name">{{ $nftd->name }}</div>
-                        <p class="mt-4 id-name">{{ $nftd->description }}
+                        <div class="button-1 name"></div>
+                        <p class="mt-4 id-name">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -453,10 +450,10 @@
                             <div class="card-body">
                                 <div class="d-flex gap-12 align-items-center">
                                     <div class="avatar avt-40">
-                                        <img src="{{$nftd->nft_images}}" alt="avt">
+                                        <img src="" alt="avt">
                                     </div>
                                     <span class="button-2 text-blue">
-                                    {{$nftd->name}}
+                                    
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1826,7 +1823,40 @@
         });
     });
     </script>
+<script>  
+    $(document).ready(function () {
+    $('#buyForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
 
+        // Get form data
+        var formData = $(this).serialize();
+
+        // Send AJAX request
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Handle success
+                $('#responseMessage').html('<div class="alert alert-success">' + response.success + '</div>');
+                // Optionally, hide or reset the form
+                $('#buyForm').trigger('reset');
+            },
+            error: function (xhr) {
+                // Handle error
+                var errors = xhr.responseJSON.errors;
+                var errorHtml = '<div class="alert alert-danger">';
+                $.each(errors, function (key, value) {
+                    errorHtml += '<p>' + value + '</p>';
+                });
+                errorHtml += '</div>';
+                $('#responseMessage').html(errorHtml);
+            }
+        });
+    });
+});
+
+</script>
 
 
 
