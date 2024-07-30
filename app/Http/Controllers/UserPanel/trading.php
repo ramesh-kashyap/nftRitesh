@@ -166,7 +166,7 @@ class trading extends Controller
     // $this->data['iamount'] = $iamount;
     $this->data['pamount'] = $pamount;
     $this->data['nfts'] = $nftsData;
-    $this->data['nftd'] = $nftd;    
+    $this->data['nftd'] = $nftd??"";    
     $this->data['countdownTime'] = $countdownTime; // Pass the remaining time to the view
     $this->data['page'] = 'user.trading.nft_view';
 
