@@ -22,9 +22,9 @@ class trading extends Controller
 
     }
 
-    // public function index()
-    // {
-    //     $client = new Client();
+    public function index()
+    {
+        $client = new Client();
 
         try {
             // Make the API request
@@ -35,31 +35,31 @@ class trading extends Controller
                 ],                
             ]);
     
-    //         // Check the status code
-    //         if ($response->getStatusCode() !== 200) {
-    //             Log::error('API request failed with status code: ' . $response->getStatusCode());
-    //             return view('user.trading.nft_view')->withErrors(['error' => 'Failed to fetch data']);
-    //         }    
-    //         // Get the response body
-    //         $body = $response->getBody();            
-    //         // Decode the JSON response
-    //         $nfts = json_decode($body, true);
-    //         dd($nfts);    
-    //         // Pass the data to the Blade view
-    //         return view('user.trading.nft_view', compact('nfts'));
+            // Check the status code
+            if ($response->getStatusCode() !== 200) {
+                Log::error('API request failed with status code: ' . $response->getStatusCode());
+                return view('user.trading.nft_view')->withErrors(['error' => 'Failed to fetch data']);
+            }    
+            // Get the response body
+            $body = $response->getBody();            
+            // Decode the JSON response
+            $nfts = json_decode($body, true);
+            dd($nfts);    
+            // Pass the data to the Blade view
+            return view('user.trading.nft_view', compact('nfts'));
     
-    //     } catch (RequestException $e) {
-    //         // Handle request errors
-    //         Log::error('Error fetching NFT data: ' . $e->getMessage());
+        } catch (RequestException $e) {
+            // Handle request errors
+            Log::error('Error fetching NFT data: ' . $e->getMessage());
     
-    //         if ($e->hasResponse()) {
-    //             Log::error('Response body: ' . $e->getResponse()->getBody());
-    //         }
+            if ($e->hasResponse()) {
+                Log::error('Response body: ' . $e->getResponse()->getBody());
+            }
     
-    //         // Pass error to Blade view
-    //         return view('user.trading.nft_view')->withErrors(['error' => 'An error occurred while fetching data']);
-    //     }
-    // }
+            // Pass error to Blade view
+            return view('user.trading.nft_view')->withErrors(['error' => 'An error occurred while fetching data']);
+        }
+    }
 
     public function submitnft(Request $request)
     {
