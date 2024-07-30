@@ -221,16 +221,16 @@
                                 </div>
                                 <div class="mb-32 text-center">
                                     <h4 class="text-dark-3">
-                                        <input id="hiddenNftName" value="" readonly style="text-align:center">
+                                        <!-- <input id="hiddenNftName" value="" readonly style="text-align:center"> -->
                                     </h4>
                                     <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
                                 </div>
                                 <form action="{{ route('user.sellnft') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="nft_id" value="{{ $nftd->nft_id }}">
-                                    <input type="hidden" name="nft_name" value="{{ $nftd->nft_name }}">
+                                    <!-- <input type="hidden" name="nft_id" >
+                                    <input type="hidden" name="nft_name" > -->
                                     <input type="hidden" name="status" value="Approved">
-                                    <img src="{{ $nftd->nft_image }}" alt="Selected NFT" style="display:none;">
+                                    <!-- <img src="" alt="Selected NFT" style="display:none;"> -->
                                     <button id="sellButton" type="submit" class="tf-btn primary" style="cursor: pointer;">Sell Now</button>
                                 </form>
                             </div>
@@ -366,7 +366,7 @@
             <div class="grid-2 mt-24 gap-15">
                 <a class="card-nft">
                     <div class="box-img">
-                        <img class="lazyload" data-src="{{ $nftd->nft_images }}" alt="img-nft">
+                        <img class="lazyload" data-src="" alt="img-nft">
                         <span class="tag react">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -394,8 +394,8 @@
                         </span>
                     </div>
                     <div class="content">
-                        <div class="button-1 name">{{ $nftd->name }}</div>
-                        <p class="mt-4 id-name">{{ $nftd->description }}
+                        <div class="button-1 name"></div>
+                        <p class="mt-4 id-name">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -450,10 +450,10 @@
                             <div class="card-body">
                                 <div class="d-flex gap-12 align-items-center">
                                     <div class="avatar avt-40">
-                                        <img src="{{$nftd->nft_images}}" alt="avt">
+                                        <img src="" alt="avt">
                                     </div>
                                     <span class="button-2 text-blue">
-                                    {{$nftd->name}}
+                                    
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path

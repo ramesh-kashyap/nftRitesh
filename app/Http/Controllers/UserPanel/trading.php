@@ -133,18 +133,15 @@ class trading extends Controller
     
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
     $lastTrade = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
-    
-    
-    // dd($nfts);
+
+    // dd($lastTrade);
     $nftimg = null;
 
     if ($lastTrade) {
         // Fetch the NFT associated with the last trade
         $nftd = Trade::where('nft_id', $lastTrade->nft_id)->first();
-        // if ($nftd->status=="Approved") {
-            
-        // }
-    }
+        // dd($nftd);
+           }
 
     else{        
         Log::info("You do Not have any NFT: ");
@@ -180,25 +177,20 @@ class trading extends Controller
     // NftController.php
     public function sellnft(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         // Validate the request
         $request->validate([
             // 'nft_id' => 'required|integer|exists:nfts,id',
             'status' => 'required|in:Approved',
         ]);
-    
-        // Update status in the Nft_Trading table
-        // $nftTrading = Nft_Trading::find($request->nft_id);
-        // if ($nftTrading) {
-        //     $nftTrading->status = 'Approved';
-        //     $nftTrading->save();
-        // }
+        $user= Auth::user();
+        
     
         // Update status in the Trade table where buyer_id matches the logged-in user's username
-        $trade = Trade::where('nft_id', $request->nft_id)->first();
+        $trade = Trade::where('status', 'Pending')->where('buyer_id', $user->username)->latest('created_at')->first();
             // dd($trade);
         if ($trade) {
-            // $trade->status = 'Approved';
+            $trade->status = 'Approved'; 
             $trade->save();
             return back()->with("Your NFT Sell Sucessfully");
         }
@@ -206,16 +198,6 @@ class trading extends Controller
         return back()->with('error', 'Failed to update NFT status.');
     }
     
-
-    // public function fatchtime(){
-
-    //     $user= Auth::user();
-    //     $laste = Trade::where('buyer_id', $user->username)
-    //         ->latest('created_at')
-    //         ->first();
-    // }
-
-
 
 
 }
