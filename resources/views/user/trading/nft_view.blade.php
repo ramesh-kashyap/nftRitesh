@@ -142,7 +142,7 @@
     
     <div class="app-content style-2">
       <div class="tf-container">
-      @if (session('success'))
+      <!-- @if (session('success'))
     <div id="successAlert" class="alert alert-success">
         {{ session('success') }}
         <div id="countdown" style="margin-top: 10px;"></div>
@@ -163,7 +163,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif -->
 
 
         <div class="px-24 card-layout style-2 mt-20">
@@ -202,7 +202,7 @@
             <div class="modal fade modalCenter" id="success" id="imageModal" style="display: none;">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <!-- <div class="mb-40 text-center">
+                        <div class="mb-40 text-center">
                             <img src="" id="popupImage" alt="NFT Image"
                                 style="height:150px;width:auto; border-radius:20px">
                         </div>
@@ -211,9 +211,9 @@
                                 <input id="hiddenNftName" value="" readonly style="text-align:center">
                             </h4>
                             <p class="body-3 text-dark-2 mt-12 px-30">For Buy this NFT choose bid option</p>
-                        </div> -->
+                        </div>
                         <center>
-                        <div class="pyramid-loader">
+                        <!-- <div class="pyramid-loader">
                             <div class="wrapper">
                                 <span class="side side1"></span>
                                 <span class="side side2"></span>
@@ -221,7 +221,7 @@
                                 <span class="side side4"></span>
                                 <span class="shadow"></span>
                             </div>
-                        </div>
+                        </div> -->
                         <form action="{{ route('user.sellnft') }}" method="POST">
                         @csrf
                         <input type="hidden" name="nft_id" value="{{ $nftd->nft_id}}">
