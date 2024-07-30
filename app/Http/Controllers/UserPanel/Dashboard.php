@@ -79,7 +79,7 @@ class Dashboard extends Controller
             $body = $response->getBody();
             $collections = json_decode($body, true);
 
-            $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=4', [
+            $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=6', [
               'headers' => [
                 'accept' => 'application/json',
                 'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
@@ -89,13 +89,16 @@ class Dashboard extends Controller
             $nfts = $response->getBody();
             $nftsLatest = json_decode($nfts, true);
 
+
+
 // Filter out NFTs with empty image_url
 $filteredNftsLatest = array_filter($nftsLatest['asset_events'], function($nft) {
-  return !empty($nft['asset']['image_url']);
+  return !empty($nft['nft']['image_url']);
 });
 
+
 $this->data['nftsLatest'] = $filteredNftsLatest;
-    
+
             // Filter out collections with empty image_url and add slug
             $filtered_collections = array_map(function($collection) {
                 $slug = $this->extractSlug($collection['opensea_url']);
@@ -137,7 +140,7 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
                 $collection['stats'] = $collectionStats[$slug] ?? [];
             }
     
-            $this->data['collections'] = $filtered_collections;
+             $this->data['collections'] = $filtered_collections;
         } catch (\Exception $e) {
             $this->data['collections'] = [];
         }
@@ -160,7 +163,20 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
     
     public function stats()
     {
+      $client = new \GuzzleHttp\Client();
 
+
+      $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=10', [
+        'headers' => [
+          'accept' => 'application/json',
+          'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+        ],
+      ]);
+
+      $body = $response->getBody();
+      $datas = json_decode($body, true);
+
+      $this->data['datas'] = $datas['asset_events'];
       $this->data['page'] = 'user.statistics';
       return $this->dashboard_layout();
 

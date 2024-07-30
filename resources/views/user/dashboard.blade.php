@@ -120,9 +120,10 @@
                 </div>
                 <div class="mt-24 swiper tf-sw-2 sw-lr" data-preview="1.2" data-space="20" style="height: fit-content;">
                     <div class="swiper-wrapper">
+                        @foreach($collections as $collection)
                         <div class="swiper-slide">
-                            <a href="nft-item-details.html" class="card-banner-2">
-                                <img class="lazyload" data-src="images/banner/banner-nft-1.jpg" alt="img">
+                            <a href="{{ route('user.profile1', ['slug' => $collection['slug']]) }}" class="card-banner-2">
+                                <img class="lazyload" data-src="{{ $collection['banner_image_url'] }}" alt="img">
                                 <div class="box-top d-flex align-items-center justify-content-between">
                                     <div class="tag button-2 text-white">Artwork</div>
                                     <div class="box-icon w-40 box-heart press-toggle">
@@ -130,46 +131,21 @@
                                     </div>
                                 </div>
                                 <div class="box-bottom">
-                                    <div class="tag caption text-white">Hape man #126</div>
+                                    <div class="tag caption text-white">{{ $collection['name'] }}</div>
                                     <div class="content">
                                         <div class="d-flex justify-content-between">
-                                            <span class="text-white body-3">Current Bid</span>
-                                            <span class="text-white body-3">Ending Bid</span>
+                                            <span class="text-white body-3">Sales</span>
+                                            <span class="text-white body-3">Floor Price</span>
                                         </div>
                                         <div class="mt-2 d-flex justify-content-between">
-                                            <h3 class="text-white">4.40 ETH</h3>
-                                            <h3 class="text-white js-countdown" data-timer="22000"
-                                                data-labels="d,h ,m ,s"></h3>
+                                            <h3 class="text-white">{{ $collection['stats']['total']['sales'] }}</h3>
+                                            <h3 class="text-white">{{ $collection['stats']['total']['floor_price'] }}</h3>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <div class="swiper-slide">
-                            <a href="nft-item-details.html" class="card-banner-2">
-                                <img class="lazyload" data-src="images/lil-pug/699698f3757baa2f659333988f539417.avif" alt="img">
-                                <div class="box-top d-flex align-items-center justify-content-between">
-                                    <div class="tag button-2 text-white">Artwork</div>
-                                    <div class="box-icon w-40 box-heart press-toggle">
-                                        <span class="icon icon-heart"></span>
-                                    </div>
-                                </div>
-                                <div class="box-bottom">
-                                    <div class="tag caption text-white">Hape man #126</div>
-                                    <div class="content">
-                                        <div class="d-flex justify-content-between">
-                                            <span class="text-white body-3">Current Bid</span>
-                                            <span class="text-white body-3">Ending Bid</span>
-                                        </div>
-                                        <div class="mt-2 d-flex justify-content-between">
-                                            <h3 class="text-white">4.40 ETH</h3>
-                                            <h3 class="text-white js-countdown" data-timer="22000"
-                                                data-labels="d,h ,m ,s"></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -251,7 +227,7 @@
                 <div class="grid-2 mt-24 gap-15">
                     @foreach($nftsLatest as $data)
                     @if($data['nft']['image_url'])
-                    <a href="nft-details-listed.html" class="card-nft">
+                    <a href="#" class="card-nft">
                         <div class="box-img">
                             <img class="lazyload" data-src="{{  $data['nft']['image_url'] }}" alt="img-nft">
                             <span class="tag react">
