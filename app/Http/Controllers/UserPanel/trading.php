@@ -71,7 +71,6 @@ class trading extends Controller
     
         $user = Auth::user();
         $nft_id = $request->input('nft_id');
-        // dd($request->nft_image);
     
         // Check if the user has made a purchase in the last 24 hours
         $lastPurchase = Trade::where('buyer_id', $user->username)
