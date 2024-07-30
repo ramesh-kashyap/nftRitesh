@@ -64,6 +64,7 @@ class trading extends Controller
     public function submitnft(Request $request)
     {
         // Validate the request
+        // dd($request->nft_image);
         $request->validate([
             'nft_id' => 'required',
         ]);
@@ -102,7 +103,7 @@ class trading extends Controller
         ]);
     
         // Redirect with success message
-        return redirect()->back()->with('success', 'Your NFT is being purchased successfully. You can buy another NFT after 24 hours.');
+        return response()->json(['success' => 'Your NFT is being purchased successfully. You can buy another NFT after 24 hours.']);
     }
     
 
@@ -179,7 +180,7 @@ class trading extends Controller
     // NftController.php
     public function sellnft(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         // Validate the request
         $request->validate([
             // 'nft_id' => 'required|integer|exists:nfts,id',
@@ -197,7 +198,7 @@ class trading extends Controller
         $trade = Trade::where('nft_id', $request->nft_id)->first();
             // dd($trade);
         if ($trade) {
-            $trade->status = 'Approved';
+            // $trade->status = 'Approved';
             $trade->save();
             return back()->with("Your NFT Sell Sucessfully");
         }

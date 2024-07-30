@@ -16,6 +16,8 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
     <link rel="stylesheet" type="text/css" href="../css/slick.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/slick-theme.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> -->
     <!-- <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" /> -->
@@ -142,7 +144,7 @@
     
     <div class="app-content style-2">
       <div class="tf-container">
-      <!-- @if (session('success'))
+      @if (session('success'))
     <div id="successAlert" class="alert alert-success">
         {{ session('success') }}
         <div id="countdown" style="margin-top: 10px;"></div>
@@ -163,7 +165,7 @@
             @endforeach
         </ul>
     </div>
-@endif -->
+@endif
 
 
         <div class="px-24 card-layout style-2 mt-20">
@@ -249,18 +251,13 @@
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="image" name="nft_image" id="popupImage" src="" alt="Selected NFT" style="display:none;">
-                    <a href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
-                            class="icon icon-wallet-money"></span> Buy Now</a>
+                    <button type="submit" href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
+                            class="icon icon-wallet-money"></span> Buy Now</button>
                             </form>
+                            <div id="responseMessage"></div>
                 </div>
             </div>       
            
-            <!-- <div class="pb-24 mb-24 line" >
-                <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
-                <div class="mt-16 box-countdown-2">
-                    <div class="js-countdown" data-timer="{{ $countdownTime }}" data-labels="Day, Hour, Mins, Secs"></div>
-                </div>
-            </div> -->
                         @if($countdownTime > 0)
                             <div class="pb-24 mb-24 line" >
                                 <p class="body-3 text-dark-2">You Can Buy Next NFT After-</p>
@@ -1826,7 +1823,40 @@
         });
     });
     </script>
+<script>  
+    $(document).ready(function () {
+    $('#buyForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
 
+        // Get form data
+        var formData = $(this).serialize();
+
+        // Send AJAX request
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Handle success
+                $('#responseMessage').html('<div class="alert alert-success">' + response.success + '</div>');
+                // Optionally, hide or reset the form
+                $('#buyForm').trigger('reset');
+            },
+            error: function (xhr) {
+                // Handle error
+                var errors = xhr.responseJSON.errors;
+                var errorHtml = '<div class="alert alert-danger">';
+                $.each(errors, function (key, value) {
+                    errorHtml += '<p>' + value + '</p>';
+                });
+                errorHtml += '</div>';
+                $('#responseMessage').html(errorHtml);
+            }
+        });
+    });
+});
+
+</script>
 
 
 
