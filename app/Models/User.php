@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use PragmaRX\Google2FA\Google2FA;
+use Illuminate\Support\Facades\Log;
+
 
 
 class User extends Authenticatable
@@ -160,7 +162,7 @@ class User extends Authenticatable
     
     public function available_balance()
     {
-    $balance = (Auth::user()->investment->sum('amount')+Auth::user()->users_incomes()+Auth::user()->tradingProfit->sum('profit')) - (Auth::user()->withdraw());
+    $balance = (Auth::user()->investment->sum('amount')+Auth::user()->income->where('remarks','Trade Income')->sum('comm')) - (Auth::user()->withdraw());
     return $balance;
     } 
 

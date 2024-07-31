@@ -30,7 +30,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dltPayout', [App\Http\Controllers\Cron::class, 'dltPayout'])->name('dltPayout');
-Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'generate_roi'])->name('generate_roi');
+Route::get('/generate_roi', [App\Http\Controllers\Cron::class, 'generateRoi'])->name('generate_roi');
 Route::get('/rank-update', [App\Http\Controllers\Cron::class, 'rank_update'])->name('rank-update');
 Route::get('/reward_bonus', [App\Http\Controllers\Cron::class, 'reward_bonus'])->name('reward_bonus');
 Route::get('/royalty_bonus', [App\Http\Controllers\Cron::class, 'dailyIncentive'])->name('royalty_bonus');

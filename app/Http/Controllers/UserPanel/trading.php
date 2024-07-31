@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\RequestException;
 use App\Models\Investment;
 use Illuminate\Http\Request;
 // use App\Models\Nft_Trading;
+use App\Models\User;
 use App\Models\Package;
 use App\Models\Trade;
 use GuzzleHttp\Client;
@@ -62,53 +63,153 @@ class trading extends Controller
         }
     }
 
+    public function my_level_team_count($userid,$level=10){
+        $arrin=array($userid);
+        $ret=array();
+
+        $i=1;
+        while(!empty($arrin)){
+            $alldown=User::select('id')->whereIn('sponsor',$arrin)->get()->toArray();
+            if(!empty($alldown)){
+                $arrin = array_column($alldown,'id');
+                $ret[$i]=$arrin;
+                $i++;
+
+                if ($i>$level) {
+                  break;
+                 }
+
+            }else{
+                $arrin = array();
+            }
+        }
+
+        // $final = array();
+        // if(!empty($ret)){
+        //     array_walk_recursive($ret, function($item, $key) use (&$final){
+        //         $final[] = $item;
+        //     });
+        // }
+
+
+        return $ret;
+
+    }
+
     public function submitnft(Request $request)
     {
-        // Validate the request
-        // dd($request->nft_image);
-        $request->validate([
-            'nft_id' => 'required',
-        ]);
+        try {
+            // Validate the request
+            $request->validate([
+                'nft_id' => 'required',
+                'nft_price' => 'required|numeric',
+                'nft_symbol' => 'required|string',
+                'nft_name' => 'required|string',
+                'nft_image' => 'required|string'
+            ]);
+            
+            $user = Auth::user();
+            $nft_id = $request->input('nft_id');
+            $priceInWei = $request->input('nft_price');
+            $priceInEther = $priceInWei / pow(10, 18); // Convert Wei to Ether
+            $symbol = $request->input('nft_symbol');
+            $creator = $request->input('creator');
+            $buyer = $request->input('buyer');
+            $seller = $request->input('seller');
+
     
-        $user = Auth::user();
-        $nft_id = $request->input('nft_id');
+            // Calculate the user's team details
+            $my_level_team = $this->my_level_team_count($user->id);
+            $gen_team1 = array_key_exists(1, $my_level_team) ? $my_level_team[1] : [];
+            $gen_team2 = array_key_exists(2, $my_level_team) ? $my_level_team[2] : [];
+            $gen_team3 = array_key_exists(3, $my_level_team) ? $my_level_team[3] : [];
     
-        // Check if the user has made a purchase in the last 24 hours
-        $lastPurchase = Trade::where('buyer_id', $user->username)
-            ->latest('created_at')
-            ->first();
+            $gen_team1 = User::whereIn('id', $gen_team1)->orderBy('id', 'DESC')->get();
+            $gen_team2 = User::whereIn('id', $gen_team2)->orderBy('id', 'DESC')->get();
+            $gen_team3 = User::whereIn('id', $gen_team3)->orderBy('id', 'DESC')->get();
     
-        if ($lastPurchase && $lastPurchase->created_at->diffInHours(now()) < 24) {
-            return redirect()->back()->with('error', 'You can only buy one NFT every 24 hours.');
+            $active_gen_team1total = $gen_team1->where('active_status', 'Active')->count();
+            $active_gen_team2total = $gen_team2->where('active_status', 'Active')->count();
+            $active_gen_team3total = $gen_team3->where('active_status', 'Active')->count();
+    
+            $total = $active_gen_team1total + $active_gen_team2total;
+            $userDirect = User::where('sponsor', $user->id)->where('active_status', 'Active')->where('package', '>=', 30)->count();
+            $balance = round($user->available_balance(), 2);
+    
+            $vip = 0;
+            if ($balance >= 50 && $balance < 500) {
+                $vip = ($userDirect >= 1) ? 1 : 0;
+            } elseif ($balance >= 500 && $balance < 2000) {
+                $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+            } elseif ($balance >= 2000 && $balance < 5000) {
+                if ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            } elseif ($balance >= 5000) {
+                if ($userDirect >= 15 && $total >= 35) {
+                    $vip = 4;
+                } elseif ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            }
+    
+            // Check if the user has made a purchase in the last 24 hours
+            $lastPurchase = Trade::where('buyer_id', $user->username)
+                ->latest('created_at')
+                ->first();
+    
+            if ($lastPurchase && $lastPurchase->created_at->diffInHours(now()) < 24) {
+                return response()->json(['error' => 'You can only buy one NFT every 24 hours.'], 400);
+            }
+    
+            // Log info about the new trade
+            Log::info("User {$user->username} is buying NFT with ID {$nft_id}, price {$priceInEther}, and symbol {$symbol}.");
+    
+            // Create a new trade record
+            Trade::create([
+                'nft_id' => $nft_id,
+                'name' => $request->input('nft_name'),
+                'nft_image' => $request->input('nft_image'),
+                'symbol' => $symbol,
+                'creator' => $creator,
+                'user_id' => $user->id,
+                'seller_id' => $seller,
+                'vip' => $vip,
+                'price' => $priceInEther, // Store the price in Ether
+                'status' => 'Pending',
+                'currency' => 'USDT',
+                'buyer_id' =>$buyer,
+            ]);
+    
+            // Redirect with success message
+            return response()->json(['success' => 'Your NFT is being purchased successfully. You can buy another NFT after 24 hours.']);
+        } catch (\Exception $e) {
+            // Log error
+            Log::error("Error purchasing NFT: {$e->getMessage()}", [
+                'user_id' => $user->id ?? null,
+                'nft_id' => $nft_id ?? null,
+                'request_data' => $request->all()
+            ]);
+    
+            // Return error response with the actual error message
+            return response()->json(['error' => 'An error occurred while processing your request. Please try again later. Error: ' . $e->getMessage()], 500);
         }
-    
-        // Find the NFT and update its status
-        // $nft = Nft_Trading::find($nft_id);
-        // if (!$nft) {
-        //     return redirect()->back()->with('error', 'NFT not found.');
-        // }
-    
-        // Update the NFT status
-        // $nft->status = 'Pending';
-        // $nft->save();
-    
-        // Create a new trade record
-        Trade::create([
-            'nft_id' => $request->nft_id,
-            'name' => $request->nft_name,
-            'nft_image' => $request->nft_image,
-            'status' => 'Pending',
-            'currency' => 'USDT',
-            'buyer_id' => $user->username,
-        ]);
-    
-        // Redirect with success message
-        return response()->json(['success' => 'Your NFT is being purchased successfully. You can buy another NFT after 24 hours.']);
     }
+    
     
 
     public function investamount()
 {
+    
+
     $user = Auth::user();   
     // $iamount = Package::all();
     $client = new Client();
@@ -129,12 +230,10 @@ class trading extends Controller
 
     
     $nftsData = $filteredNftsLatest;
-
     
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
-    $lastTrade = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
+    $lastTrade = Trade::where('user_id', $user->id)->latest('created_at')->first();
 
-    // dd($lastTrade);
     $nftd = null;
 
     // Check if the Trade table is empty or if there are no trades for the user
@@ -143,7 +242,7 @@ class trading extends Controller
         $nftd = null;
         // $nftsData = [];
     } else {
-        $nftd = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
+        $nftd = Trade::where('user_id', $user->id)->latest('created_at')->first();
 
         if (!$nftd) {
             Log::info("No NFT found for the last trade with ID: " . $lastTrade->nft_id);

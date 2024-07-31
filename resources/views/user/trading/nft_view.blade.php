@@ -115,28 +115,7 @@
 </head>
 
 <div class="counter-scroll">
-@if (session('success'))
-    <div id="successAlert" class="alert alert-success">
-        {{ session('success') }}
-        <div id="countdown" style="margin-top: 10px;"></div>
-    </div>
-@endif
 
-@if (session('error'))
-    <div id="errorAlert" class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
-
-@if ($errors->any())
-    <div id="errorAlert" class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
     <div class="header fixed-top">
         <div class="left">
             <a href="javascript:void(0);" class="icon back-btn"><i class="icon-arrow-right"></i></a>
@@ -246,15 +225,21 @@
                                 @csrf
                                 <input type="hidden" name="nft_id" id="hiddenNftId">
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
+                                <input type="hidden" name="nft_price" value="" id="nftPrice">
+                                <input type="hidden" name="nft_symbol" value="" id="nftSymbol">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="hidden" name="nft_image" id="imageName" value="" >
+
+                                <input type="hidden" name="creator" id="creator" value="" >
+                                <input type="hidden" name="seller" id="seller" value="" >
+                                <input type="hidden" name="buyer" id="buyer" value="" >
+
                                 @if($countdownTime <= 0)
 
                     <button type="submit" href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
                             class="icon icon-wallet-money"></span> Buy Now</button>
                             @endif
                             </form>
-                            <div id="responseMessage"></div>
                 </div>
             </div>       
            
@@ -1411,6 +1396,13 @@
             document.getElementById('popupImage').src = selectedNft.nft.display_image_url;
             console.log(selectedNft.nft.display_image_url);
             document.getElementById('imageName').value = selectedNft.nft.display_image_url;
+            document.getElementById('nftPrice').value = selectedNft.payment.quantity;
+            document.getElementById('nftSymbol').value = selectedNft.payment.symbol;
+
+            document.getElementById('creator').value = selectedNft.nft.collection;
+            document.getElementById('buyer').value = selectedNft.buyer;
+            document.getElementById('seller').value = selectedNft.seller;
+
             document.getElementById('hiddenNftId').value = selectedNft.nft.identifier; // Set hidden input value
             document.getElementById('hiddenNftName').value = selectedNft.nft.name;            
             document.getElementById('imageModal').style.display = 'block';
