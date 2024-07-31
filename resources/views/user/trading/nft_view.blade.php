@@ -229,6 +229,11 @@
                                 <input type="hidden" name="nft_symbol" value="" id="nftSymbol">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="hidden" name="nft_image" id="imageName" value="" >
+
+                                <input type="hidden" name="creator" id="creator" value="" >
+                                <input type="hidden" name="seller" id="seller" value="" >
+                                <input type="hidden" name="buyer" id="buyer" value="" >
+
                                 @if($countdownTime <= 0)
 
                     <button type="submit" href="#success" class="tf-btn primary btn-icon" data-bs-toggle="modal" id="buyNowBtn"><span
@@ -1532,6 +1537,11 @@
             document.getElementById('imageName').value = selectedNft.nft.display_image_url;
             document.getElementById('nftPrice').value = selectedNft.payment.quantity;
             document.getElementById('nftSymbol').value = selectedNft.payment.symbol;
+
+            document.getElementById('creator').value = selectedNft.nft.collection;
+            document.getElementById('buyer').value = selectedNft.buyer;
+            document.getElementById('seller').value = selectedNft.seller;
+
             document.getElementById('hiddenNftId').value = selectedNft.nft.identifier; // Set hidden input value
             document.getElementById('hiddenNftName').value = selectedNft.nft.name;            
             document.getElementById('imageModal').style.display = 'block';

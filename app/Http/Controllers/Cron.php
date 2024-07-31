@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Investment;
 use App\Models\Income;
 use App\Models\User;
+use App\Models\Package;
 use App\Models\Contract;
 use App\Models\User_trade;
 use App\Models\Reward;
@@ -13,6 +14,8 @@ use App\Models\Withdraw;
 use Illuminate\Support\Facades\URL;
 use App\Models\Trade;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+
 use DateTime;
 use DateInterval;
 use DatePeriod;
@@ -114,60 +117,253 @@ echo  $jsonData;
 }
 
 
-public function generate_roi()
-{
+// public function generate_roi()
+// {
 
-$allResult=Contract::where('c_status','-1')->get();
-$todays=Date("Y-m-d");
-$day=Date("l");
+// $allResult=Contract::where('c_status','-1')->get();
+// $todays=Date("Y-m-d");
+// $day=Date("l");
 
-if ($allResult)
-{
+// if ($allResult)
+// {
 
- foreach ($allResult as $key => $contract)
- {
+//  foreach ($allResult as $key => $contract)
+//  {
 
-  $userID=$contract->user_id;
+//   $userID=$contract->user_id;
   
-  $userDetails=Income::where('invest_id',$contract->id)->where('remarks','Quantify Income')->first();
+//   $userDetails=Income::where('invest_id',$contract->id)->where('remarks','Quantify Income')->first();
   
-  if (!$userDetails)
-  {
-     $userDetail=User::where('id',$userID)->where('active_status','Active')->first(); 
+//   if (!$userDetails)
+//   {
+//      $userDetail=User::where('id',$userID)->where('active_status','Active')->first(); 
      
-     if($userDetail)
-     {
-        echo "ID:".$userDetail->username." Roi:".$contract->profit."<br>";
+//      if($userDetail)
+//      {
+//         echo "ID:".$userDetail->username." Roi:".$contract->profit."<br>";
      
-      $data['remarks'] = 'Quantify Income';
-      $data['comm'] = $contract->profit;
-      $data['amt'] = $contract->c_ref;
-      $data['invest_id']=$contract->id;
-      $data['level']=0;
-      $data['ttime'] = $contract->ttime;
-      $data['created_at'] = $contract->created_at;
-      $data['updated_at'] = $contract->updated_at;
-      $data['user_id_fk'] = $userDetail->username;
-      $data['user_id']=$userDetail->id;
-     $income = Income::create($data);   
-     }
+//       $data['remarks'] = 'Quantify Income';
+//       $data['comm'] = $contract->profit;
+//       $data['amt'] = $contract->c_ref;
+//       $data['invest_id']=$contract->id;
+//       $data['level']=0;
+//       $data['ttime'] = $contract->ttime;
+//       $data['created_at'] = $contract->created_at;
+//       $data['updated_at'] = $contract->updated_at;
+//       $data['user_id_fk'] = $userDetail->username;
+//       $data['user_id']=$userDetail->id;
+//      $income = Income::create($data);   
+//      }
     
 
 
       
 
-  }
+//   }
 
- }
+//  }
  
+// }
+
+
+
+
+// }
+
+
+public function getBalance($userId)
+{
+    $investments = Investment::where('user_id', $userId)->where('status', 'Active')->sum('amount') ?? 0;
+    $incomes = Income::where('user_id', $userId)->sum('comm') ?? 0;
+    $withdrawals = Withdraw::where('user_id', $userId)
+        ->where('status', '!=', 'Failed')
+        ->sum('amount') ?? 0;
+
+
+    return $investments + $incomes - $withdrawals;
+}
+
+public function generateRoi()
+{
+    // Fetch all active users
+    $users = User::where('active_status', 'Active')->get();
+
+    foreach ($users as $user) {
+        try {
+            // Calculate the user's team details
+            $my_level_team = $this->my_level_team_count($user->id);
+
+            // Ensure all levels are initialized as arrays
+            $gen_team_ids = [
+                1 => isset($my_level_team[1]) && is_array($my_level_team[1]) ? $my_level_team[1] : [],
+                2 => isset($my_level_team[2]) && is_array($my_level_team[2]) ? $my_level_team[2] : [],
+                3 => isset($my_level_team[3]) && is_array($my_level_team[3]) ? $my_level_team[3] : []
+            ];
+
+            // Flatten the arrays into a single array of IDs
+            $all_gen_team_ids = array_merge(...array_values($gen_team_ids));
+            
+            // Retrieve users by IDs
+            $all_gen_team = User::whereIn('id', $all_gen_team_ids)->orderBy('id', 'DESC')->get()->keyBy('id');
+
+            // Filter active users by level
+            $active_gen_team_counts = array_map(function ($ids) use ($all_gen_team) {
+                return count(array_filter($ids, function ($id) use ($all_gen_team) {
+                    return isset($all_gen_team[$id]) && $all_gen_team[$id]->active_status === 'Active';
+                }));
+            }, $gen_team_ids);
+
+            $total = array_sum($active_gen_team_counts);
+
+            $userDirect = User::where('sponsor', $user->id)
+                ->where('active_status', 'Active')
+                ->where('package', '>=', 50)
+                ->count();
+
+            // Use the new getBalance function
+            $balance = round($this->getBalance($user->id), 2);
+
+            // Determine VIP level
+            $vip = $this->determineVipLevel($balance, $userDirect, $total);
+
+            $package = Package::where('vip', $vip)->first();
+
+            if ($package) {
+                $roi = $package->roi;
+                $comm = $balance * $roi / 100;
+
+                $data = [
+                    'remarks' => 'Trade Income',
+                    'comm' => $comm,
+                    'amt' => $balance,
+                    'invest_id' => $vip,
+                    'level' => 0,
+                    'ttime' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                    'user_id_fk' => $user->username,
+                    'user_id' => $user->id
+                ];
+
+                Income::create($data);
+
+                $this->addLevelIncome($user->id, $comm, $vip);
+            }
+        } catch (\Exception $e) {
+            // Log the exception message
+            Log::error('Error generating ROI for user ID ' . $user->id . ': ' . $e->getMessage());
+        }
+    }
 }
 
 
-
-
+private function determineVipLevel($balance, $userDirect, $total)
+{
+    if ($balance >= 50 && $balance < 500) {
+        return ($userDirect >= 1) ? 1 : 0;
+    } elseif ($balance >= 500 && $balance < 2000) {
+        return ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+    } elseif ($balance >= 2000 && $balance < 5000) {
+        if ($userDirect >= 6 && $total >= 20) {
+            return 3;
+        } elseif ($userDirect >= 3 && $total >= 5) {
+            return 2;
+        } else {
+            return 1;
+        }
+    } elseif ($balance >= 5000) {
+        if ($userDirect >= 15 && $total >= 35) {
+            return 4;
+        } elseif ($userDirect >= 6 && $total >= 20) {
+            return 3;
+        } elseif ($userDirect >= 3 && $total >= 5) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
 }
 
+public function addLevelIncome($id, $amt, $vip)
+{
 
+    $data = User::where('id', $id)->orderBy('id', 'desc')->first();
+    $user_id = $data->username;
+    $fullname = $data->name;
+
+    $rname = $data->username;
+    $user_mid = $data->id;
+
+    $cnt = 1;
+    $amount = $amt / 100;
+
+    $multipliers = [
+        1 => [12, 7, 5],
+        2 => [13, 6, 3],
+        3 => [15, 7, 5],
+        4 => [18, 9, 8]
+    ];
+
+    $current_multipliers = $multipliers[$vip] ?? [12, 7, 5]; // Default to VIP 1 multipliers if VIP level is invalid
+
+    while ($user_mid != "" && $user_mid != "1") {
+        $Sposnor_id = User::where('id', $user_mid)->orderBy('id', 'desc')->first();
+        $sponsor = $Sposnor_id->sponsor;
+
+        if (!empty($sponsor)) {
+            $Sposnor_status = User::where('id', $sponsor)->orderBy('id', 'desc')->first();
+            $Sposnor_cnt = User::where('sponsor', $sponsor)->where('active_status', 'Active')->count("id");
+            $sp_status = $Sposnor_status->active_status;
+            $rank = $Sposnor_status->rank;
+            $lastPackage = \DB::table('investments')->where('user_id', $Sposnor_status->id)->where('status', 'Active')->orderBy('id', 'DESC')->limit(1)->first();
+            $plan = ($lastPackage) ? $lastPackage->plan : 0;
+        } else {
+            $Sposnor_status = array();
+            $sp_status = "Pending";
+            $Sposnor_cnt = 0;
+            $rank = 0;
+        }
+
+        $pp = 0;
+        if ($sp_status == "Active") {
+            if ($cnt == 1) {
+                $pp = $amount * $current_multipliers[0];
+            } elseif ($cnt == 2) {
+                $pp = $amount * $current_multipliers[1];
+            } elseif ($cnt == 3) {
+                $pp = $amount * $current_multipliers[2];
+            }
+        } else {
+            $pp = 0;
+        }
+
+        $user_mid = @$Sposnor_status->id;
+        $spid = @$Sposnor_status->id;
+        $idate = date("Y-m-d");
+
+        $user_id_fk = $sponsor;
+        if ($spid > 0 && $cnt <= 3) {
+            if ($pp > 0) {
+                $data = [
+                    'user_id' => $user_mid,
+                    'user_id_fk' => $Sposnor_status->username,
+                    'amt' => $amt,
+                    'comm' => $pp,
+                    'remarks' => 'Level Income',
+                    'level' => $cnt,
+                    'rname' => $rname,
+                    'fullname' => $fullname,
+                    'ttime' => Date("Y-m-d"),
+                ];
+                Income::create($data);
+            }
+        }
+
+        $cnt++;
+    }
+
+    return true;
+}
 
 
 
