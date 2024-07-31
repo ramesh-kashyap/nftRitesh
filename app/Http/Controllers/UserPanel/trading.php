@@ -126,7 +126,7 @@ class trading extends Controller
         return !empty($nft['nft']['image_url']);
       });
 
-
+    
     $nftsData = $filteredNftsLatest;
 
     
@@ -140,7 +140,7 @@ class trading extends Controller
     if (!$lastTrade) {
         Log::info("No trades found for the user: " . $user->username);
         $nftd = null;
-        $nftsData = [];
+        // $nftsData = [];
     } else {
         $nftd = Trade::where('buyer_id', $user->username)->latest('created_at')->first();
 
