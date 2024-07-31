@@ -13,6 +13,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class trading extends Controller
 {
@@ -200,6 +201,10 @@ class trading extends Controller
         return back()->with('error', 'Failed to update NFT status.');
     }
     
-
+    public function sharenft()
+    {
+        return view('user.trading.nftshare');
+    }
+    
 
 }

@@ -1342,7 +1342,11 @@
             <a href="#" class="mt-32 text-uppercase tf-btn disabled-primary" data-bs-dismiss="offcanvas">CANCEL</a>
         </div>
     </div>
+    <div id="image-container">
+        <!-- The image will be displayed here -->
+    </div>
 
+   
 
 
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
