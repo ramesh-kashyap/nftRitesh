@@ -80,7 +80,13 @@
     <div class="app-content style-3 pb-32">
         <div class="tf-container">
 
-            <div class="card mt-20" style="background: #7f52ff;">
+            <div class="card mt-20" style="
+    background: url('/images/45.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    color: #fff;
+">
                 <div class="card-header line-bt"> 
 
                 <?php 
@@ -136,8 +142,14 @@
 
 
                 ?>
-                    <h4 class="fw-6">Vip {{$vip}}</h4>
-                    <p class="text-5 pb-20 mt-4">@lang('Unlocked this level yet')</p>
+                    <h4 class="fw-6" style="color:white;">Vip {{$vip}}</h4>
+
+                    <p class="text-5 pb-20 mt-4" style="font-size: 18px;">@lang('Unlocked this level yet')</p>
+                    <div class="avatar round avt-48">
+                                      <img src="images/avt/2.png" alt="">
+                                  </div>
+                                
+                                 
                 </div>
 
                 
@@ -438,8 +450,8 @@
         <a  class="box-wallet-3" style="border: 1px solid #8052ff;">
                 <!-- <div class="avatar round avt-48">
                     <img src="images/avt/avt10.png" alt="">                      
-                </div> -->
-                
+                </div> 
+                  -->
                 <div class="content d-flex justify-content-between">
                     <div class="content-left">
                     <p class="body-1 mt-2">@lang('Minimum

@@ -113,39 +113,82 @@
                             <label>@lang('Withdrawal Amount')</label>
                             <input  type="number" min="20" name="amount"
                             placeholder="Enter amount" class="form-control" value="">                        </fieldset>
+                            @if(Auth::user()->active_status!="Pending" )
+                
+                <?php 
+                date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+                if(empty(Auth::user()->detail_changed_date))
+                 {
+                    $date1 = Auth::user()->adate;
+                    $date1 = strtotime($date1);
+                    $date1 = strtotime(" + 3 day", $date1);
+                    $new_date1= date('Y-m-d H:i:s', $date1);    
+                 }
+                 else
+                 {
+                     $date1 = Auth::user()->detail_changed_date;
+                    $date1 = strtotime($date1);
+                    $date1 = strtotime(" + 2 day", $date1);
+                    $new_date1= date('Y-m-d H:i:s', $date1);        
+                 }
+                //   echo $new_date1;
+                ?>
 
-                            <?php 
-                              date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30"z)
-                              
-                             if(empty(Auth::user()->detail_changed_date))
-                             {
-                                $date1 = Auth::user()->adate;
-                                $date1 = strtotime($date1);
-                                $date1 = strtotime(" + 3 day", $date1);
-                                $new_date1= date('Y-m-d H:i:s', $date1);    
-                             }
-                             else
-                             {
-                                 $date1 = Auth::user()->detail_changed_date;
-                                $date1 = strtotime($date1);
-                                $date1 = strtotime(" + 2 day", $date1);
-                                $new_date1= date('Y-m-d H:i:s', $date1);        
-                             }
-                           
+                <script>
 
-                            
-                            ?>
+            var timer = setInterval(diff2, 1000);
 
-<input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
-<fieldset class="mt-20 input-fill">
-    <label>{{ Auth::user()->email }}</label>
-    <div class="input-container">
-        <input type="text" class="form-control" name="code" value="" placeholder="Enter verification code">
-        @if(date("Y-m-d H:i:s") > $new_date1) 
-            <p class="text-dark-3 code-btn" onclick="()">Get Code</p>
-        @endif
-    </div>
-</fieldset>
+            function diff2() {
+                // Current date and time
+                var enddate = new Date();
+
+                // Start date from a PHP variable (ensure PHP code is executed on the server-side)
+                var start = new Date('<?=$new_date1?>');
+
+                // Calculate the time difference in milliseconds
+                var difference = start.getTime() - enddate.getTime();
+
+                // Convert the time difference from milliseconds to seconds, minutes, and hours
+                var seconds = Math.floor(difference / 1000);
+                var minutes = Math.floor(seconds / 60);
+                var hours = Math.floor(minutes / 60);
+                var days = Math.floor(hours /24);
+                // Convert total hours into days, then get the remainder for hours
+                hours %= 24; // Hours remaining after converting to days
+                minutes %= 60; // Minutes remaining after converting to hours
+                seconds %= 60; // Seconds remaining after converting to minutes
+
+                if (difference <= 0) {
+                    // If the countdown is over, stop the timer
+                    clearInterval(timer);
+                    // Optionally reset the display to zero or hide the countdown
+                    document.getElementById("PH_days").innerHTML ="00";
+
+                    document.getElementById("PH_hours").innerHTML = "00";
+                    document.getElementById("PH_minutes").innerHTML = "00";
+                    document.getElementById("seconds").innerHTML = "00";
+                } else {
+                    // Update the webpage elements with the current hours, minutes, and seconds
+                    document.getElementById("PH_days").innerHTML =days;
+                    document.getElementById("PH_hours").innerHTML = hours.toString().padStart(2, '0');
+                    document.getElementById("PH_minutes").innerHTML = minutes.toString().padStart(2, '0');
+                    document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+                }
+            }
+                </script>
+
+                @endif
+
+                            <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
+                            <fieldset class="mt-20 input-fill">
+                                <label>{{ Auth::user()->email }}</label>
+                                <div class="input-container">
+                                    <input type="text" class="form-control" name="code" value="" placeholder="Enter verification code">
+                                    @if(date("Y-m-d H:i:s") > $new_date1) 
+                                        <p class="text-dark-3 code-btn" onclick="()">Get Code</p>
+                                    @endif
+                                </div>
+                            </fieldset>
                         <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
                         <fieldset class="mt-20 input-fill">
                             <label>@lang('Transaction password')</label>
@@ -167,9 +210,45 @@
                             <span class="body-3 text-dark-2 fw-5" style="float: left;">@lang('Transaction Fee'):</span></br>
                             <span class="body-3 text-dark-2 fw-5" style="float: right;">300 USDT valid for 3 days </span>
                             <span class="body-3 text-dark-2 fw-5" style="float: left;">@lang('Registartion Bonus'):</span>
-                   
+                          
+
+                            <?php 
+                              date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+                              
+                             if(empty(Auth::user()->detail_changed_date))
+                             {
+                                $date1 = Auth::user()->adate;
+                                $date1 = strtotime($date1);
+                                $date1 = strtotime(" + 3 day", $date1);
+                                $new_date1= date('Y-m-d H:i:s', $date1);    
+                             }
+                             else
+                             {
+                                 $date1 = Auth::user()->detail_changed_date;
+                                $date1 = strtotime($date1);
+                                $date1 = strtotime(" + 2 day", $date1);
+                                $new_date1= date('Y-m-d H:i:s', $date1);        
+                             }
+                           
+
+                            
+                            ?>
                             </br>
-                        <button class="mt-20 tf-btn primary">Withdraw</button>
+
+                            </br>
+                            <div data-v-c654d101="" class="tipsTime">@lang('New user fund protection period, please check in')
+                                    <div data-v-c654d101="" role="timer" class="van-count-down">
+                            <span
+                                            data-v-c654d101=""> <span id="PH_days"></span> D /<span id="PH_hours"></span> H/</span><span data-v-c654d101=""> <span id="PH_minutes"></span> 
+                                            M/</span><span data-v-c654d101=""> <span id="seconds"></span> S/</span></div> 
+                                </div>
+
+                            @if(date("Y-m-d H:i:s") > $new_date1) 
+                        <button class="mt-20 tf-btn primary van-button van-button--default van-button--normal com-btn on submit-btn" type="submit">Withdraw</button>
+                        @else
+                        <button class="mt-20 tf-btn primary van-button van-button--default van-button--disabled van-button--normal com-btn on submit-btn" type="button">Withdraw</button>
+                        @endif 
+
 
 
 
@@ -192,6 +271,270 @@
     </div>
     
     <script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
+
+<script>
+    $(function(){
+        $('input[name="amount"]').on('change keyup',function () {
+            let str = $(this).val();
+            str = str.replace(',','.');
+            $(this).val(str);
+            let min =  $('#min_withdrawal').val();
+            let max =  $('#max_withdrawal').val();
+
+            let charge = $('#chargeAmt').val();
+      
+            let amount = parseFloat(str);
+        
+        
+          
+         
+            if (amount>=min && amount<=max) 
+            {
+               
+            $(".submit-btn").prop("disabled", false);
+            $('.submit-btn').removeClass('van-button van-button--default van-button--disabled van-button--normal com-btn on');         
+            $('.submit-btn').addClass('van-button van-button--default  van-button--normal com-btn on');         
+            }
+            else
+            {
+
+            $(".submit-btn").prop("disabled", true);  
+            $('.submit-btn').removeClass('van-button van-button--default van-button--normal com-btn on');         
+            $('.submit-btn').addClass('van-button van-button--default van-button--disabled van-button--normal com-btn on');         
+            }
+            
+            if(amount<=10)
+            {
+                  $('#ActualAmount').html(amount-amount*50/100+" USDT");  
+                  $('#chargefee').html("5 USDT");  
+            }
+            else
+            {
+             $('#ActualAmount').html(amount-amount*charge/100+" USDT");
+                $('#chargefee').html(charge+" %");  
+            }
+          
+            
+        
+            //console.log(summ_usd);
+        });
+
+        $('input[name="PSys"]').change(function () {
+           
+            let icon = $(this).data('icon');
+            if (icon=="usdtTrc20") {
+                $('#walletAddress').val('{{Auth::user()->usdtTrc20}}');
+                
+            }else{
+                $('#walletAddress').val('{{Auth::user()->usdtBep20}}');
+            }
+            
+        });
+
+        $('.code-btn').click(function(e) {
+var ths = $(this);
+var emailId = $('#emailId').val();
+
+if (!emailId) 
+{
+    iziToast.error({
+            message: 'Invalid Email!',
+            position: "topRight"
+        });
+        return false;
+}
+// alert(sponsor); 
+$.ajax({
+    type: "POST"
+    , url: "{{ route('user.send_code') }}"
+    , data: {
+        "emailId": emailId
+        , "_token": "{{ csrf_token() }}"
+    , }
+    , success: function(response) {
+        // alert(response);      
+        if (response) {
+            // alert("hh");
+            iziToast.success({
+            message: 'Email send Successfully',
+            position: "topRight"
+        });
+        } else {
+            // alert("hi");
+            iziToast.error({
+            message: 'Error!',
+            position: "topRight"
+        });
+        }
+    }
+});
+});
+
+
+    })
+
+</script>
+
+<script>
+$(document).ready(function() {
+
+$('#check').click(function(){
+
+if($(this).hasClass('fa-eye-slash')){
+
+$(this).removeClass('fa-eye-slash');
+
+$(this).addClass('fa-eye');
+
+$('#test-input').attr('type','text');
+
+}else{
+
+$(this).removeClass('fa-eye');
+
+$(this).addClass('fa-eye-slash');  
+
+$('#test-input').attr('type','password');
+}
+});
+
+});
+</script>
+
+<script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
+
+<script>
+    $(function(){
+        $('input[name="amount"]').on('change keyup',function () {
+            let str = $(this).val();
+            str = str.replace(',','.');
+            $(this).val(str);
+            let min =  $('#min_withdrawal').val();
+            let max =  $('#max_withdrawal').val();
+
+            let charge = $('#chargeAmt').val();
+      
+            let amount = parseFloat(str);
+        
+        
+          
+         
+            if (amount>=min && amount<=max) 
+            {
+               
+            $(".submit-btn").prop("disabled", false);
+            $('.submit-btn').removeClass('van-button van-button--default van-button--disabled van-button--normal com-btn on');         
+            $('.submit-btn').addClass('van-button van-button--default  van-button--normal com-btn on');         
+            }
+            else
+            {
+
+            $(".submit-btn").prop("disabled", true);  
+            $('.submit-btn').removeClass('van-button van-button--default van-button--normal com-btn on');         
+            $('.submit-btn').addClass('van-button van-button--default van-button--disabled van-button--normal com-btn on');         
+            }
+            
+            if(amount<=10)
+            {
+                  $('#ActualAmount').html(amount-amount*50/100+" USDT");  
+                  $('#chargefee').html("5 USDT");  
+            }
+            else
+            {
+             $('#ActualAmount').html(amount-amount*charge/100+" USDT");
+                $('#chargefee').html(charge+" %");  
+            }
+          
+            
+        
+            //console.log(summ_usd);
+        });
+
+        $('input[name="PSys"]').change(function () {
+           
+            let icon = $(this).data('icon');
+            if (icon=="usdtTrc20") {
+                $('#walletAddress').val('{{Auth::user()->usdtTrc20}}');
+                
+            }else{
+                $('#walletAddress').val('{{Auth::user()->usdtBep20}}');
+            }
+            
+        });
+
+        $('.code-btn').click(function(e) {
+var ths = $(this);
+var emailId = $('#emailId').val();
+
+if (!emailId) 
+{
+    iziToast.error({
+            message: 'Invalid Email!',
+            position: "topRight"
+        });
+        return false;
+}
+// alert(sponsor); 
+$.ajax({
+    type: "POST"
+    , url: "{{ route('user.send_code') }}"
+    , data: {
+        "emailId": emailId
+        , "_token": "{{ csrf_token() }}"
+    , }
+    , success: function(response) {
+        // alert(response);      
+        if (response) {
+            // alert("hh");
+            iziToast.success({
+            message: 'Email send Successfully',
+            position: "topRight"
+        });
+        } else {
+            // alert("hi");
+            iziToast.error({
+            message: 'Error!',
+            position: "topRight"
+        });
+        }
+    }
+});
+});
+
+
+    })
+
+</script>
+
+<script>
+$(document).ready(function() {
+
+$('#check').click(function(){
+
+if($(this).hasClass('fa-eye-slash')){
+
+$(this).removeClass('fa-eye-slash');
+
+$(this).addClass('fa-eye');
+
+$('#test-input').attr('type','text');
+
+}else{
+
+$(this).removeClass('fa-eye');
+
+$(this).addClass('fa-eye-slash');  
+
+$('#test-input').attr('type','password');
+}
+});
+
+});
+</script>
+
+
+
+<script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
 
 <script>
     $(function(){
