@@ -25,8 +25,8 @@
     <!-- manifest json -->
     <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
+    <link rel="shortcut icon" href="images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/logo/nestnft.png" />
 
     <title>home</title>
 </head>
@@ -67,9 +67,9 @@
 
     <div class="header-style2 fixed-top">
         <div class="logo">
-            <img src="images/logo/logo-light.png" alt="logo" class="logo-light">
-            <img src="images/logo/logo-dark.png" alt="logo" class="logo-dark">
-        </div>
+            <img src="images/logo/nestnft.png" alt="logo" class="logo-light">
+            <img src="images/logo/Nestnftdark.png" alt="logo" class="logo-dark">
+        </div>  
         <div class="right">
             <a href="#notification" data-bs-toggle="offcanvas" aria-controls="offcanvasBottom">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,7 +300,7 @@
                   </svg>
               </a>
           </li>
-          <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
+          <li class="action-add-wallet"><a href="{{route('user.iamount')}}"><i class="icon-plus"></i></a></li>
           <li><a href="{{route('user.myWallet')}}">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity="0.6">

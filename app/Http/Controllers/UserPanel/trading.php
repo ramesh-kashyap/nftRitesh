@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Browsershot\Browsershot;
+use Illuminate\Support\Facades\Response;
 
 class trading extends Controller
 {
@@ -300,10 +302,30 @@ class trading extends Controller
         return back()->with('error', 'Failed to update NFT status.');
     }
     
-    public function sharenft()
-    {
-        return view('user.trading.nftshare');
-    }
+    // public function sharenft()
+    // {
+    //     return view('user.trading.nftshare');
+    // }
     
+
+//     public function sharenft()
+// {
+//     // Fetch the most recent trade data
+//     $user = Auth::user();
+//     $nftd = Trade::where('user_id', $user->id)->latest('created_at')->first();
+
+//     // Render the Blade view with dynamic data
+//     $view = view('user.trading.nftshare', ['nftd' => $nftd])->render();
+
+//     // Save the screenshot to the storage
+//     $screenshotPath = storage_path('app/public/screenshot.png');
+//     Browsershot::html($view)
+//         ->windowSize(1280, 720)  // Set the desired width and height
+//         ->waitUntilNetworkIdle()
+//         ->save($screenshotPath);
+
+//     // Return the screenshot path or perform further actions
+//     return response()->download($screenshotPath);
+// }
 
 }
