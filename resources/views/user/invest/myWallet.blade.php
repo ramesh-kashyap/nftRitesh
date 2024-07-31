@@ -114,6 +114,11 @@
                         <div class="box-icon w-48 round"><span class="icon icon-send-2"></span></div>
                         <span class="fw-6 text-dark">Invite</span>
                     </a></li>
+
+                    <li><a href="{{route('user.referral-team')}}" class="item">
+                        <div class="box-icon w-48 round"><span class="icon icon-import"></span></div>
+                        <span class="fw-6 text-dark">My Team</span>
+                    </a></li>
                     
                 </ul>
 
