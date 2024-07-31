@@ -144,7 +144,7 @@
     
     <div class="app-content style-2">
       <div class="tf-container">
-      @if (session('success'))
+      {{-- @if (session('success'))
     <div id="successAlert" class="alert alert-success">
         {{ session('success') }}
         <div id="countdown" style="margin-top: 10px;"></div>
@@ -165,7 +165,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
 
         <div class="px-24 card-layout style-2 mt-20">
