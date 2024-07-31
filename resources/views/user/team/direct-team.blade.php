@@ -36,7 +36,51 @@
 
 
 </style>
+<style>
+        .wrapper-tab {
+            margin-top: 24px;
+        }
+        .nav-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px; /* Adjust spacing between buttons */
+        }
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-link {
+            padding: 10px 20px; /* Adjust padding inside buttons */
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            width: 100%; /* Make sure buttons are responsive */
+        }
+        .nav-link.active {
+            background-color: #007bff; /* Active button background color */
+            color: #fff; /* Active button text color */
+        }
+        .nav-link {
+            background-color: #f8f9fa; /* Default button background color */
+            color: #000; /* Default button text color */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: #007bff; /* Hover button background color */
+            color: #fff; /* Hover button text color */
+        }
 
+        @media (max-width: 768px) {
+            .nav-tabs {
+                grid-template-columns: 1fr; /* Stack buttons vertically on small screens */
+            }
+            .nav-item {
+                margin-bottom: 10px; /* Add space between buttons */
+            }
+        }
+    </style>
+</head>
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -131,7 +175,7 @@
                             @for ($l=1;$l<=3;$l++) <li class="nav-item active" role="presentation">
                                 <?php echo  (Session::get('selected_level')==$l)?"":""?>
                                 <a class="nav-link active"
-                                    style="color: <?php echo  (Session::get('selected_level')==$l)?"#fff":"#000"?>"
+                                    style=" width: 200px;color: <?php echo  (Session::get('selected_level')==$l)?"#fff":"#000"?> "
                                     href="{{route('user.referral-team') }}?selected_level={{$l}}">
                                     Level {{$l}}</a>
                                 </li>
@@ -140,6 +184,9 @@
 
 
                     </div>
+
+                  
+
                     <div class="tab-content mt-24">
                         <div class="tab-pane fade active show" id="tokens" role="tabpanel">
 
