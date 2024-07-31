@@ -611,7 +611,7 @@ public function viewdetail($txnId)
           date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
           $user=Auth::user();
           
-             $my_level_team=$this->my_level_team_count($user->id);
+             $my_level_team=$this->x($user->id);
       $gen_team1 =  (array_key_exists(1,$my_level_team) ? $my_level_team[1]:array());
       $gen_team2 =  (array_key_exists(2,$my_level_team) ? $my_level_team[2]:array());
       $gen_team3 =  (array_key_exists(3,$my_level_team) ? $my_level_team[3]:array());

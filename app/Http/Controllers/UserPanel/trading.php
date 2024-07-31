@@ -62,48 +62,61 @@ class trading extends Controller
     }
 
     public function submitnft(Request $request)
-    {
+{
+    try {
         // Validate the request
-        // dd($request->nft_image);
         $request->validate([
             'nft_id' => 'required',
+            'nft_price' => 'required|numeric',
+            'nft_symbol' => 'required|string',
+            'nft_name' => 'required|string',
+            'nft_image' => 'required|string'
         ]);
-    
+        
         $user = Auth::user();
         $nft_id = $request->input('nft_id');
-    
+        $priceInWei = $request->input('nft_price');
+        $priceInEther = $priceInWei / pow(10, 18); // Convert Wei to Ether
+        $symbol = $request->input('nft_symbol');
+
         // Check if the user has made a purchase in the last 24 hours
         $lastPurchase = Trade::where('buyer_id', $user->username)
             ->latest('created_at')
             ->first();
-    
+
         if ($lastPurchase && $lastPurchase->created_at->diffInHours(now()) < 24) {
-            return redirect()->back()->with('error', 'You can only buy one NFT every 24 hours.');
+            return response()->json(['error' => 'You can only buy one NFT every 24 hours.'], 400);
         }
-    
-        // Find the NFT and update its status
-        // $nft = Nft_Trading::find($nft_id);
-        // if (!$nft) {
-        //     return redirect()->back()->with('error', 'NFT not found.');
-        // }
-    
-        // Update the NFT status
-        // $nft->status = 'Pending';
-        // $nft->save();
-    
+
+        // Log info about the new trade
+        Log::info("User {$user->username} is buying NFT with ID {$nft_id}, price {$priceInEther}, and symbol {$symbol}.");
+
         // Create a new trade record
         Trade::create([
-            'nft_id' => $request->nft_id,
-            'name' => $request->nft_name,
-            'nft_image' => $request->nft_image,
+            'nft_id' => $nft_id,
+            'name' => $request->input('nft_name'),
+            'nft_image' => $request->input('nft_image'),
+            'symbol' => $symbol,
+            'price' => $priceInEther, // Store the price in Ether
             'status' => 'Pending',
             'currency' => 'USDT',
             'buyer_id' => $user->username,
         ]);
-    
+
         // Redirect with success message
         return response()->json(['success' => 'Your NFT is being purchased successfully. You can buy another NFT after 24 hours.']);
+    } catch (\Exception $e) {
+        // Log error
+        Log::error("Error purchasing NFT: {$e->getMessage()}", [
+            'user_id' => $user->id ?? null,
+            'nft_id' => $nft_id ?? null,
+            'request_data' => $request->all()
+        ]);
+
+        // Return error response with the actual error message
+        return response()->json(['error' => 'An error occurred while processing your request. Please try again later. Error: ' . $e->getMessage()], 500);
     }
+}
     
 
     public function investamount()
@@ -128,7 +141,6 @@ class trading extends Controller
 
 
     $nftsData = $filteredNftsLatest;
-
     
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
     $lastTrade = Trade::where('buyer_id', $user->username)->latest('created_at')->first();

@@ -225,6 +225,8 @@
                                 @csrf
                                 <input type="hidden" name="nft_id" id="hiddenNftId">
                                 <input type="hidden" name="nft_name" value="" id="hiddenNftName">
+                                <input type="hidden" name="nft_price" value="" id="nftPrice">
+                                <input type="hidden" name="nft_symbol" value="" id="nftSymbol">
                                 <input type="hidden" name="status" value="Pending">
                                 <input type="hidden" name="nft_image" id="imageName" value="" >
                                 @if($countdownTime <= 0)
@@ -233,7 +235,6 @@
                             class="icon icon-wallet-money"></span> Buy Now</button>
                             @endif
                             </form>
-                            <div id="responseMessage"></div>
                 </div>
             </div>       
            
@@ -1529,6 +1530,8 @@
             document.getElementById('popupImage').src = selectedNft.nft.display_image_url;
             console.log(selectedNft.nft.display_image_url);
             document.getElementById('imageName').value = selectedNft.nft.display_image_url;
+            document.getElementById('nftPrice').value = selectedNft.payment.quantity;
+            document.getElementById('nftSymbol').value = selectedNft.payment.symbol;
             document.getElementById('hiddenNftId').value = selectedNft.nft.identifier; // Set hidden input value
             document.getElementById('hiddenNftName').value = selectedNft.nft.name;            
             document.getElementById('imageModal').style.display = 'block';
