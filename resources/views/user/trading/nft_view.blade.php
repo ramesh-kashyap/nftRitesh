@@ -115,28 +115,7 @@
 </head>
 
 <div class="counter-scroll">
-@if (session('success'))
-    <div id="successAlert" class="alert alert-success">
-        {{ session('success') }}
-        <div id="countdown" style="margin-top: 10px;"></div>
-    </div>
-@endif
 
-@if (session('error'))
-    <div id="errorAlert" class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
-
-@if ($errors->any())
-    <div id="errorAlert" class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
     <div class="header fixed-top">
         <div class="left">
             <a href="javascript:void(0);" class="icon back-btn"><i class="icon-arrow-right"></i></a>
