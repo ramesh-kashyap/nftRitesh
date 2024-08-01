@@ -42,6 +42,33 @@
         border-radius: 4px;
     }
 </style>
+<style>
+.balance-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.balance-text {
+    white-space: nowrap; /* Ensure the balance text doesn't wrap */
+}
+
+@media (max-width: 768px) {
+    .balance-container {
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        justify-content: flex-start;
+    }
+
+    .balance-text {
+        margin-top: 10px;
+        width: 100%;
+        text-align: left; /* Align to the left on mobile */
+    }
+}
+
+</style>
+
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -109,10 +136,21 @@
                               
                             </div>
                         </fieldset>
+                       
                         <fieldset class="mt-20 input-fill">
-                            <label>@lang('Withdrawal Amount')</label>
-                            <input  type="number" min="20" name="amount"
-                            placeholder="Enter amount" class="form-control" value="">                        </fieldset>
+    <div style="display: flex;
+    justify-content: space-between;
+">
+        <label>@lang('Withdrawal Amount')</label>
+        <span >
+            Balance: {{ number_format(Auth::user()->available_balance(), 2) }} USDT
+        </span>
+    </div>
+    <input type="number" min="20" name="amount" placeholder="Enter amount" class="form-control" value="">
+</fieldset>
+
+
+
                             @if(Auth::user()->active_status!="Pending" )
                 
                 <?php 
