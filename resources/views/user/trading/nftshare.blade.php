@@ -29,8 +29,11 @@
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="../images/logo/168.png" />
     <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
-     <style> 
-        
+     <style>
+     .box-img 
+        img{
+            border-radius: 20px;
+        }
      </style>
 
     <title>NFTs Detail</title>
@@ -40,31 +43,31 @@
 <body>
     <div class="mt-24 gap-15" style="text-align:center; margin-top:40px">
         <a href="" class="card-nft" style="text-align:center">
-            <div class="box-img">
-                <img class="lazyload" src="{{asset('')}}images/background/bg-wallet-1.png" alt="img-nft" style="height:350px;width:auto; >
+            <div class="box-img" style="min-width: 400px">
+                <img class="lazyload" src="{{$nftd->nft_image}}" alt="img-nft" style="height: 250px; width: 250px; margin-right: 100px; margin-top: 50px;>
                 <span class="tag react">                    
-                <img class="lazyload" src="{{asset('')}}images/avt/nft-logo-1.png" alt="img-nft" style="height:30px;width:auto">
+                <img class="lazyload" src="{{asset('')}}images/logo/nestnft.png" alt="img-nft" style="height:30px;width:auto;left:0; position: absolute;">
                 </span>
                 
-                <h4 style="position:absolute; top: 10px; right:65px">Ankit</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899; position:absolute; top: 50px; right:30px">
-                    SolUSDT
+                <h4 style="position:absolute; top: 10px; right:25px">{{$nftd->name}}</h4>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
+                    Ankit
                 </p>
-                <p style="text-align:left; position:absolute; top: 90px; right:85px">ROI</p>
+                <p style="text-align:left; position:absolute; top: 100px; right:25px">ROI</p>
                 <p style="font-size:40px; font-weight:800; text-align:justify; color:red; position:absolute; top: 130px; right:15px">
-                    81.5%
+                83.1 %
                 </p>
-                <h4 style="text-align:left; position:absolute; top: 170px; right:15px">Entry Price</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899;position:absolute; top: 200px; right:15px">
+                <p style="text-align:left; position:absolute; top: 190px; right:15px">Entry Price</p>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 210px; right:15px">
                     $ 210
                 </p>
-                <h4 style="text-align:left; position:absolute; top: 230px; right:15px">Current Price</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899;position:absolute; top: 260px; right:15px">
-                    $ 210
+                <p style="text-align:left; position:absolute; top: 250px; right:15px">Current Price</p>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 270px; right:15px">
+                {{$nftd->price}}
                 </p>
                 
-                <span class="tag ethereum">                    
-                    10,145.93
+                <span class="tag ethereum" style="left:38%">                    
+                {{$nftd->symbol}}
                 </span>
                 
             </div>

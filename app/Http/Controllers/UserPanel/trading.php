@@ -302,30 +302,30 @@ class trading extends Controller
         return back()->with('error', 'Failed to update NFT status.');
     }
     
-    public function sharenft()
-    {
-        return view('user.trading.nftshare');
-    }
+    // public function sharenft()
+    // {
+    //     return view('user.trading.nftshare');
+    // }
     
 
-//     public function sharenft()
-// {
-//     // Fetch the most recent trade data
-//     $user = Auth::user();
-//     $nftd = Trade::where('user_id', $user->id)->latest('created_at')->first();
+    public function sharenft()
+{
+    // Fetch the most recent trade data
+    $user = Auth::user();
+    $nftd = Trade::where('user_id', $user->id)->latest('created_at')->first();
 
-//     // Render the Blade view with dynamic data
-//     $view = view('user.trading.nftshare', ['nftd' => $nftd])->render();
+    // Render the Blade view with dynamic data
+    return view('user.trading.nftshare', ['nftd' => $nftd]);
 
-//     // Save the screenshot to the storage
-//     $screenshotPath = storage_path('app/public/screenshot.png');
-//     Browsershot::html($view)
-//         ->windowSize(1280, 720)  // Set the desired width and height
-//         ->waitUntilNetworkIdle()
-//         ->save($screenshotPath);
+    // Save the screenshot to the storage
+    // $screenshotPath = storage_path('app/public/screenshot.png');
+    // Browsershot::html($view)
+    //     ->windowSize(1280, 720)  // Set the desired width and height
+    //     ->waitUntilNetworkIdle()
+    //     ->save($screenshotPath);
 
-//     // Return the screenshot path or perform further actions
-//     return response()->download($screenshotPath);
-// }
+    // // Return the screenshot path or perform further actions
+    // return response()->download($screenshotPath);
+}
 
 }
