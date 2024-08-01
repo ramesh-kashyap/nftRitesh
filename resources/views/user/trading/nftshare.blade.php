@@ -95,7 +95,7 @@
         </a>
         
     </div>
-    <a href="{{ route('user.sharenft') }}" class="btn btn-primary">Download Screenshot</a>
+    <!-- <a href="{{ route('user.sharenft') }}" class="btn btn-primary">Download Screenshot</a> -->
 
 </body>
 
