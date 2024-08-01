@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Package;
 use App\Models\Trade;
+use App\Models\Income;
+use App\Models\Withdraw;
+
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -98,6 +101,18 @@ class trading extends Controller
 
     }
 
+    public function getBalance($userId)
+{
+    $investments = Investment::where('user_id', $userId)->where('status', 'Active')->sum('amount') ?? 0;
+    $incomes = Income::where('user_id', $userId)->sum('comm') ?? 0;
+    $withdrawals = Withdraw::where('user_id', $userId)
+        ->where('status', '!=', 'Failed')
+        ->sum('amount') ?? 0;
+
+
+    return $investments + $incomes - $withdrawals;
+}
+
     public function submitnft(Request $request)
     {
         try {
@@ -137,7 +152,7 @@ class trading extends Controller
     
             $total = $active_gen_team1total + $active_gen_team2total;
             $userDirect = User::where('sponsor', $user->id)->where('active_status', 'Active')->where('package', '>=', 30)->count();
-            $balance = round($user->available_balance(), 2);
+            $balance = round($this->getBalance($user->id), 2) ?? 0;
     
             $vip = 0;
             if ($balance >= 50 && $balance < 500) {
@@ -165,7 +180,7 @@ class trading extends Controller
             }
     
             // Check if the user has made a purchase in the last 24 hours
-            $lastPurchase = Trade::where('buyer_id', $user->username)
+            $lastPurchase = Trade::where('user_id', $user->id)
                 ->latest('created_at')
                 ->first();
     
@@ -206,6 +221,7 @@ class trading extends Controller
             return response()->json(['error' => 'An error occurred while processing your request. Please try again later. Error: ' . $e->getMessage()], 500);
         }
     }
+
     
     
 
@@ -292,7 +308,7 @@ class trading extends Controller
         
     
         // Update status in the Trade table where buyer_id matches the logged-in user's username
-        $trade = Trade::where('status', 'Pending')->where('buyer_id', $user->username)->latest('created_at')->first();
+        $trade = Trade::where('status', 'Pending')->where('user_id', $user->id)->latest('created_at')->first();
             // dd($trade);
         if ($trade) {
             $trade->status = 'Approved'; 
