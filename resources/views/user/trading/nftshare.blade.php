@@ -49,7 +49,7 @@
                 <img class="lazyload" src="{{asset('')}}images/logo/nestnft.png" alt="img-nft" style="height:30px;width:auto;left:0; position: absolute;">
                 </span>
                 
-                <h4 style="position:absolute; top: 10px; right:25px">{{$nftd->name}}</h4>
+                <h4 style="position:absolute; top: 10px; right:15px">{{$nftd->name}}</h4>
                 <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
                     Ankit
                 </p>
