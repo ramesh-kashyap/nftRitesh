@@ -86,7 +86,7 @@
                         
                 </div>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a href="{{route('user.createNft')}}" class="dropdown-item d-flex gap-10 align-items-center">
+                    <a href="{{route('user.iamount')}}" class="dropdown-item d-flex gap-10 align-items-center">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g opacity="0.8">
                             <path d="M9.16675 1.66602H7.50008C3.33341 1.66602 1.66675 3.33268 1.66675 7.49935V12.4993C1.66675 16.666 3.33341 18.3327 7.50008 18.3327H12.5001C16.6667 18.3327 18.3334 16.666 18.3334 12.4993V10.8327" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1996,7 +1996,7 @@
                 </svg>                                       
                 </a>
             </li>
-            <li class="action-add-wallet"><a href="{{route('user.createNft')}}"><i class="icon-plus"></i></a></li>
+            <li class="action-add-wallet"><a href="{{route('user.iamount')}}"><i class="icon-plus"></i></a></li>
             <li><a href="{{route('user.myWallet')}}">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g opacity="0.6">

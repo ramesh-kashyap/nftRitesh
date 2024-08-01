@@ -39,15 +39,15 @@
 
 <body>
     <div class="mt-24 gap-15" style="text-align:center; margin-top:40px">
-        <a href="nft-details-listed.html" class="card-nft" style="text-align:center">
+        <a href="" class="card-nft" style="text-align:center">
             <div class="box-img">
                 <img class="lazyload" src="{{asset('')}}images/background/bg-wallet-1.png" alt="img-nft" style="height:350px;width:auto; background:#1a152899">
                 <span class="tag react">                    
                 <img class="lazyload" src="{{asset('')}}images/avt/nft-logo-1.png" alt="img-nft" style="height:30px;width:auto">
                 </span>
                 
-                <h4 style="text-align:left; position:absolute; top: 10px; left:15px">Ankit</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899; position:absolute; top: 50px; left:15px">
+                <h4 style="position:absolute; top: 10px; right:65px">Ankit</h4>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899; position:absolute; top: 50px; right:15px">
                     SolUSDT
                 </p>
                 <p style="text-align:left; position:absolute; top: 90px; left:15px">ROI</p>

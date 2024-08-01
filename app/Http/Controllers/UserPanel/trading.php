@@ -302,10 +302,10 @@ class trading extends Controller
         return back()->with('error', 'Failed to update NFT status.');
     }
     
-    // public function sharenft()
-    // {
-    //     return view('user.trading.nftshare');
-    // }
+    public function sharenft()
+    {
+        return view('user.trading.nftshare');
+    }
     
 
 //     public function sharenft()
