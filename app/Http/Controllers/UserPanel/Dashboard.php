@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
 use App\Models\Investment;
 use App\Models\Income;
+use App\Models\Trade;
 use App\Models\Collection;
 use App\Models\CollectionDetail;
 use GuzzleHttp\Client;
@@ -201,7 +202,13 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
           return !empty($nft['nft']['image_url']);
         });
 
-      $this->data['nfts'] = $filteredNftsLatest;
+        $user = Auth::user();
+
+
+        $nftd = Trade::where('user_id', $user->id)->latest('created_at')->first();
+
+
+      $this->data['nftd'] = $nftd;
       $this->data['page'] = 'user.create-nft';
       return $this->dashboard_layout();
 
