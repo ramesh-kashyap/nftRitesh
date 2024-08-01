@@ -54,7 +54,7 @@
                     Ankit
                 </p>
                 <p style="text-align:left; position:absolute; top: 100px; right:25px">ROI</p>
-                <p style="font-size:40px; font-weight:800; text-align:justify; color:red; position:absolute; top: 130px; right:15px">
+                <p style="font-size:30px; font-weight:800; text-align:justify; color:green; position:absolute; top: 130px; right:15px">
                 83.1 %
                 </p>
                 <p style="text-align:left; position:absolute; top: 190px; right:15px">Entry Price</p>
@@ -66,7 +66,7 @@
                 {{$nftd->price}}
                 </p>
                 
-                <span class="tag ethereum" style="left:38%">
+                <span class="tag ethereum" style="left:38%; padding-top:3px; padding-bottom:3px">
                     @if($nftd->symbol == 'MATIC')
                     <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
                     style="height:20px;width:auto;">
@@ -80,8 +80,9 @@
                     <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
                     style="height:20px;width:auto;">
                     @endif
-
-                    {{$nftd->price}}
+                    <p style="font-size:15px;font-weight:800;color:#7f52ff">
+                {{$nftd->price}}
+                </p>
                 </span>
                 
             </div>
