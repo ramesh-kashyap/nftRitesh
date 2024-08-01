@@ -268,6 +268,7 @@ class trading extends Controller
             $nftd = null;
         }
     }
+    $nftall = Trade::where('user_id', $user->id)->get();
 
     // Calculate the remaining time
     $currentTime = now();
@@ -287,7 +288,8 @@ class trading extends Controller
     // $this->data['iamount'] = $iamount;
     $this->data['pamount'] = $pamount;
     $this->data['nfts'] = $nftsData;
-    $this->data['nftd'] = $nftd??"";    
+    $this->data['nftd'] = $nftd??""; 
+    $this->data['nftall'] = $nftall;    
     $this->data['countdownTime'] = $countdownTime; // Pass the remaining time to the view
     $this->data['page'] = 'user.trading.nft_view';
 
