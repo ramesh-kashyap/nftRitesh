@@ -701,7 +701,7 @@ public function tradeOn()
          $checkStatus= \DB::table('withdraws')->where('id',$orderId)->first();
         $output='';
         if($checkStatus)
-        {
+        { 
             
             
            $output.='

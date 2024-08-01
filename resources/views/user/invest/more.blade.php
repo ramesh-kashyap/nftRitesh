@@ -477,93 +477,52 @@
         </div>
         <div class="overflow-auto app-content style-1">
             <div class="tf-container">
-                <div class="card-box">
-                    <div class="gallery">
-                        <a href="nft-item-details.html" class="item-1 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-1.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-2 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-2.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-3 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-3.jpg" alt="img">
-                        </a>
-                    </div>
-                    <a href="nft-item-details.html" class="box-story">
+                <div class="grid-2 mt-24 gap-15">
+                    @foreach($nftsLatest as $data)
+                    @if($data['nft']['image_url'])
+                    <a href="#" class="card-nft m-2">
                         <div class="box-img">
-                            <img class="lazyload" data-src="images/background/collection-4.jpg" alt="img">
+                            <img class="lazyload" data-src="{{  $data['nft']['image_url'] }}" alt="img-nft">
+                            <span class="tag react">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.31 10.4058C6.14 10.4658 5.86 10.4658 5.69 10.4058C4.24 9.91078 1 7.84578 1 4.34578C1 2.80078 2.245 1.55078 3.78 1.55078C4.69 1.55078 5.495 1.99078 6 2.67078C6.505 1.99078 7.315 1.55078 8.22 1.55078C9.755 1.55078 11 2.80078 11 4.34578C11 7.84578 7.76 9.91078 6.31 10.4058Z"
+                                        stroke="#FB5556" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                20
+                            </span>
+                            <span class="tag ethereum">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.45006 4.55055L5.83504 3.49055C5.94004 3.44555 6.06005 3.44555 6.16005 3.49055L8.54506 4.55055C8.75506 4.64555 8.95004 4.39055 8.80504 4.21055L6.30504 1.15555C6.13504 0.945547 5.85505 0.945547 5.68505 1.15555L3.18505 4.21055C3.04505 4.39055 3.24006 4.64555 3.45006 4.55055Z"
+                                        fill="white" />
+                                    <path
+                                        d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z"
+                                        fill="white" />
+                                    <path
+                                        d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z"
+                                        fill="white" />
+                                </svg>
+                                10,145.93
+                            </span>
                         </div>
                         <div class="content">
-                            <div class="button-2">Onion Ape</div>
-                            <span class="body-6">The story of Onion Ape</span>
+                            <div class="button-1 name">{{ $data['nft']['name'] }}</div>
+                            <p class="mt-4 id-name">{{  $data['nft']['collection'] }}
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.3731 7.16036L13.4664 6.10703C13.2931 5.90703 13.1531 5.5337 13.1531 5.26703V4.1337C13.1531 3.42703 12.5731 2.84703 11.8664 2.84703H10.7331C10.4731 2.84703 10.0931 2.70703 9.89309 2.5337L8.83976 1.62703C8.37976 1.2337 7.62643 1.2337 7.15976 1.62703L6.11309 2.54036C5.91309 2.70703 5.53309 2.84703 5.27309 2.84703H4.11976C3.41309 2.84703 2.83309 3.42703 2.83309 4.1337V5.2737C2.83309 5.5337 2.69309 5.90703 2.52643 6.10703L1.62643 7.16703C1.23976 7.62703 1.23976 8.3737 1.62643 8.8337L2.52643 9.8937C2.69309 10.0937 2.83309 10.467 2.83309 10.727V11.867C2.83309 12.5737 3.41309 13.1537 4.11976 13.1537H5.27309C5.53309 13.1537 5.91309 13.2937 6.11309 13.467L7.16643 14.3737C7.62643 14.767 8.37976 14.767 8.84643 14.3737L9.89976 13.467C10.0998 13.2937 10.4731 13.1537 10.7398 13.1537H11.8731C12.5798 13.1537 13.1598 12.5737 13.1598 11.867V10.7337C13.1598 10.4737 13.2998 10.0937 13.4731 9.8937L14.3798 8.84036C14.7664 8.38036 14.7664 7.62036 14.3731 7.16036ZM10.7731 6.74036L7.55309 9.96036C7.45976 10.0537 7.33309 10.107 7.19976 10.107C7.06643 10.107 6.93976 10.0537 6.84643 9.96036L5.23309 8.34703C5.03976 8.1537 5.03976 7.8337 5.23309 7.64036C5.42643 7.44703 5.74643 7.44703 5.93976 7.64036L7.19976 8.90036L10.0664 6.0337C10.2598 5.84036 10.5798 5.84036 10.7731 6.0337C10.9664 6.22703 10.9664 6.54703 10.7731 6.74036Z"
+                                        fill="#2664ED" />
+                                </svg>
+                            </p>
                         </div>
                     </a>
-                </div>
-                <div class="card-box mt-20">
-                    <div class="gallery">
-                        <a href="nft-item-details.html" class="item-1 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-5.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-2 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-6.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-3 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-7.jpg" alt="img">
-                        </a>
-                    </div>
-                    <a href="nft-item-details.html" class="box-story">
-                        <div class="box-img">
-                            <img class="lazyload" data-src="images/background/collection-8.jpg" alt="img">
-                        </div>
-                        <div class="content">
-                            <div class="button-2">HPPRS Collection</div>
-                            <span class="body-6">The story of HPPRS Collection</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-box mt-20">
-                    <div class="gallery">
-                        <a href="nft-item-details.html" class="item-1 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-9.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-2 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-10.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-3 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-11.jpg" alt="img">
-                        </a>
-                    </div>
-                    <a href="nft-item-details.html" class="box-story">
-                        <div class="box-img">
-                            <img class="lazyload" data-src="images/background/collection-12.jpg" alt="img">
-                        </div>
-                        <div class="content">
-                            <div class="button-2">Iceberg NFT</div>
-                            <span class="body-6">The story of Iceberg NFTs</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-box mt-20">
-                    <div class="gallery">
-                        <a href="nft-item-details.html" class="item-1 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-13.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-2 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-14.jpg" alt="img">
-                        </a>
-                        <a href="nft-item-details.html" class="item-3 round-10 hidden">
-                            <img class="lazyload" data-src="images/background/collection-15.jpg" alt="img">
-                        </a>
-                    </div>
-                    <a href="nft-item-details.html" class="box-story">
-                        <div class="box-img">
-                            <img class="lazyload" data-src="images/background/collection-16.jpg" alt="img">
-                        </div>
-                        <div class="content">
-                            <div class="button-2">RAFA Genesis</div>
-                            <span class="body-6">The story of RAFA Genesis</span>
-                        </div>
-                    </a>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>       
