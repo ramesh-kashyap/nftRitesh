@@ -303,7 +303,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="pb-24 mb-24 line">
+                <!-- <div class="pb-24 mb-24 line">
                     <div class="d-flex align-items-center gap-12">
                         <span class="body-3 text-dark-2">Current Price: </span>
                         <div class="d-flex align-items-center gap-8">
@@ -353,7 +353,7 @@
                             <span class="button-2 text-blue">Tim_David</span>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
             </div>
 
 
@@ -467,7 +467,7 @@
                                             pushing the art world into new territory. It all started with <span
                                                 class="text-primary fw-6">Read More...</span></p> -->
                                         <ul class="d-flex gap-12 mt-20">
-                                            <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round icon-web">
+                                            <li><a href="{{route('user.createNft')}}" class="box-icon w-36 bg-icon-1 w-36 round icon-web">
                                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -475,7 +475,7 @@
                                                             fill="#1A1528" />
                                                     </svg>
                                                 </a></li>
-                                            <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
+                                            <li><a href="{{route('user.createNft')}}" class="box-icon w-36 bg-icon-1 w-36 round">
                                                     <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -483,7 +483,7 @@
                                                             fill="#5865F2" />
                                                     </svg>
                                                 </a></li>
-                                            <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
+                                            <li><a href="{{route('user.createNft')}}" class="box-icon w-36 bg-icon-1 w-36 round">
                                                     <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -491,7 +491,7 @@
                                                             fill="#1D9BF0" />
                                                     </svg>
                                                 </a></li>
-                                            <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
+                                            <li><a href="{{route('user.createNft')}}" class="box-icon w-36 bg-icon-1 w-36 round">
                                                     <svg width="18" height="20" viewBox="0 0 18 20" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -516,7 +516,7 @@
                                                         </defs>
                                                     </svg>
                                                 </a></li>
-                                            <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
+                                            <li><a href="{{route('user.createNft')}}" class="box-icon w-36 bg-icon-1 w-36 round">
                                                     <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -532,7 +532,7 @@
                                                         </defs>
                                                     </svg>
                                                 </a></li>
-                                            <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round icon-modify">
+                                            <li><a href="{{route('user.createNft')}}" class="box-icon w-36 bg-icon-1 w-36 round icon-modify">
                                                     <svg width="19" height="16" viewBox="0 0 19 16" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -625,7 +625,7 @@
             <h2 class="text-center">Share</h2>
             <ul class="mt-28 box-share-social">
                 <li>
-                    <a href="#" class="social-share-item" data-platform="copyLink">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="copyLink">
                         <div class="box-icon w-40 copyLink">
                             <!-- SVG Icon -->
                         </div>
@@ -633,7 +633,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="social-share-item" data-platform="whatsApp">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="whatsApp">
                         <div class="box-icon w-40 whatsApp">
                             <!-- SVG Icon -->
                         </div>
@@ -641,7 +641,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="social-share-item" data-platform="facebook">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="facebook">
                         <div class="box-icon w-40 facebook">
                             <!-- SVG Icon -->
                         </div>
@@ -649,7 +649,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="social-share-item" data-platform="messenger">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="messenger">
                         <div class="box-icon w-40 messenger">
                             <!-- SVG Icon -->
                         </div>
@@ -657,7 +657,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="social-share-item" data-platform="twitter">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="twitter">
                         <div class="box-icon w-40 twitter-2">
                             <!-- SVG Icon -->
                         </div>
@@ -665,7 +665,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="social-share-item" data-platform="instagram">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="instagram">
                         <div class="box-icon w-40 instagram">
                             <!-- SVG Icon -->
                         </div>

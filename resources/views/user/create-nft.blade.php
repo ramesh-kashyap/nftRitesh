@@ -43,7 +43,7 @@
                 
                 <h4 style="position:absolute; top: 10px; right:15px">{{$nftd->name}}</h4>
                 <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
-                    Ankit
+                {{ Auth::user()->name }}
                 </p>
                 <p style="text-align:left; position:absolute; top: 100px; right:25px">Rebate</p>
                 <p style="font-size:30px; font-weight:800; text-align:justify; color:green; position:absolute; top: 130px; right:15px">
