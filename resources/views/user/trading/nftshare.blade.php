@@ -66,8 +66,22 @@
                 {{$nftd->price}}
                 </p>
                 
-                <span class="tag ethereum" style="left:38%">                    
-                {{$nftd->symbol}}
+                <span class="tag ethereum" style="left:38%">
+                    @if($nftd->symbol == 'MATIC')
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @elseif($nftd->symbol == 'USDT')
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @elseif($nftd->symbol == 'ETH')
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @else
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @endif
+
+                    {{$nftd->price}}
                 </span>
                 
             </div>

@@ -300,8 +300,8 @@
                   </svg>
               </a>
           </li>
-          <li class="action-add-wallet"><a href="{{route('user.myWallet')}}"><i class="icon-plus"></i></a></li>
-          <li><a href="{{route('user.myWallet')}}">
+          <li class="action-add-wallet"><a href="{{route('user.iamount')}}"><i class="icon-plus"></i></a></li>
+          <li><a href="{{route('user.iamount')}}">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity="0.6">
                     <path d="M5 10H7C9 10 10 9 10 7V5C10 3 9 2 7 2H5C3 2 2 3 2 5V7C2 9 3 10 5 10Z"

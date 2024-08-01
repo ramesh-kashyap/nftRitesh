@@ -109,6 +109,7 @@ class trading extends Controller
                 'nft_name' => 'required|string',
                 'nft_image' => 'required|string'
             ]);
+
             
             $user = Auth::user();
             $nft_id = $request->input('nft_id');
