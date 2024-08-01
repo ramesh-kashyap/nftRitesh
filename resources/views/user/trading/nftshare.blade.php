@@ -41,25 +41,25 @@
     <div class="mt-24 gap-15" style="text-align:center; margin-top:40px">
         <a href="" class="card-nft" style="text-align:center">
             <div class="box-img">
-                <img class="lazyload" src="{{asset('')}}images/background/bg-wallet-1.png" alt="img-nft" style="height:350px;width:auto; background:#1a152899">
+                <img class="lazyload" src="{{asset('')}}images/background/bg-wallet-1.png" alt="img-nft" style="height:350px;width:auto; >
                 <span class="tag react">                    
                 <img class="lazyload" src="{{asset('')}}images/avt/nft-logo-1.png" alt="img-nft" style="height:30px;width:auto">
                 </span>
                 
                 <h4 style="position:absolute; top: 10px; right:65px">Ankit</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899; position:absolute; top: 50px; right:15px">
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899; position:absolute; top: 50px; right:30px">
                     SolUSDT
                 </p>
-                <p style="text-align:left; position:absolute; top: 90px; left:15px">ROI</p>
-                <p style="font-size:40px; font-weight:800; text-align:justify; color:red; position:absolute; top: 130px; left:15px">
+                <p style="text-align:left; position:absolute; top: 90px; right:85px">ROI</p>
+                <p style="font-size:40px; font-weight:800; text-align:justify; color:red; position:absolute; top: 130px; right:15px">
                     81.5%
                 </p>
-                <h4 style="text-align:left; position:absolute; top: 170px; left:15px">Entry Price</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899;position:absolute; top: 200px; left:15px">
+                <h4 style="text-align:left; position:absolute; top: 170px; right:15px">Entry Price</h4>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899;position:absolute; top: 200px; right:15px">
                     $ 210
                 </p>
-                <h4 style="text-align:left; position:absolute; top: 230px; left:15px">Current Price</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899;position:absolute; top: 260px; left:15px">
+                <h4 style="text-align:left; position:absolute; top: 230px; right:15px">Current Price</h4>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#1a152899;position:absolute; top: 260px; right:15px">
                     $ 210
                 </p>
                 
