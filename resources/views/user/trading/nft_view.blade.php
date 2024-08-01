@@ -442,24 +442,28 @@
 
                                         </div>
                                         <div class="card-body row">
-                                            <div class="box-item col-4">
+                                            <div class="box-item col-3">
                                                 <div class="body-5 text-center">Rebate</div>
                                                 <div class="body-5 text-center" style="font-size:15px;">81.1</div>
                                             </div>
-                                            <div class="box-item col-4">
+                                            <div class="box-item col-3">
                                                 <div class="body-5 text-center">Income</div>
                                                 <div class="body-5 text-center" style="font-size:15px;color:#7f52ff; font-weight:800">2.4</div>
                                             </div>
-                                            <div class="box-item col-4">
+                                            <div class="box-item col-3">
+                                                <div class="body-5 text-center">ROI</div>
+                                                <div class="body-5 text-center" style="font-size:15px;color:#7f52ff; font-weight:800">2.4</div>
+                                            </div>
+                                            <div class="box-item col-3">
                                                 <div class="body-5 text-center">Date</div>
                                                 <div class="body-5 text-center" style="font-size:15px;">{{ $nftd->created_at}}</div>
                                             </div>
                                         </div>
 
-                                        <p class="mt-20 text-dark-2">An online community of makers, developers, and
+                                        <!-- <p class="mt-20 text-dark-2">An online community of makers, developers, and
                                             traders is
                                             pushing the art world into new territory. It all started with <span
-                                                class="text-primary fw-6">Read More...</span></p>
+                                                class="text-primary fw-6">Read More...</span></p> -->
                                         <ul class="d-flex gap-12 mt-20">
                                             <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round icon-web">
                                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -589,8 +593,8 @@
                                         <span class="button-3">{{$value->price}}</span>
                                     </div>
                                     <div class="box-item">
-                                        <div class="body-5">Quantity</div>
-                                        <span class="button-3">1</span>
+                                        <div class="body-5">ROI</div>
+                                        <span class="button-3">65</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
