@@ -53,18 +53,18 @@
                 <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
                     Ankit
                 </p>
-                <p style="text-align:left; position:absolute; top: 100px; right:25px">ROI</p>
+                <p style="text-align:left; position:absolute; top: 100px; right:25px">Rebate</p>
                 <p style="font-size:30px; font-weight:800; text-align:justify; color:green; position:absolute; top: 130px; right:15px">
                 83.1 %
                 </p>
-                <p style="text-align:left; position:absolute; top: 190px; right:15px">Entry Price</p>
+                <p style="text-align:left; position:absolute; top: 190px; right:15px">Income</p>
                 <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 210px; right:15px">
-                    $ 210
+                48.4    
                 </p>
-                <p style="text-align:left; position:absolute; top: 250px; right:15px">Current Price</p>
+                <!-- <p style="text-align:left; position:absolute; top: 250px; right:15px">Current Price</p>
                 <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 270px; right:15px">
                 {{$nftd->price}}
-                </p>
+                </p> -->
                 
                 <span class="tag ethereum" style="left:38%; padding-top:3px; padding-bottom:3px">
                     @if($nftd->symbol == 'MATIC')
@@ -87,7 +87,7 @@
                 
             </div>
             <div class="content">
-                <div class="button-1 name" >Join and claim over $5000 </div>
+                <div class="button-1 name" >Order No: D563H67</div>
                 <p class="mt-4 id-name"  style="font-weight:800;font-size:20px">Reffrel Code :11223344
                 <img class="lazyload" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$url&format=png" alt="img-nft" style="height:60px; width:auto">
                 </p>
