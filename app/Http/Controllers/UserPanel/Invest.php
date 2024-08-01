@@ -534,6 +534,86 @@ public function viewdetail($txnId)
         $this->data['deposit_list'] =$notes;
         $this->data['withdraw_report'] =$withdraw;
 
+         // Fetch collections from OpenSea API
+         $client = new \GuzzleHttp\Client();
+         try {
+             $response = $client->request('GET', 'https://api.opensea.io/api/v2/collections?chain=ethereum&limit=10&order_by=seven_day_volume', [
+                 'headers' => [
+                     'accept' => 'application/json',
+                     'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                 ],
+             ]);
+     
+             $body = $response->getBody();
+             $collections = json_decode($body, true);
+ 
+             $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=6', [
+               'headers' => [
+                 'accept' => 'application/json',
+                 'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+               ],
+             ]);
+ 
+             $nfts = $response->getBody();
+             $nftsLatest = json_decode($nfts, true);
+ 
+ 
+ 
+ // Filter out NFTs with empty image_url
+ $filteredNftsLatest = array_filter($nftsLatest['asset_events'], function($nft) {
+   return !empty($nft['nft']['image_url']);
+ });
+ 
+ 
+ $this->data['nftsLatest'] = $filteredNftsLatest;
+ 
+             // Filter out collections with empty image_url and add slug
+             $filtered_collections = array_map(function($collection) {
+                 $slug = $this->extractSlug($collection['opensea_url']);
+                 if (!empty($collection['image_url'])) {
+                     $collection['slug'] = $slug;
+                     return $collection;
+                 }
+                 return null;
+             }, $collections['collections']);
+     
+             // Remove null values from the array
+             $filtered_collections = array_filter($filtered_collections);
+     
+             // Fetch stats for each collection
+             $collectionStats = [];
+             foreach ($filtered_collections as $collection) {
+                 $slug = $collection['slug'];
+                 if ($slug) {
+                     try {
+                         $statsResponse = $client->request('GET', "https://api.opensea.io/api/v2/collections/{$slug}/stats", [
+                             'headers' => [
+                                 'accept' => 'application/json',
+                                 'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
+                             ],
+                         ]);
+     
+                         $statsBody = $statsResponse->getBody();
+                         $statsData = json_decode($statsBody, true);
+                         $collectionStats[$slug] = $statsData;
+                     } catch (\Exception $e) {
+                         $collectionStats[$slug] = [];
+                     }
+                 }
+             }
+     
+             // Add stats to collections
+             foreach ($filtered_collections as &$collection) {
+                 $slug = $collection['slug'];
+                 $collection['stats'] = $collectionStats[$slug] ?? [];
+             }
+
+     
+              $this->data['collections'] = $filtered_collections;
+         } catch (\Exception $e) {
+             $this->data['collections'] = [];
+         }
+
         $this->data['page'] = 'user.invest.more';
         return $this->dashboard_layout();
 
