@@ -7,8 +7,6 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
     <!-- font -->
     <link rel="stylesheet" href="../fonts/fonts.css">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <!-- Icons -->
     <link rel="stylesheet" href="../fonts/font-icons.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -116,16 +114,6 @@
             filter: blur(12px);
         }
 
-
-        .box-img img {
-            border-radius: 20px;
-        }
-        #contentToCapture {
-            background-color: #ffffff; /* Ensure white background for the content */
-            display: block; /* Ensure the content is displayed */
-            width: 100vw; /* Full viewport width */
-            position: relative;
-        }
     </style>
 </head>
 
@@ -391,794 +379,11 @@
                                     Activity</button>
                             </li>
 
-                    </ul>
-                </div>
-            </div>            
-            <div class="tab-content mt-28">
-                <div class="tab-pane fade active show" id="details" role="tabpanel">
-                    <div class="card-nft-1">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#collection"
-                            aria-expanded="true" aria-controls="collection">    
-                            <img src="{{$nftd->nft_image}}" fill="none" style="height:80px;width:auto; border-radius:50px">
-                            </div>
-                            <span class="button-2 text-blue" style="padding-left:50px">
-                                    
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M14.3733 7.16036L13.4667 6.10703C13.2933 5.90703 13.1533 5.5337 13.1533 5.26703V4.1337C13.1533 3.42703 12.5733 2.84703 11.8667 2.84703H10.7333C10.4733 2.84703 10.0933 2.70703 9.89334 2.5337L8.84 1.62703C8.38 1.2337 7.62667 1.2337 7.16 1.62703L6.11334 2.54036C5.91334 2.70703 5.53334 2.84703 5.27334 2.84703H4.12C3.41334 2.84703 2.83334 3.42703 2.83334 4.1337V5.2737C2.83334 5.5337 2.69334 5.90703 2.52667 6.10703L1.62667 7.16703C1.24 7.62703 1.24 8.3737 1.62667 8.8337L2.52667 9.8937C2.69334 10.0937 2.83334 10.467 2.83334 10.727V11.867C2.83334 12.5737 3.41334 13.1537 4.12 13.1537H5.27334C5.53334 13.1537 5.91334 13.2937 6.11334 13.467L7.16667 14.3737C7.62667 14.767 8.38 14.767 8.84667 14.3737L9.9 13.467C10.1 13.2937 10.4733 13.1537 10.74 13.1537H11.8733C12.58 13.1537 13.16 12.5737 13.16 11.867V10.7337C13.16 10.4737 13.3 10.0937 13.4733 9.8937L14.38 8.84036C14.7667 8.38036 14.7667 7.62036 14.3733 7.16036ZM10.7733 6.74036L7.55334 9.96036C7.46 10.0537 7.33334 10.107 7.2 10.107C7.06667 10.107 6.94 10.0537 6.84667 9.96036L5.23334 8.34703C5.04 8.1537 5.04 7.8337 5.23334 7.64036C5.42667 7.44703 5.74667 7.44703 5.94 7.64036L7.2 8.90036L10.0667 6.0337C10.26 5.84036 10.58 5.84036 10.7733 6.0337C10.9667 6.22703 10.9667 6.54703 10.7733 6.74036Z"
-                                            fill="#2664ED" />
-                                    </svg>
-                                </span>
-                        <div id="collection" class="accordion-collapse collapse show" aria-labelledby="collection">
-                            <div class="card-body">
-                                <div class="d-flex gap-12 align-items-center">
-                                    <!-- <div class="avatar avt-40">
-                                    <img src="{{$nftd->nft_image}}" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    </div> -->
-                                    
-                                </div>
-                                <p class="mt-20 text-dark-2">An online community of makers, developers, and traders is
-                                    pushing the art world into new territory. It all started with <span
-                                        class="text-primary fw-6">Read More...</span></p>
-                                <ul class="d-flex gap-12 mt-20">
-                                    <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round icon-web">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM17.931 9H15.167C15.0436 6.81124 14.4313 4.67797 13.375 2.757C14.5992 3.32905 15.6589 4.2014 16.4554 5.29291C17.252 6.38442 17.7596 7.65965 17.931 9ZM10.53 2.027C11.565 3.391 12.957 5.807 13.157 9H7.03C7.169 6.404 8.024 3.972 9.481 2.026C9.653 2.016 9.825 2 10 2C10.179 2 10.354 2.016 10.53 2.027ZM6.688 2.727C5.704 4.618 5.136 6.762 5.03 9H2.069C2.24177 7.64784 2.75663 6.3621 3.56489 5.26442C4.37315 4.16673 5.44808 3.29339 6.688 2.727ZM2.069 11H5.043C5.179 13.379 5.708 15.478 6.599 17.23C5.38119 16.6559 4.32773 15.7842 3.53596 14.6953C2.74419 13.6064 2.23966 12.3355 2.069 11ZM9.45 17.973C8.049 16.275 7.222 13.896 7.041 11H13.154C12.946 13.773 12.037 16.196 10.551 17.972C10.369 17.984 10.187 18 10 18C9.814 18 9.633 17.984 9.45 17.973ZM13.461 17.201C14.416 15.407 14.999 13.3 15.152 11H17.93C17.7612 12.3243 17.264 13.5853 16.4834 14.6684C15.7029 15.7514 14.6639 16.622 13.461 17.201Z"
-                                                    fill="#1A1528" />
-                                            </svg>
-                                        </a></li>
-                                    <li><button class="social-share-item" data-platform="whatsApp" id="shareButton">
-                                
-                                        WhatsApp
-                                    </button></li>
-                                    <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M17.633 3.99753C17.646 4.17253 17.646 4.34653 17.646 4.52053C17.646 9.84553 13.593 15.9815 6.186 15.9815C3.904 15.9815 1.784 15.3205 0 14.1725C0.324 14.2095 0.636 14.2225 0.973 14.2225C2.78599 14.2269 4.54764 13.6207 5.974 12.5015C5.13342 12.4863 4.31858 12.209 3.64324 11.7083C2.9679 11.2075 2.46578 10.5084 2.207 9.70853C2.456 9.74553 2.706 9.77053 2.968 9.77053C3.329 9.77053 3.692 9.72053 4.029 9.63353C3.11676 9.44934 2.29647 8.95488 1.70762 8.23422C1.11876 7.51355 0.797693 6.61118 0.799 5.68053V5.63053C1.336 5.92953 1.959 6.11653 2.619 6.14153C2.06609 5.77412 1.61272 5.27555 1.29934 4.69032C0.985959 4.10509 0.822313 3.45139 0.823 2.78753C0.823 2.03953 1.022 1.35353 1.371 0.755532C2.38314 2.00055 3.6455 3.01909 5.07633 3.74519C6.50717 4.47129 8.07456 4.88875 9.677 4.97053C9.615 4.67053 9.577 4.35953 9.577 4.04753C9.57674 3.51849 9.68074 2.99459 9.88308 2.50577C10.0854 2.01695 10.3821 1.57281 10.7562 1.19872C11.1303 0.824633 11.5744 0.527942 12.0632 0.32561C12.5521 0.123277 13.076 0.0192689 13.605 0.0195317C14.765 0.0195317 15.812 0.505531 16.548 1.29153C17.4498 1.11715 18.3145 0.787954 19.104 0.318532C18.8034 1.24935 18.1738 2.03864 17.333 2.53853C18.1328 2.44731 18.9144 2.23698 19.652 1.91453C19.1011 2.71763 18.4185 3.42188 17.633 3.99753Z"
-                                                    fill="#1D9BF0" />
-                                            </svg>
-                                        </a></li>
-                                    <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M17.9471 6.30447C17.937 5.54709 17.7952 4.79724 17.5281 4.08847C17.2964 3.49062 16.9426 2.94767 16.4892 2.4943C16.0359 2.04093 15.4929 1.68712 14.8951 1.45547C14.1954 1.19283 13.4562 1.05081 12.7091 1.03547C11.7471 0.992469 11.4421 0.980469 9.00007 0.980469C6.55807 0.980469 6.24507 0.980469 5.29007 1.03547C4.54323 1.05092 3.80442 1.19294 3.10507 1.45547C2.50713 1.68696 1.96409 2.04071 1.5107 2.4941C1.05732 2.94749 0.703559 3.49053 0.47207 4.08847C0.208901 4.7876 0.0671935 5.52658 0.0530703 6.27347C0.0100703 7.23647 -0.00292969 7.54147 -0.00292969 9.98347C-0.00292969 12.4255 -0.00292969 12.7375 0.0530703 13.6935C0.0680703 14.4415 0.20907 15.1795 0.47207 15.8805C0.703948 16.4782 1.05797 17.021 1.51151 17.4742C1.96505 17.9274 2.50813 18.281 3.10607 18.5125C3.8035 18.7857 4.54244 18.9378 5.29107 18.9625C6.25407 19.0055 6.55907 19.0185 9.00107 19.0185C11.4431 19.0185 11.7561 19.0185 12.7111 18.9625C13.4582 18.9478 14.1974 18.8061 14.8971 18.5435C15.4948 18.3116 16.0376 17.9576 16.4909 17.5043C16.9442 17.051 17.2982 16.5082 17.5301 15.9105C17.7931 15.2105 17.9341 14.4725 17.9491 13.7235C17.9921 12.7615 18.0051 12.4565 18.0051 10.0135C18.0031 7.57147 18.0031 7.26147 17.9471 6.30447ZM8.99407 14.6015C6.44007 14.6015 4.37107 12.5325 4.37107 9.97847C4.37107 7.42447 6.44007 5.35547 8.99407 5.35547C10.2202 5.35547 11.396 5.84253 12.263 6.70951C13.13 7.5765 13.6171 8.75237 13.6171 9.97847C13.6171 11.2046 13.13 12.3804 12.263 13.2474C11.396 14.1144 10.2202 14.6015 8.99407 14.6015ZM13.8011 6.26247C13.6595 6.2626 13.5192 6.23481 13.3884 6.18068C13.2575 6.12655 13.1386 6.04715 13.0385 5.94702C12.9384 5.8469 12.859 5.72801 12.8049 5.59716C12.7507 5.46631 12.7229 5.32607 12.7231 5.18447C12.7231 5.04297 12.7509 4.90286 12.8051 4.77213C12.8592 4.6414 12.9386 4.52262 13.0387 4.42256C13.1387 4.32251 13.2575 4.24314 13.3882 4.18899C13.519 4.13484 13.6591 4.10697 13.8006 4.10697C13.9421 4.10697 14.0822 4.13484 14.2129 4.18899C14.3436 4.24314 14.4624 4.32251 14.5625 4.42256C14.6625 4.52262 14.7419 4.6414 14.7961 4.77213C14.8502 4.90286 14.8781 5.04297 14.8781 5.18447C14.8781 5.78047 14.3961 6.26247 13.8011 6.26247Z"
-                                                    fill="url(#paint0_radial_4906_189)" />
-                                                <path
-                                                    d="M8.99421 12.9806C10.6527 12.9806 11.9972 11.6361 11.9972 9.97761C11.9972 8.3191 10.6527 6.97461 8.99421 6.97461C7.3357 6.97461 5.99121 8.3191 5.99121 9.97761C5.99121 11.6361 7.3357 12.9806 8.99421 12.9806Z"
-                                                    fill="url(#paint1_radial_4906_189)" />
-                                                <defs>
-                                                    <radialGradient id="paint0_radial_4906_189" cx="0" cy="0" r="1"
-                                                        gradientUnits="userSpaceOnUse"
-                                                        gradientTransform="translate(1.16253 18.6233) scale(22.8635 22.9016)">
-                                                        <stop offset="0.09" stop-color="#FA8F21" />
-                                                        <stop offset="0.78" stop-color="#D82D7E" />
-                                                    </radialGradient>
-                                                    <radialGradient id="paint1_radial_4906_189" cx="0" cy="0" r="1"
-                                                        gradientUnits="userSpaceOnUse"
-                                                        gradientTransform="translate(6.37991 12.849) scale(7.62539 7.62539)">
-                                                        <stop offset="0.09" stop-color="#FA8F21" />
-                                                        <stop offset="0.78" stop-color="#D82D7E" />
-                                                    </radialGradient>
-                                                </defs>
-                                            </svg>
-                                        </a></li>
-                                    <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M18.6651 0.717797L0.935095 7.5548C-0.274905 8.0408 -0.267905 8.7158 0.713095 9.0168L5.26509 10.4368L15.7971 3.7918C16.2951 3.4888 16.7501 3.6518 16.3761 3.9838L7.8431 11.6848H7.84109L7.8431 11.6858L7.5291 16.3778C7.9891 16.3778 8.19209 16.1668 8.45009 15.9178L10.6611 13.7678L15.2601 17.1648C16.1081 17.6318 16.7171 17.3918 16.9281 16.3798L19.9471 2.1518C20.2561 0.912797 19.4741 0.351797 18.6651 0.717797Z"
-                                                    fill="url(#paint0_linear_4906_2549)" />
-                                                <defs>
-                                                    <linearGradient id="paint0_linear_4906_2549" x1="10.0083"
-                                                        y1="0.607422" x2="10.0083" y2="17.2694"
-                                                        gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="#2AABEE" />
-                                                        <stop offset="1" stop-color="#229ED9" />
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                        </a></li>
-                                    <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round icon-modify">
-                                            <svg width="19" height="16" viewBox="0 0 19 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M2.28513 3.26927C2.29666 3.15448 2.28093 3.0386 2.23923 2.93104C2.19753 2.82348 2.13102 2.72728 2.04513 2.65027L0.275133 0.517266V0.197266H5.77313L10.0231 9.51727L13.7591 0.197266H19.0001V0.516265L17.4851 1.96727C17.4217 2.01665 17.3727 2.08211 17.3432 2.15685C17.3136 2.23159 17.3046 2.31288 17.3171 2.39227V13.0583C17.3044 13.1377 17.3133 13.219 17.3429 13.2938C17.3724 13.3686 17.4216 13.434 17.4851 13.4833L18.9641 14.9343V15.2533H11.5281V14.9343L13.0571 13.4473C13.2091 13.2973 13.2091 13.2523 13.2091 13.0233V4.40127L8.95013 15.2183H8.37513L3.41713 4.40127V11.6503C3.37613 11.9553 3.47713 12.2623 3.69213 12.4833L5.68413 14.9003V15.2193H0.0361328V14.9003L2.02813 12.4833C2.13293 12.3741 2.21075 12.2419 2.25537 12.0972C2.29999 11.9526 2.31018 11.7995 2.28513 11.6503V3.26927Z"
-                                                    fill="#1A1528" />
-                                            </svg>
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-
+                        </ul>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="offers" role="tabpanel">
-                    <!-- item 1 -->
-                    <div class="card-nft-2">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#offers-1"
-                            aria-expanded="true" aria-controls="offers-1">
-                            <div class="content-left">
-                                <div class="button-1">CryptoBoom</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">122.274</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$152,397.42</span>
-                            </div>
-                        </div>
-                        <div id="offers-1" class="accordion-collapse collapse show" aria-labelledby="offers-1">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 2 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-2"
-                            aria-expanded="true" aria-controls="offers-2">
-                            <div class="content-left">
-                                <div class="button-1">WowooWorld</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">121.938</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$151,978.64</span>
-                            </div>
-                        </div>
-                        <div id="offers-2" class="accordion-collapse collapse" aria-labelledby="offers-2">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 3 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-3"
-                            aria-expanded="true" aria-controls="offers-3">
-                            <div class="content-left">
-                                <div class="button-1">LonelyLions</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">120.279</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$149,910.93</span>
-                            </div>
-                        </div>
-                        <div id="offers-3" class="accordion-collapse collapse" aria-labelledby="offers-3">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 4 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-4"
-                            aria-expanded="true" aria-controls="offers-4">
-                            <div class="content-left">
-                                <div class="button-1">LightEmbrace</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">120.279</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$149,910.93</span>
-                            </div>
-                        </div>
-                        <div id="offers-4" class="accordion-collapse collapse" aria-labelledby="offers-4">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 5 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-5"
-                            aria-expanded="true" aria-controls="offers-5">
-                            <div class="content-left">
-                                <div class="button-1">FlameStinger</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">119.266</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$148,648.37</span>
-                            </div>
-                        </div>
-                        <div id="offers-5" class="accordion-collapse collapse" aria-labelledby="offers-5">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 6 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-6"
-                            aria-expanded="true" aria-controls="offers-6">
-                            <div class="content-left">
-                                <div class="button-1">Crystalline</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">119.105</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$148,592.21</span>
-                            </div>
-                        </div>
-                        <div id="offers-6" class="accordion-collapse collapse" aria-labelledby="offers-6">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 7 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-7"
-                            aria-expanded="true" aria-controls="offers-7">
-                            <div class="content-left">
-                                <div class="button-1">VisionaryCrypto</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">118.946</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$148,514.78</span>
-                            </div>
-                        </div>
-                        <div id="offers-7" class="accordion-collapse collapse" aria-labelledby="offers-7">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 8 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-8"
-                            aria-expanded="true" aria-controls="offers-8">
-                            <div class="content-left">
-                                <div class="button-1">FunnyFrogs</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">118.427</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$147,866.76</span>
-                            </div>
-                        </div>
-                        <div id="offers-8" class="accordion-collapse collapse" aria-labelledby="offers-8">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 9 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-9"
-                            aria-expanded="true" aria-controls="offers-9">
-                            <div class="content-left">
-                                <div class="button-1">CryptoJackpot</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">117.832</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$147,123.85</span>
-                            </div>
-                        </div>
-                        <div id="offers-9" class="accordion-collapse collapse" aria-labelledby="offers-9">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 10 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#offers-10"
-                            aria-expanded="true" aria-controls="offers-10">
-                            <div class="content-left">
-                                <div class="button-1">ArtDodger</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">116.835</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$145,879.01</span>
-                            </div>
-                        </div>
-                        <div id="offers-10" class="accordion-collapse collapse" aria-labelledby="offers-10">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">18% below</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">CryptoBoom</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 20 hours</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="#" class="mt-20 button-1 text-primary d-flex justify-content-center">+more</a>
-                </div>
-                <div class="tab-pane fade" id="listings" role="tabpanel">
-                    <!-- item 1 -->
-                    <div class="card-nft-2">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#listings-1"
-                            aria-expanded="true" aria-controls="listings-1">
-                            <div class="content-left">
-                                <div class="button-1">Claith_ETH</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">125.697</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$166,948.90</span>
-                            </div>
-                        </div>
-                        <div id="listings-1" class="accordion-collapse collapse show" aria-labelledby="listings-1">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">8% above</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 3 weeks</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 2 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#listings-2"
-                            aria-expanded="true" aria-controls="listings-2">
-                            <div class="content-left">
-                                <div class="button-1">Claith_ETH</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">126.273</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$168,387.45</span>
-                            </div>
-                        </div>
-                        <div id="listings-2" class="accordion-collapse collapse" aria-labelledby="listings-2">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">8% above</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 3 weeks</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 3 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#listings-3"
-                            aria-expanded="true" aria-controls="listings-3">
-                            <div class="content-left">
-                                <div class="button-1">Claith_ETH</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">126.563</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$169,749.47</span>
-                            </div>
-                        </div>
-                        <div id="listings-3" class="accordion-collapse collapse" aria-labelledby="listings-3">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">8% above</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 3 weeks</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 4 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#listings-4"
-                            aria-expanded="true" aria-controls="listings-4">
-                            <div class="content-left">
-                                <div class="button-1">Claith_ETH</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">127.279</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$170,472.34</span>
-                            </div>
-                        </div>
-                        <div id="listings-4" class="accordion-collapse collapse" aria-labelledby="listings-4">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">8% above</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 3 weeks</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 5 -->
-                    <div class="card-nft-2 mt-20">
-                        <div class="card-header collapsed" data-bs-toggle="collapse" data-bs-target="#listings-5"
-                            aria-expanded="true" aria-controls="listings-5">
-                            <div class="content-left">
-                                <div class="button-1">Claith_ETH</div>
-                                <span class="less button-3">-less</span>
-                                <span class="more button-3">+more</span>
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">127.482</div>
-                                </div>
-                                <span class="button-2 text-dark-2">$170,472.34</span>
-                            </div>
-                        </div>
-                        <div id="listings-5" class="accordion-collapse collapse" aria-labelledby="listings-5">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Floor Diff.</div>
-                                    <span class="button-3">8% above</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">From</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5 text-center">Expiration</div>
-                                    <span class="button-3">In 3 weeks</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade check-list" id="activity" role="tabpanel">
-                    <!-- item 1 -->
+                <div class="tab-content mt-28">
+                    <div class="tab-pane fade active show" id="details" role="tabpanel">
                     <div class="card-nft-2 style-2">
                     @if($nftd)
                             <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-1"
@@ -1193,238 +398,120 @@
                                         </div>
                                     </div>
 
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">125.697</div>
                                 </div>
-                                <span class="button-2 text-dark-2">24 minutes ago</span>
-                            </div>
-                        </div>
-                        <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5">USD Price</div>
-                                    <span class="button-3">$166,948.90</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">Quantity</div>
-                                    <span class="button-3">1</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">From</div>
-                                    <span class="button-3 text-primary">Hape_NFT</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">To</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
+                                <div class="content-right">
+                                    <div class="d-flex gap-2 align-items-center">
+                                    @if($nftd->symbol == 'MATIC')
+                                              <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
+                                              style="height:20px;width:auto;">
+                                              @elseif($nftd->symbol == 'USDT')
+                                            <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                                             style="height:20px;width:auto;">
+                                             @elseif($nftd->symbol == 'ETH')
+                                            <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
+                                             style="height:20px;width:auto;">
+                                            @else
+                                            <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                                            style="height:20px;width:auto;">
+                                            @endif
+                                        <div class="button-2">{{$nftd->price}}</div>
+                                    </div>
+                                    <span class="button-2 text-dark-2">Order No: F564J838</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- item 2 -->
-                    <div class="card-nft-2 style-2 mt-20">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-2"
-                            aria-expanded="true" aria-controls="activity-2">
-                            <div class="content-left">
-                                <div class="d-flex gap-16 align-items-center">
-                                    <i class="icon icon-document-text"></i>
-                                    <div>
-                                        <div class="button-1">List</div>
-                                        <span class="less button-3">-less</span>
-                                        <span class="more button-3">+more</span>
+                            <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
+                                <div class="card-body">
+                                    <div class="box-item">
+                                        <div class="body-5">Income</div>
+                                        <span class="button-3" style="font-size:20px;color:#7f52ff">78.9</span>
+                                    </div>
+                                    <div class="box-item">
+                                        <div class="body-5" style="font-size:15px;">Rebate</div>
+                                        <span class="button-3">65</span>
+                                    </div>
+                                    <div class="box-item">
+                                        <div class="body-5">Creator</div>
+                                        <span class="button-3 text-primary">{{$nftd->creator}}</span>
+                                    </div>
+                                    <div class="box-item">
+                                        <div class="body-5">Date</div>
+                                        <span class="button-3 text-primary">{{$nftd->created_at}}</span>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">125.697</div>
-                                </div>
-                                <span class="button-2 text-dark-2">4 days ago</span>
                             </div>
                         </div>
-                        <div id="activity-2" class="accordion-collapse collapse show" aria-labelledby="activity-2">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5">USD Price</div>
-                                    <span class="button-3">$166,948.90</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">Quantity</div>
-                                    <span class="button-3">1</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">From</div>
-                                    <span class="button-3 text-primary">Hape_NFT</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 3 -->
-                    <div class="card-nft-2 style-3 mt-20">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-3"
-                            aria-expanded="true" aria-controls="activity-3">
-                            <div class="content-left">
-                                <div class="d-flex gap-16 align-items-center">
-                                    <i class="icon icon-arrow-swap"></i>
-                                    <div>
-                                        <div class="button-1">Transfer</div>
-                                        <span class="less button-3">-less</span>
-                                        <span class="more button-3">+more</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="content-right">
-                                <span class="button-2 text-dark-2">10 days ago</span>
-                            </div>
-                        </div>
-                        <div id="activity-3" class="accordion-collapse collapse show" aria-labelledby="activity-3">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5">From</div>
-                                    <span class="button-3 text-primary">Hape_NFT</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">To</div>
-                                    <span class="button-3 text-primary">Claith_ETH</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- item 4 -->
-                    <div class="card-nft-2 style-2 mt-20">
-                        <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-4"
-                            aria-expanded="true" aria-controls="activity-4">
-                            <div class="content-left">
-                                <div class="d-flex gap-16 align-items-center">
-                                    <i class="icon icon-judge"></i>
-                                    <div>
-                                        <div class="button-1">Bid</div>
-                                        <span class="less button-3">-less</span>
-                                        <span class="more button-3">+more</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="content-right">
-                                <div class="d-flex gap-2 align-items-center">
-                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                            fill="#1A1528" />
-                                        <path
-                                            d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                            fill="#1A1528" />
-                                    </svg>
-                                    <div class="button-2">123.376</div>
-                                </div>
-                                <span class="button-2 text-dark-2">12 days ago</span>
-                            </div>
-                        </div>
-                        <div id="activity-4" class="accordion-collapse collapse show" aria-labelledby="activity-4">
-                            <div class="card-body">
-                                <div class="box-item">
-                                    <div class="body-5">USD Price</div>
-                                    <span class="button-3">$157,276.45</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">Quantity</div>
-                                    <span class="button-3">1</span>
-                                </div>
-                                <div class="box-item">
-                                    <div class="body-5">From</div>
-                                    <span class="button-3 text-primary">KryptoQueen</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        
-    </div>
-    </div>
-
-    <span id="contentToCapture" class="mt-24 gap-15" style="text-align:center;margin-top:40px;position: relative;background:transparent;width: 400px;margin: 0px auto;display:none;">
-        <a href="" class="card-nft" style="text-align:center">
-            <div class="box-img" style="min-width: 400px">
-                <img class="lazyload" src="{{$nftd->nft_image}}" alt="img-nft" style="height: 250px; width: 250px; margin-right: 100px; margin-top: 50px;">
-                                   
-                    <img class="lazyload" src="{{asset('')}}images/logo/nestnft.png" alt="img-nft" style="height:30px;width:auto;left:0; position: absolute;">
-                
-                
-                <h4 style="position:absolute; top: 10px; right:15px">{{$nftd->name}}</h4>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
-                    Ankit
-                </p>
-                <p style="text-align:left; position:absolute; top: 100px; right:25px">Rebate</p>
-                <p style="font-size:30px; font-weight:800; text-align:justify; color:green; position:absolute; top: 130px; right:15px">
-                83.1 %
-                </p>
-                <p style="text-align:left; position:absolute; top: 190px; right:15px">Income</p>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 210px; right:15px">
-                48.4    
-                </p>
-                
-                <span class="tag ethereum" style="left:38%; padding-top:3px; padding-bottom:3px">
-                    @if($nftd->symbol == 'MATIC')
-                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
-                    style="height:20px;width:auto;">
-                    @elseif($nftd->symbol == 'USDT')
-                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
-                    style="height:20px;width:auto;">
-                    @elseif($nftd->symbol == 'ETH')
-                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
-                    style="height:20px;width:auto;">
                     @else
-                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
-                    style="height:20px;width:auto;">
-                    @endif
-                    <p style="font-size:15px;font-weight:800;color:#7f52ff">
-                {{$nftd->price}}
-                </p>
-                </span>
-                
+                        <h4>No NFT Data Available !..</h4>
+                        @endif
+                    </div>
+                        
+                    <div class="tab-pane fade check-list" id="activity" role="tabpanel">
+                        <!-- item 1 -->
+                         @foreach ($nftall as $value)                                                 
+                         
+                        <div class="card-nft-2 style-2">
+                            <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-1"
+                                aria-expanded="true" aria-controls="activity-1">
+                                <div class="content-left">
+                                    <div class="d-flex gap-16 align-items-center">
+                                    <img class="lazyload" src="{{$value->nft_image}}" alt="img-nft" style="height:80px;width:auto;border-radius:20%">
+                                        <div>
+                                            <div class="button-1">{{$value->name}}</div>
+                                            <span class="less button-3">-less</span>
+                                            <span class="more button-3">+more</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="content-right">
+                                    <div class="d-flex gap-2 align-items-center">
+                                    @if($value->symbol == 'MATIC')
+                                              <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
+                                              style="height:20px;width:auto;">
+                                              @elseif($nftd->symbol == 'USDT')
+                                            <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                                             style="height:20px;width:auto;">
+                                             @elseif($nftd->symbol == 'ETH')
+                                            <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
+                                             style="height:20px;width:auto;">
+                                            @else
+                                            <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                                            style="height:20px;width:auto;">
+                                            @endif
+                                        <div class="button-2">{{$value->price}}</div>
+                                    </div>
+                                    <span class="button-2 text-dark-2">Order No: Y796222</span>
+                                </div>
+                            </div>
+                            <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
+                                <div class="card-body">
+                                    <div class="box-item">
+                                        <div class="body-5">Income</div>
+                                        <span class="button-3" style="font-size:20px;color:#7f52ff">89.2</span>
+                                    </div>
+                                    <div class="box-item">
+                                        <div class="body-5">Rebate</div>
+                                        <span class="button-3" style="font-size:15px;"></span>
+                                    </div>
+                                    <div class="box-item">
+                                        <div class="body-5">Creator</div>
+                                        <span class="button-3 text-primary">{{$value->creator}}</span>
+                                    </div>
+                                    <div class="box-item">
+                                        <div class="body-5">Date</div>
+                                        <span class="button-3 text-primary">{{$value->created_at}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        @endforeach                       
+                    </div>
+
+                </div>
             </div>
-            <div class="content">
-                <div class="button-1 name" >Order No: D563H67</div>
-                <p class="mt-4 id-name"  style="font-weight:800;font-size:20px">Reffrel Code :11223344
-                <img class="lazyload" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$url&format=png" alt="img-nft" style="height:60px; width:auto">
-                </p>
-            </div>
-        </a>
-    </span>
+
+        </div>
+    </div>
 
 
 
@@ -1441,12 +528,12 @@
                     </a>
                 </li>
                 <li>
-                    <button class="social-share-item" data-platform="whatsApp" id="shareButton">
+                    <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="whatsApp">
                         <div class="box-icon w-40 whatsApp">
                             <!-- SVG Icon -->
                         </div>
                         <span>WhatsApp</span>
-                    </button>
+                    </a>
                 </li>
                 <li>
                     <a href="{{route('user.createNft')}}" class="social-share-item" data-platform="facebook">
@@ -1726,154 +813,7 @@
             });
         });
 
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll('.social-share-item').forEach(function(button) {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const socialPlatform = this.getAttribute('data-platform');
-
-                // Select the content to be captured
-                const contentToShare = document.querySelector('#content-to-share');
-
-                html2canvas(contentToShare).then(canvas => {
-                    const imgData = canvas.toDataURL('image/png');
-
-                    switch(socialPlatform) {
-                        case 'copyLink':
-                            copyLink(imgData);
-                            break;
-                        case 'whatsApp':
-                            shareOnWhatsApp(imgData);
-                            break;
-                        case 'facebook':
-                            shareOnFacebook(imgData);
-                            break;
-                        case 'messenger':
-                            shareOnMessenger(imgData);
-                            break;
-                        case 'twitter':
-                            shareOnTwitter(imgData);
-                            break;
-                        case 'instagram':
-                            shareOnInstagram(imgData);
-                            break;
-                        default:
-                            console.log('Unknown platform:', socialPlatform);
-                    }
-                });
-            });
-        });
-    });
-
-    function copyLink(imgData) {
-        // Logic to copy the link (if needed)
-    }
-
-    function shareOnWhatsApp(imgData) {
-        const url = `https://wa.me/?text=${encodeURIComponent(imgData)}`;
-        window.open(url, '_blank');
-    }
-
-    function shareOnFacebook(imgData) {
-        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imgData)}`;
-        window.open(url, '_blank');
-    }
-
-    function shareOnMessenger(imgData) {
-        const url = `fb-messenger://share?link=${encodeURIComponent(imgData)}`;
-        window.open(url, '_blank');
-    }
-
-    function shareOnTwitter(imgData) {
-        const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(imgData)}`;
-        window.open(url, '_blank');
-    }
-
-    function shareOnInstagram(imgData) {
-        // Note: Instagram sharing from web is limited
-        console.log('Share on Instagram:', imgData);
-    }
-</script>
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    document.getElementById('shareButton').addEventListener('click', function() {
-        var content = document.getElementById('contentToCapture');
-
-        // Ensure images are loaded
-        var images = content.getElementsByTagName('img');
-        var totalImages = images.length;
-        var imagesLoaded = 0;
-
-        function checkImagesLoaded() {
-            if (imagesLoaded === totalImages || totalImages === 0) {
-                captureContent();
-            }
-        }
-
-        if (totalImages > 0) {
-            Array.from(images).forEach(img => {
-                img.onload = img.onerror = function() {
-                    imagesLoaded++;
-                    checkImagesLoaded();
-                };
-                // Trigger image loading if not already loaded
-                if (img.complete) {
-                    imagesLoaded++;
-                    checkImagesLoaded();
-                }
-            });
-        } else {
-            captureContent(); // No images to load
-        }
-
-        function captureContent() {
-            setTimeout(function() {
-                domtoimage.toPng(content, {
-                    bgcolor: '#ffffff', // Set background color to white
-                    width: content.offsetWidth, // Set width to content's offset width
-                    height: content.offsetHeight, // Set height to content's offset height
-                    style: {
-                        margin: 0,
-                        padding: 0
-                    }
-                })
-                .then(function (dataUrl) {
-                    // Upload image to server
-                    $.ajax({
-                        url: '{{ route('upload.image') }}',
-                        type: 'POST',
-                        data: { image: dataUrl },
-                        success: function(response) {
-                            if (response.success) {
-                                var imageUrl = response.url; // Get the URL of the uploaded image
-                                var whatsappUrl = `https://wa.me/?text=${encodeURIComponent('Check out this image: ' + imageUrl)}`;
-
-                                // Open the WhatsApp sharing link
-                                window.open(whatsappUrl, '_blank');
-                            } else {
-                                console.error('Error uploading image:', response.message);
-                            }
-                        },
-                        error: function(error) {
-                            console.error('Error uploading image:', error);
-                        }
-                    });
-                })
-                .catch(function (error) {
-                    console.error('Error capturing content:', error);
-                });
-            }, 3000); // Increased delay to ensure all content is loaded
-        }
-    });
-</script>
-
+    </script>
 
 
 
