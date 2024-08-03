@@ -60,10 +60,11 @@
             animation: spin 4s linear infinite;
         }
 
-        <blade keyframes|%20spin%20%7B%0D>100% {
-            transform: rotateY(360deg);
+        @keyframes spin {
+       100% {
+         transform: rotateY(360deg);
         }
-        }
+       }
 
         .pyramid-loader .wrapper .side {
             width: 70px;
