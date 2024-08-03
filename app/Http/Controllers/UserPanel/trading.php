@@ -227,7 +227,7 @@ class trading extends Controller
 
     public function investamount()
 {
-    
+    // $income =Income::where()
 
     $user = Auth::user();   
     // $iamount = Package::all();

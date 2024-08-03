@@ -491,7 +491,7 @@
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
-                                        <span class="button-3" style="font-size:15px;">65</span>
+                                        <span class="button-3" style="font-size:15px;"></span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
