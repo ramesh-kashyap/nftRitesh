@@ -345,4 +345,19 @@ class trading extends Controller
     // return response()->download($screenshotPath);
 }
 
+public function upload(Request $request)
+    {
+        $imageData = $request->input('image');
+        $image = str_replace('data:image/png;base64,', '', $imageData);
+        $image = str_replace(' ', '+', $image);
+        $imageName = time() . '.png';
+        $filePath = public_path('images/') . $imageName;
+        file_put_contents($filePath, base64_decode($image));
+
+        $imageUrl = asset('images/' . $imageName);
+
+        return response()->json(['success' => true, 'url' => $imageUrl]);
+    }
+
+
 }

@@ -7,6 +7,8 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
     <!-- font -->
     <link rel="stylesheet" href="../fonts/fonts.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <!-- Icons -->
     <link rel="stylesheet" href="../fonts/font-icons.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -112,6 +114,16 @@
   filter: blur(12px);
 }
 
+
+        .box-img img {
+            border-radius: 20px;
+        }
+        #contentToCapture {
+            background-color: #ffffff; /* Ensure white background for the content */
+            display: block; /* Ensure the content is displayed */
+            width: 100vw; /* Full viewport width */
+            position: relative;
+        }
     </style>
 </head>
 
@@ -405,14 +417,10 @@
                                                     fill="#1A1528" />
                                             </svg>
                                         </a></li>
-                                    <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M13.8199 0.259766C13.6213 0.615453 13.4443 0.982785 13.2899 1.35977C11.7727 1.11982 10.2272 1.11982 8.70992 1.35977C8.55551 0.982785 8.37852 0.615453 8.17992 0.259766C6.75071 0.503967 5.36132 0.941303 4.04992 1.55977C1.70486 4.94405 0.641354 9.05272 1.04992 13.1498C2.57815 14.2986 4.29338 15.1748 6.11992 15.7398C6.53583 15.1904 6.90702 14.6085 7.22992 13.9998C6.63399 13.78 6.06121 13.502 5.51992 13.1698C5.66838 13.071 5.80881 12.9606 5.93992 12.8398C7.51838 13.6001 9.24789 13.9949 10.9999 13.9949C12.7519 13.9949 14.4815 13.6001 16.0599 12.8398C16.1999 12.9598 16.3399 13.0698 16.4799 13.1698C15.9357 13.4994 15.3635 13.7805 14.7699 14.0098C15.0794 14.6323 15.4407 15.2277 15.8499 15.7898C17.6742 15.2268 19.3864 14.3504 20.9099 13.1998C21.3283 9.10197 20.2639 4.98995 17.9099 1.60977C16.6132 0.978503 15.2376 0.524436 13.8199 0.259766ZM7.67992 10.8098C7.1795 10.7738 6.71246 10.5455 6.37684 10.1725C6.04122 9.79962 5.86311 9.31119 5.87992 8.80977C5.86058 8.30768 6.0378 7.81785 6.37393 7.44438C6.71005 7.0709 7.17858 6.84324 7.67992 6.80977C8.18126 6.84324 8.64978 7.0709 8.9859 7.44438C9.32203 7.81785 9.49926 8.30768 9.47992 8.80977C9.49926 9.31185 9.32203 9.80168 8.9859 10.1752C8.64978 10.5486 8.18126 10.7763 7.67992 10.8098ZM14.3199 10.8098C13.8195 10.7738 13.3525 10.5455 13.0168 10.1725C12.6812 9.79962 12.5031 9.31119 12.5199 8.80977C12.5006 8.30768 12.6778 7.81785 13.0139 7.44438C13.3501 7.0709 13.8186 6.84324 14.3199 6.80977C14.8222 6.84074 15.2922 7.06767 15.6289 7.44171C15.9655 7.81576 16.1418 8.30702 16.1199 8.80977C16.1418 9.31251 15.9655 9.80377 15.6289 10.1778C15.2922 10.5519 14.8222 10.7788 14.3199 10.8098Z"
-                                                    fill="#5865F2" />
-                                            </svg>
-                                        </a></li>
+                                    <li><button class="social-share-item" data-platform="whatsApp" id="shareButton">
+                                
+                                        WhatsApp
+                                    </button></li>
                                     <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
                                             <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -1354,6 +1362,56 @@
     </div>
     </div>
 
+    <span id="contentToCapture" class="mt-24 gap-15" style="text-align:center;margin-top:40px;position: relative;background:transparent;width: 400px;margin: 0px auto;display:none;">
+        <a href="" class="card-nft" style="text-align:center">
+            <div class="box-img" style="min-width: 400px">
+                <img class="lazyload" src="{{$nftd->nft_image}}" alt="img-nft" style="height: 250px; width: 250px; margin-right: 100px; margin-top: 50px;">
+                                   
+                    <img class="lazyload" src="{{asset('')}}images/logo/nestnft.png" alt="img-nft" style="height:30px;width:auto;left:0; position: absolute;">
+                
+                
+                <h4 style="position:absolute; top: 10px; right:15px">{{$nftd->name}}</h4>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
+                    Ankit
+                </p>
+                <p style="text-align:left; position:absolute; top: 100px; right:25px">Rebate</p>
+                <p style="font-size:30px; font-weight:800; text-align:justify; color:green; position:absolute; top: 130px; right:15px">
+                83.1 %
+                </p>
+                <p style="text-align:left; position:absolute; top: 190px; right:15px">Income</p>
+                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 210px; right:15px">
+                48.4    
+                </p>
+                
+                <span class="tag ethereum" style="left:38%; padding-top:3px; padding-bottom:3px">
+                    @if($nftd->symbol == 'MATIC')
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @elseif($nftd->symbol == 'USDT')
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @elseif($nftd->symbol == 'ETH')
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @else
+                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                    style="height:20px;width:auto;">
+                    @endif
+                    <p style="font-size:15px;font-weight:800;color:#7f52ff">
+                {{$nftd->price}}
+                </p>
+                </span>
+                
+            </div>
+            <div class="content">
+                <div class="button-1 name" >Order No: D563H67</div>
+                <p class="mt-4 id-name"  style="font-weight:800;font-size:20px">Reffrel Code :11223344
+                <img class="lazyload" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$url&format=png" alt="img-nft" style="height:60px; width:auto">
+                </p>
+            </div>
+        </a>
+    </span>
+
 
 
     <div class="offcanvas offcanvas-bottom" id="share">
@@ -1369,12 +1427,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="social-share-item" data-platform="whatsApp">
+                    <button class="social-share-item" data-platform="whatsApp" id="shareButton">
                         <div class="box-icon w-40 whatsApp">
                             <!-- SVG Icon -->
                         </div>
                         <span>WhatsApp</span>
-                    </a>
+                    </button>
                 </li>
                 <li>
                     <a href="#" class="social-share-item" data-platform="facebook">
@@ -1715,6 +1773,83 @@
         // Note: Instagram sharing from web is limited
         console.log('Share on Instagram:', imgData);
     }
+</script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    document.getElementById('shareButton').addEventListener('click', function() {
+        var content = document.getElementById('contentToCapture');
+
+        // Ensure images are loaded
+        var images = content.getElementsByTagName('img');
+        var totalImages = images.length;
+        var imagesLoaded = 0;
+
+        function checkImagesLoaded() {
+            if (imagesLoaded === totalImages || totalImages === 0) {
+                captureContent();
+            }
+        }
+
+        if (totalImages > 0) {
+            Array.from(images).forEach(img => {
+                img.onload = img.onerror = function() {
+                    imagesLoaded++;
+                    checkImagesLoaded();
+                };
+                // Trigger image loading if not already loaded
+                if (img.complete) {
+                    imagesLoaded++;
+                    checkImagesLoaded();
+                }
+            });
+        } else {
+            captureContent(); // No images to load
+        }
+
+        function captureContent() {
+            setTimeout(function() {
+                domtoimage.toPng(content, {
+                    bgcolor: '#ffffff', // Set background color to white
+                    width: content.offsetWidth, // Set width to content's offset width
+                    height: content.offsetHeight, // Set height to content's offset height
+                    style: {
+                        margin: 0,
+                        padding: 0
+                    }
+                })
+                .then(function (dataUrl) {
+                    // Upload image to server
+                    $.ajax({
+                        url: '{{ route('upload.image') }}',
+                        type: 'POST',
+                        data: { image: dataUrl },
+                        success: function(response) {
+                            if (response.success) {
+                                var imageUrl = response.url; // Get the URL of the uploaded image
+                                var whatsappUrl = `https://wa.me/?text=${encodeURIComponent('Check out this image: ' + imageUrl)}`;
+
+                                // Open the WhatsApp sharing link
+                                window.open(whatsappUrl, '_blank');
+                            } else {
+                                console.error('Error uploading image:', response.message);
+                            }
+                        },
+                        error: function(error) {
+                            console.error('Error uploading image:', error);
+                        }
+                    });
+                })
+                .catch(function (error) {
+                    console.error('Error capturing content:', error);
+                });
+            }, 3000); // Increased delay to ensure all content is loaded
+        }
+    });
 </script>
 
 

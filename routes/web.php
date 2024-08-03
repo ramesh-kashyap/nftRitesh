@@ -146,6 +146,9 @@ Route::post('/nft-submit', [App\Http\Controllers\UserPanel\trading::class, 'subm
 Route::get('/nft', [App\Http\Controllers\UserPanel\trading::class, 'investamount'])->name('user.iamount');
 Route::post('/sellnft', [App\Http\Controllers\UserPanel\trading::class, 'sellnft'])->name('user.sellnft');
 Route::get('/sharenft', [App\Http\Controllers\UserPanel\trading::class, 'sharenft'])->name('user.sharenft');
+// routes/web.php
+Route::post('/upload-image', [App\Http\Controllers\UserPanel\trading::class, 'upload'])->name('upload.image');
+
 
 //nft end
 
