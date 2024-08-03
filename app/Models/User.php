@@ -95,6 +95,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Trading Income');
     } 
 
+    public function roi_Income()
+    {
+        return $this->hasMany('App\Models\Income','user_id','id')->where('remarks','Trade Income');
+    } 
+
     public function user_direct()
     {
         return $this->hasMany('App\Models\User','sponsor','id')->where('active_status','Active');
