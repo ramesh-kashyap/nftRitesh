@@ -445,19 +445,19 @@
 
                                         </div>
                                         <div class="card-body row">
-                                            <div class="box-item col-3">
+                                            <!-- <div class="box-item col-3">
                                                 <div class="body-5 text-center">Rebate</div>
                                                 <div class="body-5 text-center" style="font-size:15px;">81.1</div>
-                                            </div>
-                                            <div class="box-item col-3">
+                                            </div> -->
+                                            <div class="box-item col-4">
                                                 <div class="body-5 text-center">Income</div>
                                                 <div class="body-5 text-center" style="font-size:15px;color:#7f52ff; font-weight:800">2.4</div>
                                             </div>
-                                            <div class="box-item col-3">
-                                                <div class="body-5 text-center">ROI</div>
+                                            <div class="box-item col-4">
+                                                <div class="body-5 text-center">Rebate</div>
                                                 <div class="body-5 text-center" style="font-size:15px;color:#7f52ff; font-weight:800">2.4</div>
                                             </div>
-                                            <div class="box-item col-3">
+                                            <div class="box-item col-4">
                                                 <div class="body-5 text-center">Date</div>
                                                 <div class="body-5 text-center" style="font-size:15px;">{{ $nftd->created_at}}</div>
                                             </div>
@@ -553,7 +553,7 @@
                         
                     <div class="tab-pane fade check-list" id="activity" role="tabpanel">
                         <!-- item 1 -->
-                         @foreach ($nftall as $value)                        
+                         @foreach ($nftall as $value)                                                 
                          
                         <div class="card-nft-2 style-2">
                             <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-1"
