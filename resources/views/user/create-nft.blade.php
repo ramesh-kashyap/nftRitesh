@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Social Media Share</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <link rel="stylesheet" href="../fonts/fonts.css">
     <link rel="stylesheet" href="../fonts/font-icons.css">
@@ -33,7 +34,7 @@
     <button id="shareButton">Share to Social Media</button>
 
     <!-- Content to be captured -->
-    <span id="contentToCapture" class="mt-24 gap-15" style="text-align:center;margin-top:40px;position: relative;background:transparent;width: 400px;margin: 0px auto;">
+    <span id="contentToCapture" class="mt-24 gap-15" style="text-align:center;margin-top:40px;position: relative;background:transparent;width: 400px;margin: 0px auto;visibility: hidden;">
         <a href="" class="card-nft" style="text-align:center">
             <div class="box-img" style="min-width: 400px">
                 <img class="lazyload" src="{{$nftd->nft_image}}" alt="img-nft" style="height: 250px; width: 250px; margin-right: 100px; margin-top: 50px;">
@@ -53,10 +54,6 @@
                 <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 210px; right:15px">
                 48.4    
                 </p>
-                <!-- <p style="text-align:left; position:absolute; top: 250px; right:15px">Current Price</p>
-                <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 270px; right:15px">
-                {{$nftd->price}}
-                </p> -->
                 
                 <span class="tag ethereum" style="left:38%; padding-top:3px; padding-bottom:3px">
                     @if($nftd->symbol == 'MATIC')
@@ -88,6 +85,12 @@
     </span>
 
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         document.getElementById('shareButton').addEventListener('click', function() {
             var content = document.getElementById('contentToCapture');
 
@@ -119,29 +122,42 @@
             }
 
             function captureContent() {
+                content.style.visibility = 'visible';
                 setTimeout(function() {
                     domtoimage.toPng(content, {
                         bgcolor: '#ffffff', // Set background color to white
-            width: content.offsetWidth, // Set width to content's offset width
-            height: content.offsetHeight, // Set height to content's offset height
-            style: {
-                margin: 0,
-                padding: 0
-            }
+                        width: content.offsetWidth, // Set width to content's offset width
+                        height: content.offsetHeight, // Set height to content's offset height
+                        style: {
+                            margin: 0,
+                            padding: 0
+                        }
                     })
-                        .then(function (dataUrl) {
+                    .then(function (dataUrl) {
+                        // Upload image to server
+                        $.ajax({
+                            url: '{{ route('upload.image') }}',
+                            type: 'POST',
+                            data: { image: dataUrl },
+                            success: function(response) {
+                                if (response.success) {
+                                    var imageUrl = response.url; // Get the URL of the uploaded image
+                                    var whatsappUrl = `https://wa.me/?text=${encodeURIComponent('Check out this image: ' + imageUrl)}`;
 
-                            // Trigger download
-                            var link = document.createElement('a');
-                            link.href = dataUrl;
-                            link.download = 'content.png';
-                            document.body.appendChild(link); // Append link to the body
-                            link.click(); // Trigger download
-                            document.body.removeChild(link); // Remove link from the body
-                        })
-                        .catch(function (error) {
-                            console.error('Error capturing content:', error);
+                                    // Open the WhatsApp sharing link
+                                    window.open(whatsappUrl, '_blank');
+                                } else {
+                                    console.error('Error uploading image:', response.message);
+                                }
+                            },
+                            error: function(error) {
+                                console.error('Error uploading image:', error);
+                            }
                         });
+                    })
+                    .catch(function (error) {
+                        console.error('Error capturing content:', error);
+                    });
                 }, 3000); // Increased delay to ensure all content is loaded
             }
         });
