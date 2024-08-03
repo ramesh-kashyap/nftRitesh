@@ -428,9 +428,14 @@
                             </div>
                             <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
                                 <div class="card-body">
-                                    <div class="box-item">
+                                    <div class="box-item row">
                                         <div class="body-5">Income</div>
-                                        <span class="button-3" style="font-size:20px;color:#7f52ff">{{$roi->comm}}</span>
+                                        <div class="content-right">
+                                    <div class="d-flex gap-2 align-items-center">
+                                    <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
+                                        <div class="button-2"><a href="{{$nftd->opensea_url}}" target="blank">{{$roi->comm}}</a></div>
+                                    </div>                                    
+                                </div>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5" style="font-size:15px;">Rebate</div>
@@ -509,7 +514,10 @@
                                 <div class="card-body">
                                     <div class="box-item">
                                         <div class="body-5">Income</div>
-                                        <span class="button-3" style="font-size:20px;color:#7f52ff">{{$incroi->comm}}</span>
+                                        <div class="d-flex gap-2 align-items-center">
+                                    <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
+                                        <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$incroi->comm}}</a></div>
+                                    </div> 
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
