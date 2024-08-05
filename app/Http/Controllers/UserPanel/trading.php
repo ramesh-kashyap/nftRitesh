@@ -51,7 +51,6 @@ class trading extends Controller
             $body = $response->getBody();            
             // Decode the JSON response
             $nfts = json_decode($body, true);
-            dd($nfts);    
             // Pass the data to the Blade view
             return view('user.trading.nft_view', compact('nfts'));
     
@@ -154,7 +153,7 @@ class trading extends Controller
     
             $total = $active_gen_team1total + $active_gen_team2total;
             $userDirect = User::where('sponsor', $user->id)->where('active_status', 'Active')->where('package', '>=', 30)->count();
-            $balance = round($this->getBalance($user->id), 2) ?? 0;
+            $balance = round($user->available_balance(), 2) ?? 0;
     
             $vip = 0;
             if ($balance >= 50 && $balance < 500) {
