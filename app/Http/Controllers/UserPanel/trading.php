@@ -234,8 +234,14 @@ class trading extends Controller
     $user = Auth::user(); 
     $income = Income::where('user_id', $user->id)->where('remarks','Trade Income') ->latest('created_at')
                 ->first();
-    $rincome = Package::where('vip', $income->invest_id)->latest('created_at')
-    ->first();
+                if ($income) {
+                    $rincome = Package::where('vip', $income->invest_id)
+                                      ->latest('created_at')
+                                      ->first();
+                } else {
+                    // Handle the case where $income is null
+                    $rincome = null; // or some default value, e.g., 0
+                }
  
     // $iamount = Package::all();
     $client = new Client();

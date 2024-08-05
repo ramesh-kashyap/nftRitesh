@@ -10,11 +10,23 @@ use App\Models\PasswordReset;
 use App\Models\User;
 use App\Models\UserLogin;
 use PragmaRX\Google2FA\Google2FA;
+use App\Models\Activity;
+use Illuminate\Support\Facades\Log;
 
 
 use DB;
 class Login extends Controller
 {
+    public function logActivity($userId, $title)
+    {
+        dd($userId);
+
+        Activity::create([
+            'user_id' => $userId,
+            'title' => $title,
+            'status' => 0,
+        ]);
+    }
 
     public function login(Request $request)
     {
@@ -225,10 +237,15 @@ class Login extends Controller
        $user->password=$password;
        $user->PSR=$request->password;
        $user->save();
+      
+       $this->logActivity($user->id, 'Password changed successfully.');
+
        $notify[] = ['success', 'Your Password change Successfully.'];
+       
        return redirect()->route('login')->withNotify($notify);
 
     }
+
 
 
 
