@@ -217,6 +217,7 @@ public function viewdetail($txnId)
             'user_id_fk' => $user->username,
             'amount' => $amountTotal,
             'payment_mode' =>$paymentMode,
+            'investType' =>1,
             'status' => 'Pending',
             'sdate' => Date("Y-m-d"),
             'active_from' => $user->username,

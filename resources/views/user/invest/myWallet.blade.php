@@ -23,6 +23,16 @@
 <style>
 
 
+/* Example custom styles */
+.btn-success {
+    background-color: #28a745; /* Green color */
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red color */
+    color: white;
+}
 
     
 </style>
@@ -72,21 +82,10 @@
                         <img class="lazyload" data-src="images/avt/avt10.png" alt="img">
                     </div>
                     <div class="mt-20 box-content text-center">
-                        <h4>Beacon_NFT</h4>
-                        <span class="button-2 mt-12 d-block ">$410,885.95</span>
+                        <h4>Username-{{ Auth::user()->username }}</h4>
+                        <span class="button-2 mt-12 d-block ">{{ number_format(Auth::user()->available_balance(), 2) }} USDT</span>
                     </div>
-                    <div class="value-field-wallet mt-16">
-                        <img src="images/avt/metamask.png" alt="metamask">
-                        <input type="text" value="7EK933L1...C93676P7Q4">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.1665 11.1673V13.6673C14.1665 17.0007 12.8332 18.334 9.49984 18.334H6.33317C2.99984 18.334 1.6665 17.0007 1.6665 13.6673V10.5007C1.6665 7.16732 2.99984 5.83398 6.33317 5.83398H8.83317" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M14.1663 11.1673H11.4997C9.49967 11.1673 8.83301 10.5007 8.83301 8.50065V5.83398L14.1663 11.1673Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M9.6665 1.66602H12.9998" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M5.8335 4.16602C5.8335 2.78268 6.95016 1.66602 8.3335 1.66602H10.5168" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.3339 6.66602V11.8243C18.3339 13.116 17.2839 14.166 15.9922 14.166" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.3335 6.66602H15.8335C13.9585 6.66602 13.3335 6.04102 13.3335 4.16602V1.66602L18.3335 6.66602Z" stroke="#1A1528" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>  
-                    </div>
+                    
                 </div>
                 <ul class="py-20 px-16 box-service line">
                     <li><a href="{{route('user.Withdraw')}}" class="item">
@@ -102,7 +101,7 @@
                         <span class="fw-6 text-dark">Invite</span>
                     </a></li>
 
-                    <li><a href="{{route('user.referral-team')}}" class="item">
+                    <li><a href="{{route('user.level-team')}}" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-import"></span></div>
                         <span class="fw-6 text-dark">My Team</span>
                     </a></li>
@@ -132,6 +131,7 @@
                                     $cnt = 0; ?>
                                     @foreach($deposit_list as $value)
 
+                                    @if($value->investType==1)
                                     <li class="item">
                                         <a href="#" class="gap-12">
                                             <div class="image">
@@ -158,12 +158,50 @@
                                                 </div>
                                            
                                             @else
-                                            <div class="col-sm-2 ">
-                                                <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'success' : 'danger' }}">{{ $value->status }}</button>
-                                            </div>
+                                            <div class="col-sm-2">
+    <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'btn-success' : 'btn-danger' }}">
+        {{ $value->status == 'Active' ? 'Success' : $value->status }}
+    </button>
+</div>
                                             @endif
                                         </a>
                                     </li>
+                                    @else
+                                    <li class="item">
+                                        <a href="#" class="gap-12">
+                                            <div class="image">
+                                                
+                                            </div>
+                                            <span class="content">
+                                                <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
+                                                <span class="body-4 mt-4 tid" style="
+                                                padding-bottom: 0px;
+                                                margin-bottom: -4px;
+                                            ">Registeration Bonus</span>
+
+                                                <br>
+                                                <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</span>
+
+                                            </span>
+                                            @if($value->status == "Pending")
+                                            
+                                                <div class="col-sm-2 button-danger">
+                                                    <form type="POST" action="{{ route('user.cancel-payment', ['id' => $value->orderId]) }}">
+                                                        @csrf
+                                                      <button class="tf-btn btn-sm primary" type="submit">Cancel</button>
+                                                    </form>
+                                                </div>
+                                           
+                                            @else
+                                            <div class="col-sm-2">
+    <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'btn-success' : 'btn-danger' }}">
+        {{ $value->status == 'Active' ? 'Success' : $value->status }}
+    </button>
+</div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    @endif
                                     
                                 @endforeach
                                 <?php }?> 

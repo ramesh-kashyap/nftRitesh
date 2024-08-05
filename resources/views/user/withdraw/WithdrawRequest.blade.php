@@ -129,16 +129,18 @@
     justify-content: space-between;
 ">
         <label>@lang('Withdrawal Amount')</label>
-        <span >
+        <span class="body-3 text-dark-2 fw-5 balance-text">
             Balance: {{ number_format(Auth::user()->available_balance(), 2) }} USDT
         </span>
     </div>
+
+    
     <input type="number" min="20" name="amount" placeholder="Enter amount" class="form-control" value="">
 </fieldset>
 
 
 
-                            @if(Auth::user()->active_status!="Pending" )
+           @if(Auth::user()->active_status!="Pending" )
                 
                 <?php 
                 date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
@@ -204,6 +206,31 @@
 
                 @endif
 
+
+
+                <?php 
+                              date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+                              
+                             if(empty(Auth::user()->detail_changed_date))
+                             {
+                                $date1 = Auth::user()->adate;
+                                $date1 = strtotime($date1);
+                                $date1 = strtotime(" + 3 day", $date1);
+                                $new_date1= date('Y-m-d H:i:s', $date1);    
+                             }
+                             else
+                             {
+                                 $date1 = Auth::user()->detail_changed_date;
+                                $date1 = strtotime($date1);
+                                $date1 = strtotime(" + 2 day", $date1);
+                                $new_date1= date('Y-m-d H:i:s', $date1);        
+                             }
+                           
+
+                            
+                            ?>
+
+                            
                             <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
                             <fieldset class="mt-20 input-fill">
                                 <label>{{ Auth::user()->email }}</label>

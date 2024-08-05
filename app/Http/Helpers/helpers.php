@@ -15,6 +15,90 @@ function siteName()
     return $general->sitename;
 }
 
+
+function todayIncome($id)
+{
+    $income = Income::where('user_id',$id)->where('ttime',date("Y-m-d"))->sum('comm');
+    return $income;
+}
+
+
+
+ function my_level_team($userid,$level=3){
+  
+  $arrin=array($userid);
+  $ret=array();
+
+  $i=1;
+  while(!empty($arrin)){
+      $alldown=User::select('id')->whereIn('sponsor',$arrin)->get()->toArray();
+      if(!empty($alldown)){
+          $arrin = array_column($alldown,'id');
+          $ret[$i]=$arrin;
+          $i++;
+
+          if ($i>$level) {
+            break;
+           }
+
+      }else{
+          $arrin = array();
+      }
+  }
+
+  $final = array();
+  if(!empty($ret)){
+      array_walk_recursive($ret, function($item, $key) use (&$final){
+          $final[] = $item;
+      });
+  }
+
+
+  return count($final);
+
+
+
+}
+
+
+
+
+function teamRecharge($userid,$level=3){
+  $arrin=array($userid);
+  $ret=array();
+
+  $i=1;
+  while(!empty($arrin)){
+      $alldown=User::select('id')->whereIn('sponsor',$arrin)->get()->toArray();
+      if(!empty($alldown)){
+          $arrin = array_column($alldown,'id');
+          $ret[$i]=$arrin;
+          $i++;
+
+          if ($i>$level) {
+            break;
+           }
+
+      }else{
+          $arrin = array();
+      }
+  }
+
+  $final = array();
+  if(!empty($ret)){
+      array_walk_recursive($ret, function($item, $key) use (&$final){
+          $final[] = $item;
+      });
+  }
+
+
+  $totalRecharge= Investment::whereIn('user_id',(!empty($final)?$final:array()))->where('status','Active')->sum("amount");
+
+
+  return $totalRecharge;
+
+}
+
 function currency()
 {
     $general = GeneralSetting::first();
@@ -38,6 +122,8 @@ function paginationLimit()
     $general = GeneralSetting::first();
     return $general->PaginationLimit;
 }
+
+
 
 
 function sendEmail($user, $type = null, $shortCodes = [])

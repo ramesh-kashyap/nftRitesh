@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../fonts/fonts.css">
     <!-- Icons -->
     <link rel="stylesheet" href="../fonts/font-icons.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/nouislider.min.css" />
     <link rel="stylesheet" href="../css/swiper-bundle.min.css">
@@ -113,7 +115,15 @@
             transform: rotateX(90deg) translateZ(-40px);
             filter: blur(12px);
         }
-
+        .box-img img {
+            border-radius: 20px;
+        }
+        #contentToCapture {
+            background-color: #ffffff; /* Ensure white background for the content */
+            display: block; /* Ensure the content is displayed */
+            width: 100vw; /* Full viewport width */
+            position: relative;
+        }
     </style>
 </head>
 
@@ -526,12 +536,12 @@
                                         <div class="body-5">Income</div>
                                         <div class="d-flex gap-2 align-items-center">
                                     <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
-                                        <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$incroi->comm}}</a></div>
+                                        <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$incroi->comm ?? 0}}</a></div>
                                     </div> 
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
-                                        <span class="button-3" style="font-size:15px;">{{$data->roi}}</span>
+                                        <span class="button-3" style="font-size:15px;">{{$data->roi ?? 0}}</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
@@ -858,6 +868,84 @@
             });
         });
 
+    </script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        document.getElementById('shareButton').addEventListener('click', function() {
+            var content = document.getElementById('contentToCapture');
+
+            // Ensure images are loaded
+            var images = content.getElementsByTagName('img');
+            var totalImages = images.length;
+            var imagesLoaded = 0;
+
+            function checkImagesLoaded() {
+                if (imagesLoaded === totalImages || totalImages === 0) {
+                    captureContent();
+                }
+            }
+
+            if (totalImages > 0) {
+                Array.from(images).forEach(img => {
+                    img.onload = img.onerror = function() {
+                        imagesLoaded++;
+                        checkImagesLoaded();
+                    };
+                    // Trigger image loading if not already loaded
+                    if (img.complete) {
+                        imagesLoaded++;
+                        checkImagesLoaded();
+                    }
+                });
+            } else {
+                captureContent(); // No images to load
+            }
+
+            function captureContent() {
+                content.style.visibility = 'visible';
+                setTimeout(function() {
+                    domtoimage.toPng(content, {
+                        bgcolor: '#ffffff', // Set background color to white
+                        width: content.offsetWidth, // Set width to content's offset width
+                        height: content.offsetHeight, // Set height to content's offset height
+                        style: {
+                            margin: 0,
+                            padding: 0
+                        }
+                    })
+                    .then(function (dataUrl) {
+                        // Upload image to server
+                        $.ajax({
+                            url: '{{ route('upload.image') }}',
+                            type: 'POST',
+                            data: { image: dataUrl },
+                            success: function(response) {
+                                if (response.success) {
+                                    var imageUrl = response.url; // Get the URL of the uploaded image
+                                    var whatsappUrl = `https://wa.me/?text=${encodeURIComponent('Check out this image: ' + imageUrl)}`;
+
+                                    // Open the WhatsApp sharing link
+                                    window.open(whatsappUrl, '_blank');
+                                } else {
+                                    console.error('Error uploading image:', response.message);
+                                }
+                            },
+                            error: function(error) {
+                                console.error('Error uploading image:', error);
+                            }
+                        });
+                    })
+                    .catch(function (error) {
+                        console.error('Error capturing content:', error);
+                    });
+                }, 3000); // Increased delay to ensure all content is loaded
+            }
+        });
     </script>
 
 
