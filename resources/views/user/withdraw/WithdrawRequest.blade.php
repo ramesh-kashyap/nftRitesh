@@ -111,7 +111,7 @@
                         </fieldset>
                         <fieldset class="mt-20 input-fill">
                             <label>@lang('Select Payment Mode')</label>
-                            <select id="cars" class="form-control" type="text" name="PSys">
+                            <select id="PSys" class="form-control" type="text" name="PSys">
                         <option value="USDT.BEP20">USDT BEP20</option>
                         <option value="USDT.TRC20">USDT TRC20</option>
                     </select>
@@ -119,7 +119,8 @@
                         <fieldset class="mt-20 input-fill">
                             <label>@lang('Withdrawal Address')</label>
                             <div class="box-view-hide">
-                            <input type="text" name="walletAddress" class="form-control" value="{{Auth::user()->usdtBep20}}">
+                            <input type="text" name="walletAddress" class="form-control" value="{{Auth::user()->usdtBep20}}" id="walletAddress"                                     name="walletAddress"  value="{{Auth::user()->usdtBep20}}" nid="van-field-5-input" rows="1"
+                            >
                               
                             </div>
                         </fieldset>
@@ -230,7 +231,7 @@
                             
                             ?>
 
-                            
+
                             <input type="hidden" name="" id="emailId" value="{{ Auth::user()->email }}">
                             <fieldset class="mt-20 input-fill">
                                 <label>{{ Auth::user()->email }}</label>
@@ -307,13 +308,7 @@
                     </form>
 
                             </br>
-   <h6>Attention</h6>
-                            <p>● @lang('Each withdrawal usually takes up to 0-72 hours to reach your digital currency wallet').</p>
-                            <p> ● @lang('After each withdrawal reaches your digital currency wallet, it takes 48 hours before a new withdrawal can be made').</p>
-                            <p>  ● @lang('The format of the withdrawal password can only be any combination of 6 digits from 0 to 9, and no symbols or letters can be entered').</p>
-                            <p>  ● @lang('After changing the login password, transaction password, wallet address, or email account, you must wait for 48 hours after the fund protection status is lifted before applying for a withdrawal').</p>
-                  
-                           
+  
 
 
                 </div>
@@ -371,17 +366,19 @@
             //console.log(summ_usd);
         });
 
-        $('input[name="PSys"]').change(function () {
-           
-            let icon = $(this).data('icon');
-            if (icon=="usdtTrc20") {
-                $('#walletAddress').val('{{Auth::user()->usdtTrc20}}');
-                
-            }else{
+       
+        $('#PSys').on('change', function() {
+            console.log( this.value );
+            let icon = this.value;
+            if (icon=="USDT.BEP20") {
+               
                 $('#walletAddress').val('{{Auth::user()->usdtBep20}}');
+            }else{
+                $('#walletAddress').val('{{Auth::user()->usdtTrc20}}');
             }
-            
-        });
+
+            });
+
 
         $('.code-btn').click(function(e) {
 var ths = $(this);

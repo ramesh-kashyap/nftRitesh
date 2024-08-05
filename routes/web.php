@@ -116,6 +116,8 @@ Route::post('/update-wallet', [App\Http\Controllers\UserPanel\Profile::class, 'w
 Route::post('/wallet_change', [App\Http\Controllers\UserPanel\Profile::class, 'wallet_change'])->name('user.wallet_change');
 
 Route::post('/sendCode', [App\Http\Controllers\UserPanel\Profile::class, 'sendCode'])->name('user.send_code');
+Route::get('/walletaddress', [App\Http\Controllers\UserPanel\Profile::class, 'walletaddress'])->name('user.walletaddress');
+Route::post('/wallet_a', [App\Http\Controllers\UserPanel\Profile::class, 'wallet_a'])->name('user.wallet_a');
 Route::get('/change-trx-password', [App\Http\Controllers\UserPanel\Profile::class, 'change_trx_password'])->name('user.change-trx-password');
 Route::get('/ChangePass', [App\Http\Controllers\UserPanel\Profile::class, 'change_password'])->name('user.ChangePass');
 Route::get('/setting', [App\Http\Controllers\UserPanel\Profile::class, 'setting'])->name('user.setting');
@@ -196,6 +198,10 @@ Route::get('/withdrawPrinciple', [App\Http\Controllers\UserPanel\WithdrawRequest
 Route::post('/WithdrawRequest', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'WithdrawRequest'])->name('user.Withdraw-Request');
 Route::post('/WithdrawRequestPrinciple', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'WithdrawRequestPrinciple'])->name('user.WithdrawRequestPrinciple');
 Route::get('/WithdrawHistory', [App\Http\Controllers\UserPanel\WithdrawRequest::class, 'WithdrawHistory'])->name('user.Withdraw-History');
+
+
+
+
 // end withdraw
 
 //team

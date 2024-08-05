@@ -752,7 +752,37 @@ public function BankDetail()
     }
    
 
+    public function wallet_a(Request $request)
+    {
+        $request->validate([
+            'usdtTrc20' => 'required|string|max:255',
+            'usdtBep20' => 'required|string|max:255',
+        ]);
 
+        $user = Auth::user();
 
+            
+        $code = $request->code;
+        if (PasswordReset::where('token', $code)->where('email', $user->email)->count() != 1) {
+            $notify[] = ['error', 'Invalid token'];
+            return redirect()->route('user.walletaddress')->withNotify($notify);
+        }
+        $user->usdtTrc20 = $request->input('usdtTrc20');
+        $user->usdtBep20 = $request->input('usdtBep20');
+
+        $user->save();
+
+        $notify[] = ['success', 'Wallet Address updated successfully'];
+        return redirect()->route('user.walletaddress')->withNotify($notify);
+    }
+    public function walletaddress()
+    {
+        $user=Auth::user();
+        $profile_data = User::where('id',$user->id)->orderBy('id','desc')->first();
+        $this->data['profile_data'] = $profile_data;
+
+        $this->data['page'] = 'user.profile.changewalletaddress';
+        return $this->dashboard_layout();
+    }
 
 }
