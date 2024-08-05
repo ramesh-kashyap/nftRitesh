@@ -376,7 +376,7 @@
                                     data-bs-target="#listings">Listings</button>
                             </li> -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activity">Item
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activity">NFT
                                     Activity</button>
                             </li>
                             <!-- <li class="nav-item" role="presentation">
@@ -425,6 +425,16 @@
                                     </div>
                                     <span class="button-2 text-dark-2">{{$nftd->order_no}}</span>
                                 </div>
+                                
+                                @if($nftd->status=='Pending')
+                                <form id="sellForm" action="{{ route('user.sellnft') }}"
+                                        method="POST" >
+                                        @csrf
+                                        <input type="hidden" name="status" value="Approved">
+                                        <button id="sellButton" type="submit" class="tf-btn primary"
+                                            style="cursor: pointer;">Sell Now</button>
+                                    </form>
+                                    @endif
                             </div>
                             <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
                                 <div class="card-body">
