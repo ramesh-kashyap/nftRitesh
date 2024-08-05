@@ -12,7 +12,7 @@ use App\Models\Package;
 use App\Models\Trade;
 use App\Models\Income;
 use App\Models\Withdraw;
-
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -51,7 +51,6 @@ class trading extends Controller
             $body = $response->getBody();            
             // Decode the JSON response
             $nfts = json_decode($body, true);
-            dd($nfts);    
             // Pass the data to the Blade view
             return view('user.trading.nft_view', compact('nfts'));
     
@@ -101,17 +100,7 @@ class trading extends Controller
 
     }
 
-    public function getBalance($userId)
-{
-    $investments = Investment::where('user_id', $userId)->where('status', 'Active')->sum('amount') ?? 0;
-    $incomes = Income::where('user_id', $userId)->sum('comm') ?? 0;
-    $withdrawals = Withdraw::where('user_id', $userId)
-        ->where('status', '!=', 'Failed')
-        ->sum('amount') ?? 0;
-
-
-    return $investments + $incomes - $withdrawals;
-}
+    
 
     public function submitnft(Request $request)
     {
@@ -154,7 +143,7 @@ class trading extends Controller
     
             $total = $active_gen_team1total + $active_gen_team2total;
             $userDirect = User::where('sponsor', $user->id)->where('active_status', 'Active')->where('package', '>=', 30)->count();
-            $balance = round($this->getBalance($user->id), 2) ?? 0;
+            $balance = round($user->available_balance(), 2) ?? 0;
     
             $vip = 0;
             if ($balance >= 50 && $balance < 500) {
@@ -235,8 +224,14 @@ class trading extends Controller
     $user = Auth::user(); 
     $income = Income::where('user_id', $user->id)->where('remarks','Trade Income') ->latest('created_at')
                 ->first();
-    $rincome = Package::where('vip', $income->invest_id)->latest('created_at')
-    ->first();
+                if ($income) {
+                    $rincome = Package::where('vip', $income->invest_id)
+                                      ->latest('created_at')
+                                      ->first();
+                } else {
+                    // Handle the case where $income is null
+                    $rincome = null; // or some default value, e.g., 0
+                }
  
     // $iamount = Package::all();
     $client = new Client();
@@ -311,33 +306,341 @@ class trading extends Controller
 
 
     // NftController.php
-    public function sellnft(Request $request)
+    public function sellNft(Request $request)
     {
-        // dd($request->all());
         // Validate the request
         $request->validate([
-            // 'nft_id' => 'required|integer|exists:nfts,id',
             'status' => 'required|in:Approved',
         ]);
-        $user= Auth::user();
-        
+    
+        $user = Auth::user();
     
         // Update status in the Trade table where buyer_id matches the logged-in user's username
         $trade = Trade::where('status', 'Pending')->where('user_id', $user->id)->latest('created_at')->first();
-            // dd($trade);
         if ($trade) {
-            $trade->status = 'Approved'; 
+            $trade->status = 'Approved';
             $trade->save();
-            return back()->with("Your NFT Sell Sucessfully");
+
+
+            Log::info('Generating ROI for user ID: ' . $user->id);
+
+            // Calculate the user's team details
+            $my_level_team = $this->my_level_team_count($user->id);
+            $gen_team1 = array_key_exists(1, $my_level_team) ? $my_level_team[1] : [];
+            $gen_team2 = array_key_exists(2, $my_level_team) ? $my_level_team[2] : [];
+            $gen_team3 = array_key_exists(3, $my_level_team) ? $my_level_team[3] : [];
+
+            $gen_team1 = User::whereIn('id', $gen_team1)->orderBy('id', 'DESC')->get();
+            $gen_team2 = User::whereIn('id', $gen_team2)->orderBy('id', 'DESC')->get();
+            $gen_team3 = User::whereIn('id', $gen_team3)->orderBy('id', 'DESC')->get();
+
+            $active_gen_team1total = $gen_team1->where('active_status', 'Active')->count();
+            $active_gen_team2total = $gen_team2->where('active_status', 'Active')->count();
+            $active_gen_team3total = $gen_team3->where('active_status', 'Active')->count();
+
+            $total = $active_gen_team1total + $active_gen_team2total;
+            $userDirect = User::where('sponsor', $user->id)
+                ->where('active_status', 'Active')
+                ->where('package', '>=', 30)
+                ->count();
+
+            // Use the updated getBalance function
+            $balance = round($this->getBalance($user->id), 2);
+            Log::info('User balance: ' . $balance);
+
+            // Determine VIP level
+            $vip = 1;
+            if ($balance >= 50 && $balance < 500) {
+                $vip = ($userDirect >= 1) ? 1 : 1;
+            } elseif ($balance >= 500 && $balance < 2000) {
+                $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+            } elseif ($balance >= 2000 && $balance < 5000) {
+                if ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            } elseif ($balance >= 5000) {
+                if ($userDirect >= 15 && $total >= 35) {
+                    $vip = 4;
+                } elseif ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            }
+            Log::info('Determined VIP level: ' . $vip);
+
+            $package = Package::where('vip', $vip)->first();
+            if ($package) {
+                Log::info('Package details: ', $package->toArray());
+
+                $roi = $package->roi;
+                $comm = $balance * $roi / 100;
+                Log::info('Calculated ROI: ' . $roi . ', Commission: ' . $comm);
+
+                $data = [
+                    'remarks' => 'Trade Income',
+                    'comm' => $comm,
+                    'amt' => $balance,
+                    'invest_id' => $vip,
+                    'level' => 0,
+                    'ttime' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                    'user_id_fk' => $user->username,
+                    'user_id' => $user->id
+                ];
+
+                Income::create($data);
+                Log::info('Income record created: ', $data);
+
+                $this->addLevelIncome($user->id, $comm, $vip);
+                Log::info('Level income added');
+            } else {
+                Log::warning('No package found for VIP level: ' . $vip);
+            }
+
+
+
+
+            return back()->with('success', 'Your NFT Sell Successfully');
         }
     
         return back()->with('error', 'Failed to update NFT status.');
     }
     
-    // public function sharenft()
-    // {
-    //     return view('user.trading.nftshare');
-    // }
+    public function getBalance($userId)
+    {
+        // Get active investments of investType 2
+        $activeRegistrationBonus = Investment::where('user_id', $userId)
+            ->where('status', 'Active')
+            ->where('investType', 2)
+            ->first();
+    
+        // Check and update the status if the registration bonus date is older than 3 days
+        if ($activeRegistrationBonus) {
+            $registrationBonusDate = Carbon::parse($activeRegistrationBonus->sdate);
+            if (Carbon::now()->diffInDays($registrationBonusDate) >= 3) {
+                $activeRegistrationBonus->status = 'Expired';
+                $activeRegistrationBonus->save();
+            }
+        }
+    
+        // Calculate the balance
+        $investments = Investment::where('user_id', $userId)
+            ->where('status', 'Active')
+            ->sum('amount') ?? 0;
+        $incomes = Income::where('user_id', $userId)
+            ->sum('comm') ?? 0;
+        $withdrawals = Withdraw::where('user_id', $userId)
+            ->where('status', '!=', 'Failed')
+            ->sum('amount') ?? 0;
+    
+        return $investments + $incomes - $withdrawals;
+    }
+    
+    public function generateRoi($user)
+    {
+        try {
+            Log::info('Generating ROI for user ID: ' . $user->id);
+
+            // Calculate the user's team details
+            $my_level_team = $this->my_level_team_count($user->id);
+            $gen_team1 = array_key_exists(1, $my_level_team) ? $my_level_team[1] : [];
+            $gen_team2 = array_key_exists(2, $my_level_team) ? $my_level_team[2] : [];
+            $gen_team3 = array_key_exists(3, $my_level_team) ? $my_level_team[3] : [];
+
+            $gen_team1 = User::whereIn('id', $gen_team1)->orderBy('id', 'DESC')->get();
+            $gen_team2 = User::whereIn('id', $gen_team2)->orderBy('id', 'DESC')->get();
+            $gen_team3 = User::whereIn('id', $gen_team3)->orderBy('id', 'DESC')->get();
+
+            $active_gen_team1total = $gen_team1->where('active_status', 'Active')->count();
+            $active_gen_team2total = $gen_team2->where('active_status', 'Active')->count();
+            $active_gen_team3total = $gen_team3->where('active_status', 'Active')->count();
+
+            $total = $active_gen_team1total + $active_gen_team2total;
+            $userDirect = User::where('sponsor', $user->id)
+                ->where('active_status', 'Active')
+                ->where('package', '>=', 30)
+                ->count();
+
+            // Use the updated getBalance function
+            $balance = round($this->getBalance($user->id), 2);
+            Log::info('User balance: ' . $balance);
+
+            // Determine VIP level
+            $vip = 0;
+            if ($balance >= 50 && $balance < 500) {
+                $vip = ($userDirect >= 1) ? 1 : 0;
+            } elseif ($balance >= 500 && $balance < 2000) {
+                $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+            } elseif ($balance >= 2000 && $balance < 5000) {
+                if ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            } elseif ($balance >= 5000) {
+                if ($userDirect >= 15 && $total >= 35) {
+                    $vip = 4;
+                } elseif ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            }
+            Log::info('Determined VIP level: ' . $vip);
+
+            $package = Package::where('vip', $vip)->first();
+            if ($package) {
+                Log::info('Package details: ', $package->toArray());
+
+                $roi = $package->roi;
+                $comm = $balance * $roi / 100;
+                Log::info('Calculated ROI: ' . $roi . ', Commission: ' . $comm);
+
+                $data = [
+                    'remarks' => 'Trade Income',
+                    'comm' => $comm,
+                    'amt' => $balance,
+                    'invest_id' => $vip,
+                    'level' => 0,
+                    'ttime' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                    'user_id_fk' => $user->username,
+                    'user_id' => $user->id
+                ];
+
+                Income::create($data);
+                Log::info('Income record created: ', $data);
+
+                $this->addLevelIncome($user->id, $comm, $vip);
+                Log::info('Level income added');
+            } else {
+                Log::warning('No package found for VIP level: ' . $vip);
+            }
+        } catch (\Exception $e) {
+            // Log the exception message
+            Log::error('Error generating ROI for user ID ' . $user->id . ': ' . $e->getMessage());
+        }
+    }
+
+    
+    private function determineVipLevel($balance, $userDirect, $total)
+    {
+        if ($balance >= 50 && $balance < 500) {
+            return ($userDirect >= 1) ? 1 : 0;
+        } elseif ($balance >= 500 && $balance < 2000) {
+            return ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+        } elseif ($balance >= 2000 && $balance < 5000) {
+            if ($userDirect >= 6 && $total >= 20) {
+                return 3;
+            } elseif ($userDirect >= 3 && $total >= 5) {
+                return 2;
+            } else {
+                return 1;
+            }
+        } elseif ($balance >= 5000) {
+            if ($userDirect >= 15 && $total >= 35) {
+                return 4;
+            } elseif ($userDirect >= 6 && $total >= 20) {
+                return 3;
+            } elseif ($userDirect >= 3 && $total >= 5) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+    }
+    
+    public function addLevelIncome($id, $amt, $vip)
+    {
+        $data = User::where('id', $id)->orderBy('id', 'desc')->first();
+        $user_id = $data->username;
+        $fullname = $data->name;
+    
+        $rname = $data->username;
+        $user_mid = $data->id;
+    
+        $cnt = 1;
+        $amount = $amt / 100;
+    
+        $multipliers = [
+            1 => [12, 7, 5],
+            2 => [13, 6, 3],
+            3 => [15, 7, 5],
+            4 => [18, 9, 8]
+        ];
+    
+        $current_multipliers = $multipliers[$vip] ?? [12, 7, 5]; // Default to VIP 1 multipliers if VIP level is invalid
+    
+        while ($user_mid != "" && $user_mid != "1") {
+            $Sposnor_id = User::where('id', $user_mid)->orderBy('id', 'desc')->first();
+            $sponsor = $Sposnor_id->sponsor;
+    
+            if (!empty($sponsor)) {
+                $Sposnor_status = User::where('id', $sponsor)->orderBy('id', 'desc')->first();
+                $Sposnor_cnt = User::where('sponsor', $sponsor)->where('active_status', 'Active')->count("id");
+                $sp_status = $Sposnor_status->active_status;
+                $rank = $Sposnor_status->rank;
+                $lastPackage = \DB::table('investments')->where('user_id', $Sposnor_status->id)->where('status', 'Active')->orderBy('id', 'DESC')->limit(1)->first();
+                $plan = ($lastPackage) ? $lastPackage->plan : 0;
+            } else {
+                $Sposnor_status = array();
+                $sp_status = "Pending";
+                $Sposnor_cnt = 0;
+                $rank = 0;
+            }
+    
+            $pp = 0;
+            if ($sp_status == "Active") {
+                if ($cnt == 1) {
+                    $pp = $amount * $current_multipliers[0];
+                } elseif ($cnt == 2) {
+                    $pp = $amount * $current_multipliers[1];
+                } elseif ($cnt == 3) {
+                    $pp = $amount * $current_multipliers[2];
+                }
+            } else {
+                $pp = 0;
+            }
+    
+            $user_mid = @$Sposnor_status->id;
+            $spid = @$Sposnor_status->id;
+            $idate = date("Y-m-d");
+    
+            $user_id_fk = $sponsor;
+            if ($spid > 0 && $cnt <= 3) {
+                if ($pp > 0) {
+                    $data = [
+                        'user_id' => $user_mid,
+                        'user_id_fk' => $Sposnor_status->username,
+                        'amt' => $amt,
+                        'comm' => $pp,
+                        'level' => $cnt,
+                        'remarks' => "Level Income",
+                        'ttime' => Carbon::now(),
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now(),
+                    ];
+    
+                    Income::create($data);
+                }
+            }
+    
+            $cnt++;
+        }
+    }
     
 
     public function sharenft()

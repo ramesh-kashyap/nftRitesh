@@ -173,12 +173,30 @@ echo  $jsonData;
 
 public function getBalance($userId)
 {
-    $investments = Investment::where('user_id', $userId)->where('status', 'Active')->sum('amount') ?? 0;
-    $incomes = Income::where('user_id', $userId)->sum('comm') ?? 0;
+    // Get active investments of investType 2
+    $activeRegistrationBonus = Investment::where('user_id', $userId)
+        ->where('status', 'Active')
+        ->where('investType', 2)
+        ->first();
+
+    // Check and update the status if the registration bonus date is older than 3 days
+    if ($activeRegistrationBonus) {
+        $registrationBonusDate = Carbon::parse($activeRegistrationBonus->sdate);
+        if (Carbon::now()->diffInDays($registrationBonusDate) >= 3) {
+            $activeRegistrationBonus->status = 'Expired';
+            $activeRegistrationBonus->save();
+        }
+    }
+
+    // Calculate the balance
+    $investments = Investment::where('user_id', $userId)
+        ->where('status', 'Active')
+        ->sum('amount') ?? 0;
+    $incomes = Income::where('user_id', $userId)
+        ->sum('comm') ?? 0;
     $withdrawals = Withdraw::where('user_id', $userId)
         ->where('status', '!=', 'Failed')
         ->sum('amount') ?? 0;
-
 
     return $investments + $incomes - $withdrawals;
 }
@@ -220,7 +238,7 @@ public function generateRoi()
                 ->where('package', '>=', 50)
                 ->count();
 
-            // Use the new getBalance function
+            // Use the updated getBalance function
             $balance = round($this->getBalance($user->id), 2);
 
             // Determine VIP level
@@ -255,6 +273,7 @@ public function generateRoi()
         }
     }
 }
+
 
 
 private function determineVipLevel($balance, $userDirect, $total)

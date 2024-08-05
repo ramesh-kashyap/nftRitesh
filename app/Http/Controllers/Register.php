@@ -68,10 +68,10 @@ class Register extends Controller
                 'phone' => 'required|unique:users,phone',
                 'password' => 'required|confirmed|min:5',
                 'sponsor' => 'required|exists:users,username',
-                'countryCode' => 'required', // Add validation for countryCode
+                'countryCode' => 'required',
+                'username' => 'required|digits:6|unique:users,username',
             ]);
     
-
             if ($validation->fails()) {
                 Log::info($validation->getMessageBag()->first());
                 return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
@@ -87,69 +87,63 @@ class Register extends Controller
             }
     
             // Find the sponsor user
-            $user = User::where('username', $request->sponsor)->first();
-            if (!$user) {
-                return Redirect::back()->withErrors(array('Introducer ID Not Active'));
+            $sponsor = User::where('username', $request->sponsor)->first();
+            if (!$sponsor) {
+                return Redirect::back()->withErrors('Introducer ID Not Active');
             }
     
-            $totalID = User::count();
-            $totalID++;
-            $username = substr(time(), 4) . $totalID;
-            $username = substr(rand(), -2) . substr(time(), -3) . substr(mt_rand(), -2);
-            $tpassword = substr(time(), -2) . substr(rand(), -2) . substr(mt_rand(), -1);
             $post_array = $request->all();
-            $country=$post_array['countryCode'];
-            $countryCode=Country::where('name',$country)->first();
+            $country = $post_array['countryCode'];
+            $countryCode = Country::where('name', $country)->first();
     
             // Prepare user data
-            $data['phone'] = $post_array['phone'];
-            $data['username'] = $username;
-            $data['password'] = Hash::make($post_array['password']);
-            $data['tpassword'] = Hash::make($tpassword);
-            $data['PSR'] = $post_array['password'];
-            $data['TPSR'] = $tpassword;
-            $data['sponsor'] = $user->id;
-            $data['package'] = 0;
-            $data['jdate'] = date('Y-m-d');
-            $data['created_at'] = Carbon::now();
-            $data['remember_token'] = substr(rand(), -7) . substr(time(), -5) . substr(mt_rand(), -4);
-            $data['level'] = $user->level + 1;
-            $data['ParentId'] = User::orderBy('id', 'desc')->limit(1)->first()->id;
-            $data['ip'] = $ipAddress; // Store the IP address
-            $data['dialCode'] = $countryCode->phonecode; // Store the country code
+            $data = [
+                'phone' => $post_array['phone'],
+                'username' => $post_array['username'],
+                'password' => Hash::make($post_array['password']),
+                'tpassword' => Hash::make(substr(time(), -2) . substr(rand(), -2) . substr(mt_rand(), -1)),
+                'PSR' => $post_array['password'],
+                'TPSR' => substr(time(), -2) . substr(rand(), -2) . substr(mt_rand(), -1),
+                'sponsor' => $sponsor->id,
+                'package' => 0,
+                'jdate' => date('Y-m-d'),
+                'created_at' => Carbon::now(),
+                'remember_token' => substr(rand(), -7) . substr(time(), -5) . substr(mt_rand(), -4),
+                'level' => $sponsor->level + 1,
+                'ParentId' => User::orderBy('id', 'desc')->first()->id,
+                'ip' => $ipAddress,
+                'dialCode' => $countryCode->phonecode,
+            ];
     
             // Create the user
             $user_data = User::create($data);
-
+    
+            // Create initial investment record
             $invoice = substr(str_shuffle("0123456789"), 0, 7);
-
-            $data = [
+            $investment_data = [
                 'orderId' => $invoice,
-                'transaction_id' =>$invoice,
-                'user_id' => $user_data['id'],
-                'user_id_fk' => $username,
+                'transaction_id' => $invoice,
+                'user_id' => $user_data->id,
+                'user_id_fk' => $user_data->username,
                 'amount' => 300,
-                'payment_mode' =>"USDT",
-                'investType' =>2,
+                'payment_mode' => "USDT",
+                'investType' => 2,
                 'status' => 'Active',
-                'sdate' => Date("Y-m-d"),
-                'active_from' =>$username,
-                'created_at' => date("Y-m-d H:i:s"),
+                'sdate' => date('Y-m-d'),
+                'active_from' => $user_data->username,
+                'created_at' => date('Y-m-d H:i:s'),
             ];
-            $payment =  Investment::insert($data);
-
-
-            $registered_user_id = $user_data['id'];
-            $user = User::find($registered_user_id);
-            Auth::loginUsingId($registered_user_id);
+            Investment::insert($investment_data);
+    
+            Auth::loginUsingId($user_data->id);
     
             return redirect()->route('user.dashboard');
         } catch (\Exception $e) {
-            Log::info('error here');
-            Log::info($e->getMessage());
+            Log::info('Error during registration: ' . $e->getMessage());
             return back()->withErrors('error', $e->getMessage())->withInput();
         }
     }
+    
     
     
     
