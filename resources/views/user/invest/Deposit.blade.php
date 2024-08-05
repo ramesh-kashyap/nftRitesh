@@ -52,7 +52,35 @@
             height: 20px;
             margin-right: 8px;
         }
+
+/* Container for the input field and image */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Image styles */
+.avatar {
+    position: absolute;
+    left: 10px; /* Adjust as needed */
+    top: 50%; /* Vertically center the image */
+    transform: translateY(-50%); /* Center image vertically */
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+}
+
+/* Input field styles */
+.form-control {
+    padding-left: 40px; /* Ensure text does not overlap the image */
+    width: 100%;
+}
+
+
     </style>
+
+
+
+
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -89,12 +117,19 @@
                 <div class="card-body">
                 <form method="post" name="add" action="{{ route('user.confirmDeposit') }}">
                 {{ csrf_field() }}
-                        <fieldset class="mt-20 input-fill">
-                            <label>@lang('Enter Amount')</label>
-                            <input type="text" placeholder="Enter your amount" name="Sum" class="form-control">
-                        </fieldset>
+                <fieldset class="mt-20 input-fill">
+    <label>@lang('Enter Amount')</label>
+    <div class="input-container">
+        <div class="avatar">
+            <img src="images/222.png" alt="">
+        </div>
+        <input type="text" placeholder="Enter your amount" name="Sum" class="form-control" style=" padding-left: 59px;">
+    </div>
+</fieldset>
+
                         <fieldset class="mt-20 input-fill">
                             <label>@lang('Select Payment Mode')</label>
+                            
                             <select id="cars" class="form-control" type="text" name="PSys">
                         <option value="USDT.BEP20">USDT BEP20</option>
                         
