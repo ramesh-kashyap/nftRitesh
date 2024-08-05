@@ -347,7 +347,7 @@
               </a>
           </div>
       </div>
-      <div class="overflow-auto app-content style-1">
+      <div class="overflow-auto app-content style-1">      
           <div class="tf-container">
               <div class="tab-slide wrapper-tab">
                   <ul class="nav nav-tabs tab-1" role="tablist">
@@ -364,6 +364,7 @@
               <div class="tab-content mt-24">
                   <div class="tab-pane fade active show" id="general" role="tabpanel">
                       <ul class="list-view-v8">
+                      @if($active->title=='Email changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 green round">
@@ -398,6 +399,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Password is reset changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 primary round">
@@ -439,6 +442,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Transaction Password changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 orange round">
@@ -469,6 +474,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Wallet changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 error round">
@@ -501,8 +508,10 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Password changed successfully.')
                           <li>
-                              <a href="#" class="item">
+                              <a href="{{$active->click_url}}" class="item">
                                   <div class="box-icon w-48 blue round">
                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
@@ -529,7 +538,7 @@
                                   <div class="content">
                                       <div class="d-flex justify-content-between align-items-center">
                                           <div class="body-1">Your Password Changed!</div>
-                                          <div class="body-4">1 Day Ago</div>
+                                          <div class="body-4">{{$active->created_at}}</div>
                                       </div>
                                       <p class="mt-8 body-5">
                                           Your password is successfully changed. Now you can login with your new
@@ -540,6 +549,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Wallet changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 primary round">
@@ -578,6 +589,7 @@
 
                               </a>
                           </li>
+                          @endif
 
                   </div>
                   <div class="tab-pane fade" id="NFTs" role="tabpanel">

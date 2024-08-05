@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PragmaRX\Google2FA\Google2FA;
+use App\Models\Activity;
+
 
 
 use Auth;
@@ -24,6 +26,17 @@ use Validator;
 
 class Profile extends Controller
 {
+
+    public function logActivity($userId, $title)
+    {
+       
+        // dd('logActivity called', $userId);
+        Activity::create([
+            'user_id' => $userId,
+            'title' => $title,
+            'read_status' => 0,
+        ]);
+    }
     public function check2fa(Request $request)
 {
     $user = User::where('username', $request->username)->first();
@@ -459,6 +472,8 @@ public function BankDetail()
            $user->detail_changed_date=$today;
 
            $user->save();
+           $this->logActivity($user->id, 'Email changed to ' . $user->email);
+
            $notify[] = ['success', 'Your Change Email Successfully.'];
            
         return redirect()->route('user.ChangeMail')->withNotify($notify);
@@ -586,6 +601,7 @@ public function BankDetail()
             'detail_changed_date' =>$today,
             'updated_at' => new \DateTime
            ));
+           $this->logActivity($user->id, 'Password changed successfully.');
 
             $notify[] = ['success', 'Password Changed successfully'];
             return redirect()->route('user.ChangePass')->withNotify($notify);
@@ -634,6 +650,7 @@ public function BankDetail()
                 'PSR' =>$password,
                 'updated_at' => new \DateTime
             ));
+            $this->logActivity($user->id, 'Your Password Is updated successfully ');
 
             $notify[] = ['success', 'password updated successfully'];
             return redirect()->route('user.ChangePass')->withNotify($notify);
@@ -679,6 +696,7 @@ public function BankDetail()
             ));
 
            // return Redirect::Back()->with('messages', 'Transaction password updated successfully');
+           $this->logActivity($user->id, 'Your Transaction Password Is updated successfully ');
 
             $notify[] = ['success', 'Transaction password updated successfully'];
             return redirect()->back()->withNotify($notify);
