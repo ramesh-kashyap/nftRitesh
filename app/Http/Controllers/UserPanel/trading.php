@@ -320,7 +320,94 @@ class trading extends Controller
         if ($trade) {
             $trade->status = 'Approved';
             $trade->save();
-            $this->generateRoi($user);
+
+
+            Log::info('Generating ROI for user ID: ' . $user->id);
+
+            // Calculate the user's team details
+            $my_level_team = $this->my_level_team_count($user->id);
+            $gen_team1 = array_key_exists(1, $my_level_team) ? $my_level_team[1] : [];
+            $gen_team2 = array_key_exists(2, $my_level_team) ? $my_level_team[2] : [];
+            $gen_team3 = array_key_exists(3, $my_level_team) ? $my_level_team[3] : [];
+
+            $gen_team1 = User::whereIn('id', $gen_team1)->orderBy('id', 'DESC')->get();
+            $gen_team2 = User::whereIn('id', $gen_team2)->orderBy('id', 'DESC')->get();
+            $gen_team3 = User::whereIn('id', $gen_team3)->orderBy('id', 'DESC')->get();
+
+            $active_gen_team1total = $gen_team1->where('active_status', 'Active')->count();
+            $active_gen_team2total = $gen_team2->where('active_status', 'Active')->count();
+            $active_gen_team3total = $gen_team3->where('active_status', 'Active')->count();
+
+            $total = $active_gen_team1total + $active_gen_team2total;
+            $userDirect = User::where('sponsor', $user->id)
+                ->where('active_status', 'Active')
+                ->where('package', '>=', 30)
+                ->count();
+
+            // Use the updated getBalance function
+            $balance = round($this->getBalance($user->id), 2);
+            Log::info('User balance: ' . $balance);
+
+            // Determine VIP level
+            $vip = 1;
+            if ($balance >= 50 && $balance < 500) {
+                $vip = ($userDirect >= 1) ? 1 : 1;
+            } elseif ($balance >= 500 && $balance < 2000) {
+                $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+            } elseif ($balance >= 2000 && $balance < 5000) {
+                if ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            } elseif ($balance >= 5000) {
+                if ($userDirect >= 15 && $total >= 35) {
+                    $vip = 4;
+                } elseif ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            }
+            Log::info('Determined VIP level: ' . $vip);
+
+            $package = Package::where('vip', $vip)->first();
+            if ($package) {
+                Log::info('Package details: ', $package->toArray());
+
+                $roi = $package->roi;
+                $comm = $balance * $roi / 100;
+                Log::info('Calculated ROI: ' . $roi . ', Commission: ' . $comm);
+
+                $data = [
+                    'remarks' => 'Trade Income',
+                    'comm' => $comm,
+                    'amt' => $balance,
+                    'invest_id' => $vip,
+                    'level' => 0,
+                    'ttime' => Carbon::now(),
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                    'user_id_fk' => $user->username,
+                    'user_id' => $user->id
+                ];
+
+                Income::create($data);
+                Log::info('Income record created: ', $data);
+
+                $this->addLevelIncome($user->id, $comm, $vip);
+                Log::info('Level income added');
+            } else {
+                Log::warning('No package found for VIP level: ' . $vip);
+            }
+
+
+
+
             return back()->with('success', 'Your NFT Sell Successfully');
         }
     
@@ -360,48 +447,67 @@ class trading extends Controller
     public function generateRoi($user)
     {
         try {
+            Log::info('Generating ROI for user ID: ' . $user->id);
+
             // Calculate the user's team details
             $my_level_team = $this->my_level_team_count($user->id);
-    
-            // Ensure all levels are initialized as arrays
-            $gen_team_ids = [
-                1 => isset($my_level_team[1]) && is_array($my_level_team[1]) ? $my_level_team[1] : [],
-                2 => isset($my_level_team[2]) && is_array($my_level_team[2]) ? $my_level_team[2] : [],
-                3 => isset($my_level_team[3]) && is_array($my_level_team[3]) ? $my_level_team[3] : []
-            ];
-    
-            // Flatten the arrays into a single array of IDs
-            $all_gen_team_ids = array_merge(...array_values($gen_team_ids));
-    
-            // Retrieve users by IDs
-            $all_gen_team = User::whereIn('id', $all_gen_team_ids)->orderBy('id', 'DESC')->get()->keyBy('id');
-    
-            // Filter active users by level
-            $active_gen_team_counts = array_map(function ($ids) use ($all_gen_team) {
-                return count(array_filter($ids, function ($id) use ($all_gen_team) {
-                    return isset($all_gen_team[$id]) && $all_gen_team[$id]->active_status === 'Active';
-                }));
-            }, $gen_team_ids);
-    
-            $total = array_sum($active_gen_team_counts);
-    
+            $gen_team1 = array_key_exists(1, $my_level_team) ? $my_level_team[1] : [];
+            $gen_team2 = array_key_exists(2, $my_level_team) ? $my_level_team[2] : [];
+            $gen_team3 = array_key_exists(3, $my_level_team) ? $my_level_team[3] : [];
+
+            $gen_team1 = User::whereIn('id', $gen_team1)->orderBy('id', 'DESC')->get();
+            $gen_team2 = User::whereIn('id', $gen_team2)->orderBy('id', 'DESC')->get();
+            $gen_team3 = User::whereIn('id', $gen_team3)->orderBy('id', 'DESC')->get();
+
+            $active_gen_team1total = $gen_team1->where('active_status', 'Active')->count();
+            $active_gen_team2total = $gen_team2->where('active_status', 'Active')->count();
+            $active_gen_team3total = $gen_team3->where('active_status', 'Active')->count();
+
+            $total = $active_gen_team1total + $active_gen_team2total;
             $userDirect = User::where('sponsor', $user->id)
                 ->where('active_status', 'Active')
-                ->where('package', '>=', 50)
+                ->where('package', '>=', 30)
                 ->count();
-    
+
             // Use the updated getBalance function
             $balance = round($this->getBalance($user->id), 2);
-    
+            Log::info('User balance: ' . $balance);
+
             // Determine VIP level
-            $vip = $this->determineVipLevel($balance, $userDirect, $total);
-    
+            $vip = 0;
+            if ($balance >= 50 && $balance < 500) {
+                $vip = ($userDirect >= 1) ? 1 : 0;
+            } elseif ($balance >= 500 && $balance < 2000) {
+                $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+            } elseif ($balance >= 2000 && $balance < 5000) {
+                if ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            } elseif ($balance >= 5000) {
+                if ($userDirect >= 15 && $total >= 35) {
+                    $vip = 4;
+                } elseif ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            }
+            Log::info('Determined VIP level: ' . $vip);
+
             $package = Package::where('vip', $vip)->first();
-    
             if ($package) {
+                Log::info('Package details: ', $package->toArray());
+
                 $roi = $package->roi;
                 $comm = $balance * $roi / 100;
-    
+                Log::info('Calculated ROI: ' . $roi . ', Commission: ' . $comm);
+
                 $data = [
                     'remarks' => 'Trade Income',
                     'comm' => $comm,
@@ -414,16 +520,21 @@ class trading extends Controller
                     'user_id_fk' => $user->username,
                     'user_id' => $user->id
                 ];
-    
+
                 Income::create($data);
-    
+                Log::info('Income record created: ', $data);
+
                 $this->addLevelIncome($user->id, $comm, $vip);
+                Log::info('Level income added');
+            } else {
+                Log::warning('No package found for VIP level: ' . $vip);
             }
         } catch (\Exception $e) {
             // Log the exception message
             Log::error('Error generating ROI for user ID ' . $user->id . ': ' . $e->getMessage());
         }
     }
+
     
     private function determineVipLevel($balance, $userDirect, $total)
     {
@@ -517,7 +628,7 @@ class trading extends Controller
                         'amt' => $amt,
                         'comm' => $pp,
                         'level' => $cnt,
-                        'remarks' => "Level Income from - " . $fullname,
+                        'remarks' => "Level Income",
                         'ttime' => Carbon::now(),
                         'created_at' => Carbon::now(),
                         'updated_at' => Carbon::now(),
