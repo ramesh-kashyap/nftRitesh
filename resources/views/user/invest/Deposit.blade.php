@@ -20,7 +20,39 @@
 
     <title>@lang('Make Deposit')</title>
 </head>
-
+<style>
+        .select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .select-wrapper select {
+            width: 100%;
+            padding: 8px;
+            appearance: none;
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .custom-option {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+        }
+        .custom-option img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+    </style>
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -78,6 +110,7 @@
                             <label>@lang('Select Payment Mode')</label>
                             <select id="cars" class="form-control" type="text" name="PSys">
                         <option value="USDT.BEP20">USDT BEP20</option>
+                        
                         <option value="USDT.TRC20">USDT TRC20</option>
                     </select>
                         </fieldset>

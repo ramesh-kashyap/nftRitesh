@@ -142,7 +142,7 @@
     justify-content: space-between;
 ">
         <label>@lang('Withdrawal Amount')</label>
-        <span >
+        <span class="body-3 text-dark-2 fw-5 balance-text">
             Balance: {{ number_format(Auth::user()->available_balance(), 2) }} USDT
         </span>
     </div>
