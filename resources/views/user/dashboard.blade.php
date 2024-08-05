@@ -364,6 +364,15 @@
               <div class="tab-content mt-24">
                   <div class="tab-pane fade active show" id="general" role="tabpanel">
                       <ul class="list-view-v8">
+
+
+                      @foreach ($activity as $active)
+
+                      
+                      
+                     
+
+
                       @if($active->title=='Email changed successfully.')
                           <li>
                               <a href="#" class="item">
@@ -385,7 +394,7 @@
                                   <div class="content">
                                       <div class="d-flex justify-content-between align-items-center">
                                           <div class="d-flex gap-5 align-items-center">
-                                              <div class="body-1">Security Updates!</div>
+                                              <div class="body-1">Email Change Sucessfully</div>
                                               <span class="dots bg-blue"></span>
                                           </div>
                                           <div class="body-4">Just Now</div>
@@ -590,6 +599,9 @@
                               </a>
                           </li>
                           @endif
+                          @endforeach
+                      </ul>
+                         
 
                   </div>
                   <div class="tab-pane fade" id="NFTs" role="tabpanel">

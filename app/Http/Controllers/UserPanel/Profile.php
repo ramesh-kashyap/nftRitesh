@@ -472,7 +472,7 @@ public function BankDetail()
            $user->detail_changed_date=$today;
 
            $user->save();
-           $this->logActivity($user->id, 'Email changed to ' . $user->email);
+           $this->logActivity($user->id, 'Email changed successfully.');
 
            $notify[] = ['success', 'Your Change Email Successfully.'];
            
