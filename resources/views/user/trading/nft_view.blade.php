@@ -541,7 +541,7 @@
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
-                                        <span class="button-3" style="font-size:15px;">{{$data->roi}}</span>
+                                        <span class="button-3" style="font-size:15px;">{{$data->roi ?? 0}}</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
