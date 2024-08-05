@@ -154,7 +154,7 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         $activity = Activity::where('user_id', $user->id)
                   //  ->whereBetween('created_at', [$startOfDay, $endOfDay])
                   //  ->latest('created_at')
-                   ->get();
+                   ->get()?? 0;
 
         $this->data['activity'] = $activity;
         // dd($activity);
