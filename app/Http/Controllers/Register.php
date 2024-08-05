@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Carbon\Carbon;
 use App\Models\Country;
+use App\Models\Investment;
 use Log;
 use Hash;
 class Register extends Controller
@@ -119,6 +120,25 @@ class Register extends Controller
     
             // Create the user
             $user_data = User::create($data);
+
+            $invoice = substr(str_shuffle("0123456789"), 0, 7);
+
+            $data = [
+                'orderId' => $invoice,
+                'transaction_id' =>$invoice,
+                'user_id' => $user_data['id'],
+                'user_id_fk' => $username,
+                'amount' => 300,
+                'payment_mode' =>"USDT",
+                'investType' =>2,
+                'status' => 'Active',
+                'sdate' => Date("Y-m-d"),
+                'active_from' =>$username,
+                'created_at' => date("Y-m-d H:i:s"),
+            ];
+            $payment =  Investment::insert($data);
+
+
             $registered_user_id = $user_data['id'];
             $user = User::find($registered_user_id);
             Auth::loginUsingId($registered_user_id);
