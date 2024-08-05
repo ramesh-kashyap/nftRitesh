@@ -146,6 +146,8 @@
             Balance: {{ number_format(Auth::user()->available_balance(), 2) }} USDT
         </span>
     </div>
+
+    
     <input type="number" min="20" name="amount" placeholder="Enter amount" class="form-control" value="">
 </fieldset>
 
