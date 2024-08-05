@@ -167,6 +167,9 @@
                     </ul>
                     @endforeach
                                         <?php }?>
+
+                                        {{ $direct_team->withQueryString()->links() }}
+
                                         
 
                     </div>
