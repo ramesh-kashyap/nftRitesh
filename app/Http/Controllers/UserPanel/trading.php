@@ -134,6 +134,8 @@ class trading extends Controller
             $creator = $request->input('creator');
             $buyer = $request->input('buyer');
             $seller = $request->input('seller');
+            $opensea_url= $request->input('opensea_url');
+            $orderNumber = str_pad(rand(100000, 99999999), 8, '0', STR_PAD_LEFT);
 
     
             // Calculate the user's team details
@@ -205,6 +207,8 @@ class trading extends Controller
                 'status' => 'Pending',
                 'currency' => 'USDT',
                 'buyer_id' =>$buyer,
+                'opensea_url' =>$opensea_url,
+                'order_no'=>$orderNumber,
             ]);
     
             // Redirect with success message
@@ -227,9 +231,13 @@ class trading extends Controller
 
     public function investamount()
 {
-    // $income =Income::where();
-
-    $user = Auth::user();   
+   
+    $user = Auth::user(); 
+    $income = Income::where('user_id', $user->id)->where('remarks','Trade Income') ->latest('created_at')
+                ->first();
+    $rincome = Package::where('vip', $income->invest_id)->latest('created_at')
+    ->first();
+ 
     // $iamount = Package::all();
     $client = new Client();
     $response = $client->request('GET', 'https://api.opensea.io/api/v2/events?event_type=sale&limit=6', [
@@ -249,6 +257,8 @@ class trading extends Controller
 
     
     $nftsData = $filteredNftsLatest;
+
+    // dd($nftsData);
     
     $pamount = Investment::where('user_id', $user->id)->where('status', 'active')->sum('amount');
     $lastTrade = Trade::where('user_id', $user->id)->latest('created_at')->first();
@@ -268,7 +278,8 @@ class trading extends Controller
             $nftd = null;
         }
     }
-    $nftall = Trade::where('user_id', $user->id)->get();
+    $nftall = Trade::where('user_id', $user->id)->latest('created_at')
+    ->paginate(10);
 
     // Calculate the remaining time
     $currentTime = now();
@@ -289,7 +300,9 @@ class trading extends Controller
     $this->data['pamount'] = $pamount;
     $this->data['nfts'] = $nftsData;
     $this->data['nftd'] = $nftd??""; 
-    $this->data['nftall'] = $nftall;    
+    $this->data['nftall'] = $nftall; 
+    $this->data['rincome'] = $rincome;
+    $this->data['roi'] = $income;   
     $this->data['countdownTime'] = $countdownTime; // Pass the remaining time to the view
     $this->data['page'] = 'user.trading.nft_view';
 

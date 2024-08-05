@@ -253,6 +253,7 @@
                             <input type="hidden" name="nft_image" id="imageName" value="">
 
                             <input type="hidden" name="creator" id="creator" value="">
+                            <input type="hidden" name="opensea_url" id="opensea_url" value="">
                             <input type="hidden" name="seller" id="seller" value="">
                             <input type="hidden" name="buyer" id="buyer" value="">
 
@@ -260,7 +261,7 @@
 
                                 <button type="submit" href="#success" class="tf-btn primary btn-icon"
                                     data-bs-toggle="modal" id="buyNowBtn"><span class="icon icon-wallet-money"></span>
-                                    Buy Now</button>
+                                    Place a bid</button>
                             @endif
                         </form>
                     </div>
@@ -277,7 +278,7 @@
                 @endif
 
 
-                <div class="pb-24 mb-24 line">
+                <!-- <div class="pb-24 mb-24 line">
                     <div class="d-flex gap-14 tf-counter">
                         <div class="counter-box favourites count-style-2">
                             <span class="icon icon-heart"></span>
@@ -313,7 +314,7 @@
                             <div class="title-count">Visitors</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="pb-24 mb-24 line">
                     <div class="d-flex align-items-center gap-12">
                         <span class="body-3 text-dark-2">Current Price: </span>
@@ -385,13 +386,13 @@
                                     data-bs-target="#listings">Listings</button>
                             </li> -->
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activity">Item
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activity">NFT
                                     Activity</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <!-- <li class="nav-item" role="presentation">
                                 <button class="nav-link" data-bs-toggle="tab"
-                                    data-bs-target="#listings">Share Rebate Bonus</button>
-                            </li>
+                                    data-bs-target="#listings">Listings</button>
+                            </li> -->
 
                         </ul>
                     </div>
@@ -400,13 +401,15 @@
                     <div class="tab-pane fade active show" id="details" role="tabpanel">
                     <div class="card-nft-2 style-2">
                     @if($nftd)
+                    @if($roi)
+                    @if($rincome)
                             <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-1"
                                 aria-expanded="true" aria-controls="activity-1">
                                 <div class="content-left">
                                     <div class="d-flex gap-16 align-items-center">
                                     <img class="lazyload" src="{{ $nftd->nft_image }}" alt="img-nft" style="height:80px;width:auto;border-radius:20%">
                                         <div>
-                                            <div class="button-1">{{ $nftd->name }} </div>
+                                            <div class="button-1"><a href="{{$nftd->opensea_url}}">{{ $nftd->name }}</a> </div>
                                             <span class="less button-3">-less</span>
                                             <span class="more button-3">+more</span>
                                         </div>
@@ -428,49 +431,79 @@
                                             <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
                                             style="height:20px;width:auto;">
                                             @endif
-                                        <div class="button-2">{{$nftd->price}}</div>
+                                        <div class="button-2"><a href="{{$nftd->opensea_url}}" target="blank">{{$nftd->price}}</a></div>
                                     </div>
-                                    <span class="button-2 text-dark-2">Order No: F564J838</span>
+                                    <span class="button-2 text-dark-2">{{$nftd->order_no}}</span>
                                 </div>
+                                
+                                @if($nftd->status=='Pending')
+                                <form id="sellForm" action="{{ route('user.sellnft') }}"
+                                        method="POST" >
+                                        @csrf
+                                        <input type="hidden" name="status" value="Approved">
+                                        <button id="sellButton" type="submit" class="tf-btn primary"
+                                            style="cursor: pointer;">Sell Now</button>
+                                    </form>
+                                    @endif
                             </div>
                             <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
                                 <div class="card-body">
-                                    <div class="box-item">
+                                    <div class="box-item row">
                                         <div class="body-5">Income</div>
-                                        <span class="button-3" style="font-size:20px;color:#7f52ff">78.9</span>
+                                        <div class="content-right">
+                                    <div class="d-flex gap-2 align-items-center">
+                                    <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
+                                        <div class="button-2"><a href="{{$nftd->opensea_url}}" target="blank">{{$roi->comm}}</a></div>
+                                    </div>                                    
+                                </div>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5" style="font-size:15px;">Rebate</div>
-                                        <span class="button-3">65</span>
+                                        <span class="button-3">{{$rincome->roi}}</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
-                                        <span class="button-3 text-primary">{{$nftd->creator}}</span>
+                                        <span class="button-3 text-primary"><a href="{{$nftd->opensea_url}}" target="blank">{{$nftd->creator}}</a></span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Date</div>
-                                        <span class="button-3 text-primary">{{$nftd->created_at}}</span>
+                                        <span class="button-3 text-primary"><a href="{{$nftd->opensea_url}}" target="blank">{{$nftd->created_at}}</a></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @endif
                     @else
+                    
                         <h4>No NFT Data Available !..</h4>
                         @endif
                     </div>
                         
                     <div class="tab-pane fade check-list" id="activity" role="tabpanel">
                         <!-- item 1 -->
-                         @foreach ($nftall as $value)                                                 
+                        @php
+    $i = 1; // Initialize the counter
+@endphp
+                         @foreach ($nftall as $key=>$value)    
+                         @php
+                         $user= Auth::user();
+                         $vip=$value->vip;
+                         $data=\App\Models\Package::where('vip',$vip)->first();
                          
+                         $invest_id=$value->vip;
+                         $incroi=\App\Models\Income::where('invest_id',$invest_id)->where('user_id', $user->id)->first();
+                         
+                         @endphp                                           
+                         <!--  -->
                         <div class="card-nft-2 style-2">
-                            <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-1"
-                                aria-expanded="true" aria-controls="activity-1">
+                            <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-{{$key}}"
+                                aria-expanded="true" aria-controls="activity-{{$key}}">
                                 <div class="content-left">
                                     <div class="d-flex gap-16 align-items-center">
                                     <img class="lazyload" src="{{$value->nft_image}}" alt="img-nft" style="height:80px;width:auto;border-radius:20%">
                                         <div>
-                                            <div class="button-1">{{$value->name}}</div>
+                                            <div class="button-1"><a href="{{$value->opensea_url}}" target="blank">{{$value->name}}</a></div>
                                             <span class="less button-3">-less</span>
                                             <span class="more button-3">+more</span>
                                         </div>
@@ -492,152 +525,42 @@
                                             <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
                                             style="height:20px;width:auto;">
                                             @endif
-                                        <div class="button-2">{{$value->price}}</div>
+                                        <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$value->price}}</a></div>
                                     </div>
-                                    <span class="button-2 text-dark-2">Order No: Y796222</span>
+                                    <span class="button-2 text-dark-2">{{$value->order_no}}</span>
                                 </div>
                             </div>
-                            <div id="activity-1" class="accordion-collapse collapse show" aria-labelledby="activity-1">
+                            <div id="activity-{{$key}}" class="accordion-collapse collapse show" aria-labelledby="activity-{{$key}}">
                                 <div class="card-body">
                                     <div class="box-item">
                                         <div class="body-5">Income</div>
-                                        <span class="button-3" style="font-size:20px;color:#7f52ff">89.2</span>
+                                        <div class="d-flex gap-2 align-items-center">
+                                    <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
+                                        <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$incroi->comm}}</a></div>
+                                    </div> 
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
-                                        <span class="button-3" style="font-size:15px;"></span>
+                                        <span class="button-3" style="font-size:15px;">{{$data->roi}}</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
-                                        <span class="button-3 text-primary">{{$value->creator}}</span>
+                                        <span class="button-3 text-primary"><a href="{{$value->opensea_url}}" target="blank">{{$value->creator}}</a></span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Date</div>
-                                        <span class="button-3 text-primary">{{$value->created_at}}</span>
+                                        <span class="button-3 text-primary"><a href="{{$value->opensea_url}}" target="blank">{{$value->created_at}}</a></span>
                                     </div>
                                 </div>
                             </div>
                         </div> 
-                        @endforeach                       
+                        
+                        @endforeach 
+                        <div class="pagination">
+        {{ $nftall->links() }}
+    </div>                      
                     </div>
-                    <div class="tab-pane fade " id="listings" role="tabpanel">
-                        <div class="card-nft-1 mb-2">
-                            <div class="card-header"  data-bs-toggle="collapse" data-bs-target="#collection" aria-expanded="true" aria-controls="collection">
-                                <h6>Share on Different Social Media</h6>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19.9201 8.94922L13.4001 15.4692C12.6301 16.2392 11.3701 16.2392 10.6001 15.4692L4.08008 8.94922" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>    
-                            </div>
-                            <div id="collection" class="accordion-collapse collapse show" aria-labelledby="collection">
-                                <div class="card-body">
-                                   
-
-
-
-                                    
-                                    <ul class="d-flex gap-12 mt-20">
-                                        <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round icon-web">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM17.931 9H15.167C15.0436 6.81124 14.4313 4.67797 13.375 2.757C14.5992 3.32905 15.6589 4.2014 16.4554 5.29291C17.252 6.38442 17.7596 7.65965 17.931 9ZM10.53 2.027C11.565 3.391 12.957 5.807 13.157 9H7.03C7.169 6.404 8.024 3.972 9.481 2.026C9.653 2.016 9.825 2 10 2C10.179 2 10.354 2.016 10.53 2.027ZM6.688 2.727C5.704 4.618 5.136 6.762 5.03 9H2.069C2.24177 7.64784 2.75663 6.3621 3.56489 5.26442C4.37315 4.16673 5.44808 3.29339 6.688 2.727ZM2.069 11H5.043C5.179 13.379 5.708 15.478 6.599 17.23C5.38119 16.6559 4.32773 15.7842 3.53596 14.6953C2.74419 13.6064 2.23966 12.3355 2.069 11ZM9.45 17.973C8.049 16.275 7.222 13.896 7.041 11H13.154C12.946 13.773 12.037 16.196 10.551 17.972C10.369 17.984 10.187 18 10 18C9.814 18 9.633 17.984 9.45 17.973ZM13.461 17.201C14.416 15.407 14.999 13.3 15.152 11H17.93C17.7612 12.3243 17.264 13.5853 16.4834 14.6684C15.7029 15.7514 14.6639 16.622 13.461 17.201Z" fill="#1A1528"/>
-                                            </svg>          
-                                        </a></li>
-                                        <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.8199 0.259766C13.6213 0.615453 13.4443 0.982785 13.2899 1.35977C11.7727 1.11982 10.2272 1.11982 8.70992 1.35977C8.55551 0.982785 8.37852 0.615453 8.17992 0.259766C6.75071 0.503967 5.36132 0.941303 4.04992 1.55977C1.70486 4.94405 0.641354 9.05272 1.04992 13.1498C2.57815 14.2986 4.29338 15.1748 6.11992 15.7398C6.53583 15.1904 6.90702 14.6085 7.22992 13.9998C6.63399 13.78 6.06121 13.502 5.51992 13.1698C5.66838 13.071 5.80881 12.9606 5.93992 12.8398C7.51838 13.6001 9.24789 13.9949 10.9999 13.9949C12.7519 13.9949 14.4815 13.6001 16.0599 12.8398C16.1999 12.9598 16.3399 13.0698 16.4799 13.1698C15.9357 13.4994 15.3635 13.7805 14.7699 14.0098C15.0794 14.6323 15.4407 15.2277 15.8499 15.7898C17.6742 15.2268 19.3864 14.3504 20.9099 13.1998C21.3283 9.10197 20.2639 4.98995 17.9099 1.60977C16.6132 0.978503 15.2376 0.524436 13.8199 0.259766ZM7.67992 10.8098C7.1795 10.7738 6.71246 10.5455 6.37684 10.1725C6.04122 9.79962 5.86311 9.31119 5.87992 8.80977C5.86058 8.30768 6.0378 7.81785 6.37393 7.44438C6.71005 7.0709 7.17858 6.84324 7.67992 6.80977C8.18126 6.84324 8.64978 7.0709 8.9859 7.44438C9.32203 7.81785 9.49926 8.30768 9.47992 8.80977C9.49926 9.31185 9.32203 9.80168 8.9859 10.1752C8.64978 10.5486 8.18126 10.7763 7.67992 10.8098ZM14.3199 10.8098C13.8195 10.7738 13.3525 10.5455 13.0168 10.1725C12.6812 9.79962 12.5031 9.31119 12.5199 8.80977C12.5006 8.30768 12.6778 7.81785 13.0139 7.44438C13.3501 7.0709 13.8186 6.84324 14.3199 6.80977C14.8222 6.84074 15.2922 7.06767 15.6289 7.44171C15.9655 7.81576 16.1418 8.30702 16.1199 8.80977C16.1418 9.31251 15.9655 9.80377 15.6289 10.1778C15.2922 10.5519 14.8222 10.7788 14.3199 10.8098Z" fill="#5865F2"/>
-                                            </svg>         
-                                        </a></li>
-                                        <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M17.633 3.99753C17.646 4.17253 17.646 4.34653 17.646 4.52053C17.646 9.84553 13.593 15.9815 6.186 15.9815C3.904 15.9815 1.784 15.3205 0 14.1725C0.324 14.2095 0.636 14.2225 0.973 14.2225C2.78599 14.2269 4.54764 13.6207 5.974 12.5015C5.13342 12.4863 4.31858 12.209 3.64324 11.7083C2.9679 11.2075 2.46578 10.5084 2.207 9.70853C2.456 9.74553 2.706 9.77053 2.968 9.77053C3.329 9.77053 3.692 9.72053 4.029 9.63353C3.11676 9.44934 2.29647 8.95488 1.70762 8.23422C1.11876 7.51355 0.797693 6.61118 0.799 5.68053V5.63053C1.336 5.92953 1.959 6.11653 2.619 6.14153C2.06609 5.77412 1.61272 5.27555 1.29934 4.69032C0.985959 4.10509 0.822313 3.45139 0.823 2.78753C0.823 2.03953 1.022 1.35353 1.371 0.755532C2.38314 2.00055 3.6455 3.01909 5.07633 3.74519C6.50717 4.47129 8.07456 4.88875 9.677 4.97053C9.615 4.67053 9.577 4.35953 9.577 4.04753C9.57674 3.51849 9.68074 2.99459 9.88308 2.50577C10.0854 2.01695 10.3821 1.57281 10.7562 1.19872C11.1303 0.824633 11.5744 0.527942 12.0632 0.32561C12.5521 0.123277 13.076 0.0192689 13.605 0.0195317C14.765 0.0195317 15.812 0.505531 16.548 1.29153C17.4498 1.11715 18.3145 0.787954 19.104 0.318532C18.8034 1.24935 18.1738 2.03864 17.333 2.53853C18.1328 2.44731 18.9144 2.23698 19.652 1.91453C19.1011 2.71763 18.4185 3.42188 17.633 3.99753Z" fill="#1D9BF0"/>
-                                            </svg>    
-                                        </a></li>
-                                        <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M17.9471 6.30447C17.937 5.54709 17.7952 4.79724 17.5281 4.08847C17.2964 3.49062 16.9426 2.94767 16.4892 2.4943C16.0359 2.04093 15.4929 1.68712 14.8951 1.45547C14.1954 1.19283 13.4562 1.05081 12.7091 1.03547C11.7471 0.992469 11.4421 0.980469 9.00007 0.980469C6.55807 0.980469 6.24507 0.980469 5.29007 1.03547C4.54323 1.05092 3.80442 1.19294 3.10507 1.45547C2.50713 1.68696 1.96409 2.04071 1.5107 2.4941C1.05732 2.94749 0.703559 3.49053 0.47207 4.08847C0.208901 4.7876 0.0671935 5.52658 0.0530703 6.27347C0.0100703 7.23647 -0.00292969 7.54147 -0.00292969 9.98347C-0.00292969 12.4255 -0.00292969 12.7375 0.0530703 13.6935C0.0680703 14.4415 0.20907 15.1795 0.47207 15.8805C0.703948 16.4782 1.05797 17.021 1.51151 17.4742C1.96505 17.9274 2.50813 18.281 3.10607 18.5125C3.8035 18.7857 4.54244 18.9378 5.29107 18.9625C6.25407 19.0055 6.55907 19.0185 9.00107 19.0185C11.4431 19.0185 11.7561 19.0185 12.7111 18.9625C13.4582 18.9478 14.1974 18.8061 14.8971 18.5435C15.4948 18.3116 16.0376 17.9576 16.4909 17.5043C16.9442 17.051 17.2982 16.5082 17.5301 15.9105C17.7931 15.2105 17.9341 14.4725 17.9491 13.7235C17.9921 12.7615 18.0051 12.4565 18.0051 10.0135C18.0031 7.57147 18.0031 7.26147 17.9471 6.30447ZM8.99407 14.6015C6.44007 14.6015 4.37107 12.5325 4.37107 9.97847C4.37107 7.42447 6.44007 5.35547 8.99407 5.35547C10.2202 5.35547 11.396 5.84253 12.263 6.70951C13.13 7.5765 13.6171 8.75237 13.6171 9.97847C13.6171 11.2046 13.13 12.3804 12.263 13.2474C11.396 14.1144 10.2202 14.6015 8.99407 14.6015ZM13.8011 6.26247C13.6595 6.2626 13.5192 6.23481 13.3884 6.18068C13.2575 6.12655 13.1386 6.04715 13.0385 5.94702C12.9384 5.8469 12.859 5.72801 12.8049 5.59716C12.7507 5.46631 12.7229 5.32607 12.7231 5.18447C12.7231 5.04297 12.7509 4.90286 12.8051 4.77213C12.8592 4.6414 12.9386 4.52262 13.0387 4.42256C13.1387 4.32251 13.2575 4.24314 13.3882 4.18899C13.519 4.13484 13.6591 4.10697 13.8006 4.10697C13.9421 4.10697 14.0822 4.13484 14.2129 4.18899C14.3436 4.24314 14.4624 4.32251 14.5625 4.42256C14.6625 4.52262 14.7419 4.6414 14.7961 4.77213C14.8502 4.90286 14.8781 5.04297 14.8781 5.18447C14.8781 5.78047 14.3961 6.26247 13.8011 6.26247Z" fill="url(#paint0_radial_4906_189)"/>
-                                                <path d="M8.99421 12.9806C10.6527 12.9806 11.9972 11.6361 11.9972 9.97761C11.9972 8.3191 10.6527 6.97461 8.99421 6.97461C7.3357 6.97461 5.99121 8.3191 5.99121 9.97761C5.99121 11.6361 7.3357 12.9806 8.99421 12.9806Z" fill="url(#paint1_radial_4906_189)"/>
-                                                <defs>
-                                                <radialGradient id="paint0_radial_4906_189" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1.16253 18.6233) scale(22.8635 22.9016)">
-                                                <stop offset="0.09" stop-color="#FA8F21"/>
-                                                <stop offset="0.78" stop-color="#D82D7E"/>
-                                                </radialGradient>
-                                                <radialGradient id="paint1_radial_4906_189" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.37991 12.849) scale(7.62539 7.62539)">
-                                                <stop offset="0.09" stop-color="#FA8F21"/>
-                                                <stop offset="0.78" stop-color="#D82D7E"/>
-                                                </radialGradient>
-                                                </defs>
-                                            </svg>          
-                                        </a></li>
-                                        <li><a href="#" class="box-icon w-36 bg-icon-1 w-36 round">
-                                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M18.6651 0.717797L0.935095 7.5548C-0.274905 8.0408 -0.267905 8.7158 0.713095 9.0168L5.26509 10.4368L15.7971 3.7918C16.2951 3.4888 16.7501 3.6518 16.3761 3.9838L7.8431 11.6848H7.84109L7.8431 11.6858L7.5291 16.3778C7.9891 16.3778 8.19209 16.1668 8.45009 15.9178L10.6611 13.7678L15.2601 17.1648C16.1081 17.6318 16.7171 17.3918 16.9281 16.3798L19.9471 2.1518C20.2561 0.912797 19.4741 0.351797 18.6651 0.717797Z" fill="url(#paint0_linear_4906_2549)"/>
-                                                <defs>
-                                                <linearGradient id="paint0_linear_4906_2549" x1="10.0083" y1="0.607422" x2="10.0083" y2="17.2694" gradientUnits="userSpaceOnUse">
-                                                <stop stop-color="#2AABEE"/>
-                                                <stop offset="1" stop-color="#229ED9"/>
-                                                </linearGradient>
-                                                </defs>
-                                            </svg>  
-                                        </a></li>
-                                        <li>    <button id="shareButton">Share to Social Media</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                                 
-                        </div>  
-                        <span id="contentToCapture" class="mt-24 gap-15" style="text-align:center;margin-top:40px;position: relative;background:transparent;width: 400px;margin: 0px auto;">
-                            <a href="" class="card-nft" style="text-align:center">
-                                <div class="box-img" style="min-width: 400px">
-                                    <img class="lazyload" src="{{$nftd->nft_image}}" alt="img-nft" style="height: 250px; width: 250px; margin-right: 100px; margin-top: 50px;">
-                                                       
-                                        <img class="lazyload" src="{{asset('')}}images/logo/nestnft.png" alt="img-nft" style="height:30px;width:auto;left:0; position: absolute;">
-                                    
-                                    
-                                    <h4 style="position:absolute; top: 10px; right:15px">{{$nftd->name}}</h4>
-                                    <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff; position:absolute; top: 50px; right:15px">
-                                    {{ Auth::user()->name }}
-                                    </p>
-                                    <p style="text-align:left; position:absolute; top: 100px; right:25px">Rebate</p>
-                                    <p style="font-size:30px; font-weight:800; text-align:justify; color:green; position:absolute; top: 130px; right:15px">
-                                    83.1 %
-                                    </p>
-                                    <p style="text-align:left; position:absolute; top: 190px; right:15px">Income</p>
-                                    <p style="font-size:20px; font-weight:800; text-align:justify; color:#7f52ff;position:absolute; top: 210px; right:15px">
-                                    48.4    
-                                    </p>
-                                    
-                                    <span class="tag ethereum" style="left:38%; padding-top:3px; padding-bottom:3px">
-                                        @if($nftd->symbol == 'MATIC')
-                                        <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
-                                        style="height:20px;width:auto;">
-                                        @elseif($nftd->symbol == 'USDT')
-                                        <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
-                                        style="height:20px;width:auto;">
-                                        @elseif($nftd->symbol == 'ETH')
-                                        <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
-                                        style="height:20px;width:auto;">
-                                        @else
-                                        <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
-                                        style="height:20px;width:auto;">
-                                        @endif
-                                        <p style="font-size:15px;font-weight:800;color:#7f52ff">
-                                    {{$nftd->price}}
-                                    </p>
-                                    </span>
-                                    
-                                </div>
-                                <div class="content">
-                                    <div class="button-1 name" >Order No: D563H67</div>
-                                    <p class="mt-4 id-name"  style="font-weight:800;font-size:20px">Reffrel Code :11223344
-                                    <img class="lazyload" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=$url&format=png" alt="img-nft" style="height:60px; width:auto">
-                                    </p>
-                                </div>
-                            </a>
-                        </span>   
-                                
                    
-                </div>
-
                 </div>
             </div>
 
@@ -773,6 +696,7 @@
             document.getElementById('creator').value = selectedNft.nft.collection;
             document.getElementById('buyer').value = selectedNft.buyer;
             document.getElementById('seller').value = selectedNft.seller;
+            document.getElementById('opensea_url').value = selectedNft.nft.opensea_url;
 
             document.getElementById('hiddenNftId').value = selectedNft.nft.identifier; // Set hidden input value
             document.getElementById('hiddenNftName').value = selectedNft.nft.name;
