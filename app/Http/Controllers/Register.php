@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Carbon\Carbon;
+use App\Models\Country;
 use Log;
 use Hash;
 class Register extends Controller
@@ -31,6 +32,17 @@ class Register extends Controller
         return view('auth.register');
     }
 
+    public function getPhoneCode(Request $request)
+    {
+        $countryName = $request->input('countryName');
+        $country = Country::where('name', $countryName)->first();
+
+        if ($country) {
+            return response()->json(['phoneCode' => $country->phonecode]);
+        } else {
+            return response()->json(['error' => 'Country not found'], 404);
+        }
+    }
 
    public function find_position($snode,$pos)
     {
@@ -48,83 +60,78 @@ class Register extends Controller
     }
 
 
-  public function register(Request $request)
+    public function register(Request $request)
     {
-        try{
-            $validation =  Validator::make($request->all(), [
+        try {
+            $validation = Validator::make($request->all(), [
                 'phone' => 'required|unique:users,phone',
                 'password' => 'required|confirmed|min:5',
-                'sponsor' => 'required|exists:users,username',              
+                'sponsor' => 'required|exists:users,username',
+                'countryCode' => 'required', // Add validation for countryCode
             ]);
+    
 
-
-            if($validation->fails()) {
-
+            if ($validation->fails()) {
                 Log::info($validation->getMessageBag()->first());
-     
                 return Redirect::back()->withErrors($validation->getMessageBag()->first())->withInput();
             }
-            //check if email exist
-          
-          
-           
-            
-            $user = User::where('username',$request->sponsor)->first();
-            if(!$user)
-            {
+    
+            // Get user's IP address
+            $ipAddress = $request->ip();
+    
+            // Check if any user exists with the same IP address
+            $existingUserWithIp = User::where('ip', $ipAddress)->first();
+            if ($existingUserWithIp) {
+                return Redirect::back()->withErrors('A user with this IP address already exists.')->withInput();
+            }
+    
+            // Find the sponsor user
+            $user = User::where('username', $request->sponsor)->first();
+            if (!$user) {
                 return Redirect::back()->withErrors(array('Introducer ID Not Active'));
             }
+    
             $totalID = User::count();
             $totalID++;
-            $username =substr(time(),4).$totalID;
-             $username =substr(rand(),-2).substr(time(),-3).substr(mt_rand(),-2);
-            
-           $tpassword =substr(time(),-2).substr(rand(),-2).substr(mt_rand(),-1);
-            $post_array  = $request->all();
-                // 
-          
+            $username = substr(time(), 4) . $totalID;
+            $username = substr(rand(), -2) . substr(time(), -3) . substr(mt_rand(), -2);
+            $tpassword = substr(time(), -2) . substr(rand(), -2) . substr(mt_rand(), -1);
+            $post_array = $request->all();
+            $country=$post_array['countryCode'];
+            $countryCode=Country::where('name',$country)->first();
+    
+            // Prepare user data
             $data['phone'] = $post_array['phone'];
             $data['username'] = $username;
-            $data['password'] =   Hash::make($post_array['password']);
-            $data['tpassword'] =   Hash::make($tpassword);
-            $data['PSR'] =  $post_array['password'];
-           
-            $data['TPSR'] =  $tpassword;
+            $data['password'] = Hash::make($post_array['password']);
+            $data['tpassword'] = Hash::make($tpassword);
+            $data['PSR'] = $post_array['password'];
+            $data['TPSR'] = $tpassword;
             $data['sponsor'] = $user->id;
             $data['package'] = 0;
             $data['jdate'] = date('Y-m-d');
             $data['created_at'] = Carbon::now();
-            $data['remember_token'] = substr(rand(),-7).substr(time(),-5).substr(mt_rand(),-4);
-            $sponsor_user =  User::orderBy('id','desc')->limit(1)->first();
-           $data['level'] = $user->level+1;
-
-         
-            $data['ParentId'] =  $sponsor_user->id;
-            $user_data =  User::create($data);
+            $data['remember_token'] = substr(rand(), -7) . substr(time(), -5) . substr(mt_rand(), -4);
+            $data['level'] = $user->level + 1;
+            $data['ParentId'] = User::orderBy('id', 'desc')->limit(1)->first()->id;
+            $data['ip'] = $ipAddress; // Store the IP address
+            $data['dialCode'] = $countryCode->phonecode; // Store the country code
+    
+            // Create the user
+            $user_data = User::create($data);
             $registered_user_id = $user_data['id'];
             $user = User::find($registered_user_id);
             Auth::loginUsingId($registered_user_id);
-          
-         
-
+    
             return redirect()->route('user.dashboard');
-            //  return redirect()->route('register_sucess')->with('messages', $user);
-
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::info('error here');
-
             Log::info($e->getMessage());
-            dd($e->getMessage());
-
-            print_r($e->getMessage());
-            die("hi");
             return back()->withErrors('error', $e->getMessage())->withInput();
-           
         }
-
-          
-    } 
+    }
+    
+    
     
     // In RegistrationController.php
 public function showRegistrationForm($sponsorCode)

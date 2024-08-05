@@ -68,16 +68,7 @@
                         $name = \App\Models\User::where('username', $sponsor)->first();
                         @endphp
                         <div class="card-body">
-                            <div class="delete-item mt-20 ">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="body-4" style="
-    font-size: 16px;
-    font-weight: 500;">Phone Number</span>
-
-                                </div>
-                                <input class="mt-12 form-control" name="phone" type="tel"   placeholder="Enter Your Number"  id="mobile_code">
-                                <i class="ri-user-line user"></i>
-                            </div>
+                                
                             <div class="delete-item mt-20">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="body-4" style="
@@ -97,7 +88,7 @@
                               <input class="mt-12 form-control" type="text" name="code" placeholder="Code">
                               <span class="code-btn text-primary" style="
     position: absolute;
-    top: 30%;
+    top: 16%;
     right: 25px;
    cursor:pointer;
 ">Get Code</span>

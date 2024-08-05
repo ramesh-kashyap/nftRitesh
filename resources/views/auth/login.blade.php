@@ -89,15 +89,7 @@
                           <div class="submit-btn pt-1 pb-1">
                               <button type="submit" class="tf-btn theme-btn">Sign In</button>
                           </div>
-                          <div class="division text-center mt-10 mb-10">
-                              <span class="text-info text-md-start text-center">OR</span>
-                          </div>
-
-                          <div class="btn-section">
-                              <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google" src="{{asset('')}}images/logo/apple.png" alt="google" style="width: 22px" /><span class="text-primar"> Continue with Apple </span></a>
-
-                              <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google" src="{{asset('')}}images/logo/google.png" alt="google" style="width: 22px" /> <span class="text-primar">Continue with Google </span></a>
-                          </div>
+                          
 
                           <h5 class="signup mt-10"><span class="text-mut">Haven't registered?</span><a href="{{ route('register') }}" class="text-primary"> Sign up now</a></h5>
                       </div>
@@ -142,3 +134,6 @@
       });
   </script>
 </body>
+</html>
+@include('partials.notify')
+

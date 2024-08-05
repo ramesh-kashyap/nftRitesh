@@ -118,14 +118,13 @@ class Login extends Controller
     public function forgot_password_submit(Request $request)
     {
          $validation =  Validator::make($request->all(), [
-                'phone' => 'required|unique:users',
                 'email' => 'required',
                 'code' => 'required',
                 'password' => 'required|confirmed',
 
             ]);
             
-        $credentials = User::where('phone',$request->phone)->where('email',$request->email)->first();
+        $credentials = User::where('email',$request->email)->first();
 
         if ($credentials)
         {

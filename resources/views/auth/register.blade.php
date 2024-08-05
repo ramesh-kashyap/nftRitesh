@@ -64,71 +64,58 @@
                     <form method="POST" action="{{ route('registers') }}" class="auth-form">
                         {{ csrf_field() }}
                         @php
-                        $sponsor = @$_GET['ref'];
-                        $name = \App\Models\User::where('username', $sponsor)->first();
+                            $sponsor = @$_GET['ref'];
+                            $name = \App\Models\User::where('username', $sponsor)->first();
                         @endphp
                         <div class="card-body">
                             <div class="delete-item mt-20 ">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="body-4" style="
-    font-size: 16px;
-    font-weight: 500;">Phone Number</span>
-
+                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">Select Country</span>
                                 </div>
-                                <input class="mt-12 form-control" name="phone" type="number"   placeholder="Enter Your Number"  id="phone">
-                                <i class="ri-user-line user"></i>
+                                @php
+                                    $datas = \App\Models\Country::all();
+                                @endphp
+                                <select id="countryCode" class="form-control" name="countryCode">
+                                    @foreach($datas as $data)
+                                        <option value="{{ $data->name }}">{{ $data->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="delete-item mt-20">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="body-4" style="
-                                font-size: 16px;
-                                font-weight: 500;">Invitation Code</span>
-
-                                </div>
-                                <input class="mt-12 form-control" name="sponsor" type="text" value="{{$sponsor}}" placeholder="Enter your Sponsor">
-                            </div>
-                            <div class="delete-item mt-20 ">
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <span class="body-4" style="
-  font-size: 16px;
-  font-weight: 500;">Password</span>
-
-                              </div>
-                              <input class="mt-12 form-control" id="test-input" name="password"
-                              type="password" placeholder="Enter your password">
-                              <i class="ri-user-line user"></i>
-                          </div>
-                          <div class="delete-item mt-20 ">
+                            <span id="phoneCodeSpan" style="position: absolute; top: 158px; left: 33px; border-right: solid; font-weight: 700; padding-right: 2px;">+93</span>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="
-font-size: 16px;
-font-weight: 500;">Confirm Password</span>
-
+                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Phone Number</span>
                             </div>
-                            <input class="mt-12 form-control" name="password_confirmation"
-                            type="password" placeholder="Confirm your password">
+                            <input class="mt-12 form-control" name="phone" type="number" placeholder="Enter Your Number" id="phone" style="padding: 14px 16px 14px 60px;">
                             <i class="ri-user-line user"></i>
                         </div>
-
-                            <div class="submit-btn pt-1 pb-1">
-                                <button type="submit" class="tf-btn theme-btn mt-10">Continue</button>
+                        <div class="delete-item mt-20">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Invitation Code</span>
                             </div>
-                            <div class="division text-center mt-10 mb-10">
-                                <span class="text-info text-md-start text-center">OR</span>
+                            <input class="mt-12 form-control check_sponsor_exist" name="sponsor" type="text" value="{{ $sponsor }}" placeholder="Enter your Sponsor" enterkeyhint="done" autocomplete="off" data-response="sponsor_res">
+                            <span id="sponsor_res">{{ $name ? $name->name : '' }}</span>
+                        </div>
+                        <div class="delete-item mt-20 ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Password</span>
                             </div>
-
-                            <div class="btn-section">
-                                <a href="https://www.apple.com/in/" class="google-btn"><img class="img-fluid google"
-                                        src="{{asset('')}}images/logo/apple.png" alt="google"
-                                        style="width: 22px" /><span class="text-primar"> Continue with Apple </span></a>
-
-                                <a href="https://www.google.co.in/" class="google-btn"><img class="img-fluid google"
-                                        src="{{asset('')}}images/logo/google.png" alt="google" style="width: 22px" />
-                                    <span class="text-primar">Continue with Google </span></a>
+                            <input class="mt-12 form-control" id="test-input" name="password" type="password" placeholder="Enter your password">
+                            <i class="ri-user-line user"></i>
+                        </div>
+                        <div class="delete-item mt-20 ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Confirm Password</span>
                             </div>
-
-                            <h5 class="signup mt-10"><span class="text-mut">Already have an account ?</span><a
-                                    href="{{ route('login') }}" class="text-primary">Sign in now</a></h5>
+                            <input class="mt-12 form-control" name="password_confirmation" type="password" placeholder="Confirm your password">
+                            <i class="ri-user-line user"></i>
+                        </div>
+                        <div class="submit-btn pt-1 pb-1">
+                            <button type="submit" class="tf-btn theme-btn mt-10">Continue</button>
+                        </div>
+                        <h5 class="signup mt-10">
+                            <span class="text-mut">Already have an account ?</span>
+                            <a href="{{ route('login') }}" class="text-primary">Sign in now</a>
+                        </h5>
                     </form>
 
                 </div>
@@ -147,6 +134,60 @@ font-weight: 500;">Confirm Password</span>
     <script type="text/javascript" src="js/jqueryui.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
+    <script src="https://code.jquery.com//jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.check_sponsor_exist').keyup(function (e) {
+                var ths = $(this);
+                var res_area = $(ths).attr('data-response');
+                var sponsor = $(this).val();
+    
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('getUserName') }}",
+                    data: {
+                        "user_id": sponsor,
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function (response) {
+                        if (response != 1) {
+                            $(".submit-btn button").prop("disabled", false);
+                            $('#' + res_area).html(response).css('color', '#000').css('font-weight', '800');
+                        } else {
+                            $(".submit-btn button").prop("disabled", true);
+                            $('#' + res_area).html("Sponsor ID Not exists!").css('color', 'red');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#countryCode').change(function() {
+                var countryName = $(this).val();
+                $.ajax({
+                    url: "{{ route('get.phone.code') }}",
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        countryName: countryName
+                    },
+                    success: function(response) {
+                        if (response.phoneCode) {
+                            $('#phoneCodeSpan').text('+' + response.phoneCode);
+                        }
+                    },
+                    error: function(response) {
+                        console.log('Error:', response);
+                    }
+                });
+            });
+        });
+    </script>
+    
+
 </body>
 
 </html>
+@include('partials.notify')
