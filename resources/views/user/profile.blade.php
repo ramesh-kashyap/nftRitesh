@@ -194,21 +194,7 @@
                             <li class="nav-item active" role="presentation">   
                                 <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#collected">Collected</button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#created">Created</button>
-                            </li> 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#favorited">Favorited</button>
-                            </li> 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activity">Activity</button>
-                            </li> 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#offersMade">Offers Made</button>
-                            </li> 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#purchasedNFT">Purchased NFT</button>
-                            </li> 
+                           
                         </ul>
                     </div>
                 </div>
@@ -220,7 +206,7 @@
                         <div class="grid-2 mt-28 gap-15">
                             @foreach($collections as $value)
 
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="{{ asset($value['display_image_url']) }}" alt="img-nft">
                                     <span class="tag react">
@@ -669,7 +655,7 @@
                             </div>
                         </div>
                         <div class="grid-2 mt-28 gap-15">
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-9.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -696,7 +682,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-10.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -723,7 +709,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-11.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -750,7 +736,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-12.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -777,7 +763,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-13.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -804,7 +790,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-14.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -831,7 +817,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-15.jpg" alt="img-nft">
                                     <span class="tag react">
@@ -858,7 +844,7 @@
                                     </p>
                                 </div>
                             </a>
-                            <a href="creator-details.html" class="card-nft">
+                            <a href="#" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="images/nfts/nft-16.jpg" alt="img-nft">
                                     <span class="tag react">

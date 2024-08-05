@@ -142,6 +142,7 @@
                                     $cnt = 0; ?>
                                     @foreach($deposit_list as $value)
 
+                                    @if($value->investType==1)
                                     <li class="item">
                                         <a href="#" class="gap-12">
                                             <div class="image">
@@ -176,6 +177,42 @@
                                             @endif
                                         </a>
                                     </li>
+                                    @else
+                                    <li class="item">
+                                        <a href="#" class="gap-12">
+                                            <div class="image">
+                                                
+                                            </div>
+                                            <span class="content">
+                                                <span class="body-1">{{ $value->amount }} {{ generalDetail()->cur_text }}</span>
+                                                <span class="body-4 mt-4 tid" style="
+                                                padding-bottom: 0px;
+                                                margin-bottom: -4px;
+                                            ">Registeration Bonus</span>
+
+                                                <br>
+                                                <span class="body-1" style="font-size: 13px;">{{date("D, d M Y H:i:s ", strtotime($value->created_at))}}</span>
+
+                                            </span>
+                                            @if($value->status == "Pending")
+                                            
+                                                <div class="col-sm-2 button-danger">
+                                                    <form type="POST" action="{{ route('user.cancel-payment', ['id' => $value->orderId]) }}">
+                                                        @csrf
+                                                      <button class="tf-btn btn-sm primary" type="submit">Cancel</button>
+                                                    </form>
+                                                </div>
+                                           
+                                            @else
+                                            <div class="col-sm-2">
+    <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'btn-success' : 'btn-danger' }}">
+        {{ $value->status == 'Active' ? 'Success' : $value->status }}
+    </button>
+</div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                    @endif
                                     
                                 @endforeach
                                 <?php }?> 
