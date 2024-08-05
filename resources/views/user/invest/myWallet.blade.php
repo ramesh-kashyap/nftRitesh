@@ -23,6 +23,16 @@
 <style>
 
 
+/* Example custom styles */
+.btn-success {
+    background-color: #28a745; /* Green color */
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red color */
+    color: white;
+}
 
     
 </style>
@@ -115,7 +125,7 @@
                         <span class="fw-6 text-dark">Invite</span>
                     </a></li>
 
-                    <li><a href="{{route('user.referral-team')}}" class="item">
+                    <li><a href="{{route('user.level-team')}}" class="item">
                         <div class="box-icon w-48 round"><span class="icon icon-import"></span></div>
                         <span class="fw-6 text-dark">My Team</span>
                     </a></li>
@@ -171,9 +181,11 @@
                                                 </div>
                                            
                                             @else
-                                            <div class="col-sm-2 ">
-                                                <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'success' : 'danger' }}">{{ $value->status }}</button>
-                                            </div>
+                                            <div class="col-sm-2">
+    <button class="tf-btn btn-sm {{ $value->status == 'Active' ? 'btn-success' : 'btn-danger' }}">
+        {{ $value->status == 'Active' ? 'Success' : $value->status }}
+    </button>
+</div>
                                             @endif
                                         </a>
                                     </li>
