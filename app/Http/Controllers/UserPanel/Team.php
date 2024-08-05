@@ -21,15 +21,30 @@ use Validator;
 class Team extends Controller
 {
 
-
+  public function getTotalTeamCount()
+  {
+      $user = Auth::user();
+      $my_level_team = $this->my_level_team_count($user->id);
   
-
+      $totalCount = 0;
+  
+      foreach ($my_level_team as $level => $team) {
+          $totalCount += count($team);
+      }
+  
+      return $totalCount;
+  }
+  
+  
   public function index(Request $request)
   {
       $user = Auth::user();
   
       // Fetch the team count based on the user's level
       $my_level_team = $this->my_level_team_count($user->id);
+  
+      // Get total team count
+      $total_team_count = $this->getTotalTeamCount();
   
       // Set default values for pagination and selected level
       $limit = $request->limit ?? paginationLimit();
@@ -84,10 +99,12 @@ class Team extends Controller
       $this->data['search'] = $search;
       $this->data['max_length'] = $max_length;
       $this->data['selected_level'] = $selected_level;
+      $this->data['total_team_count'] = $total_team_count; // Pass the total count
       $this->data['page'] = 'user.team.direct-team';
   
       return $this->dashboard_layout();
   }
+  
   
   
 
