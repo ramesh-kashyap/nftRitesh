@@ -19,12 +19,12 @@ class Login extends Controller
 {
     public function logActivity($userId, $title)
     {
-        dd($userId);
-
+       
+        dd('logActivity called', $userId);
         Activity::create([
             'user_id' => $userId,
             'title' => $title,
-            'status' => 0,
+            'read_status' => 0,
         ]);
     }
 

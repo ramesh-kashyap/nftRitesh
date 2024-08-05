@@ -17,6 +17,7 @@ use GuzzleHttp\Client;
 use App\Models\User_trade;
 use App\Models\Contract;
 use App\Models\Activitie;
+use App\Models\Activity;
 use Carbon\Carbon;
 use Redirect;
 use Log;
@@ -145,6 +146,19 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         } catch (\Exception $e) {
             $this->data['collections'] = [];
         }
+
+        //for activity
+        $user=Auth::user();
+        $startOfDay = Carbon::today();
+        $endOfDay = Carbon::tomorrow()->subSecond();
+        $activity = Activity::where('user_id', $user->id)
+                  //  ->whereBetween('created_at', [$startOfDay, $endOfDay])
+                  //  ->latest('created_at')
+                   ->get();
+
+        $this->data['activity'] = $activity;
+        // dd($activity);
+        //end activity
     
         $this->data['page'] = 'user.dashboard';
         return $this->dashboard_layout();
@@ -906,6 +920,22 @@ public function tradeOn()
         }
     }
 
+
+    // public function activityshow()
+    // {
+    //     $user=Auth::user();
+    //     $startOfDay = Carbon::today();
+    //     $endOfDay = Carbon::tomorrow()->subSecond();
+    //     $active = Activity::where('user_id', $user->id)
+    //                ->whereBetween('created_at', [$startOfDay, $endOfDay])
+    //                ->latest('created_at')
+    //                ->get();
+
+    //     $this->data['active'] = $active;
+    //     $this->data['page'] = 'user.dashboard';
+    //     return $this->dashboard_layout();
+    
+    // }
 
 
 

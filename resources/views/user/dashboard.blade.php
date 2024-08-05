@@ -347,7 +347,7 @@
               </a>
           </div>
       </div>
-      <div class="overflow-auto app-content style-1">
+      <div class="overflow-auto app-content style-1">      
           <div class="tf-container">
               <div class="tab-slide wrapper-tab">
                   <ul class="nav nav-tabs tab-1" role="tablist">
@@ -364,6 +364,16 @@
               <div class="tab-content mt-24">
                   <div class="tab-pane fade active show" id="general" role="tabpanel">
                       <ul class="list-view-v8">
+
+
+                      @foreach ($activity as $active)
+
+                      
+                      
+                     
+
+
+                      @if($active->title=='Email changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 green round">
@@ -384,10 +394,10 @@
                                   <div class="content">
                                       <div class="d-flex justify-content-between align-items-center">
                                           <div class="d-flex gap-5 align-items-center">
-                                              <div class="body-1">Security Updates!</div>
+                                              <div class="body-1">Email Change Sucessfully</div>
                                               <span class="dots bg-blue"></span>
                                           </div>
-                                          <div class="body-4">Just Now</div>
+                                          <div class="body-4">{{$active->created_at}}</div>
                                       </div>
                                       <p class="mt-8 body-5">
                                           Now ENFTI has a Two-Factor Authentication. Try it now to make your account
@@ -398,6 +408,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Password is reset changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 primary round">
@@ -439,6 +451,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Transaction Password changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 orange round">
@@ -469,6 +483,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Wallet changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 error round">
@@ -501,8 +517,10 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Password changed successfully.')
                           <li>
-                              <a href="#" class="item">
+                              <a href="{{$active->click_url}}" class="item">
                                   <div class="box-icon w-48 blue round">
                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
@@ -529,7 +547,7 @@
                                   <div class="content">
                                       <div class="d-flex justify-content-between align-items-center">
                                           <div class="body-1">Your Password Changed!</div>
-                                          <div class="body-4">1 Day Ago</div>
+                                          <div class="body-4">{{$active->created_at}}</div>
                                       </div>
                                       <p class="mt-8 body-5">
                                           Your password is successfully changed. Now you can login with your new
@@ -540,6 +558,8 @@
 
                               </a>
                           </li>
+                          @endif
+                          @if($active->title=='Wallet changed successfully.')
                           <li>
                               <a href="#" class="item">
                                   <div class="box-icon w-48 primary round">
@@ -578,6 +598,10 @@
 
                               </a>
                           </li>
+                          @endif
+                          @endforeach
+                      </ul>
+                         
 
                   </div>
                   <div class="tab-pane fade" id="NFTs" role="tabpanel">

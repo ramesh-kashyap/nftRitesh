@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    protected $table = 'Activitys';
+    protected $table = 'activitys';
     use HasFactory;
-    protected $fillable = ['user_id','status', 'title'];
+    protected $fillable = ['user_id','read_status', 'title'];
 
     public function user()
     {
