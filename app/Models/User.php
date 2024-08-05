@@ -160,7 +160,7 @@ class User extends Authenticatable
     
     public function available_balance()
     {
-    $balance = (Auth::user()->investment->sum('amount')+Auth::user()->users_incomes()+Auth::user()->tradingProfit->sum('profit')) - (Auth::user()->withdraw());
+    $balance = (Auth::user()->investment->sum('amount')+Auth::user()->users_incomes()) - (Auth::user()->withdraw());
     return $balance;
     } 
 
@@ -178,7 +178,7 @@ class User extends Authenticatable
 
     public function users_incomes()
     {
-        return  Income::where('user_id',Auth::user()->id)->where('remarks','!=','Quantify Income')->sum('comm');
+        return  Income::where('user_id',Auth::user()->id)->sum('comm');
     } 
     
 
@@ -193,7 +193,7 @@ class User extends Authenticatable
 
 
     public function investment(){
-        return $this->hasMany('App\Models\Investment','user_id','id')->where('status','Active');
+        return $this->hasMany('App\Models\Investment','user_id','id')->where('status','Active')->where('investType','1');
     }
 
 
