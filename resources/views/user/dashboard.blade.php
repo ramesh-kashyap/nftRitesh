@@ -397,7 +397,7 @@
                                               <div class="body-1">Email Change Sucessfully</div>
                                               <span class="dots bg-blue"></span>
                                           </div>
-                                          <div class="body-4">Just Now</div>
+                                          <div class="body-4">{{$active->created_at}}</div>
                                       </div>
                                       <p class="mt-8 body-5">
                                           Now ENFTI has a Two-Factor Authentication. Try it now to make your account
