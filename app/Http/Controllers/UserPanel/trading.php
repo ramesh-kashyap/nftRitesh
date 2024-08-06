@@ -145,9 +145,9 @@ class trading extends Controller
             $userDirect = User::where('sponsor', $user->id)->where('active_status', 'Active')->where('package', '>=', 30)->count();
             $balance = round($user->available_balance(), 2) ?? 0;
     
-            $vip = 0;
+            $vip = 1;
             if ($balance >= 50 && $balance < 500) {
-                $vip = ($userDirect >= 1) ? 1 : 0;
+                $vip = ($userDirect >= 1) ? 1 : 1;
             } elseif ($balance >= 500 && $balance < 2000) {
                 $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
             } elseif ($balance >= 2000 && $balance < 5000) {

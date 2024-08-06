@@ -500,7 +500,7 @@
                          $data=\App\Models\Package::where('vip',$vip)->first();
                          
                          $invest_id=$value->vip;
-                         $incroi=\App\Models\Income::where('invest_id',$invest_id)->where('user_id', $user->id)->first();
+                         $incroi=\App\Models\Income::where('remarks','Trade Income')->where('user_id', $user->id)->first();
                          
                          @endphp                                           
                          <!--  -->
@@ -538,7 +538,7 @@
                                     <span class="button-2 text-dark-2">{{$value->order_no}}</span>
                                 </div>
                             </div>
-                            <div id="activity-{{$key}}" class="accordion-collapse collapse show" aria-labelledby="activity-{{$key}}">
+                            <div id="activity-{{$key}}" class="accordion-collapse collapse" aria-labelledby="activity-{{$key}}">
                                 <div class="card-body">
                                     <div class="box-item">
                                         <div class="body-5">Income</div>
