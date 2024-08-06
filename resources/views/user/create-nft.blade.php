@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="../css/slick.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/slick-theme.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="shortcut icon" href="../images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
+    <link rel="shortcut icon" href="../images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="../images/logo/nestnft.png" />
     <style>
         .box-img img {
             border-radius: 20px;

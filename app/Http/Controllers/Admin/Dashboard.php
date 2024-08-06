@@ -38,9 +38,9 @@ class Dashboard extends Controller
     } 
 
     public function addPrice()
-    {     
+    {      
      
-     $trade= \DB::table('machines')->get();   
+     $trade= \DB::table('package')->get();   
      $this->data['trade'] = $trade;
      $this->data['page'] = 'admin.setting.add-price';
      return $this->admin_dashboard();
@@ -171,10 +171,12 @@ class Dashboard extends Controller
 
         try {
             $data = $request->all();
-            $rules = array('vip1_percentage' => 'required','vip2_percentage' => 'required');
+            $rules = array('vip1_percentage' => 'required','vip2_percentage' => 'required','vip3_percentage' => 'required','vip4_percentage' => 'required');
             $msg = [
                 'vip1_percentage.required'     => 'VIP 1 is required',
-                'vip2_percentage.required'     => 'VIP2 is required',
+                'vip2_percentage.required'     => 'VIP 2 is required',
+                'vip3_percentage.required'     => 'VIP 3 is required',
+                'vip4_percentage.required'     => 'VIP 4 is required',
               
            
             ];
@@ -184,8 +186,10 @@ class Dashboard extends Controller
                 return Redirect::back()->withErrors($validator->getMessageBag()->first());
 
 
-              \DB::table('machines')->where('m_id',1)->update(['m_return'=>$request->vip1_percentage]);
-              \DB::table('machines')->where('m_id',2)->update(['m_return'=>$request->vip2_percentage]);
+              \DB::table('package')->where('vip',1)->update(['roi'=>$request->vip1_percentage]);
+              \DB::table('package')->where('vip',2)->update(['roi'=>$request->vip2_percentage]);
+              \DB::table('package')->where('vip',3)->update(['roi'=>$request->vip3_percentage]);
+              \DB::table('package')->where('vip',4)->update(['roi'=>$request->vip4_percentage]);
             
             $notify[] = ['success', 'Roi updated successfully'];
         return redirect()->back()->withNotify($notify);

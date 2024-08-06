@@ -29,8 +29,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> -->
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="../images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
+    <link rel="shortcut icon" href="../images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="../images/logo/nestnft.png" />
     
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
@@ -257,12 +257,20 @@
                             <input type="hidden" name="seller" id="seller" value="">
                             <input type="hidden" name="buyer" id="buyer" value="">
 
+                            @if(Auth::user()->active_status == "Active")
                             @if($countdownTime <= 0)
-
                                 <button type="submit" href="#success" class="tf-btn primary btn-icon"
                                     data-bs-toggle="modal" id="buyNowBtn"><span class="icon icon-wallet-money"></span>
                                     Place a bid</button>
                             @endif
+                        @else
+                            @if($countdownTime <= 0)
+                                <button type="button" class="tf-btn primary btn-icon disable">
+                                    <span class="icon icon-wallet-money"></span>
+                                    Place a bid</button>
+                            @endif
+                        @endif
+                        
                         </form>
                     </div>
                 </div>
