@@ -31,8 +31,8 @@
     <!-- manifest json -->
     <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
+    <link rel="shortcut icon" href="images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/logo/nestnft.png" />
 
     <title>home</title>
 </head>

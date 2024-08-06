@@ -27,8 +27,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> -->
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="../images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
+    <link rel="shortcut icon" href="../images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="../images/logo/nestnft.png" />
      <style>
      .box-img 
         img{

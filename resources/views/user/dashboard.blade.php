@@ -214,9 +214,9 @@
                 <div class="grid-2 mt-24 gap-15">
                     @foreach($nftsLatest as $data)
                     @if($data['nft']['image_url'])
-                    <a href="#" class="card-nft">
+                    <a href="{{ $data['nft']['opensea_url'] }}" class="card-nft">
                         <div class="box-img">
-                            <img class="lazyload" data-src="{{  $data['nft']['image_url'] }}" alt="img-nft">
+                            <img class="lazyload" data-src="{{  $data['nft']['display_image_url'] }}" alt="img-nft">
                             <span class="tag react">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -375,7 +375,7 @@
 
                       @if($active->title=='Email changed successfully.')
                           <li>
-                              <a href="#" class="item">
+                              <a href="{{$active->click_url}}" class="item">
                                   <div class="box-icon w-48 green round">
                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
@@ -399,10 +399,10 @@
                                           </div>
                                           <div class="body-4">{{$active->created_at}}</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Now ENFTI has a Two-Factor Authentication. Try it now to make your account
                                           more secure.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -443,9 +443,9 @@
                                           </div>
                                           <div class="body-4">5 min ago</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Try ENFTI new feature, now you can link your multiple wallet accounts.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -475,9 +475,9 @@
                                           <div class="body-1">ENFTI Has Updates!</div>
                                           <div class="body-4">1 hr Ago</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Now you can make an offer and buy multiple NFTs at once.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -549,10 +549,10 @@
                                           <div class="body-1">Your Password Changed!</div>
                                           <div class="body-4">{{$active->created_at}}</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Your password is successfully changed. Now you can login with your new
                                           password.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -640,182 +640,7 @@
 
 
                               </a>
-                          </li>
-                          <li class="item">
-                              <a href="javascript:void(0);">
-                                  <div class="avatar round avt-48">
-                                      <img src="images/avt/nft-logo-2.png" alt="">
-                                  </div>
-                                  <div class="content d-flex justify-content-between">
-                                      <div class="content-left">
-                                          <span class="body-3 text-dark-2">Billionaire Club</span>
-                                          <p class="body-1 mt-2">Exclusive Ape #103</p>
-                                          <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                      </div>
-                                      <div class="content-right text-end">
-                                          <span class="body-3 text-dark-2">Sale</span>
-                                          <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                                      fill="#1A1528" />
-                                              </svg>
-                                              <span class="button-2">0.836</span>
-                                          </div>
-                                          <span class="mt-2 d-block body-4 text-dark-2">15 minutes ago</span>
-                                      </div>
-                                  </div>
-
-
-                              </a>
-                          </li>
-                          <li class="item">
-                              <a href="javascript:void(0);">
-                                  <div class="avatar round avt-48">
-                                      <img src="images/avt/nft-logo-3.png" alt="">
-                                  </div>
-                                  <div class="content d-flex justify-content-between">
-                                      <div class="content-left">
-                                          <span class="body-3 text-dark-2">Billionaire Club</span>
-                                          <p class="body-1 mt-2">Exclusive Ape #107</p>
-                                          <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                      </div>
-                                      <div class="content-right text-end">
-                                          <span class="body-3 text-dark-2">Sale</span>
-                                          <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                                      fill="#1A1528" />
-                                              </svg>
-                                              <span class="button-2">0.982</span>
-                                          </div>
-                                          <span class="mt-2 d-block body-4 text-dark-2">22 minutes ago</span>
-                                      </div>
-                                  </div>
-
-
-                              </a>
-                          </li>
-                          <li class="item">
-                              <a href="javascript:void(0);">
-                                  <div class="avatar round avt-48">
-                                      <img src="images/avt/nft-logo-4.png" alt="">
-                                  </div>
-                                  <div class="content d-flex justify-content-between">
-                                      <div class="content-left">
-                                          <span class="body-3 text-dark-2">Billionaire Club</span>
-                                          <p class="body-1 mt-2">Exclusive Ape #102</p>
-                                          <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                      </div>
-                                      <div class="content-right text-end">
-                                          <span class="body-3 text-dark-2">Sale</span>
-                                          <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                                      fill="#1A1528" />
-                                              </svg>
-                                              <span class="button-2">0.476</span>
-                                          </div>
-                                          <span class="mt-2 d-block body-4 text-dark-2">40 minutes ago</span>
-                                      </div>
-                                  </div>
-
-
-                              </a>
-                          </li>
-                          <li class="item">
-                              <a href="javascript:void(0);">
-                                  <div class="avatar round avt-48">
-                                      <img src="images/avt/nft-logo-5.png" alt="">
-                                  </div>
-                                  <div class="content d-flex justify-content-between">
-                                      <div class="content-left">
-                                          <span class="body-3 text-dark-2">Billionaire Club</span>
-                                          <p class="body-1 mt-2">Exclusive Ape #112</p>
-                                          <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                      </div>
-                                      <div class="content-right text-end">
-                                          <span class="body-3 text-dark-2">Sale</span>
-                                          <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                                      fill="#1A1528" />
-                                              </svg>
-                                              <span class="button-2">0.629</span>
-                                          </div>
-                                          <span class="mt-2 d-block body-4 text-dark-2">2 hours ago</span>
-                                      </div>
-                                  </div>
-
-
-                              </a>
-                          </li>
-                          <li class="item">
-                              <a href="javascript:void(0);">
-                                  <div class="avatar round avt-48">
-                                      <img src="images/avt/nft-logo-6.png" alt="">
-                                  </div>
-                                  <div class="content d-flex justify-content-between">
-                                      <div class="content-left">
-                                          <span class="body-3 text-dark-2">Billionaire Club</span>
-                                          <p class="body-1 mt-2">Exclusive Ape #101</p>
-                                          <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                      </div>
-                                      <div class="content-right text-end">
-                                          <span class="body-3 text-dark-2">Sale</span>
-                                          <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                                      fill="#1A1528" />
-                                              </svg>
-                                              <span class="button-2">0.556</span>
-                                          </div>
-                                          <span class="mt-2 d-block body-4 text-dark-2">2 hours ago</span>
-                                      </div>
-                                  </div>
-
-
-                              </a>
-                          </li>
+                          </li>                          
                       </ul>
                   </div>
 

@@ -105,6 +105,7 @@ class trading extends Controller
     public function submitnft(Request $request)
     {
         try {
+            // Log::info("hi");
             // Validate the request
             $request->validate([
                 'nft_id' => 'required',
@@ -145,9 +146,9 @@ class trading extends Controller
             $userDirect = User::where('sponsor', $user->id)->where('active_status', 'Active')->where('package', '>=', 30)->count();
             $balance = round($user->available_balance(), 2) ?? 0;
     
-            $vip = 0;
+            $vip = 1;
             if ($balance >= 50 && $balance < 500) {
-                $vip = ($userDirect >= 1) ? 1 : 0;
+                $vip = ($userDirect >= 1) ? 1 : 1;
             } elseif ($balance >= 500 && $balance < 2000) {
                 $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
             } elseif ($balance >= 2000 && $balance < 5000) {
@@ -225,8 +226,8 @@ class trading extends Controller
     $income = Income::where('user_id', $user->id)->where('remarks','Trade Income') ->latest('created_at')
                 ->first();
                 if ($income) {
-                    $rincome = Package::where('vip', $income->invest_id)
-                                      ->latest('created_at')
+                    $trade= Trade::where('user_id', $user->id)->first();
+                    $rincome = Package::where('vip', $trade->vip)
                                       ->first();
                 } else {
                     // Handle the case where $income is null
@@ -393,7 +394,8 @@ class trading extends Controller
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                     'user_id_fk' => $user->username,
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
+                    'trade_id'=>$trade->id,
                 ];
 
                 Income::create($data);

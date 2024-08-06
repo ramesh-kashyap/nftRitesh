@@ -32,7 +32,7 @@ class Dashboard extends Controller
     }
 
 
-    public function index()
+    public function index()  
     {
         $user = Auth::user();
     
@@ -98,6 +98,8 @@ $filteredNftsLatest = array_filter($nftsLatest['asset_events'], function($nft) {
   return !empty($nft['nft']['image_url']);
 });
 
+// dd($filteredNftsLatest);
+
 
 $this->data['nftsLatest'] = $filteredNftsLatest;
 
@@ -151,10 +153,11 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         $user=Auth::user();
         $startOfDay = Carbon::today();
         $endOfDay = Carbon::tomorrow()->subSecond();
+
         $activity = Activity::where('user_id', $user->id)
-                  //  ->whereBetween('created_at', [$startOfDay, $endOfDay])
-                  //  ->latest('created_at')
-                   ->get();
+                   ->whereBetween('created_at', [$startOfDay, $endOfDay])
+                   ->latest('created_at')
+                   ->get()?? 0;
 
         $this->data['activity'] = $activity;
         // dd($activity);
@@ -185,12 +188,16 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         'headers' => [
           'accept' => 'application/json',
           'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
-        ],
+        ], 
       ]);
 
+      $user=Auth::user();
       $body = $response->getBody();
       $datas = json_decode($body, true);
+      $nftall = Trade::where('user_id', $user->id)->latest('created_at')->get();
 
+      $this->data['user'] = $user; 
+      $this->data['nftall'] = $nftall; 
       $this->data['datas'] = $datas['asset_events'];
       $this->data['page'] = 'user.statistics';
       return $this->dashboard_layout();
@@ -275,7 +282,7 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
             $this->data['collections'] = $nfts['nfts'] ?? []; // Ensure it's the correct array 
             $this->data['datas'] = $datas; // Ensure it's the correct array key
             $this->data['stats'] = $stats['total']; // Ensure it's the correct array key
-            $this->data['page'] = 'user.profile';
+            $this->data['page'] = 'user.profile';  
             
             return $this->dashboard_layout();
         } catch (\Exception $e) {

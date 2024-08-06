@@ -26,12 +26,22 @@
                                        
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">VIP1 %</label>                                            
-                                               <input type="text" placeholder="VIP1 %" name="vip1_percentage" value="{{$trade[0]->m_return}}" class="form-control" required id="">
+                                               <input type="text" placeholder="VIP1 %" name="vip1_percentage" value="{{$trade[0]->roi}}" class="form-control" required id="">
                                             </div>
 
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">VIP2 %</label>                                             
-                                                <input type="text" placeholder="" value="{{$trade[1]->m_return}}" name="vip2_percentage" class="form-control" required id="">
+                                                <input type="text" placeholder="" value="{{$trade[1]->roi}}" name="vip2_percentage" class="form-control" required id="">
+                                            </div>
+
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">VIP3 %</label>                                            
+                                               <input type="text" placeholder="VIP1 %" name="vip3_percentage" value="{{$trade[2]->roi}}" class="form-control" required id="">
+                                            </div>
+
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">VIP4 %</label>                                             
+                                                <input type="text" placeholder="" value="{{$trade[3]->roi}}" name="vip4_percentage" class="form-control" required id="">
                                             </div>
 
                                            

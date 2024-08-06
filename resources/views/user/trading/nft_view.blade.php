@@ -29,8 +29,8 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> -->
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="../images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="../images/logo/168.png" />
+    <link rel="shortcut icon" href="../images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="../images/logo/nestnft.png" />
     
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
@@ -257,12 +257,20 @@
                             <input type="hidden" name="seller" id="seller" value="">
                             <input type="hidden" name="buyer" id="buyer" value="">
 
+                            @if(Auth::user()->active_status == "Active")
                             @if($countdownTime <= 0)
-
                                 <button type="submit" href="#success" class="tf-btn primary btn-icon"
                                     data-bs-toggle="modal" id="buyNowBtn"><span class="icon icon-wallet-money"></span>
                                     Place a bid</button>
                             @endif
+                        @else
+                            @if($countdownTime <= 0)
+                                <button type="button" class="tf-btn primary btn-icon disable">
+                                    <span class="icon icon-wallet-money"></span>
+                                    Place a bid</button>
+                            @endif
+                        @endif
+                        
                         </form>
                     </div>
                 </div>
@@ -459,7 +467,7 @@
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5" style="font-size:15px;">Rebate</div>
-                                        <span class="button-3">{{$rincome->roi}}</span>
+                                        <span class="button-3">{{$rincome->roi}}%</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
@@ -486,13 +494,13 @@
     $i = 1; // Initialize the counter
 @endphp
                          @foreach ($nftall as $key=>$value)    
-                         @php
+                         @php  
                          $user= Auth::user();
                          $vip=$value->vip;
-                         $data=\App\Models\Package::where('vip',$vip)->first();
+                         $data = \App\Models\Package::where('vip', $vip)->first();
                          
                          $invest_id=$value->vip;
-                         $incroi=\App\Models\Income::where('invest_id',$invest_id)->where('user_id', $user->id)->first();
+                         $incroi=\App\Models\Income::where('trade_id', $value->id)->where('remarks','Trade Income')->orderBy('created_at', 'desc')->first();
                          
                          @endphp                                           
                          <!--  -->
@@ -530,7 +538,7 @@
                                     <span class="button-2 text-dark-2">{{$value->order_no}}</span>
                                 </div>
                             </div>
-                            <div id="activity-{{$key}}" class="accordion-collapse collapse show" aria-labelledby="activity-{{$key}}">
+                            <div id="activity-{{$key}}" class="accordion-collapse collapse" aria-labelledby="activity-{{$key}}">
                                 <div class="card-body">
                                     <div class="box-item">
                                         <div class="body-5">Income</div>
@@ -541,7 +549,7 @@
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
-                                        <span class="button-3" style="font-size:15px;">{{$data->roi ?? 0}}</span>
+                                        <span class="button-3" style="font-size:15px;">{{$data->roi??0}}%</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>

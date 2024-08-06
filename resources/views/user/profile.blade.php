@@ -16,8 +16,8 @@
     <link rel="stylesheet"type="text/css" href="css/styles.css"/>
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/logo/168.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/logo/168.png" />
+    <link rel="shortcut icon" href="images/logo/nestnft.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/logo/nestnft.png" />
 
     <title>profile</title>
    <style>
@@ -206,7 +206,7 @@
                         <div class="grid-2 mt-28 gap-15">
                             @foreach($collections as $value)
 
-                            <a href="#" class="card-nft">
+                            <a href="{{ $value['opensea_url'] }}" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="{{ asset($value['display_image_url']) }}" alt="img-nft">
                                     <span class="tag react">
