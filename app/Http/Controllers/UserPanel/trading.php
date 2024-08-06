@@ -225,8 +225,9 @@ class trading extends Controller
     $user = Auth::user(); 
     $income = Income::where('user_id', $user->id)->where('remarks','Trade Income') ->latest('created_at')
                 ->first();
-                if ($income) {
-                    $trade= Trade::where('user_id', $user->id)->first();
+                $trade= Trade::where('user_id', $user->id)->first();
+
+                if ($trade) {
                     $rincome = Package::where('vip', $trade->vip)
                                       ->first();
                 } else {
