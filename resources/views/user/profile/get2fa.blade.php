@@ -51,6 +51,10 @@
 <body>
 
     <div class="header fixed-top">
+
+    <div class="left">
+          <a href="javascript:void(0);" class="icon back-btn"><i class="icon-arrow-right"></i></a>
+        </div>
         <h3>Google 2FA</h3>
     </div>
     <div class="app-content style-2">

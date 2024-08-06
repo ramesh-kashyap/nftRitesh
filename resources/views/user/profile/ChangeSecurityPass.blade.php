@@ -53,7 +53,9 @@
 <body>
 
     <div class="header fixed-top">
-
+    <div class="left">
+          <a href="javascript:void(0);" class="icon back-btn"><i class="icon-arrow-right"></i></a>
+        </div>
         <h3>Change Transaction Password</h3>
 
     </div>

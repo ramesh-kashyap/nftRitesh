@@ -164,10 +164,10 @@ public function viewdetail($txnId)
     
      $invest_check=Investment::where('user_id',$user->id)->where('status','Pending')->first();
 
-    // if ($invest_check) 
-    // {
-    //   return  redirect()->route('user.myWallet')->withErrors(array('your deposit already pending'));
-    // }
+    if ($invest_check) 
+    {
+      return  redirect()->route('user.invest')->withErrors(array('your deposit already pending'));
+    }
    
    
     $amountTotal= $request->Sum;
@@ -280,10 +280,10 @@ public function viewdetail($txnId)
 
     if ($invest_check) 
     {
-      return Redirect::back()->withErrors(array('your deposit already pending'));
+      return  redirect()->route('user.invest')->withErrors(array('your deposit already pending'));
     }
    
-
+    
     $min_amount = $request->minimum_deposit;
     $max_amount = $request->maximum_deposit;
     $plan = $request->Plan;
@@ -298,33 +298,6 @@ public function viewdetail($txnId)
     }
     
     
-        $plan ='BEGINNER';
-      if ($amount>=50 && $amount<=200) 
-       {
-        $plan ='BEGINNER';
-       }
-       elseif($amount>=400 && $amount<=800)
-       {
-        $plan ='STANDARD';
-       }
-       elseif($amount>=1000 && $amount<=2000)
-       {
-        $plan ='EXCLUSIVE';
-       }
-       elseif($amount>=2500 && $amount<=5000)
-       {
-        $plan ='ULTIMATE';
-       }
-
-       elseif($amount>=5000 && $amount<=10000)
-       {
-        $plan ='PREMIUM';
-       }
-
-       elseif($amount>=5000)
-       {
-        $plan ='PREMIUM';
-       }
        
     $invest_check=Investment::where('user_id',$user->id)->where('plan',$plan)->where('status','!=','Decline')->orderBy('id','desc')->limit(1)->first();
     

@@ -22,7 +22,16 @@
     <title>Team</title>
 </head>
 
-
+<style>
+    /* Example of custom sliding effect CSS */
+.item-slide-effect {
+    position: absolute;
+    height: 4px;
+    bottom: 0;
+    background-color: #007bff; /* Adjust this color to match your theme */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+</style>
 <body>
     <!-- preloade -->
     <div class="preload preload-container">
@@ -55,13 +64,17 @@
             <ul class="nav nav-tabs tab-1" role="tablist">
                 <li class="item-slide-effect"></li>
                 <li class="nav-item active" role="presentation">
-    <button class="nav-link active" data-bs-toggle="tab" onclick="location.href='{{ route('user.referral-team', ['search' => 'Active']) }}'">Active</button>
+    <button class="nav-link active" data-bs-toggle="tab"   data-bs-target="#Active" onclick="location.href='{{ route('user.referral-team', ['search' => 'Active']) }}'">Active</button>
 </li>
-<li class="nav-item" role="presentation">
-    <button class="nav-link" data-bs-toggle="tab" onclick="location.href='{{ route('user.referral-team', ['search' => 'Pending']) }}'">Pending</button>
+<li class="nav-item " role="presentation">
+    <button class="nav-link" data-bs-toggle="tab"     data-bs-target="#Pending"    onclick="location.href='{{ route('user.referral-team', ['search' => 'Pending']) }}'">Pending</button>
 </li>
             </ul>
         </div>
+
+
+
+
     </div>
     <div class="tab-content">
         <div class="tab-pane active" id="ranking">
@@ -261,7 +274,44 @@
   </div>
 
  
+<script>
 
+function changeTab(event, status) {
+    event.preventDefault(); // Prevent default action
+    
+    // Update the location.href
+    window.history.pushState({}, '', '{{ route('user.referral-team') }}?search=' + status);
+
+    // Toggle the active class
+    document.querySelectorAll('.nav-link').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Add the active class to the clicked button
+    event.currentTarget.classList.add('active');
+
+    // Trigger the slide effect
+    triggerSlideEffect();
+}
+
+function triggerSlideEffect() {
+    const activeButton = document.querySelector('.nav-link.active');
+    const slideEffect = document.querySelector('.item-slide-effect');
+    
+    if (activeButton && slideEffect) {
+        const buttonRect = activeButton.getBoundingClientRect();
+        const parentRect = activeButton.parentElement.getBoundingClientRect();
+        
+        slideEffect.style.width = `${buttonRect.width}px`;
+        slideEffect.style.left = `${buttonRect.left - parentRect.left}px`;
+    }
+}
+
+// Trigger the slide effect on page load based on the active tab
+window.addEventListener('load', triggerSlideEffect);
+
+
+</script>
   <script>
 
 function filterStatus(status) {
