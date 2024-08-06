@@ -32,7 +32,7 @@ class Dashboard extends Controller
     }
 
 
-    public function index()
+    public function index()  
     {
         $user = Auth::user();
     
@@ -97,6 +97,8 @@ class Dashboard extends Controller
 $filteredNftsLatest = array_filter($nftsLatest['asset_events'], function($nft) {
   return !empty($nft['nft']['image_url']);
 });
+
+// dd($filteredNftsLatest);
 
 
 $this->data['nftsLatest'] = $filteredNftsLatest;
@@ -275,7 +277,7 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
             $this->data['collections'] = $nfts['nfts'] ?? []; // Ensure it's the correct array 
             $this->data['datas'] = $datas; // Ensure it's the correct array key
             $this->data['stats'] = $stats['total']; // Ensure it's the correct array key
-            $this->data['page'] = 'user.profile';
+            $this->data['page'] = 'user.profile';  
             
             return $this->dashboard_layout();
         } catch (\Exception $e) {

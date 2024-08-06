@@ -206,7 +206,7 @@
                         <div class="grid-2 mt-28 gap-15">
                             @foreach($collections as $value)
 
-                            <a href="#" class="card-nft">
+                            <a href="{{ $value['opensea_url'] }}" class="card-nft">
                                 <div class="box-img">
                                     <img class="lazyload" data-src="{{ asset($value['display_image_url']) }}" alt="img-nft">
                                     <span class="tag react">

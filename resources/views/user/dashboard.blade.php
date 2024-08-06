@@ -214,9 +214,9 @@
                 <div class="grid-2 mt-24 gap-15">
                     @foreach($nftsLatest as $data)
                     @if($data['nft']['image_url'])
-                    <a href="#" class="card-nft">
+                    <a href="{{ $data['nft']['opensea_url'] }}" class="card-nft">
                         <div class="box-img">
-                            <img class="lazyload" data-src="{{  $data['nft']['image_url'] }}" alt="img-nft">
+                            <img class="lazyload" data-src="{{  $data['nft']['display_image_url'] }}" alt="img-nft">
                             <span class="tag react">
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
