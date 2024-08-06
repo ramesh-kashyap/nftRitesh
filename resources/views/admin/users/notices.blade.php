@@ -64,6 +64,36 @@
                        </div>
                    </div>
                </div>
+               <div class="col-xl-6 col-lg-12">
+                   <div class="card">
+                       <div class="card-header">
+                           <h4 class="card-title">Add Notices</h4>
+                       </div>
+                       <div class="card-body">
+                           <div class="basic-form">
+                               <form action="" method="POST">
+                                {{ csrf_field() }}
+                                   <div class="row">
+                                       <div class="mb-3 col-md-12">
+                                           <label class="form-label">Enter Title</label>                                        
+                                            <input placeholder="Enter Title" required class="form-control" type="text"  name="title" value="" >
+                                       </div>
+                                   </div>
+
+                                   <div class="mb-3">
+                                       <div class="form-check">
+                                           <input class="form-check-input" type="checkbox">
+                                           <label class="form-check-label">
+                                               Check me out
+                                           </label>
+                                       </div>
+                                   </div>
+                                   <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                               </form>
+                           </div>
+                       </div>
+                   </div>
+               </div>
 
 
 

@@ -29,6 +29,15 @@
     <link rel="apple-touch-icon-precomposed" href="images/logo/nestnft.png" />
 
     <title>home</title>
+    <style>
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: red; /* Red dot color */
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,7 +67,8 @@
             <img src="images/logo/Nestnftdark.png" alt="logo" class="logo-dark">
         </div>  
         <div class="right">
-            <a href="#notification" data-bs-toggle="offcanvas" aria-controls="offcanvasBottom">
+            <a href="#notification" data-bs-toggle="offcanvas" aria-controls="offcanvasBottom" onclick="hideDots(); return false;">
+            <span class="dot" id="dotElement" style="display:block"></span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 6.44043V9.77043" stroke="#1A1528" stroke-width="1.5" stroke-miterlimit="10"
                         stroke-linecap="round" />
@@ -375,7 +385,7 @@
 
                       @if($active->title=='Email changed successfully.')
                           <li>
-                              <a href="{{$active->click_url}}" class="item">
+                              <a href="{{$active->click_url}}" class="item" >
                                   <div class="box-icon w-48 green round">
                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
@@ -606,41 +616,32 @@
                   </div>
                   <div class="tab-pane fade" id="NFTs" role="tabpanel">
                       <ul class="mt-24 list-view check-list">
+                        @foreach($admin_notice as $notice)
                           <li class="item active">
                               <a href="javascript:void(0);">
                                   <div class="avatar round avt-48">
-                                      <img src="images/avt/nft-logo-1.png" alt="">
+                                      <!-- <img src="images/avt/nft-logo-1.png" alt=""> -->
                                   </div>
                                   <div class="content d-flex justify-content-between">
                                       <div class="content-left">
-                                          <span class="body-3 text-dark-2">Billionaire Club</span>
-                                          <p class="body-1 mt-2">Exclusive Ape #105</p>
-                                          <span class="d-block text-dark-2 mt-2 button-3">+more</span>
+                                          <!-- <span class="body-3 text-dark-2">Billionaire Club</span> -->
+                                          <p class="body-1 mt-2">{{$notice->title}}</p>
+                                          <span class="d-block text-dark-2 mt-2 button-3">{{$notice->notice}}</span>
                                       </div>
-                                      <div class="content-right text-end">
+                                      <!-- <div class="content-right text-end">
                                           <span class="body-3 text-dark-2">Sale</span>
                                           <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                                  xmlns="http://www.w3.org/2000/svg">
-                                                  <path
-                                                      d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z"
-                                                      fill="#1A1528" />
-                                                  <path
-                                                      d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z"
-                                                      fill="#1A1528" />
-                                              </svg>
+                                              
                                               <span class="button-2">0.624</span>
                                           </div>
                                           <span class="mt-2 d-block body-4 text-dark-2">24 seconds ago</span>
-                                      </div>
+                                      </div> -->
                                   </div>
 
 
                               </a>
-                          </li>                          
+                          </li> 
+                          @endforeach                         
                       </ul>
                   </div>
 
@@ -1284,6 +1285,11 @@
           </div>
       </div>     
   </div>
+<script>
+function hideDots() {
+        document.getElementById('dotElement').style.display = 'none';
+    }   
+</script>
 
 
   <script type="text/javascript" src="js/bootstrap.min.js"></script>

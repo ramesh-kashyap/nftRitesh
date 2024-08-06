@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\Admin_notices;
 use App\Models\User;
 use App\Models\Investment;
 use App\Models\Income;
@@ -160,7 +161,15 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         $this->data['activity'] = $activity;
         // dd($activity);
         //end activity
-    
+
+        //admin notice
+        $admin_notice=Admin_notices::whereBetween('created_at', [$startOfDay, $endOfDay])
+                     ->latest('created_at')
+                     ->get()?? 0;
+
+        //admin notice
+        
+        $this->data['admin_notice'] = $admin_notice;
         $this->data['page'] = 'user.dashboard';
         return $this->dashboard_layout();
     }

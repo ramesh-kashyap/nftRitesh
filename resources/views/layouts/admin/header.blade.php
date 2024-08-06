@@ -227,6 +227,7 @@ table#example {
                             <li><a href="{{ route('admin.totalusers') }}">Total Users</a></li>
                             <li><a href="{{ route('admin.edit-users') }}">Edit User</a></li>
                             <li><a href="{{ route('admin.block-users') }}">Block User</a></li>
+                            <li><a href="{{ route('admin.noticepage') }}">Add Notices</a></li>
 
                         </ul>
                     </li>
