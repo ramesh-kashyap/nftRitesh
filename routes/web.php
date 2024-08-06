@@ -288,7 +288,7 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
 
 
  Route::get('noticepage', [App\Http\Controllers\Admin\UserController::class, 'noticepage'])->name('admin.noticepage');
- Route::post('addnotice', [App\Http\Controllers\Admin\UserController::class, 'addnotice'])->name('admin.addnotice');
+ Route::post('addnotices', [App\Http\Controllers\Admin\UserController::class, 'addnotice'])->name('admin.addnotices');
  //end userController
 
 //DepositManagmentController

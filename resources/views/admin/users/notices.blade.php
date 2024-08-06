@@ -20,7 +20,7 @@
                        </div>
                        <div class="card-body">
                            <div class="basic-form">
-                               <form action="{{route('addnotice')}}" method="POST">
+                               <form action="{{route('admin.addnotices')}}" method="POST">
                                 {{ csrf_field() }}
                                    <div class="row">
                                        <div class="mb-3 col-md-12">
@@ -31,20 +31,20 @@
 
                                        <div class="mb-3 col-md-12">
                                            <label class="form-label">Notice</label>
-                                           <input placeholder="Enter Notice" class="form-control check_sponsor_exist" type="text" data-response="sponsor_res" name="Notice"
+                                           <input placeholder="Enter Notice" class="form-control check_sponsor_exist" type="text" data-response="sponsor_res" name="notice"
                                                value="" >
                                                
                                                <!-- <span id="sponsor_res"></span> -->
                                        </div>
                                        
                                        
-                                        <div class="mb-3 col-md-12">
+                                        <!-- <div class="mb-3 col-md-12">
                                            <label class="form-label">Remarks</label>
                                            <input placeholder="Remarks" class="form-control" type="text"  name="remarks"
                                                value="" >
                                                
                                             
-                                       </div> 
+                                       </div>  -->
                                        
                                       
                                        
