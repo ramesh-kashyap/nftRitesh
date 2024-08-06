@@ -289,9 +289,10 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
 
  Route::get('noticepage', [App\Http\Controllers\Admin\UserController::class, 'noticepage'])->name('admin.noticepage');
  Route::post('addnotices', [App\Http\Controllers\Admin\UserController::class, 'addnotice'])->name('admin.addnotices');
+ Route::delete('del_notices', [App\Http\Controllers\Admin\UserController::class, 'del_notice'])->name('admin.del_notices');
  //end userController
 
-//DepositManagmentController
+//DepositManagmentController 
  Route::get('/depodit-request', [App\Http\Controllers\Admin\DepositController::class, 'deposit_request'])->name('admin.deposit-request');
  Route::get('/rejected-deposit', [App\Http\Controllers\Admin\DepositController::class, 'rejected_deposit'])->name('admin.rejected-deposit');
 

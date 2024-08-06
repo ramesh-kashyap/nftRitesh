@@ -917,6 +917,8 @@ public function add_bonus_post(Request $request)
         }
 
         public function noticepage(){
+          $admin_notice=Admin_notices::get()?? 0;        
+         $this->data['admin_notice'] = $admin_notice;
           $this->data['page'] = 'admin.users.notices';
                     return $this->admin_dashboard();          
         }
@@ -939,6 +941,10 @@ public function add_bonus_post(Request $request)
     return redirect()->back()->with('success', 'Notice added successfully.');
 }
 
+public function del_notice(Request $request){
+  DB::table('Admin_notices')->where('id', $request->id)->delete();
+  return redirect()->back()->with('success', 'Notice added successfully.');
+}
 
         
 
