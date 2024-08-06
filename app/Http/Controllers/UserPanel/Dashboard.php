@@ -153,10 +153,11 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         $user=Auth::user();
         $startOfDay = Carbon::today();
         $endOfDay = Carbon::tomorrow()->subSecond();
+
         $activity = Activity::where('user_id', $user->id)
-                  //  ->whereBetween('created_at', [$startOfDay, $endOfDay])
-                  //  ->latest('created_at')
-                   ->get();
+                   ->whereBetween('created_at', [$startOfDay, $endOfDay])
+                   ->latest('created_at')
+                   ->get()?? 0;
 
         $this->data['activity'] = $activity;
         // dd($activity);

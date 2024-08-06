@@ -15,6 +15,8 @@ use App\Models\Bank;
 use App\Models\Withdraw;
 use App\Models\BuyFund;
 use App\Models\Activitie;
+use App\Models\Admin_notices;
+
 
 use Auth;
 use DB;
@@ -914,5 +916,30 @@ public function add_bonus_post(Request $request)
 
         }
 
+        public function noticepage(){
+          $this->data['page'] = 'admin.users.notices';
+                    return $this->admin_dashboard();          
+        }
+
+        public function addnotice(Request $request)
+{
+    // Validate the request data
+    $validatedData = $request->validate([
+        'title' => 'required',
+        'notice'=> 'required',
+    ]);
+
+    // Create a new Admin_notice record
+    Admin_notices::create([
+        'title' => $validatedData['title'],
+        'notice' => $validatedData['notice'],
+    ]);
+
+    // Redirect or return a response
+    return redirect()->back()->with('success', 'Notice added successfully.');
+}
+
+
+        
 
 }

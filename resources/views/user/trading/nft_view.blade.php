@@ -467,7 +467,7 @@
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5" style="font-size:15px;">Rebate</div>
-                                        <span class="button-3">{{$rincome->roi}}</span>
+                                        <span class="button-3">{{$rincome->roi}}%</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
@@ -497,10 +497,10 @@
                          @php
                          $user= Auth::user();
                          $vip=$value->vip;
-                         $data=\App\Models\Package::where('vip',$vip)->first();
+                         $data = \App\Models\Package::where('vip', $vip)->first();
                          
                          $invest_id=$value->vip;
-                         $incroi=\App\Models\Income::where('invest_id',$invest_id)->where('user_id', $user->id)->first();
+                         $incroi=\App\Models\Income::where('trade_id', $value->id)->where('remarks','Trade Income')->orderBy('created_at', 'desc')->first();
                          
                          @endphp                                           
                          <!--  -->
@@ -549,7 +549,7 @@
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Rebate</div>
-                                        <span class="button-3" style="font-size:15px;">{{$data->roi ?? 0}}</span>
+                                        <span class="button-3" style="font-size:15px;">{{$data->roi??0}}%</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
