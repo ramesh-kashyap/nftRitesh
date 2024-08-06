@@ -914,5 +914,13 @@ public function add_bonus_post(Request $request)
 
         }
 
+        public function noticepage(){
+          $this->data['page'] = 'admin.users.notices';
+                    return $this->admin_dashboard();          
+        }
+
+        public function addnotice(){
+          $validate = validator()->
+        }
 
 }

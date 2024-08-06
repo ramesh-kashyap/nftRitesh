@@ -285,7 +285,10 @@ Route::get('add-bonus', [App\Http\Controllers\Admin\UserController::class, 'add_
  Route::get('addnft', [App\Http\Controllers\Admin\UserController::class, 'addnft'])->name('admin.addnft');
  Route::post('addnft_post', [App\Http\Controllers\Admin\UserController::class, 'addnft_post'])->name('admin.addnft_post');
  Route::get('addnftimage', [App\Http\Controllers\Admin\UserController::class, 'addnftimage'])->name('admin.addnftimage');
- 
+
+
+ Route::get('noticepage', [App\Http\Controllers\Admin\UserController::class, 'noticepage'])->name('admin.noticepage');
+ Route::post('addnotice', [App\Http\Controllers\Admin\UserController::class, 'addnotice'])->name('admin.addnotice');
  //end userController
 
 //DepositManagmentController
