@@ -83,7 +83,7 @@
                     </div>
                     <div class="mt-20 box-content text-center">
                         <h4>Username-{{ Auth::user()->username }}</h4>
-                        <span class="button-2 mt-12 d-block ">{{ number_format(Auth::user()->available_balance(), 2) }} USDT</span>
+                        <span class="button-2 mt-12 d-block "><img class="col-6 ls-is-cached lazyloaded" src="http://127.0.0.1:8080/images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute"> {{ number_format(Auth::user()->available_balance(), 2) }} </span>
                     </div>
                     
                 </div>
