@@ -375,7 +375,7 @@
 
                       @if($active->title=='Email changed successfully.')
                           <li>
-                              <a href="#" class="item">
+                              <a href="{{$active->click_url}}" class="item">
                                   <div class="box-icon w-48 green round">
                                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                           xmlns="http://www.w3.org/2000/svg">
@@ -399,10 +399,10 @@
                                           </div>
                                           <div class="body-4">{{$active->created_at}}</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Now ENFTI has a Two-Factor Authentication. Try it now to make your account
                                           more secure.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -443,9 +443,9 @@
                                           </div>
                                           <div class="body-4">5 min ago</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Try ENFTI new feature, now you can link your multiple wallet accounts.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -475,9 +475,9 @@
                                           <div class="body-1">ENFTI Has Updates!</div>
                                           <div class="body-4">1 hr Ago</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Now you can make an offer and buy multiple NFTs at once.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
@@ -549,10 +549,10 @@
                                           <div class="body-1">Your Password Changed!</div>
                                           <div class="body-4">{{$active->created_at}}</div>
                                       </div>
-                                      <p class="mt-8 body-5">
+                                      <!-- <p class="mt-8 body-5">
                                           Your password is successfully changed. Now you can login with your new
                                           password.
-                                      </p>
+                                      </p> -->
                                   </div>
 
 
