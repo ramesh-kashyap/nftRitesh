@@ -481,6 +481,36 @@ public function viewdetail($txnId)
 
  }
 
+ public function getBalance($userId)
+    {
+        // Get active investments of investType 2
+        $activeRegistrationBonus = Investment::where('user_id', $userId)
+            ->where('status', 'Active')
+            ->where('investType', 2)
+            ->first();
+    
+        // Check and update the status if the registration bonus date is older than 3 days
+        if ($activeRegistrationBonus) {
+            $registrationBonusDate = Carbon::parse($activeRegistrationBonus->sdate);
+            if (Carbon::now()->diffInDays($registrationBonusDate) >= 3) {
+                $activeRegistrationBonus->status = 'Expired';
+                $activeRegistrationBonus->save();
+            }
+        }
+    
+        // Calculate the balance
+        $investments = Investment::where('user_id', $userId)
+            ->where('status', 'Active')
+            ->sum('amount') ?? 0;
+        $incomes = Income::where('user_id', $userId)
+            ->sum('comm') ?? 0;
+        $withdrawals = Withdraw::where('user_id', $userId)
+            ->where('status', '!=', 'Failed')
+            ->sum('amount') ?? 0;
+    
+        return $investments + $incomes - $withdrawals;
+    }
+
 
 
         public function more(Request $request){
@@ -610,10 +640,60 @@ public function viewdetail($txnId)
               ->orWhere('amount', 'LIKE', '%' . $search . '%');
             });
     
-          }
+          } 
               
             $notes = $notes->paginate($limit)->appends(['limit' => $limit ]);
+
+            $my_level_team = $this->my_level_team_count($user->id);
+            $gen_team1 = array_key_exists(1, $my_level_team) ? $my_level_team[1] : [];
+            $gen_team2 = array_key_exists(2, $my_level_team) ? $my_level_team[2] : [];
+            $gen_team3 = array_key_exists(3, $my_level_team) ? $my_level_team[3] : [];
+
+            $gen_team1 = User::whereIn('id', $gen_team1)->orderBy('id', 'DESC')->get();
+            $gen_team2 = User::whereIn('id', $gen_team2)->orderBy('id', 'DESC')->get();
+            $gen_team3 = User::whereIn('id', $gen_team3)->orderBy('id', 'DESC')->get();
+
+            $active_gen_team1total = $gen_team1->where('active_status', 'Active')->count();
+            $active_gen_team2total = $gen_team2->where('active_status', 'Active')->count();
+            $active_gen_team3total = $gen_team3->where('active_status', 'Active')->count();
+
+            $total = $active_gen_team1total + $active_gen_team2total;
+            $userDirect = User::where('sponsor', $user->id)
+                ->where('active_status', 'Active')
+                ->where('package', '>=', 30)
+                ->count();
+
+            // Use the updated getBalance function
+            $balance = round($this->getBalance($user->id), 2);
+            Log::info('User balance: ' . $balance);
+
+            // Determine VIP level
+            $vip = 0;
+            if ($balance >= 50 && $balance < 500) {
+                $vip = ($userDirect >= 1) ? 1 : 0;
+            } elseif ($balance >= 500 && $balance < 2000) {
+                $vip = ($userDirect >= 3 && $total >= 5) ? 2 : 1;
+            } elseif ($balance >= 2000 && $balance < 5000) {
+                if ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            } elseif ($balance >= 5000) {
+                if ($userDirect >= 15 && $total >= 35) {
+                    $vip = 4;
+                } elseif ($userDirect >= 6 && $total >= 20) {
+                    $vip = 3;
+                } elseif ($userDirect >= 3 && $total >= 5) {
+                    $vip = 2;
+                } else {
+                    $vip = 1;
+                }
+            }
     
+            $this->data['vip'] =$vip;
             $this->data['search'] =$search;
             $this->data['deposit_list'] =$notes;
             $this->data['withdraw_report'] =$withdraw;

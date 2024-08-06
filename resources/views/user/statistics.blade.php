@@ -54,7 +54,7 @@
                 <ul class="nav nav-tabs tab-1" role="tablist" >
                     <li class="item-slide-effect"></li>
                     <li class="nav-item active" role="presentation">   
-                        <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#ranking">Rankings</button>
+                        <button class="nav-link active"  data-bs-toggle="tab" data-bs-target="#ranking">NFT Details</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activity">Activity</button>
