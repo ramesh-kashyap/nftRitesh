@@ -494,7 +494,7 @@
     $i = 1; // Initialize the counter
 @endphp
                          @foreach ($nftall as $key=>$value)    
-                         @php
+                         @php  
                          $user= Auth::user();
                          $vip=$value->vip;
                          $data = \App\Models\Package::where('vip', $vip)->first();

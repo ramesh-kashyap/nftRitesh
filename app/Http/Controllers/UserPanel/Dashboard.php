@@ -188,12 +188,16 @@ $this->data['nftsLatest'] = $filteredNftsLatest;
         'headers' => [
           'accept' => 'application/json',
           'x-api-key' => '1e27b181b4bd49ee81032d7165fd1613',
-        ],
+        ], 
       ]);
 
+      $user=Auth::user();
       $body = $response->getBody();
       $datas = json_decode($body, true);
+      $nftall = Trade::where('user_id', $user->id)->latest('created_at')->get();
 
+      $this->data['user'] = $user; 
+      $this->data['nftall'] = $nftall; 
       $this->data['datas'] = $datas['asset_events'];
       $this->data['page'] = 'user.statistics';
       return $this->dashboard_layout();

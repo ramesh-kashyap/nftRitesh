@@ -64,364 +64,86 @@
         </div>
         <div class="tab-content mt-24">
                 <div class="tab-pane fade active show" id="ranking" role="tabpanel">
-                    <div class="px-24 card-layout">
-                        <div class="swiper tf-sw sw-auto sw-lr" data-preview="auto" data-space="16"     style="height: fit-content;"
-                        >
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="#categories" data-bs-toggle="offcanvas"  aria-controls="offcanvasBottom" class="category-select"><span>Categories</span> <i class="icon icon-left-arr"></i></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#chain1" data-bs-toggle="offcanvas"  aria-controls="offcanvasBottom" class="category-select"><span>Chains</span> <i class="icon icon-left-arr"></i></a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#time" data-bs-toggle="offcanvas"  aria-controls="offcanvasBottom" class="category-select"><span>Time Period</span> <i class="icon icon-left-arr"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="px-16 mt-24">
                         <ul class="mt-24 list-view-v6 check-list">
-                        <li>
-                            <a href="javascript:void(0);" class="item box-accordion d-block active">
-                                <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-1" aria-expanded="true" aria-controls="accordion-1">
-                                    <h6>1</h6>
-                                    <div class="flex-grow-1 d-flex gap-16 align-items-center">
-                                    <div class="avatar round avt-48">
-                                        <img src="images/avt/nft-logo-13.png" alt="">                      
-                                    </div>
-                                    <div class="content d-flex justify-content-between">
-                                        <div class="content-left">
-                                            <p class="button-1">Sarafuru #92</p>
-                                            <span class="more text-primary mt-2 button-3">+more</span>
-                                            <span class="less text-primary mt-2 button-3">-less</span>
-
-                                        </div>
-                                        <div class="content-right text-end">
-                                            <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                    <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                    <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-2">847.36</span>  
-                                            </div>
-                                            <span class="mt-2 d-block body-4 text-dark-2">10 seconds Ago</span>
-                                        </div>
-                                    </div> 
-                                    </div>
-                                </div>
-                                <div id="accordion-1" class="accordion-collapse collapse" aria-labelledby="accordion-1">
-                                    <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                        <li>
-                                            <div class="body-5">Floor Price</div>
-                                            <div class="d-flex gap-4 align-items-center">
-                                                <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                    <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                    <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-3">84.3</span>  
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="body-5">7 Day%</div>
-                                            <span class="button-3 text-green">245,37 %</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Owners</div>
-                                            <span class="button-3">6,378</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Assets</div>
-                                            <span class="button-3">9,673</span>
-                                        </li>
-                                    </ul>
-                                </div>    
-                            </a>
-                        </li>
-                        <li class="mt-20">
-                            <a href="javascript:void(0);" class="item box-accordion gap-16">
-                                <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-2" aria-expanded="true" aria-controls="accordion-2">
-                                    <h6>2</h6>
-                                    <div class="flex-grow-1 d-flex gap-16 align-items-center">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-9.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <p class="button-1">Hape NFT #234</p>
-                                                <span class="more text-primary mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">659.42</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">3 Minutes Ago</span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div id="accordion-2" class="accordion-collapse collapse" aria-labelledby="accordion-2">
-                                    <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                        <li>
-                                            <div class="body-5">Floor Price</div>
-                                            <div class="d-flex gap-4 align-items-center">
-                                                <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                    <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                    <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-3">84.3</span>  
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="body-5">7 Day%</div>
-                                            <span class="button-3 text-green">245,37 %</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Owners</div>
-                                            <span class="button-3">6,378</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Assets</div>
-                                            <span class="button-3">9,673</span>
-                                        </li>
-                                    </ul>
-                                </div>   
-                            </a>
-                        </li>
-                        <li class="mt-20">
-                            <a href="javascript:void(0);" class="item box-accordion gap-16">
-                                <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-3" aria-expanded="true" aria-controls="accordion-3">
-                                    <h6>3</h6>
-                                    <div class="flex-grow-1 d-flex gap-16 align-items-center">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-14.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <p class="button-1">Azuki NFT #180</p>
-                                                <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">547.53</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">40 Minutes Ago</span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div id="accordion-3" class="accordion-collapse collapse" aria-labelledby="accordion-3">
-                                    <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                        <li>
-                                            <div class="body-5">Floor Price</div>
-                                            <div class="d-flex gap-4 align-items-center">
-                                                <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                    <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                    <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-3">84.3</span>  
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="body-5">7 Day%</div>
-                                            <span class="button-3 text-green">245,37 %</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Owners</div>
-                                            <span class="button-3">6,378</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Assets</div>
-                                            <span class="button-3">9,673</span>
-                                        </li>
-                                    </ul>
-                                </div>   
-                            </a>
-                        </li>
-                        <li class="mt-20">
-                            <a href="javascript:void(0);" class="item box-accordion gap-16">
-                                <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-4" aria-expanded="true" aria-controls="accordion-4">
-                                    <h6>4</h6>
-                                    <div class="flex-grow-1 d-flex gap-16 align-items-center">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-15.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <p class="button-1">Iceberg NFT #12</p>
-                                                <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">496.79</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">1 Hour Ago</span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div id="accordion-4" class="accordion-collapse collapse" aria-labelledby="accordion-4">
-                                    <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                        <li>
-                                            <div class="body-5">Floor Price</div>
-                                            <div class="d-flex gap-4 align-items-center">
-                                                <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                    <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                    <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-3">84.3</span>  
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="body-5">7 Day%</div>
-                                            <span class="button-3 text-green">245,37 %</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Owners</div>
-                                            <span class="button-3">6,378</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Assets</div>
-                                            <span class="button-3">9,673</span>
-                                        </li>
-                                    </ul>
-                                </div>    
-                            </a>
-                        </li>
-                        <li class="mt-20">
-                            <a href="javascript:void(0);" class="item box-accordion gap-16">
-                                <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-5" aria-expanded="true" aria-controls="accordion-5">
-                                    <h6>5</h6>
-                                    <div class="flex-grow-1 d-flex gap-16 align-items-center">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-16.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <p class="button-1">AnakPunk #58</p>
-                                                <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">508.40</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">2 Hour Ago</span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div id="accordion-5" class="accordion-collapse collapse" aria-labelledby="accordion-5">
-                                    <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                        <li>
-                                            <div class="body-5">Floor Price</div>
-                                            <div class="d-flex gap-4 align-items-center">
-                                                <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                    <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                    <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-3">84.3</span>  
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="body-5">7 Day%</div>
-                                            <span class="button-3 text-green">245,37 %</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Owners</div>
-                                            <span class="button-3">6,378</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Assets</div>
-                                            <span class="button-3">9,673</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                     
-                            </a>
-                        </li>
-                        <li class="mt-20">
-                            <a href="javascript:void(0);" class="item box-accordion gap-16">
-                                <div class="box d-flex justify-content-between align-items-center gap-16 collapsed"  data-bs-toggle="collapse" data-bs-target="#accordion-6" aria-expanded="true" aria-controls="accordion-6">
-                                    <h6>6</h6>
-                                    <div class="flex-grow-1 d-flex gap-16 align-items-center">
-                                        <div class="avatar round avt-48">
-                                            <img src="images/avt/nft-logo-17.png" alt="">                      
-                                        </div>
-                                        <div class="content d-flex justify-content-between">
-                                            <div class="content-left">
-                                                <p class="button-1">Sarafuru #81</p>
-                                                <span class="d-block text-dark-2 mt-2 button-3">+more</span>
-                                            </div>
-                                            <div class="content-right text-end">
-                                                <div class="mt-2 d-flex gap-4 align-items-center justify-content-end">
-                                                    <svg class="icon-eth" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M4.60008 6.06675L7.78005 4.65341C7.92005 4.59341 8.08007 4.59341 8.2134 4.65341L11.3934 6.06675C11.6734 6.19341 11.9334 5.85341 11.7401 5.61341L8.40672 1.54008C8.18005 1.26008 7.80673 1.26008 7.58006 1.54008L4.24673 5.61341C4.06006 5.85341 4.32008 6.19341 4.60008 6.06675Z" fill="#1A1528"/>
-                                                        <path d="M4.60004 9.93366L7.78669 11.347C7.92669 11.407 8.08671 11.407 8.22004 11.347L11.4067 9.93366C11.6867 9.807 11.9467 10.147 11.7534 10.387L8.42003 14.4603C8.19337 14.7403 7.82004 14.7403 7.59337 14.4603L4.26004 10.387C4.06004 10.147 4.31338 9.807 4.60004 9.93366Z" fill="#1A1528"/>
-                                                        <path d="M7.85338 6.32602L5.10004 7.69935C4.85337 7.81935 4.85337 8.17268 5.10004 8.29268L7.85338 9.66602C7.94671 9.71268 8.06001 9.71268 8.15334 9.66602L10.9067 8.29268C11.1533 8.17268 11.1533 7.81935 10.9067 7.69935L8.15334 6.32602C8.05334 6.27935 7.94671 6.27935 7.85338 6.32602Z" fill="#1A1528"/>
-                                                    </svg>
-                                                    <span class="button-2">15,341.53</span>  
-                                                </div>
-                                                <span class="mt-2 d-block body-4 text-dark-2">4 Hour Ago</span>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                                <div id="accordion-6" class="accordion-collapse collapse" aria-labelledby="accordion-6">
-                                    <ul class="body pt-16 line-t d-flex gap-40 justify-content-between">
-                                        <li>
-                                            <div class="body-5">Floor Price</div>
-                                            <div class="d-flex gap-4 align-items-center">
-                                                <svg class="icon-eth" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3.45006 4.54957L5.83504 3.48957C5.94004 3.44457 6.06005 3.44457 6.16005 3.48957L8.54506 4.54957C8.75506 4.64457 8.95004 4.38957 8.80504 4.20957L6.30504 1.15457C6.13504 0.94457 5.85505 0.94457 5.68505 1.15457L3.18505 4.20957C3.04505 4.38957 3.24006 4.64457 3.45006 4.54957Z" fill="#1A1528"/>
-                                                    <path d="M3.44979 7.45025L5.83977 8.51025C5.94477 8.55525 6.06479 8.55525 6.16479 8.51025L8.55477 7.45025C8.76477 7.35525 8.95978 7.61025 8.81478 7.79025L6.31478 10.8452C6.14478 11.0552 5.86478 11.0552 5.69478 10.8452L3.19478 7.79025C3.04478 7.61025 3.23479 7.35525 3.44979 7.45025Z" fill="#1A1528"/>
-                                                    <path d="M5.88979 4.745L3.82479 5.775C3.63979 5.865 3.63979 6.13 3.82479 6.22L5.88979 7.25C5.95979 7.285 6.04476 7.285 6.11476 7.25L8.17977 6.22C8.36477 6.13 8.36477 5.865 8.17977 5.775L6.11476 4.745C6.03976 4.71 5.95979 4.71 5.88979 4.745Z" fill="#1A1528"/>
-                                                </svg>
-                                                <span class="button-3">84.3</span>  
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="body-5">7 Day%</div>
-                                            <span class="button-3 text-green">245,37 %</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Owners</div>
-                                            <span class="button-3">6,378</span>  
-                                        </li>
-                                        <li>
-                                            <div class="body-5">Assets</div>
-                                            <span class="button-3">9,673</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                     
-                            </a>
-                        </li>
+                        
+                            @php
+                            $i = 1; // Initialize the counter
+                        @endphp
+                                                 @foreach ($nftall as $key=>$value)    
+                                                 @php  
+                                                 $user= Auth::user(); 
+                                                 $vip=$value->vip;
+                                                 $data = \App\Models\Package::where('vip', $vip)->first();
+                                                 
+                                                 $invest_id=$value->vip;
+                                                 $incroi=\App\Models\Income::where('trade_id', $value->id)->where('remarks','Trade Income')->orderBy('created_at', 'desc')->first();
+                                                 
+                                                 @endphp                                           
+                                                 <!--  -->
+                                                <div class="card-nft-2 style-2">
+                                                    <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-{{$key}}"
+                                                        aria-expanded="true" aria-controls="activity-{{$key}}">
+                                                        <div class="content-left">
+                                                            <div class="d-flex gap-16 align-items-center">
+                                                            <img class="lazyload" src="{{$value->nft_image}}" alt="img-nft" style="height:80px;width:auto;border-radius:20%">
+                                                                <div>
+                                                                    <div class="button-1"><a href="{{$value->opensea_url}}" target="blank">{{$value->name}}</a></div>
+                                                                    <span class="less button-3">-less</span>
+                                                                    <span class="more button-3">+more</span>
+                                                                </div>
+                                                            </div>
+                        
+                                                        </div>
+                                                        <div class="content-right">
+                                                            <div class="d-flex gap-2 align-items-center">
+                                                            @if($value->symbol == 'MATIC')
+                                                                      <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Matic.png" alt="img-nft"
+                                                                      style="height:20px;width:auto;">
+                                                                      @elseif($value->symbol == 'USDT')
+                                                                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                                                                     style="height:20px;width:auto;">
+                                                                     @elseif($value->symbol == 'ETH')
+                                                                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/ethereum.png" alt="img-nft"
+                                                                     style="height:20px;width:auto;">
+                                                                    @else
+                                                                    <img class="lazyload" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft"
+                                                                    style="height:20px;width:auto;">
+                                                                    @endif
+                                                                <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$value->price}}</a></div>
+                                                            </div>
+                                                            <span class="button-2 text-dark-2">{{$value->order_no}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="activity-{{$key}}" class="accordion-collapse collapse" aria-labelledby="activity-{{$key}}">
+                                                        <div class="card-body">
+                                                            <div class="box-item">
+                                                                <div class="body-5">Income</div>
+                                                                <div class="d-flex gap-2 align-items-center">
+                                                            <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
+                                                                <div class="button-2"><a href="{{$value->opensea_url}}" target="blank">{{$incroi->comm ?? 0}}</a></div>
+                                                            </div> 
+                                                            </div>
+                                                            <div class="box-item">
+                                                                <div class="body-5">Rebate</div>
+                                                                <span class="button-3" style="font-size:15px;">{{$data->roi??0}}%</span>
+                                                            </div>
+                                                            <div class="box-item">
+                                                                <div class="body-5">Creator</div>
+                                                                <span class="button-3 text-primary"><a href="{{$value->opensea_url}}" target="blank">{{$value->creator}}</a></span>
+                                                            </div>
+                                                            <div class="box-item">
+                                                                <div class="body-5">Date</div>
+                                                                <span class="button-3 text-primary"><a href="{{$value->opensea_url}}" target="blank">{{$value->created_at}}</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                
+                                                @endforeach
+                        
+                        
                         
                     </ul>
                     </div>
