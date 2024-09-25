@@ -179,3 +179,4 @@ font-weight: 500;">Confirm password</span>
       });
   });
       </script>
+      @include('partials.notify')

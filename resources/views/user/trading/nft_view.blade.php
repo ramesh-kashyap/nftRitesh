@@ -401,8 +401,15 @@
                     <div class="tab-pane fade active show" id="details" role="tabpanel">
                     <div class="card-nft-2 style-2">
                     @if($nftd)
-                    @if($roi)
-                    @if($rincome)
+                    @php
+                         $user= Auth::user();
+                         $vip=$nftd->vip;
+                         $data = \App\Models\Package::where('vip', $vip)->first();
+                         
+                         $invest_id=$nftd->vip;
+                         $incroi=\App\Models\Income::where('trade_id', $nftd->id)->where('remarks','Trade Income')->orderBy('created_at', 'desc')->first();
+                         
+                         @endphp 
                             <div class="card-header" data-bs-toggle="collapse" data-bs-target="#activity-1"
                                 aria-expanded="true" aria-controls="activity-1">
                                 <div class="content-left">
@@ -453,13 +460,13 @@
                                         <div class="content-right">
                                     <div class="d-flex gap-2 align-items-center">
                                     <img class="lazyload col-6" src="{{ asset('') }}images/ethereum-name/Usdt.jpg" alt="img-nft" style="height:20px;width:auto; postion:absolute">
-                                        <div class="button-2"><a href="{{$nftd->opensea_url}}" target="blank">{{$roi->comm}}</a></div>
+                                        <div class="button-2"><a href="{{$nftd->opensea_url}}" target="blank">{{$incroi->comm??0}}</a></div>
                                     </div>                                    
                                 </div>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5" style="font-size:15px;">Rebate</div>
-                                        <span class="button-3">{{$rincome->roi}}%</span>
+                                        <span class="button-3">{{$data->roi ??0}}%</span>
                                     </div>
                                     <div class="box-item">
                                         <div class="body-5">Creator</div>
@@ -472,8 +479,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
-                        @endif
+                        
                     @else
                     
                         <h4>No NFT Data Available !..</h4>

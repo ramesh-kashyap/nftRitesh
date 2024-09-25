@@ -139,3 +139,4 @@
             </div>
             <!---->
       
+            @include('partials.notify')

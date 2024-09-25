@@ -70,13 +70,13 @@
                         <div class="card-body">
                             <div class="delete-item mt-20">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">Username</span>
+                                    <span class="body-4" style="font-size: 16px; font-weight: 800;">Username</span>
                                 </div>
-                                <input class="mt-12 form-control check_sponsor_exist" name="username" type="number" value="" placeholder="Enter your 6 digit Username" required>
+                                <input class="mt-12 form-control check_sponsor_exist" name="username" type="number" value="" placeholder="Enter your  Username" required>
                             </div>
                             <div class="delete-item mt-20 ">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="body-4" style="font-size: 16px; font-weight: 500;">Select Country</span>
+                                    <span class="body-4" style="font-size: 16px; font-weight: 800;">Select Country</span>
                                 </div>
                                 @php
                                     $datas = \App\Models\Country::all();
@@ -87,30 +87,30 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <span id="phoneCodeSpan" style="position: absolute; top: 262px; left: 33px; border-right: solid; font-weight: 700; padding-right: 2px;">+93</span>
+                            <span id="phoneCodeSpan" style="position: absolute; top: 262px; left: 33px; border-right: solid; font-weight: 700; padding-right: 2px;margin-top:20px ">+93</span>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Phone Number</span>
+                                <span class="body-4" style="font-size: 16px; font-weight: 800;margin-top:20px">Phone Number</span>
                             </div>
                             <input class="mt-12 form-control" name="phone" type="number" placeholder="Enter Your Number" id="phone" style="padding: 14px 16px 14px 60px;" required>
                             <i class="ri-user-line user"></i>
                         </div>
                         <div class="delete-item mt-20">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Invitation Code</span>
+                                <span class="body-4" style="font-size: 16px; font-weight: 800;">Invitation Code</span>
                             </div>
                             <input class="mt-12 form-control check_sponsor_exist" name="sponsor" type="text" value="{{ $sponsor }}" placeholder="Enter your Sponsor" enterkeyhint="done" autocomplete="off" data-response="sponsor_res" required>
                             <span id="sponsor_res">{{ $name ? $name->name : '' }}</span>
                         </div>
                         <div class="delete-item mt-20 ">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Password</span>
+                                <span class="body-4" style="font-size: 16px; font-weight: 800;">Password</span>
                             </div>
                             <input class="mt-12 form-control" id="test-input" name="password" type="password" placeholder="Enter your password" required>
                             <i class="ri-user-line user"></i>
                         </div>
                         <div class="delete-item mt-20 ">
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="body-4" style="font-size: 16px; font-weight: 500;">Confirm Password</span>
+                                <span class="body-4" style="font-size: 16px; font-weight: 800;">Confirm Password</span>
                             </div>
                             <input class="mt-12 form-control" name="password_confirmation" type="password" placeholder="Confirm your password" required>
                             <i class="ri-user-line user"></i>
